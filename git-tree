@@ -1,2 +1,2 @@
 #!/bin/bash
-printf "Structure:\n----------\n" > README | tree --dirsfirst --noreport -L 2 >> README
+printf "University\n==========\n\nStructure:\n----------\n" > README | tree --dirsfirst --noreport -L 2 >> README
