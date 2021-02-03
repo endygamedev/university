@@ -1,6 +1,5 @@
-Structre
---------
-
+Structure:
+----------
 .
 ├── 2-course-4-semester
 │   ├── comprehensive-analysis
@@ -18,4 +17,5 @@ Structre
 │   ├── programming-languages
 │   ├── psychology
 │   └── system-analysis
+├── git-tree
 └── LICENSE
