@@ -5,12 +5,6 @@ Structure:
 │   ├── comprehensive-analysis
 │   ├── computational-geometry
 │   ├── english
-│   │   ├── dictations
-│   │   ├── homeworks
-│   │   ├── lessons
-│   │   ├── Facilitator.pdf
-│   │   ├── Market Leader 3d edition.pdf
-│   │   └── Practical Grammar Course.pdf
 │   ├── microeconomics
 │   ├── numerical-methods
 │   ├── probability-theory
@@ -18,4 +12,5 @@ Structure:
 │   ├── psychology
 │   └── system-analysis
 ├── git-tree
-└── LICENSE
+├── LICENSE
+└── README
