@@ -1,0 +1,19 @@
+    .
+    ├── 2-course-4-semester
+    │   ├── comprehensive-analysis
+    │   ├── computational-geometry
+    │   ├── english
+    │   │   ├── dictations
+    │   │   ├── homeworks
+    │   │   ├── lessons
+    │   │   ├── Facilitator.pdf
+    │   │   ├── Market Leader 3d edition.pdf
+    │   │   └── Practical Grammar Course.pdf
+    │   ├── microeconomics
+    │   ├── numerical-methods
+    │   ├── probability-theory
+    │   ├── programming-languages
+    │   ├── psychology
+    │   └── system-analysis
+    ├── LICENSE
+    └── README
