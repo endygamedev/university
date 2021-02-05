@@ -8,19 +8,20 @@ Structure:
 │   ├── comprehensive-analysis
 │   ├── computational-geometry
 │   ├── english
+│   │   ├── books
 │   │   ├── dictations
 │   │   ├── homeworks
-│   │   ├── lessons
-│   │   ├── Facilitator.pdf
-│   │   ├── Market Leader 3d edition.pdf
-│   │   ├── Practical Grammar Course.pdf
-│   │   └── (Teacher's) Market Leader 3d edition.pdf
+│   │   └── lessons
 │   ├── microeconomics
 │   ├── numerical-methods
 │   ├── probability-theory
+│   │   ├── books
+│   │   ├── homeworks
+│   │   ├── tasks
+│   │   └── README
 │   ├── programming-languages
-│   │   └── homeworks
-│   │       └── task-1
+│   │   ├── homeworks
+│   │   └── README
 │   ├── psychology
 │   └── system-analysis
 ├── generate-readme
