@@ -16,13 +16,13 @@ Structure:
 │   ├── numerical-methods
 │   ├── probability-theory
 │   │   ├── books
-│   │   ├── homeworks
 │   │   ├── tasks
 │   │   └── README
 │   ├── programming-languages
 │   │   ├── homeworks
 │   │   └── README
 │   ├── psychology
+│   │   └── abstract.odt
 │   └── system-analysis
 ├── generate-readme
 ├── LICENSE
