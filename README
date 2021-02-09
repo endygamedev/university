@@ -24,6 +24,9 @@ Structure:
 │   ├── psychology
 │   │   └── abstract.odt
 │   └── system-analysis
+│       ├── books
+│       ├── presentations
+│       └── abstract.odt
 ├── generate-readme
 ├── LICENSE
 └── README
