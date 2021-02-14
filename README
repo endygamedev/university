@@ -16,6 +16,7 @@ Structure:
 │   ├── numerical-methods
 │   ├── probability-theory
 │   │   ├── books
+│   │   ├── homeworks
 │   │   ├── tasks
 │   │   └── README
 │   ├── programming-languages
