@@ -17,7 +17,6 @@ Structure:
 │   │   └── laboratory
 │   ├── probability-theory
 │   │   ├── books
-│   │   ├── homeworks
 │   │   ├── tasks
 │   │   └── README
 │   ├── programming-languages
@@ -27,6 +26,7 @@ Structure:
 │   │   └── abstract.odt
 │   └── system-analysis
 │       ├── books
+│       ├── homeworks
 │       ├── presentations
 │       └── abstract.odt
 ├── generate-readme
