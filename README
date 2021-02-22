@@ -17,6 +17,7 @@ Structure:
 │   │   └── laboratory
 │   ├── probability-theory
 │   │   ├── books
+│   │   ├── homeworks
 │   │   ├── tasks
 │   │   └── README
 │   ├── programming-languages
