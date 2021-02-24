@@ -1,11 +1,8 @@
-#ifndef _STDIO_H
 #include <stdio.h>
 #include <limits.h>
 #include <math.h>
-#endif
 
 
-#ifdef _STDIO_H
 /* Напишите программу, которая суммирует последовательность целых чисел. Первое целое число, считываемое с помощью scanf, определяет количество значений, которое осталось ввести. Программа должна считывать только одно значение при каждом выполнении scanf. Например, 5 100 200 300 400 500 где 5 указывает, что должны суммироваться последующие 5 значений. */
 void task1()
 {
@@ -53,7 +50,7 @@ void task3()
 		printf("Error: wrong input\n");
 		return;
 	}
-	while((num /= 10) != 0) {
+	while((num e= 10) != 0) {
 		if(num % 10 == 5) {
 			check = 1;
 			break;
@@ -97,7 +94,22 @@ void  task5()
 /* Проверить, является ли целое число симметричным в двоичной записи. */
 void task6()
 {
-	return;
+	int num, binary[31], i, check = 1; /* 32 - количество цифр в двоичнойзаписи INT_MAX */
+	if(scanf("%d", &num) != 1) {
+		printf("Error: wrong input\n");
+		return;
+	}
+	for(i = 0; num > 0; i++) {
+		binary[i] = num % 2;
+		num /= 2;
+	}
+	for(int j = i-1, k = 0; j >= 0 && k <= i; j--, k++) {
+		if(binary[j] != binary[k]) {
+			check = 0;
+			break;
+		}
+	}
+	printf("Number is%s symmetric in binary", check ? "" : "n't");
 }
 
 
@@ -189,27 +201,24 @@ void task9()
 	printf("%d", res);
 }
 
+
 /* Продублировать все нечётные цифры в целом числе. */
 void task10()
 {
-	int num, len, res = 0, odd = 0;
+	int num, len, i;
 	if(scanf("%d", &num) != 1) {
 		printf("Error: wrong input\n");
 		return;
 	}
 	len = int_length(num);
 	int digits[len];
-	for(int i = 0; i < len; i++) {
+	for(i = 0; i < len; i++) {
 		digits[i] = num % 10;
 		num /= 10;
 	}
-	for(int i = 0; i < len; i++) {
-		res += digits[i] * pow(10, i);
+	for(i = i-1; i >= 0; i--) {
 		if(digits[i] % 2 != 0)
-			res += digits[i] * pow(10, i+1);
+			printf("%d", digits[i]);
+		printf("%d", digits[i]);
 	}
-	printf("%d", res);
 }
-
-
-#endif
