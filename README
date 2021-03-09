@@ -7,6 +7,7 @@ Structure:
 ├── 2-course-4-semester
 │   ├── comprehensive-analysis
 │   ├── computational-geometry
+│   │   └── homeworks
 │   ├── english
 │   │   ├── books
 │   │   ├── dictations
