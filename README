@@ -5,32 +5,13 @@ Structure:
 ----------
 .
 ├── 2-course-4-semester
-│   ├── comprehensive-analysis
 │   ├── computational-geometry
 │   │   └── homeworks
-│   ├── english
-│   │   ├── books
-│   │   ├── dictations
-│   │   ├── homeworks
-│   │   └── lessons
-│   ├── microeconomics
 │   ├── numerical-methods
 │   │   └── laboratory
-│   ├── probability-theory
-│   │   ├── books
-│   │   ├── homeworks
-│   │   ├── tasks
-│   │   └── README
-│   ├── programming-languages
-│   │   ├── homeworks
-│   │   └── README
-│   ├── psychology
-│   │   └── abstract.odt
-│   └── system-analysis
-│       ├── books
+│   └── programming-languages
 │       ├── homeworks
-│       ├── presentations
-│       └── abstract.odt
+│       └── README
 ├── generate-readme
 ├── LICENSE
 └── README
