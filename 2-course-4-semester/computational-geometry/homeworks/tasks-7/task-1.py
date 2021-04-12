@@ -121,39 +121,39 @@ def thor():
 		glEnd()
 
 def cube():
-	glBegin(GL_QUADS)
+    glBegin(GL_QUADS)
 
-	glVertex3d( 0.5,  0.5, 0.5)
-	glVertex3d(-0.5,  0.5, 0.5)
-	glVertex3d(-0.5, -0.5, 0.5)
-	glVertex3d( 0.5, -0.5, 0.5)
+    glVertex3d( 0.5,  0.5, 0.5)
+    glVertex3d(-0.5,  0.5, 0.5)
+    glVertex3d(-0.5, -0.5, 0.5)
+    glVertex3d( 0.5, -0.5, 0.5)
 
     glVertex3d( 0.5,  0.5,-0.5)
-	glVertex3d(-0.5,  0.5,-0.5)
-	glVertex3d(-0.5, -0.5,-0.5)
-	glVertex3d( 0.5, -0.5,-0.5)
+    glVertex3d(-0.5,  0.5,-0.5)
+    glVertex3d(-0.5, -0.5,-0.5)
+    glVertex3d( 0.5, -0.5,-0.5)
 
-	glVertex3d( 0.5,  0.5, 0.5)
-	glVertex3d( 0.5,  0.5,-0.5)
-	glVertex3d( 0.5, -0.5,-0.5)
-	glVertex3d( 0.5, -0.5, 0.5)
+    glVertex3d( 0.5,  0.5, 0.5)
+    glVertex3d( 0.5,  0.5,-0.5)
+    glVertex3d( 0.5, -0.5,-0.5)
+    glVertex3d( 0.5, -0.5, 0.5)
 
-	glVertex3d(-0.5,  0.5, 0.5)
-	glVertex3d(-0.5,  0.5,-0.5)
-	glVertex3d(-0.5, -0.5,-0.5)
-	glVertex3d(-0.5, -0.5, 0.5)
+    glVertex3d(-0.5,  0.5, 0.5)
+    glVertex3d(-0.5,  0.5,-0.5)
+    glVertex3d(-0.5, -0.5,-0.5)
+    glVertex3d(-0.5, -0.5, 0.5)
 
-	glVertex3d( 0.5,  0.5, 0.5)
-	glVertex3d( 0.5,  0.5,-0.5)
-	glVertex3d(-0.5,  0.5,-0.5)
-	glVertex3d(-0.5,  0.5, 0.5)
+    glVertex3d( 0.5,  0.5, 0.5)
+    glVertex3d( 0.5,  0.5,-0.5)
+    glVertex3d(-0.5,  0.5,-0.5)
+    glVertex3d(-0.5,  0.5, 0.5)
 
-	glVertex3d( 0.5, -0.5, 0.5)
-	glVertex3d( 0.5, -0.5,-0.5)
-	glVertex3d(-0.5, -0.5,-0.5)
-	glVertex3d(-0.5, -0.5, 0.5)
+    glVertex3d( 0.5, -0.5, 0.5)
+    glVertex3d( 0.5, -0.5,-0.5)
+    glVertex3d(-0.5, -0.5,-0.5)
+    glVertex3d(-0.5, -0.5, 0.5)
 
-	glEnd()
+    glEnd()
 
 # Процедура рисования
 def draw(*args, **kwargs):
