@@ -163,7 +163,7 @@ def draw(*args, **kwargs):
     glRotated(anglex,1,0,0)
     glRotated(angley,0,1,0)
     glRotated(anglez,0,0,1)
-    #glRotated(-105,1,0,0)
+    glRotated(-105,1,0,0)
     if filled == 1:
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)
     else:
