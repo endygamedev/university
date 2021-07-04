@@ -1,9 +1,7 @@
-University
-==========
-
-Structure:
-----------
-.
+# :student: :lock: University Repository
+## Program: Applied Mathematics and Computer Science
+## :evergreen_tree: Structure:
+```bash.
 ├── 2-course-4-semester
 │   ├── computational-geometry
 │   │   └── homeworks
@@ -14,4 +12,5 @@ Structure:
 │       └── README
 ├── generate-readme
 ├── LICENSE
-└── README
+└── README.md
+```
