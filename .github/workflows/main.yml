@@ -17,6 +17,8 @@ jobs:
       - name: Git Clone
         run: |
           git clone https://github.com/endygamedev/university.git
+          endygamedev
+          screemy228
           git config --global user.email "bronnikov.40@mail.ru"
           git config --global user.name "Egor"
       
