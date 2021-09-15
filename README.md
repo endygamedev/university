@@ -10,6 +10,9 @@
 │   └── programming-languages
 │       ├── homeworks
 │       └── README
+├── 3-course-5-semester
+│   └── math-modeling
+│       └── task-1
 ├── generate-readme
 ├── LICENSE
 └── README.md
