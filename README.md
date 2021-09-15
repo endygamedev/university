@@ -11,6 +11,8 @@
 │       ├── homeworks
 │       └── README
 ├── 3-course-5-semester
+│   ├── analytical-marketing
+│   │   └── task-1
 │   └── math-modeling
 │       └── task-1
 ├── generate-readme
