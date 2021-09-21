@@ -13,6 +13,8 @@
 ├── 3-course-5-semester
 │   ├── analytical-marketing
 │   │   └── task-1
+│   ├── database-management-systems
+│   │   └── delivery.sql
 │   └── math-modeling
 │       ├── task-1
 │       └── task-2
