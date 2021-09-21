@@ -14,7 +14,8 @@
 │   ├── analytical-marketing
 │   │   └── task-1
 │   └── math-modeling
-│       └── task-1
+│       ├── task-1
+│       └── task-2
 ├── generate-readme
 ├── LICENSE
 └── README.md
