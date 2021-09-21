@@ -1,6 +1,6 @@
-# :student: :lock: University Repository
-## Program: Applied Mathematics and Computer Science
-## :evergreen_tree: Structure:
+# :student: University repository
+###### Bachelor program: «Applied Mathematics and Informatics»
+### :evergreen_tree: Structure:
 ```bash.
 ├── 2-course-4-semester
 │   ├── computational-geometry
