@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo tcpdump -nni enp2s0 icmp -s65535 -w "${1}.pcapng"
