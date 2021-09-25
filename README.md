@@ -30,7 +30,10 @@
 │   ├── analytical-marketing
 │   │   └── task-1
 │   ├── database-management-systems
-│   │   └── delivery.sql
+│   │   ├── data
+│   │   ├── delivery.sql
+│   │   ├── script_2.sql
+│   │   └── script_3.sql
 │   ├── math-modeling
 │   │   ├── task-1
 │   │   └── task-2
