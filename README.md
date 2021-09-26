@@ -31,16 +31,18 @@
 │   │   └── task-1
 │   ├── database-management-systems
 │   │   ├── data
-│   │   ├── delivery.sql
-│   │   ├── script_2.sql
-│   │   └── script_3.sql
+│   │   ├── script1.sql
+│   │   └── script2.sql
 │   ├── math-modeling
 │   │   ├── task-1
 │   │   └── task-2
-│   └── network
-│       ├── dump1.pcapng
-│       ├── netdump
-│       └── PktMon.pcapng
+│   ├── network
+│   │   ├── dump1.pcapng
+│   │   ├── netdump
+│   │   └── PktMon.pcapng
+│   └── optimization-methods
+│       ├── task-1
+│       └── task-2
 ├── generate-readme
 ├── LICENSE
 └── README.md
