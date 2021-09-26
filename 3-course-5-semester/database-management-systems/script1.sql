@@ -1,3 +1,4 @@
+# Практика №1. Создание таблиц.
 create table customer(IDcust int primary key, NameCus tinytext, login char(20));
 create table point_ (IDpoint int primary key, adress text);
 create table order_ (IDorder int primary key, IDcust int, IDpoint int, DateOrder date, deadline date, completed char(1), summa int,
@@ -7,6 +8,7 @@ create table goods (IDgood int primary key, NameGoods char(10), description_ tex
 create table SpecOrder (IDorder int, IDgood int, PriceSal int, QuntityOrder int, primary key(IDorder,IDgood),
 	constraint fr3 foreign key (IDgood) references goods(IDgood),
     constraint fr4 foreign key (IDorder) references order_(IDorder));
+alter table SpecOrder rename column QuntityOrder TO QuantityOrder;
 create table store (IDstore int primary key, square int, descrip text);
 create table deliv (IDdev int primary key, IDpoint int);
 alter table deliv add constraint fr5 foreign key (IDpoint) references point_(IDpoint);
