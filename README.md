@@ -9,6 +9,7 @@
 │   │   ├── tasks-7
 │   │   └── tasks-8
 │   ├── numerical-methods
+│   │   ├── laboratory
 │   │   ├── task-1
 │   │   ├── task-2
 │   │   ├── task-3
@@ -17,6 +18,7 @@
 │   │   ├── task-6
 │   │   └── task-7
 │   └── programming-languages
+│       ├── homeworks
 │       ├── tasks-1
 │       ├── tasks-2
 │       ├── tasks-3
@@ -39,7 +41,8 @@
 │   │   └── task-3
 │   ├── network
 │   │   ├── task-1
-│   │   ├── diagram.pkt
+│   │   ├── diagram1.pkt
+│   │   ├── diagram2.pkt
 │   │   ├── dump1.pcapng
 │   │   ├── netdump
 │   │   └── PktMon.pcapng
