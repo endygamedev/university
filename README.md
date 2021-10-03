@@ -35,7 +35,8 @@
 │   │   └── script2.sql
 │   ├── math-modeling
 │   │   ├── task-1
-│   │   └── task-2
+│   │   ├── task-2
+│   │   └── task-3
 │   ├── network
 │   │   ├── task-1
 │   │   ├── diagram.pkt
