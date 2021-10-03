@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.7.7.202109242327" AlpVersion="8.7.2">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.7.6.202107211817" AlpVersion="8.7.2">
 <Model>
 	<Id>1633261929449</Id>
 	<Name><![CDATA[SVEIRD]]></Name>
@@ -113,7 +113,7 @@
 				<Variable Class="StockVariable">
 					<Id>1633261965499</Id>
 					<Name><![CDATA[S]]></Name>
-					<X>60</X><Y>100</Y>
+					<X>80</X><Y>100</Y>
 					<Label><X>-5</X><Y>5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -129,7 +129,7 @@
 				<Variable Class="StockVariable">
 					<Id>1633261965501</Id>
 					<Name><![CDATA[I]]></Name>
-					<X>360</X><Y>100</Y>
+					<X>380</X><Y>100</Y>
 					<Label><X>-5</X><Y>5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -145,7 +145,7 @@
 				<Variable Class="StockVariable">
 					<Id>1633261965503</Id>
 					<Name><![CDATA[R]]></Name>
-					<X>690</X><Y>100</Y>
+					<X>710</X><Y>100</Y>
 					<Label><X>-5</X><Y>5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -161,7 +161,7 @@
 				<Variable Class="StockVariable">
 					<Id>1633261965505</Id>
 					<Name><![CDATA[e]]></Name>
-					<X>210</X><Y>100</Y>
+					<X>230</X><Y>100</Y>
 					<Label><X>-5</X><Y>5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -177,7 +177,7 @@
 				<Variable Class="StockVariable">
 					<Id>1633261965507</Id>
 					<Name><![CDATA[D]]></Name>
-					<X>690</X><Y>310</Y>
+					<X>710</X><Y>310</Y>
 					<Label><X>-5</X><Y>5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -193,7 +193,7 @@
 				<Variable Class="StockVariable">
 					<Id>1633262019028</Id>
 					<Name><![CDATA[V]]></Name>
-					<X>60</X><Y>390</Y>
+					<X>80</X><Y>390</Y>
 					<Label><X>-5</X><Y>5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -209,7 +209,7 @@
 				<Variable Class="Flow">
 					<Id>1633261965447</Id>
 					<Name><![CDATA[flow1]]></Name>
-					<X>360</X><Y>100</Y>
+					<X>380</X><Y>100</Y>
 					<Label><X>0</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -228,13 +228,13 @@
 				<Variable Class="Flow">
 					<Id>1633261965449</Id>
 					<Name><![CDATA[flow]]></Name>
-					<X>60</X><Y>100</Y>
+					<X>80</X><Y>100</Y>
 					<Label><X>0</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SourceId="1633261965499" TargetId="1633261965505" External="false" Constant="false" Array="false">
-						<Formula><![CDATA[beta*I*S/N + e*a*S/N
+						<Formula><![CDATA[(1-v)*(beta*I*S/N + e*a*S/N)
 ]]></Formula>
 						<Color/>
 						<ValveIndex>1</ValveIndex>
@@ -248,7 +248,7 @@
 				<Variable Class="Flow">
 					<Id>1633261965451</Id>
 					<Name><![CDATA[flow2]]></Name>
-					<X>180</X><Y>100</Y>
+					<X>200</X><Y>100</Y>
 					<Label><X>0</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -268,7 +268,7 @@
 				<Variable Class="Flow">
 					<Id>1633261965453</Id>
 					<Name><![CDATA[flow3]]></Name>
-					<X>360</X><Y>100</Y>
+					<X>380</X><Y>100</Y>
 					<Label><X>0</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -287,13 +287,13 @@
 				<Variable Class="Flow">
 					<Id>1633262053104</Id>
 					<Name><![CDATA[flow4]]></Name>
-					<X>60</X><Y>100</Y>
+					<X>80</X><Y>100</Y>
 					<Label><X>0</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SourceId="1633261965499" TargetId="1633262019028" External="false" Constant="false" Array="false">
-						<Formula><![CDATA[v*S
+						<Formula><![CDATA[v*S/N
 ]]></Formula>
 						<Color/>
 						<ValveIndex>1</ValveIndex>
@@ -307,7 +307,7 @@
 				<Variable Class="Flow">
 					<Id>1633262131768</Id>
 					<Name><![CDATA[flow5]]></Name>
-					<X>60</X><Y>390</Y>
+					<X>80</X><Y>390</Y>
 					<Label><X>0</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -327,7 +327,7 @@
 				<Variable Class="Parameter">
 					<Id>1633261965482</Id>
 					<Name><![CDATA[beta]]></Name>
-					<X>220</X><Y>250</Y>
+					<X>240</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -351,7 +351,7 @@
 				<Variable Class="Parameter">
 					<Id>1633261965485</Id>
 					<Name><![CDATA[N]]></Name>
-					<X>110</X><Y>250</Y>
+					<X>130</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -375,7 +375,7 @@
 				<Variable Class="Parameter">
 					<Id>1633261965488</Id>
 					<Name><![CDATA[gamma]]></Name>
-					<X>530</X><Y>30</Y>
+					<X>550</X><Y>30</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -399,7 +399,7 @@
 				<Variable Class="Parameter">
 					<Id>1633261965491</Id>
 					<Name><![CDATA[a]]></Name>
-					<X>160</X><Y>250</Y>
+					<X>180</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -423,7 +423,7 @@
 				<Variable Class="Parameter">
 					<Id>1633261965494</Id>
 					<Name><![CDATA[q]]></Name>
-					<X>300</X><Y>250</Y>
+					<X>320</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -447,7 +447,7 @@
 				<Variable Class="Parameter">
 					<Id>1633261965497</Id>
 					<Name><![CDATA[d]]></Name>
-					<X>510</X><Y>290</Y>
+					<X>530</X><Y>290</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -471,7 +471,7 @@
 				<Variable Class="Parameter">
 					<Id>1633262087681</Id>
 					<Name><![CDATA[v]]></Name>
-					<X>10</X><Y>260</Y>
+					<X>40</X><Y>230</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -481,7 +481,7 @@
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[1]]></Code>
+							<Code><![CDATA[0.5]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1633262087679</Id>
@@ -495,7 +495,7 @@
 				<Variable Class="Parameter">
 					<Id>1633262178372</Id>
 					<Name><![CDATA[vw]]></Name>
-					<X>140</X><Y>360</Y>
+					<X>160</X><Y>360</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -524,7 +524,7 @@
 					<Direction><X>-50</X><Y>-150</Y></Direction>
 					<Id>1633261965455</Id>
 					<Name><![CDATA[N - S]]></Name>
-					<X>110</X><Y>250</Y>
+					<X>130</X><Y>250</Y>
 					<Label><X>40</X><Y>-50</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -539,7 +539,7 @@
 					<Direction><X>90</X><Y>0</Y></Direction>
 					<Id>1633261965457</Id>
 					<Name><![CDATA[I - flow1]]></Name>
-					<X>360</X><Y>100</Y>
+					<X>380</X><Y>100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -554,7 +554,7 @@
 					<Direction><X>-80</X><Y>70</Y></Direction>
 					<Id>1633261965459</Id>
 					<Name><![CDATA[gamma - flow1]]></Name>
-					<X>530</X><Y>30</Y>
+					<X>550</X><Y>30</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -569,7 +569,7 @@
 					<Direction><X>-90</X><Y>-150</Y></Direction>
 					<Id>1633261965461</Id>
 					<Name><![CDATA[beta - flow]]></Name>
-					<X>220</X><Y>250</Y>
+					<X>240</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -584,7 +584,7 @@
 					<Direction><X>-230</X><Y>0</Y></Direction>
 					<Id>1633261965463</Id>
 					<Name><![CDATA[I - flow]]></Name>
-					<X>360</X><Y>100</Y>
+					<X>380</X><Y>100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -599,7 +599,7 @@
 					<Direction><X>-80</X><Y>0</Y></Direction>
 					<Id>1633261965465</Id>
 					<Name><![CDATA[e - flow]]></Name>
-					<X>210</X><Y>100</Y>
+					<X>230</X><Y>100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -614,7 +614,7 @@
 					<Direction><X>70</X><Y>0</Y></Direction>
 					<Id>1633261965467</Id>
 					<Name><![CDATA[S - flow]]></Name>
-					<X>60</X><Y>100</Y>
+					<X>80</X><Y>100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -629,7 +629,7 @@
 					<Direction><X>20</X><Y>-150</Y></Direction>
 					<Id>1633261965469</Id>
 					<Name><![CDATA[N - flow]]></Name>
-					<X>110</X><Y>250</Y>
+					<X>130</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -644,7 +644,7 @@
 					<Direction><X>-30</X><Y>-150</Y></Direction>
 					<Id>1633261965471</Id>
 					<Name><![CDATA[a - flow]]></Name>
-					<X>160</X><Y>250</Y>
+					<X>180</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -659,7 +659,7 @@
 					<Direction><X>-20</X><Y>-150</Y></Direction>
 					<Id>1633261965473</Id>
 					<Name><![CDATA[q - flow2]]></Name>
-					<X>300</X><Y>250</Y>
+					<X>320</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -674,7 +674,7 @@
 					<Direction><X>70</X><Y>0</Y></Direction>
 					<Id>1633261965475</Id>
 					<Name><![CDATA[e - flow2]]></Name>
-					<X>210</X><Y>100</Y>
+					<X>230</X><Y>100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -689,7 +689,7 @@
 					<Direction><X>170</X><Y>110</Y></Direction>
 					<Id>1633261965477</Id>
 					<Name><![CDATA[I - flow3]]></Name>
-					<X>360</X><Y>100</Y>
+					<X>380</X><Y>100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -704,7 +704,7 @@
 					<Direction><X>20</X><Y>-80</Y></Direction>
 					<Id>1633261965479</Id>
 					<Name><![CDATA[d - flow3]]></Name>
-					<X>510</X><Y>290</Y>
+					<X>530</X><Y>290</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -716,10 +716,10 @@
 				<Link SourceId="1633262087681" TargetId="1633262053104" Polarity="null">
 					<Height>20.0</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>50</X><Y>-20</Y></Direction>
+					<Direction><X>40</X><Y>10</Y></Direction>
 					<Id>1633262113984</Id>
 					<Name><![CDATA[v - flow4]]></Name>
-					<X>10</X><Y>260</Y>
+					<X>40</X><Y>230</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -734,7 +734,7 @@
 					<Direction><X>0</X><Y>140</Y></Direction>
 					<Id>1633262119532</Id>
 					<Name><![CDATA[S - flow4]]></Name>
-					<X>60</X><Y>100</Y>
+					<X>80</X><Y>100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -749,7 +749,7 @@
 					<Direction><X>70</X><Y>-130</Y></Direction>
 					<Id>1633262175152</Id>
 					<Name><![CDATA[V - flow5]]></Name>
-					<X>60</X><Y>390</Y>
+					<X>80</X><Y>390</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -764,7 +764,37 @@
 					<Direction><X>-10</X><Y>-100</Y></Direction>
 					<Id>1633262196152</Id>
 					<Name><![CDATA[vw - flow5]]></Name>
-					<X>140</X><Y>360</Y>
+					<X>160</X><Y>360</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
+				<Link SourceId="1633262087681" TargetId="1633261965449" Polarity="null">
+					<Height>20.0</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>110</X><Y>-130</Y></Direction>
+					<Id>1633263224384</Id>
+					<Name><![CDATA[v - flow]]></Name>
+					<X>40</X><Y>230</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
+				<Link SourceId="1633261965485" TargetId="1633262053104" Polarity="null">
+					<Height>20.0</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>-50</X><Y>-10</Y></Direction>
+					<Id>1633263331728</Id>
+					<Name><![CDATA[N - flow4]]></Name>
+					<X>130</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -814,7 +844,7 @@
 				<Text>
 					<Id>1633261965410</Id>
 					<Name><![CDATA[text5]]></Name>
-					<X>520</X><Y>340</Y>
+					<X>540</X><Y>340</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -836,7 +866,7 @@
 				<Text>
 					<Id>1633261965413</Id>
 					<Name><![CDATA[text2]]></Name>
-					<X>230</X><Y>310</Y>
+					<X>250</X><Y>310</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -858,7 +888,7 @@
 				<Text>
 					<Id>1633261965415</Id>
 					<Name><![CDATA[text1]]></Name>
-					<X>280</X><Y>310</Y>
+					<X>300</X><Y>310</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -880,7 +910,7 @@
 				<Text>
 					<Id>1633261965417</Id>
 					<Name><![CDATA[text3]]></Name>
-					<X>470</X><Y>340</Y>
+					<X>490</X><Y>340</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -902,7 +932,7 @@
 				<Text>
 					<Id>1633261965419</Id>
 					<Name><![CDATA[text]]></Name>
-					<X>180</X><Y>310</Y>
+					<X>200</X><Y>310</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -924,7 +954,7 @@
     			<TimePlot>
 					<Id>1633261965427</Id>
 					<Name><![CDATA[plot]]></Name>
-					<X>570</X><Y>380</Y>
+					<X>220</X><Y>380</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1032,7 +1062,7 @@
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1633261965439</Id>
 					<Name><![CDATA[slider]]></Name>
-					<X>180</X><Y>280</Y>
+					<X>200</X><Y>280</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1057,7 +1087,7 @@
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1633261965442</Id>
 					<Name><![CDATA[slider1]]></Name>
-					<X>470</X><Y>310</Y>
+					<X>490</X><Y>310</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1079,7 +1109,7 @@
 				<Text>
 					<Id>1633261965445</Id>
 					<Name><![CDATA[text4]]></Name>
-					<X>570</X><Y>340</Y>
+					<X>590</X><Y>340</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
