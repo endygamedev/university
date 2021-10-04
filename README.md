@@ -27,6 +27,9 @@
 │       ├── tasks-8
 │       └── README
 ├── 3-course-5-semester
+│   ├── accounting
+│   │   ├── task-1
+│   │   └── example-1.docx
 │   ├── analytical-marketing
 │   │   └── task-1
 │   ├── database-management-systems
