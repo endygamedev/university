@@ -29,21 +29,25 @@
 ├── 3-course-5-semester
 │   ├── accounting
 │   │   ├── task-1
+│   │   ├── task-2
 │   │   └── example-1.docx
 │   ├── analytical-marketing
 │   │   └── task-1
 │   ├── database-management-systems
 │   │   ├── data
 │   │   ├── script1.sql
-│   │   └── script2.sql
+│   │   ├── script2.sql
+│   │   └── script3.sql
 │   ├── math-modeling
 │   │   ├── task-1
 │   │   ├── task-2
-│   │   └── task-3
+│   │   ├── task-3
+│   │   └── task-4
 │   ├── network
 │   │   ├── task-1
 │   │   ├── diagram1.pkt
 │   │   ├── diagram2.pkt
+│   │   ├── diagram3.pkt
 │   │   ├── dump1.pcapng
 │   │   ├── netdump
 │   │   └── PktMon.pcapng
