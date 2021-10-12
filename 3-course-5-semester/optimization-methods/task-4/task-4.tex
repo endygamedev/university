@@ -1,0 +1,263 @@
+\documentclass[14pt,a4paper,fleqn]{extarticle}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{boldline}
+\usepackage{makecell}
+
+\graphicspath{ {./images/} }
+\setlength{\mathindent}{0pt}
+\setlength\parindent{0pt}
+
+
+\begin{document}
+	\begin{titlepage}
+		\includegraphics[scale=0.12]{logo}
+		\begin{center}
+			\textbf{МИНОБРНАУКИ РОССИИ}\\
+			\vspace{0.2cm}
+			\textbf{Федеральное государственное бюджетное образовательное учреждение высшего образования}\\
+			\textbf{«САНКТ-ПЕТЕРБУРГСКИЙ ГОСУДАРСТВЕННЫЙ ЭКОНОМИЧЕСКИЙ УНИВЕРСИТЕТ»}\\
+			\vspace{0.6cm}
+			Факультет информатики и прикладной математики\\
+			Кафедра прикладной математики и экономико-математических методов\\
+			\vspace{1cm}
+			\textbf{ОТЧЁТ}\\
+			по дисциплине:\\
+			\textbf{«Методы оптимизации»}\\
+			на тему:\\
+			\textbf{«Решение задачи линейного программирования табличным симплекс-методом. Вариант 4.1»}\\
+		\end{center}
+		\vspace{1cm}
+		Направление: 01.03.02\\
+		Обучающийся: Бронников Егор Игоревич\\
+		Группа: ПМ-1901\\
+		\vfill
+		\begin{center}
+			Санкт-Петербург\\
+			2021\\
+		\end{center}
+	\end{titlepage}
+\section*{Дано}
+Целевая функция:\\
+$f = 4x_1+x_2 \longrightarrow max$\\\\
+Ограничения:
+\begin{align*}
+	\begin{cases}
+		3x_1 - 2x_2 \geq -8\\
+		3x_1 + x_2 \geq 3\\
+		x_2 \leq 8\\
+		x_1 \leq 4\\
+	\end{cases}
+\end{align*}
+$x_1 \geq 0, x_2 \geq 0$
+
+\section*{Задание}
+\subsection*{Стандратная форма}
+Целевая функция:\\
+$f = 4x_1+x_2 \longrightarrow max$\\\\
+Ограничения:
+\begin{align*}
+	\begin{cases}
+		-3x_1 + 2x_2 \leq 8\\
+		-3x_1 - x_2 \leq -3\\
+		x_2 \leq 8\\
+		x_1 \leq 4\\
+	\end{cases}
+\end{align*}
+$x_1 \geq 0, x_2 \geq 0$
+\newpage
+
+\subsection*{Каноническая форма}
+Целевая функция:\\
+$f = 4x_1+x_2 \longrightarrow max$\\\\
+Ограничения:
+\begin{align*}
+	\begin{cases}
+		3x_1 - 2x_2 \geq -8\\
+		3x_1 + x_2 \geq 3\\
+		x_2 \leq 8\\
+		x_1 \leq 4\\
+	\end{cases}
+\end{align*}
+$x_1 \geq 0, x_2 \geq 0$\\
+
+1. Вводим слабые переменные $y_1 \geq 0, y_2 \geq 0, y_3 \geq 0, y_4 \geq 0$:\\
+$3x_1 - 2x_2 - y_1 = -8$\\
+$3x_1 + x_2 - y_2 = 3$\\
+$x_2 + y_3 = 8$\\
+$x_1 + y_4 = 4$\\
+
+2. Делаем правые части равенств положительными:\\
+$-3x_1 + 2x_2 + y_1 = 8$\\
+$3x_1 + x_2 - y_2 = 3$\\
+$x_2 + y_3 = 8$\\
+$x_1 + y_4 = 4$\\
+
+Таким образом, задача сведена к канонической форме.
+
+\subsection*{Матричная форма}
+$A \times X^T = B^T$, где:
+\begin{align*}
+	A = \begin{pmatrix}
+		-3 & 2 & 1 & 0 & 0 & 0\\
+		3 & 1 & 0 & -1 & 0 & 0\\
+		0 & 1 & 0 & 0 & 1 & 0\\
+		1 & 0 & 0 & 0 & 0 & 1\\
+	\end{pmatrix}
+	\hspace{0.5cm}
+	X = \begin{pmatrix}
+		x_1 & x_2 & y_1 & y_2 & y_3 & y_4
+	\end{pmatrix}
+	\hspace{0.5cm}
+	B = \begin{pmatrix}
+		8 & 3 & 8 & 4
+	\end{pmatrix}
+\end{align*}
+\newpage
+\subsection*{Метод штрафов}
+Введём искусственную переменную --- $r \geq 0$.\\\\
+Целевая функция:\\
+$f = 4x_1+x_2 \longrightarrow max$\\\\
+Ограничения:\\
+$-3x_1 + 2x_2 + y_1 = 8$\\
+$3x_1 + x_2 - y_2 + r = 3$\\
+$x_2 + y_3 = 8$\\
+$x_1 + y_4 = 4$\\\\
+$x_i \geq 0 \hspace{0.2cm} \forall i = \overline{1,2}; \hspace{0.5cm} y_j \geq 0 \hspace{0.2cm} \forall j =  \overline{1,4}$\\
+
+В качестве базисных переменных возьмём $y_1, r, y_3, y_4$, свободные переменный --- $x_1, x_2, y_2$.\\\\
+Выразим базисные переменные через свободные:\\
+$y_1 = 8 + 3x_1 - 2x_2 $\\
+$r = 3 - 3x_1 - x_2 + y_2$\\
+$y_3 = 8 - x_2$\\
+$y_4 = 4 - x_1$\\\\
+Перепишем функцию цели:\\
+$f = 4x_1 + x_2 - Mr = 4x_1 + x_2 - M(3 - 3x_1 - x_2 + y_2)$
+\begin{center}$\downarrow$\end{center}
+$f = -3M + (3M + 4)x_1 + (M + 1)x_2 - My_2$\\\\
+Пусть $M = 1$, тогда функция цели примет следующий вид:\\
+$f = -3 + 7x_1 + 2x_2 - y_2$\\
+
+Перепишем функцию цели:\\
+$f - 7x_1 - 2x_2 + y_2 = -3$
+\newpage
+
+\subsubsection*{1 итерация}
+Базисные переменные: $y_1, r, y_3, y_4$.\\
+Свободные переменный: $x_1, x_2, y_2$.\\\\
+\begin{tabularx}{\textwidth}{|p{1cm}V{6}p{1cm}V{6}p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1.2cm}|c}
+	\hline
+	БП & $\boldsymbol{x_1}$ & $x_2$ & $y_1$ & $y_2$ & $y_3$ & $y_4$ & $r$ & Своб. член & \\
+	\hline
+	
+	f & \underline{\textit{-7}} \scriptsize -7 & -2 \tiny -7/3 & 0 \scriptsize 0 & 1  \scriptsize 1/3 & 0 \scriptsize 0 & 0 \scriptsize 0 & 0 \tiny -7/3 & -3 \scriptsize -7 & \\
+	
+	\hline
+	
+	$y_1$ & \underline{-3} \scriptsize -3 & 2 \scriptsize -1 & 1 \scriptsize 0 & 0 \scriptsize 1 & 0 \scriptsize 0 & 0 \scriptsize 0 & 0 \scriptsize -1 & 8 \scriptsize -3 & $-\dfrac{8}{3} < 0$ \\
+	
+	\Xhline{6\arrayrulewidth}
+	
+	$\boldsymbol{r}$ & \textbf{3} \scriptsize 1 & 1 \underline{\scriptsize 1/3} & 0 \underline{\scriptsize 0} & -1 \underline{\tiny -1/3} & 0 \underline{\scriptsize 0} & 0  \underline{\scriptsize 0} & 1 \underline{\scriptsize 1/3} & 3 \underline{\scriptsize 1} & 1 -- \textit{min} \\
+	
+	\Xhline{6\arrayrulewidth}
+	$y_3$ & \underline{0} \scriptsize 0 & 1 \scriptsize 0 & 0 \scriptsize 0 & 0 \scriptsize 0 & 1 \scriptsize 0 & 0 \scriptsize 0 & 0 \scriptsize 0 & 8 \scriptsize 0 & $\dfrac{8}{0}$ -- /0 ! \\
+	\hline
+	$y_4$ & \underline{1} \scriptsize 1 & 0 \scriptsize 1/3 & 0 \scriptsize 0 & 0 \scriptsize -1/3 & 0 \scriptsize 0 & 1 \scriptsize 0 & 0 \scriptsize 1/3 & 4 \scriptsize 1 & 4 \\
+	\hline
+\end{tabularx}
+\newline\newline
+Меняем свободную переменную $x_1$ и базисную переменную $r$ местами.\\
+$x_1 \leftrightarrow r$
+
+\subsubsection*{2 итерация}
+Базисные переменные: $y_1, x_1, y_3, y_4$.\\
+Свободные переменный: $x_2, y_2, r$.\\\\
+\begin{tabularx}{\textwidth}{|p{1cm}|p{1cm}|p{1cm}|p{1cm}V{6}p{1cm}V{6}p{1cm}|p{1cm}|p{1cm}|p{1.2cm}|c}
+	\hline
+	БП & $x_1$ & $x_2$ & $y_1$ & $\boldsymbol{y_2}$ & $y_3$ & $y_4$ & $r$ & Своб. член & \\
+	\hline
+	
+	f & 0 \scriptsize 0 & \small $\frac{1}{3}$ \tiny 4/3 & 0 \scriptsize 0 & \underline{\small -$\frac{4}{3}$} \tiny -4/3 & 0 \scriptsize 0 & 0 \scriptsize -4 & \small $\frac{7}{3}$ \tiny 4/3 & 4 \scriptsize -12 & \\
+	
+	\hline
+	
+	$y_1$ & 0 \scriptsize 0 & 3 \scriptsize 1 & 1 \scriptsize 0 & \underline{-1} \scriptsize -1 & 0 \scriptsize 0 & 0 \scriptsize -3 & 1 \scriptsize 1 & 11 \scriptsize -9 & $-\dfrac{11}{1} < 0$ \\
+	
+	\hline
+	
+	$x_1$ & 1 \scriptsize 0 & \small $\frac{1}{3}$ \scriptsize 1/3 & 0 \scriptsize 0 & \underline{\small -$\frac{1}{3}$} \tiny -1/3 & 0 \scriptsize 0 & 0 \scriptsize -1 & \small $\frac{1}{3}$ \scriptsize 1/3 & 1 \scriptsize -3 & -3 < 0 \\
+	
+	\hline
+	$y_3$ & 0 \scriptsize 0 & 1 \scriptsize 0 & 0 \scriptsize 0 & \underline 0 \scriptsize 0 & 1 \scriptsize 0 & 0 \scriptsize 0 & 0 \scriptsize 0 & 8 \scriptsize 0 & $\dfrac{8}{0}$ -- /0 ! \\
+	
+	\Xhline{7\arrayrulewidth}
+	$\boldsymbol{y_4}$ & 0 \underline{\scriptsize 0} & \small -$\frac{1}{3}$ \underline{\scriptsize -1} & 0 \underline{\scriptsize 0} & \small $\boldsymbol{\frac{1}{3}}$ \scriptsize 1 & 0 \underline{\scriptsize 0} & 1 \scriptsize \underline 3 & \small -$\frac{1}{3}$ \underline{\scriptsize -1} & 3 \underline{\scriptsize 9} & 9 -- \textit{min} \\
+	\Xhline{6\arrayrulewidth}
+\end{tabularx}
+\newline\newline
+Меняем свободную переменну $y_2$ и базисную переменную $y_4$ местами.\\
+$y_2 \leftrightarrow y_4$
+\newpage
+
+\subsubsection*{3 итерация}
+Базисные переменные: $y_1, x_1, y_2, y_3$.\\
+Свободные переменный: $x_2, y_4, r$.\\\\
+\begin{tabularx}{\textwidth}{|p{1cm}|p{1cm}V{7}p{1cm}V{6}p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1.2cm}|c}
+	\hline
+	БП & $x_1$ & $\boldsymbol{x_2}$ & $y_1$ & $y_2$ & $y_3$ & $y_4$ & $r$ & Своб. член & \\
+	\hline
+	
+	f & 0 \scriptsize 0 & \underline{\textit{-1}} \scriptsize -1 & 0 \scriptsize 0 & 0 \scriptsize 0 & 0 \scriptsize -1 & 4 \scriptsize 0 & 1 \scriptsize 0 & 16 \scriptsize -8 & \\
+	
+	\hline
+	
+	$y_1$ & 0 \scriptsize 0 & \underline{2} \scriptsize 2 & 1 \scriptsize 0 & 0 \scriptsize 0 & 0 \scriptsize 2 & 3 \scriptsize 0 & 0 \scriptsize 0 & 20 \scriptsize 16 & 10 \\
+	
+	\hline
+	
+	$x_1$ & 1 \scriptsize 0 & \underline{0} \scriptsize 0 & 0 \scriptsize 0 & 0 \scriptsize 0 & 0 \scriptsize 0 & 1 \scriptsize 0 & 0 \scriptsize 0 & 4 \scriptsize 0 & $\dfrac{4}{0}$ -- /0 ! \\
+	
+	\Xhline{6\arrayrulewidth}
+	$\boldsymbol{y_3}$ & 0 \scriptsize \underline 0 & \textbf{1} \scriptsize 1 & 0 \scriptsize \underline 0 & 0 \scriptsize \underline 0 & 1 \scriptsize \underline 1 & 0 \scriptsize \underline 0 & 0 \scriptsize \underline 0 & 8 \scriptsize \underline 8 & 8 -- \textit{min} \\
+	\Xhline{6\arrayrulewidth}
+	
+	$y_2$ & 0 \scriptsize 0 & \underline{-1} \scriptsize -1 & 0 \scriptsize 0 & 1 \scriptsize 0 & 0 \scriptsize -1 & 3 \scriptsize 0 & -1 \scriptsize 0 & 9 \scriptsize -8 & -9 < 0 \\
+	\hline
+\end{tabularx}
+\newline\newline
+Меняем свободную переменну $x_2$ и базисную переменную $y_3$ местами.\\
+$x_2 \leftrightarrow y_3$
+
+\subsubsection*{Оптимальное решение}
+Базисные переменные: $y_1, x_1, x_2, y_2$.\\
+Свободные переменный: $y_3, y_4, r$.\\\\
+\begin{tabularx}{\textwidth}{|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1.2cm}|c}
+	\hline
+	БП & $x_1$ & $x_2$ & $y_1$ & $y_2$ & $y_3$ & $y_4$ & $r$ & Своб. член & \\
+	\hline
+	f & 0 & 0 & 0 & 0 & 1 & 4 & 1 & 24 & \\
+	\hline
+	$y_1$ & 0 & 0 & 1 & 0 & -2 & 3 & 0 & 4 & \\
+	\hline
+	$x_1$ & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 4\\
+	\hline
+	$x_2$ & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 8 \\
+	\hline
+	$y_2$ & 0 & 0 & 0 & 1 & 1 & 3 & -1 & 17\\
+	\hline
+\end{tabularx}
+\newline\newline
+Таким образом, получается:\\
+$f + y_3 + 4y_4 + r = 24 \hspace*{0.5cm} \rightarrow \hspace*{0.5cm} f = 24$\\
+$y_1 - 2y_3 + 3y_4 = 4 \hspace*{1.2cm} \rightarrow \hspace*{0.5cm} y_1 = 4$\\
+$x_1 + y_4 = 4 \hspace*{2.7cm} \rightarrow \hspace*{0.5cm} x_1 = 4$\\
+$x_2 + y_3 = 8 \hspace*{2.7cm} \rightarrow \hspace*{0.5cm} x_2 = 8$\\
+$y_2 + y_3 + 3y_4 - r = 17 \hspace*{0.35cm} \rightarrow \hspace*{0.5cm} y_2 = 17$\\
+$y_3 = 0, y_4 = 0, r = 0$\\
+\textbf{Ответ:} $x_1 = 4, x_2 = 8, f = 24$
+\end{document}
