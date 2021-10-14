@@ -17,4 +17,4 @@
 
 # Добавляем дату (тут нет дат)
 -- select IDgood, IDpoint, month(dateqqq) as monDev, SUM(QuantityDev) as sup from deliv join SpecDev on SpecDev.IDdev=deliv.IDdev group by IDgood, IDpoint;
-create table month1 (IDmon int primary key)
+-- create table month1 (IDmon int primary key)
