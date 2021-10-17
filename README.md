@@ -37,14 +37,17 @@
 │   │   ├── data
 │   │   ├── script1.sql
 │   │   ├── script2.sql
-│   │   └── script3.sql
+│   │   ├── script3.sql
+│   │   └── script4.sql
 │   ├── math-modeling
 │   │   ├── task-1
 │   │   ├── task-2
 │   │   ├── task-3
-│   │   └── task-4
+│   │   ├── task-4
+│   │   └── task-5
 │   ├── network
 │   │   ├── task-1
+│   │   ├── task-2
 │   │   ├── diagram1.pkt
 │   │   ├── diagram2.pkt
 │   │   ├── diagram3.pkt
