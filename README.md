@@ -9,6 +9,7 @@
 │   │   ├── tasks-7
 │   │   └── tasks-8
 │   ├── numerical-methods
+│   │   ├── laboratory
 │   │   ├── task-1
 │   │   ├── task-2
 │   │   ├── task-3
@@ -17,6 +18,7 @@
 │   │   ├── task-6
 │   │   └── task-7
 │   └── programming-languages
+│       ├── homeworks
 │       ├── tasks-1
 │       ├── tasks-2
 │       ├── tasks-3
@@ -38,13 +40,15 @@
 │   │   ├── script1.sql
 │   │   ├── script2.sql
 │   │   ├── script3.sql
-│   │   └── script4.sql
+│   │   ├── script4.sql
+│   │   └── script5.sql
 │   ├── math-modeling
 │   │   ├── task-1
 │   │   ├── task-2
 │   │   ├── task-3
 │   │   ├── task-4
-│   │   └── task-5
+│   │   ├── task-5
+│   │   └── task-6
 │   ├── network
 │   │   ├── task-1
 │   │   ├── task-2
