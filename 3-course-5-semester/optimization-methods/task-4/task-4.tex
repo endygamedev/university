@@ -139,22 +139,22 @@ $y_4 = 4 - x_1$\\\\
 $f = 4x_1 + x_2 - Mr = 4x_1 + x_2 - M(3 - 3x_1 - x_2 + y_2)$
 \begin{center}$\downarrow$\end{center}
 $f = -3M + (3M + 4)x_1 + (M + 1)x_2 - My_2$\\\\
-Пусть $M = 1$, тогда функция цели примет следующий вид:\\
-$f = -3 + 7x_1 + 2x_2 - y_2$\\
+Пусть $M = 100$, тогда функция цели примет следующий вид:\\
+$f = -300 + 304x_1 + 101x_2 - 100y_2$\\
 
 Перепишем функцию цели:\\
-$f - 7x_1 - 2x_2 + y_2 = -3$
+$f - 304x_1 - 101x_2 + 100y_2 = -300$
 \newpage
 
 \subsubsection*{1 итерация}
 Базисные переменные: $y_1, r, y_3, y_4$.\\
 Свободные переменный: $x_1, x_2, y_2$.\\\\
-\begin{tabularx}{\textwidth}{|p{1cm}V{6}p{1cm}V{6}p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1.2cm}|c}
+\begin{tabularx}{\textwidth}{|p{1cm}V{6}p{1.5cm}V{6}p{1.6cm}|p{0.5cm}|p{1.5cm}|p{0.5cm}|p{0.5cm}|p{1.2cm}|p{1.5cm}|c}
 	\hline
 	БП & $\boldsymbol{x_1}$ & $x_2$ & $y_1$ & $y_2$ & $y_3$ & $y_4$ & $r$ & Своб. член & \\
 	\hline
 	
-	f & \underline{\textit{-7}} \scriptsize -7 & -2 \tiny -7/3 & 0 \scriptsize 0 & 1  \scriptsize 1/3 & 0 \scriptsize 0 & 0 \scriptsize 0 & 0 \tiny -7/3 & -3 \scriptsize -7 & \\
+	f & \small \underline{\textit{-304}} \scriptsize -304 & \small -101 \tiny -304/3 & 0 \scriptsize 0 & \small 100  \scriptsize 304/3 & 0 \scriptsize 0 & 0 \scriptsize 0 & 0 \tiny -304/3 & \small -300 \tiny -304 & \\
 	
 	\hline
 	
@@ -177,12 +177,12 @@ $x_1 \leftrightarrow r$
 \subsubsection*{2 итерация}
 Базисные переменные: $y_1, x_1, y_3, y_4$.\\
 Свободные переменный: $x_2, y_2, r$.\\\\
-\begin{tabularx}{\textwidth}{|p{1cm}|p{1cm}|p{1cm}|p{1cm}V{6}p{1cm}V{6}p{1cm}|p{1cm}|p{1cm}|p{1.2cm}|c}
+\begin{tabularx}{\textwidth}{|p{1cm}|p{1cm}|p{1cm}|p{1cm}V{6}p{1cm}V{6}p{1cm}|p{1cm}|p{1.2cm}|p{1.2cm}|c}
 	\hline
 	БП & $x_1$ & $x_2$ & $y_1$ & $\boldsymbol{y_2}$ & $y_3$ & $y_4$ & $r$ & Своб. член & \\
 	\hline
 	
-	f & 0 \scriptsize 0 & \small $\frac{1}{3}$ \tiny 4/3 & 0 \scriptsize 0 & \underline{\small -$\frac{4}{3}$} \tiny -4/3 & 0 \scriptsize 0 & 0 \scriptsize -4 & \small $\frac{7}{3}$ \tiny 4/3 & 4 \scriptsize -12 & \\
+	f & 0 \scriptsize 0 & \small $\frac{1}{3}$ \tiny 4/3 & 0 \scriptsize 0 & \underline{\small -$\frac{4}{3}$} \tiny -4/3 & 0 \scriptsize 0 & 0 \scriptsize -4 & \small $\frac{304}{3}$ \tiny 4/3 & 4 \scriptsize -12 & \\
 	
 	\hline
 	
@@ -212,7 +212,7 @@ $y_2 \leftrightarrow y_4$
 	БП & $x_1$ & $\boldsymbol{x_2}$ & $y_1$ & $y_2$ & $y_3$ & $y_4$ & $r$ & Своб. член & \\
 	\hline
 	
-	f & 0 \scriptsize 0 & \underline{\textit{-1}} \scriptsize -1 & 0 \scriptsize 0 & 0 \scriptsize 0 & 0 \scriptsize -1 & 4 \scriptsize 0 & 1 \scriptsize 0 & 16 \scriptsize -8 & \\
+	f & 0 \scriptsize 0 & \underline{\textit{-1}} \scriptsize -1 & 0 \scriptsize 0 & 0 \scriptsize 0 & 0 \scriptsize -1 & 4 \scriptsize 0 & 100 \scriptsize 0 & 16 \scriptsize -8 & \\
 	
 	\hline
 	
@@ -240,7 +240,7 @@ $x_2 \leftrightarrow y_3$
 	\hline
 	БП & $x_1$ & $x_2$ & $y_1$ & $y_2$ & $y_3$ & $y_4$ & $r$ & Своб. член & \\
 	\hline
-	f & 0 & 0 & 0 & 0 & 1 & 4 & 1 & 24 & \\
+	f & 0 & 0 & 0 & 0 & 1 & 4 & 100 & 24 & \\
 	\hline
 	$y_1$ & 0 & 0 & 1 & 0 & -2 & 3 & 0 & 4 & \\
 	\hline
@@ -253,11 +253,174 @@ $x_2 \leftrightarrow y_3$
 \end{tabularx}
 \newline\newline
 Таким образом, получается:\\
-$f + y_3 + 4y_4 + r = 24 \hspace*{0.5cm} \rightarrow \hspace*{0.5cm} f = 24$\\
-$y_1 - 2y_3 + 3y_4 = 4 \hspace*{1.2cm} \rightarrow \hspace*{0.5cm} y_1 = 4$\\
-$x_1 + y_4 = 4 \hspace*{2.7cm} \rightarrow \hspace*{0.5cm} x_1 = 4$\\
-$x_2 + y_3 = 8 \hspace*{2.7cm} \rightarrow \hspace*{0.5cm} x_2 = 8$\\
-$y_2 + y_3 + 3y_4 - r = 17 \hspace*{0.35cm} \rightarrow \hspace*{0.5cm} y_2 = 17$\\
+$f + y_3 + 4y_4 + 100r = 24 \hspace*{0.5cm} \rightarrow \hspace*{0.5cm} f = 24$\\
+$y_1 - 2y_3 + 3y_4 = 4 \hspace*{1.9cm} \rightarrow \hspace*{0.5cm} y_1 = 4$\\
+$x_1 + y_4 = 4 \hspace*{3.4cm} \rightarrow \hspace*{0.5cm} x_1 = 4$\\
+$x_2 + y_3 = 8 \hspace*{3.4cm} \rightarrow \hspace*{0.5cm} x_2 = 8$\\
+$y_2 + y_3 + 3y_4 - r = 17 \hspace*{1.05cm} \rightarrow \hspace*{0.5cm} y_2 = 17$\\
 $y_3 = 0, y_4 = 0, r = 0$\\
+\textbf{Ответ:} $x_1 = 4, x_2 = 8, f = 24$
+\subsection*{Двухэтапный метод}
+Целевая функция:\\
+$f = 4x_1+x_2 \longrightarrow max$\\\\
+Ограничения:\\
+$-3x_1 + 2x_2 + y_1 = 8$\\
+$3x_1 + x_2 - y_2 + r = 3 \hspace*{0.5cm} \rightarrow \hspace*{0.5cm} r = 3 - 3x_1 - x_2 + y_2$\\
+$x_2 + y_3 = 8$\\
+$x_1 + y_4 = 4$\\\\
+$x_i \geq 0 \hspace{0.2cm} \forall i = \overline{1,2}; \hspace{0.5cm} y_j \geq 0 \hspace{0.2cm} \forall j =  \overline{1,4}$\\\\
+Введём вспомогательную функцию цели:\\
+$\phi = r = 3 - 3x_1 - x_2 + y_2 \longrightarrow min$\\\\
+Перепишем функцию $\phi$:\\
+$\phi + 3x_1 + x_2 - y_2 = 3$
+\subsubsection*{1 итерация}
+Базисные переменные: $y_1, r, y_3, y_4$.\\
+Свободные переменный: $x_1, x_2, y_2$.\\\\
+\begin{tabularx}{\textwidth}{|p{1cm}V{6}p{1cm}V{7}p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|c}
+	\hline
+	БП & $\boldsymbol{x_1}$ & $x_2$ & $y_1$ & $y_2$ & $y_3$ & $y_4$ & $r$ & Своб. член & \\
+	\hline
+	
+	$\phi$ & \underline{\textit{3}} \scriptsize 3 & 1 \scriptsize 1 & 0 \scriptsize 0 & -1  \scriptsize -1 & 0 \scriptsize 0 & 0 \scriptsize 0 & 0 \scriptsize 1 & 3 \scriptsize 3 & \\
+	
+	\hline
+	
+	$y_1$ & \underline{-3} \scriptsize -3 & 2 \scriptsize -1 & 1 \scriptsize 0 & 0 \scriptsize 1 & 0 \scriptsize 0 & 0 \scriptsize 0 & 0 \scriptsize -1 & 8 \scriptsize -3 & $-\dfrac{8}{3} < 0$ \\
+	
+	\Xhline{7\arrayrulewidth}
+	
+	$\boldsymbol{r}$ & \textbf{3} \scriptsize 1 & 1 \underline{\scriptsize 1/3} & 0 \underline{\scriptsize 0} & -1 \underline{\tiny -1/3} & 0 \underline{\scriptsize 0} & 0  \underline{\scriptsize 0} & 1 \underline{\scriptsize 1/3} & 3 \underline{\scriptsize 1} & 1 -- \textit{min} \\
+	
+	\Xhline{7\arrayrulewidth}
+	$y_3$ & \underline{0} \scriptsize 0 & 1 \scriptsize 0 & 0 \scriptsize 0 & 0 \scriptsize 0 & 1 \scriptsize 0 & 0 \scriptsize 0 & 0 \scriptsize 0 & 8 \scriptsize 0 & $\dfrac{8}{0}$ -- /0 ! \\
+	\hline
+	$y_4$ & \underline{1} \scriptsize 1 & 0 \scriptsize 1/3 & 0 \scriptsize 0 & 0 \scriptsize -1/3 & 0 \scriptsize 0 & 1 \scriptsize 0 & 0 \scriptsize 1/3 & 4 \scriptsize 1 & 4 \\
+	\hline
+\end{tabularx}
+\newpage
+Меняем свободную переменную $x_1$ и базисную переменную $r$ местами.\\
+$x_1 \leftrightarrow r$
+\subsubsection*{Оптимальное решение}
+Базисные переменные: $y_1, x_1, y_3, y_4$.\\
+Свободные переменный: $x_2, y_2, r$.\\\\
+\begin{tabularx}{\textwidth}{|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1.2cm}|p{1.2cm}|c}
+	\hline
+	БП & $x_1$ & $x_2$ & $y_1$ & $y_2$ & $y_3$ & $y_4$ & $r$ & Своб. член & \\
+	\hline
+	
+	$\phi$ & 0 & 0 & 0 & 0 & 0 & 0 & -1 & 0 & \\
+	
+	\hline
+	
+	$y_1$ & 0 & 3 & 1 & -1 & 0 & 0 & 1 & 11 & \\
+	
+	\hline
+	
+	$x_1$ & 1 & \small $\frac{1}{3}$ & 0 & \small -$\frac{1}{3}$ & 0 & 0 & \small $\frac{1}{3}$ & 1 & \\
+	
+	\hline
+	$y_3$ & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 8 & \\
+	
+	\hline
+	$y_4$ & 0 & \small -$\frac{1}{3}$ & 0 & \small $\frac{1}{3}$ & 0 & 1 & \small -$\frac{1}{3}$ & 3 & \\
+	\hline
+\end{tabularx}
+\newline\newline
+$r = 0$ и значение вспомогательной функции $\phi = 0$.\\
+Таким образом, получается:\\
+$3x_2 + y_1 - y_2 = 11$\\
+$x_1 + \frac{1}{3}x_2 - \frac{1}{3}y_2 = 1 \hspace*{0.5cm} \rightarrow \hspace*{0.5cm} x_1 = - \frac{1}{3}x_2 + \frac{1}{3}y_2 + 1 $\\
+$x_2 + y_3 = 8$\\
+$-\frac{1}{3}x_2 + \frac{1}{3}y_2 + y_4 = 3$\\\\
+Выразим функцию цели через свободные переменные:\\
+$f = 4x_1 + x_2 = 4-\frac{4}{3}x_2 + \frac{4}{3}y_2 + x_2 = 4 - \frac{1}{3}x_2 + \frac{4}{3}y_2$
+\begin{center}$\downarrow$\end{center}
+$f = 4 - \frac{1}{3}x_2 + \frac{4}{3}y_2 \longrightarrow max$\\\\
+Перепишем функцию цели:\\
+$f + \frac{1}{3}x_2 - \frac{4}{3}y_2 = 4$
+\newpage
+\subsubsection*{1 итерация}
+Базисные переменные: $y_1, x_1, y_3, y_4$.\\
+Свободные переменный: $x_2, y_2$.\\\\
+\begin{tabularx}{\textwidth}{|p{1cm}|p{1cm}|p{1cm}|p{1cm}V{6}p{1cm}V{7}p{1cm}|p{1cm}|p{1.2cm}|c}
+	\hline
+	БП & $x_1$ & $x_2$ & $y_1$ & $\boldsymbol{y_2}$ & $y_3$ & $y_4$ & Своб. член & \\
+	\hline
+	
+	f & 0 \scriptsize 0 & \small $\frac{1}{3}$ \tiny 4/3 & 0 \scriptsize 0 & \underline{\small -$\frac{4}{3}$} \tiny -4/3 & 0 \scriptsize 0 & 0 \scriptsize -4 & 4 \scriptsize -12 & \\
+	
+	\hline
+	
+	$y_1$ & 0 \scriptsize 0 & 3 \scriptsize 1 & 1 \scriptsize 0 & \underline{-1} \scriptsize -1 & 0 \scriptsize 0 & 0 \scriptsize -3 & 11 \scriptsize -9 & $-\dfrac{11}{1} < 0$ \\
+	
+	\hline
+	
+	$x_1$ & 1 \scriptsize 0 & \small $\frac{1}{3}$ \scriptsize 1/3 & 0 \scriptsize 0 & \underline{\small -$\frac{1}{3}$} \tiny -1/3 & 0 \scriptsize 0 & 0 \scriptsize -1 & 1 \scriptsize -3 & -3 < 0 \\
+	
+	\hline
+	$y_3$ & 0 \scriptsize 0 & 1 \scriptsize 0 & 0 \scriptsize 0 & \underline 0 \scriptsize 0 & 1 \scriptsize 0 & 0 \scriptsize 0 & 8 \scriptsize 0 & $\dfrac{8}{0}$ -- /0 ! \\
+	
+	\Xhline{6\arrayrulewidth}
+	$\boldsymbol{y_4}$ & 0 \underline{\scriptsize 0} & \small -$\frac{1}{3}$ \underline{\scriptsize -1} & 0 \underline{\scriptsize 0} & \small $\boldsymbol{\frac{1}{3}}$ \scriptsize 1 & 0 \underline{\scriptsize 0} & 1 \scriptsize \underline 3 & 3 \underline{\scriptsize 9} & 9 -- \textit{min} \\
+	\Xhline{7\arrayrulewidth}
+\end{tabularx}
+\newline\newline
+Меняем свободную переменну $y_2$ и базисную переменную $y_4$ местами.\\
+$y_2 \leftrightarrow y_4$
+\subsubsection*{2 итерация}
+Базисные переменные: $y_1, x_1, y_2, y_3$.\\
+Свободные переменный: $x_2, y_4$.\\\\
+\begin{tabularx}{\textwidth}{|p{1cm}|p{1cm}V{7}p{1cm}V{6}p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1.2cm}|c}
+	\hline
+	БП & $x_1$ & $\boldsymbol{x_2}$ & $y_1$ & $y_2$ & $y_3$ & $y_4$ & Своб. член & \\
+	\hline
+	
+	f & 0 \scriptsize 0 & \underline{\textit{-1}} \scriptsize -1 & 0 \scriptsize 0 & 0 \scriptsize 0 & 0 \scriptsize -1 & 4 \scriptsize 0 & 16 \scriptsize -8 & \\
+	
+	\hline
+	
+	$y_1$ & 0 \scriptsize 0 & \underline{2} \scriptsize 2 & 1 \scriptsize 0 & 0 \scriptsize 0 & 0 \scriptsize 2 & 3 \scriptsize 0 & 20 \scriptsize 16 & 10 \\
+	
+	\hline
+	
+	$x_1$ & 1 \scriptsize 0 & \underline{0} \scriptsize 0 & 0 \scriptsize 0 & 0 \scriptsize 0 & 0 \scriptsize 0 & 1 \scriptsize 0 & 4 \scriptsize 0 & $\dfrac{4}{0}$ -- /0 ! \\
+	
+	\Xhline{7\arrayrulewidth}
+	$\boldsymbol{y_3}$ & 0 \scriptsize \underline 0 & \textbf{1} \scriptsize 1 & 0 \scriptsize \underline 0 & 0 \scriptsize \underline 0 & 1 \scriptsize \underline 1 & 0 \scriptsize \underline 0 & 8 \scriptsize \underline 8 & 8 -- \textit{min} \\
+	\Xhline{6\arrayrulewidth}
+	
+	$y_2$ & 0 \scriptsize 0 & \underline{-1} \scriptsize -1 & 0 \scriptsize 0 & 1 \scriptsize 0 & 0 \scriptsize -1 & 3 \scriptsize 0 & 9 \scriptsize -8 & -9 < 0 \\
+	\hline
+\end{tabularx}
+\newline\newline
+Меняем свободную переменну $x_2$ и базисную переменную $y_3$ местами.\\
+$x_2 \leftrightarrow y_3$
+\newpage
+\subsubsection*{Оптимальное решение}
+Базисные переменные: $y_1, x_1, x_2, y_2$.\\
+Свободные переменный: $y_3, y_4$.\\\\
+\begin{tabularx}{\textwidth}{|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1.2cm}|c}
+	\hline
+	БП & $x_1$ & $x_2$ & $y_1$ & $y_2$ & $y_3$ & $y_4$ & Своб. член & \\
+	\hline
+	f & 0 & 0 & 0 & 0 & 1 & 4 & 24 & \\
+	\hline
+	$y_1$ & 0 & 0 & 1 & 0 & -2 & 3 & 4 & \\
+	\hline
+	$x_1$ & 1 & 0 & 0 & 0 & 0 & 1 & 4\\
+	\hline
+	$x_2$ & 0 & 1 & 0 & 0 & 1 & 0 & 8 \\
+	\hline
+	$y_2$ & 0 & 0 & 0 & 1 & 1 & 3 & 17\\
+	\hline
+\end{tabularx}
+\newline\newline
+Таким образом, получается:\\
+$f + y_3 + 4y_4 = 24 \hspace*{1.05cm} \rightarrow \hspace*{0.5cm} f = 24$\\
+$y_1 - 2y_3 + 3y_4 = 4 \hspace*{0.9cm} \rightarrow \hspace*{0.5cm} y_1 = 4$\\
+$x_1 + y_4 = 4 \hspace*{2.42cm} \rightarrow \hspace*{0.5cm} x_1 = 4$\\
+$x_2 + y_3 = 8 \hspace*{2.42cm} \rightarrow \hspace*{0.5cm} x_2 = 8$\\
+$y_2 + y_3 + 3y_4 = 17 \hspace*{0.9cm} \rightarrow \hspace*{0.5cm} y_2 = 17$\\
+$y_3 = 0, y_4 = 0$\\
 \textbf{Ответ:} $x_1 = 4, x_2 = 8, f = 24$
 \end{document}

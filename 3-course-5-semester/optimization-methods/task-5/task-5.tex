@@ -1,0 +1,254 @@
+\documentclass[14pt,a4paper,fleqn]{extarticle}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{boldline}
+\usepackage{makecell}
+
+\graphicspath{ {./images/} }
+\setlength{\mathindent}{0pt}
+\setlength\parindent{0pt}
+
+
+\begin{document}
+	\begin{titlepage}
+		\includegraphics[scale=0.12]{logo}
+		\begin{center}
+			\textbf{МИНОБРНАУКИ РОССИИ}\\
+			\vspace{0.2cm}
+			\textbf{Федеральное государственное бюджетное образовательное учреждение высшего образования}\\
+			\textbf{«САНКТ-ПЕТЕРБУРГСКИЙ ГОСУДАРСТВЕННЫЙ ЭКОНОМИЧЕСКИЙ УНИВЕРСИТЕТ»}\\
+			\vspace{0.6cm}
+			Факультет информатики и прикладной математики\\
+			Кафедра прикладной математики и экономико-математических методов\\
+			\vspace{1cm}
+			\textbf{ОТЧЁТ}\\
+			по дисциплине:\\
+			\textbf{«Методы оптимизации»}\\
+			на тему:\\
+			\textbf{«Построение и решение двойственной задачи. Задание 5»}\\
+		\end{center}
+		\vspace{1cm}
+		Направление: 01.03.02\\
+		Обучающийся: Бронников Егор Игоревич\\
+		Группа: ПМ-1901\\
+		\vfill
+		\begin{center}
+			Санкт-Петербург\\
+			2021\\
+		\end{center}
+	\end{titlepage}
+\section*{Задание 2.1}
+\subsection*{Дано}
+Целевая функция:\\
+$f = -x_1+x_2 \longrightarrow max$\\\\
+Ограничения:
+\begin{align*}
+	\begin{cases}
+		-x_1 + 2x_2 \geq -1\\
+		-2x_1 + x_2 \leq 2\\
+		3x_1 + x_2 \leq 3\\
+	\end{cases}
+\end{align*}
+$x_1 \geq 0, x_2 \geq 0$
+\subsection*{Задание}
+\subsubsection*{Каноническая форма прямой задачи}
+1. Вводим слабые переменные $y_1 \geq 0, y_2 \geq 0, y_3 \geq 0$:\\
+$-x_1 + 2x_2 - y_1 = -1$\\
+$-2x_1 + x_2 + y_2 = 2$\\
+$3x_1 + x_2 + y_3 = 3$\\
+
+2. Делаем правые части равенств положительными:\\
+$x_1 - 2x_2 + y_1 = 1$\\
+$-2x_1 + x_2 + y_2 = 2$\\
+$3x_1 + x_2 + y_3 = 3$\\
+
+Таким образом, прямая задача сведена к канонической форме.
+\newpage
+\subsubsection*{Формулируем двойственную задачу}
+Функция цели:\\
+$\phi = -\lambda_1 + 2\lambda_2 + 3\lambda_3 \longrightarrow min$\\\\
+Ограничения:\\
+$\lambda_1 - 2\lambda_2 + 3\lambda_3 \geq -1$\\
+$-2\lambda_1 + \lambda_2 + \lambda_3 \geq 1$\\
+$\lambda_1 \geq 0, \lambda_2 \geq 0, \lambda_3 \geq 0$
+\subsubsection*{Каноническая форма двойственной задачи}
+Функция цели:\\
+$\phi = -\lambda_1 + 2\lambda_2 + 3\lambda_3 \longrightarrow min$\\\\
+1. Вводим слабые переменные $\xi_1 \geq 0, \xi_2 \geq 0$:\\
+$\lambda_1 - 2\lambda_2 + 3\lambda_3 - \xi_1 = -1$\\
+$-2\lambda_1 + \lambda_2 + \lambda_3 - \xi_2 = 1$\\
+$\lambda_1 \geq 0, \lambda_2 \geq 0, \lambda_3 \geq 0$\\
+
+2. Делаем правые части равенств положительными:\\
+$-\lambda_1 + 2\lambda_2 - 3\lambda_3 + \xi_1 = 1$\\
+$-2\lambda_1 + \lambda_2 + \lambda_3 - \xi_2 = 1$\\
+$\lambda_1 \geq 0, \lambda_2 \geq 0, \lambda_3 \geq 0$
+\newpage
+\subsubsection*{Решение двойственной задачи}
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}\\
+\textbf{Напоминание из задачи 2.1}\\
+$y_2, y_3$ --- свободные переменные\\
+$x_1, x_2, y_1$ --- базисные переменные\\
+
+1. Выразим базисные переменные через свободные:\\
+$x_1 = \frac{1}{5} + \frac{y_2}{5} - \frac{y_3}{5}$\\
+$x_2 = 2 + 2x_1 - y_2 = \frac{12}{5} - \frac{3}{5}y_2 - \frac{2}{5}y_3$\\
+$y_1 = 5 + 3x_1 - 2y_2 = \frac{28}{5} - \frac{7}{5}y_2 - \frac{3}{5}y_3$\\
+\begin{center}$\downarrow$\end{center}
+$x_1 = \frac{1}{5} + \frac{y_2}{5} - \frac{y_3}{5}$\\
+$x_2 = \frac{12}{5} - \frac{3}{5}y_2 - \frac{2}{5}y_3$\\
+$y_1 = \frac{28}{5} - \frac{7}{5}y_2 - \frac{3}{5}y_3$\\
+
+2. Выразим функцию цели $f$ через свободные переменные:\\
+$f = x_1 - y_2 + 2 = \frac{11}{5} - \frac{4}{5}y_2 - \frac{y_3}{5} \longrightarrow max$
+\begin{center}$\downarrow$\end{center}
+$f = \frac{11}{5} - \frac{4}{5}y_2 - \frac{y_3}{5} \longrightarrow max$\\
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}\\
+Из оптимального решения симплекс-методом прямой задачи видно, что переменные базисные переменные $x_1, x_2$ выражаются через свободные переменные $y_2, y_3$ следующим образом:\\
+$x_1 = \frac{1}{5} + \frac{y_2}{5} - \frac{y_3}{5}$\\
+$x_2 = \frac{12}{5} - \frac{3}{5}y_2 - \frac{2}{5}y_3$\\\\
+Функция цели:\\
+$f = \frac{11}{5} - \frac{4}{5}y_2 - \frac{y_3}{5} \longrightarrow max$\\
+$y_2$ и $y_3$ входят в выражение для оптимальной функции цели прямой задачи с коэффициентами $-\frac{4}{5}$ и $-\frac{1}{5}$.\\\\
+Переменные $y_2$ и $y_3$ индуцируют следующие ограничения двойственной задачи:
+\begin{center}
+$y_2 \rightarrow \lambda_2 \geq 0 \hspace*{1cm} y_3 \rightarrow \lambda_3 \geq 0$
+\end{center}
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}\\
+\textbf{Лемма:}\\
+Если  в  прямой  (двойственной)  задаче  начальная 
+базисная переменная входит в оптимальное решение целевой 
+функции  как  свободная  переменная,  то  коэффициент  при  ней  в 
+целевой  функции  равен  разности  между  правой  и  левой  частями 
+ограничения двойственной (прямой) задачи, индуцированного 
+рассматриваемой начальной базисной переменной.\\
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}\\
+По лемме получается:
+\begin{center}
+$-\frac{4}{5} = 0 - \lambda_2 \hspace*{1cm} -\frac{1}{5} = 0 - \lambda_3$
+\end{center}
+Тогда решение двойственной задачи выглядит следующим образом:\\
+$\lambda_1 = 0, \lambda_2 = \frac{4}{5}, \lambda_3 = \frac{1}{5}$\\\\
+Функция цели:\\
+$\phi = -\lambda_1 + 2\lambda_2 + 3\lambda_3 = \frac{8}{5} + \frac{3}{5} = \frac{11}{5}$
+\begin{center}$\downarrow$\end{center}
+$\phi = \frac{11}{5} = 2.2$\\
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}\\
+\textbf{Напоминание из задачи 2.1}\\
+$x_1 = \frac{1}{5} = 0.2$\\
+$x_2 = \frac{12}{5} = 2.4$\\
+$f = \frac{11}{5} = 2.2$\\
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}\\
+То есть $\phi(\Lambda^*) = f(X^*)$ и критерий оптимальности Канторовича выполняется.\\
+\textbf{Ответ:} $\lambda_1 = 0, \lambda_2 = \frac{4}{5}, \lambda_3 = \frac{1}{5}, \phi = \frac{11}{5}$
+\newpage
+\section*{Задание 4.1}
+\subsection*{Дано}
+Целевая функция:\\
+$f = 4x_1+x_2 \longrightarrow max$\\\\
+Ограничения:
+\begin{align*}
+	\begin{cases}
+		3x_1 - 2x_2 \geq -8\\
+		3x_1 + x_2 \geq 3\\
+		x_2 \leq 8\\
+		x_1 \leq 4\\
+	\end{cases}
+\end{align*}
+$x_1 \geq 0, x_2 \geq 0$
+
+\subsection*{Задание}
+\subsubsection*{Каноническая форма прямой задачи}
+1. Вводим слабые переменные $y_1 \geq 0, y_2 \geq 0, y_3 \geq 0, y_4 \geq 0$:\\
+$3x_1 - 2x_2 - y_1 = -8$\\
+$3x_1 + x_2 - y_2 = 3$\\
+$x_2 + y_3 = 8$\\
+$x_1 + y_4 = 4$\\
+
+2. Делаем правые части равенств положительными:\\
+$-3x_1 + 2x_2 + y_1 = 8$\\
+$3x_1 + x_2 - y_2 = 3$\\
+$x_2 + y_3 = 8$\\
+$x_1 + y_4 = 4$\\
+
+Таким образом, прямая задача сведена к канонической форме.
+\newpage
+\subsubsection*{Метод штрафов}
+Введём искусственную переменную --- $r \geq 0$.\\\\
+Целевая функция:\\
+$f = 4x_1+x_2 \longrightarrow max$\\\\
+Ограничения:\\
+$-3x_1 + 2x_2 + y_1 = 8 \hspace*{1cm} \rightarrow \lambda_1$\\
+$3x_1 + x_2 - y_2 + r = 3 \hspace*{0.8cm} \rightarrow \lambda_2$\\
+$x_2 + y_3 = 8 \hspace*{3cm} \rightarrow \lambda_3$\\
+$x_1 + y_4 = 4 \hspace*{3cm} \rightarrow \lambda_4$\\\\
+$x_i \geq 0 \hspace{0.2cm} \forall i = \overline{1,2}; \hspace{0.5cm} y_j \geq 0 \hspace{0.2cm} \forall j =  \overline{1,4}$\\\\
+Перепишем функцию цели:\\
+$f = 4x_1 + x_2 - Mr = 4x_1 + x_2 - M(3 - 3x_1 - x_2 + y_2)$
+\begin{center}$\downarrow$\end{center}
+$f = -3M + (3M + 4)x_1 + (M + 1)x_2 - My_2$\\\\
+Пусть $M = 100$, тогда функция цели примет следующий вид:\\
+$f = -300 + 304x_1 + 101x_2 - 100y_2$
+\subsubsection*{Формулируем двойственную задачу}
+Функция цели:\\
+$\phi = 8\lambda_1 + 3\lambda_2 + 8\lambda_3 + 4\lambda_4 \longrightarrow min$\\\\
+Ограничения:\\
+$-3\lambda_1 + 3\lambda_2 + \lambda_4 \geq 304$\\
+$2\lambda_1 + \lambda_2 + \lambda_3 \geq 101$\\
+$-\lambda_2 \geq -100$\\
+$\lambda_1 \geq 0, \lambda_3 \geq 0, \lambda_4 \geq 0$
+\newpage
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}\\
+\textbf{Напоминание из задачи 4.1}\\
+Базисные переменные: $y_1, x_1, x_2, y_2$.\\
+Свободные переменный: $y_3, y_4, r$.\\\\
+\begin{tabularx}{\textwidth}{|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1.2cm}|c}
+	\hline
+	БП & $x_1$ & $x_2$ & $y_1$ & $y_2$ & $y_3$ & $y_4$ & $r$ & Своб. член & \\
+	\hline
+	f & 0 & 0 & 0 & 0 & 1 & 4 & 100 & 24 & \\
+	\hline
+	$y_1$ & 0 & 0 & 1 & 0 & -2 & 3 & 0 & 4 & \\
+	\hline
+	$x_1$ & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 4\\
+	\hline
+	$x_2$ & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 8 \\
+	\hline
+	$y_2$ & 0 & 0 & 0 & 1 & 1 & 3 & -1 & 17\\
+	\hline
+\end{tabularx}
+\newline\newline
+Таким образом, получается:\\
+$f + y_3 + 4y_4 + 100r = 24 \hspace*{0.5cm} \rightarrow \hspace*{0.5cm} f = 24$\\
+$y_1 - 2y_3 + 3y_4 = 4 \hspace*{1.9cm} \rightarrow \hspace*{0.5cm} y_1 = 4$\\
+$x_1 + y_4 = 4 \hspace*{3.4cm} \rightarrow \hspace*{0.5cm} x_1 = 4$\\
+$x_2 + y_3 = 8 \hspace*{3.4cm} \rightarrow \hspace*{0.5cm} x_2 = 8$\\
+$y_2 + y_3 + 3y_4 - r = 17 \hspace*{1.05cm} \rightarrow \hspace*{0.5cm} y_2 = 17$\\
+$y_3 = 0, y_4 = 0, r = 0$\\
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}\\
+Из оптимального решения симплекс-таблицы видно выражение базисных переменных через свободные:\\
+$x_1 = 4 - y_4$\\
+$x_2 = 8 - y_3$\\
+Целевая функция прямой задачи выражается\\
+$f = 24 - y_3 - 4y_4 - 100r \rightarrow max$\\
+Переменные $y_3$ и $y_4$ индуцируют следующие ограничения двойственной задачи:
+\begin{center}
+	$y_3 \rightarrow -\lambda_2 \geq -100 \hspace*{1cm} y_4 \rightarrow \lambda_4 \geq 0$
+\end{center}
+Тогда по лемме:
+\begin{center}
+	$-1 = -100 + \lambda_2 \hspace*{1cm} -4 = 0 - \lambda_4$
+\end{center}
+\newpage
+Тогда решение двойственной задачи выглядит следующим образом:\\
+$\lambda_1 = 0, \lambda_2 = 99, \lambda_3 = 0, \lambda_4 = 4$\\\\
+Функция цели:\\
+$\phi = 8\lambda_1 + 3\lambda_2 + 8\lambda_3 + 4\lambda_4 - 300 = 8*0 + 3*99 + 8*0 + 4*4 - 300 = 13$
+\begin{center}$\downarrow$\end{center}
+$\phi = 13$\\
+
+\end{document}
