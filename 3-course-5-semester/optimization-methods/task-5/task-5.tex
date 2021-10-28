@@ -195,13 +195,14 @@ $f = -3M + (3M + 4)x_1 + (M + 1)x_2 - My_2$\\\\
 $f = -300 + 304x_1 + 101x_2 - 100y_2$
 \subsubsection*{Формулируем двойственную задачу}
 Функция цели:\\
-$\phi = 8\lambda_1 + 3\lambda_2 + 8\lambda_3 + 4\lambda_4 \longrightarrow min$\\\\
+$\phi = 8\lambda_1 + 3\lambda_2 + 8\lambda_3 + 4\lambda_4 - 300 \longrightarrow min$\\\\
 Ограничения:\\
 $-3\lambda_1 + 3\lambda_2 + \lambda_4 \geq 304$\\
 $2\lambda_1 + \lambda_2 + \lambda_3 \geq 101$\\
 $-\lambda_2 \geq -100$\\
 $\lambda_1 \geq 0, \lambda_3 \geq 0, \lambda_4 \geq 0$
 \newpage
+\subsubsection*{Решение двойственной задачи}
 \noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}\\
 \textbf{Напоминание из задачи 4.1}\\
 Базисные переменные: $y_1, x_1, x_2, y_2$.\\
@@ -230,25 +231,29 @@ $x_2 + y_3 = 8 \hspace*{3.4cm} \rightarrow \hspace*{0.5cm} x_2 = 8$\\
 $y_2 + y_3 + 3y_4 - r = 17 \hspace*{1.05cm} \rightarrow \hspace*{0.5cm} y_2 = 17$\\
 $y_3 = 0, y_4 = 0, r = 0$\\
 \noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}\\
-Из оптимального решения симплекс-таблицы видно выражение базисных переменных через свободные:\\
-$x_1 = 4 - y_4$\\
-$x_2 = 8 - y_3$\\
-Целевая функция прямой задачи выражается\\
-$f = 24 - y_3 - 4y_4 - 100r \rightarrow max$\\
-Переменные $y_3$ и $y_4$ индуцируют следующие ограничения двойственной задачи:
+Целевая функция прямой задачи выражается так:\\
+$f = 24 - y_3 - 4y_4 - 100r \longrightarrow max$\\
+Переменные $y_2$, $y_3$ и $y_4$ индуцируют следующие ограничения двойственной задачи:
 \begin{center}
-	$y_3 \rightarrow -\lambda_2 \geq -100 \hspace*{1cm} y_4 \rightarrow \lambda_4 \geq 0$
+	$y_2 \rightarrow -\lambda_2 \geq -100 \hspace*{1cm} y_3 \rightarrow \lambda_3 \geq 0 \hspace*{1cm} y_4 \rightarrow \lambda_4 \geq 0$
 \end{center}
 Тогда по лемме:
 \begin{center}
-	$-1 = -100 + \lambda_2 \hspace*{1cm} -4 = 0 - \lambda_4$
+	$0 = -100 + \lambda_2 \hspace*{1cm} -1 = 0 - \lambda_3 \hspace*{1cm} -4 = 0 - \lambda_4$
 \end{center}
 \newpage
 Тогда решение двойственной задачи выглядит следующим образом:\\
-$\lambda_1 = 0, \lambda_2 = 99, \lambda_3 = 0, \lambda_4 = 4$\\\\
+$\lambda_1 = 0, \lambda_2 = 100, \lambda_3 = 1, \lambda_4 = 4$\\\\
 Функция цели:\\
-$\phi = 8\lambda_1 + 3\lambda_2 + 8\lambda_3 + 4\lambda_4 - 300 = 8*0 + 3*99 + 8*0 + 4*4 - 300 = 13$
+$\phi = 8\lambda_1 + 3\lambda_2 + 8\lambda_3 + 4\lambda_4 - 300 = 8*0 + 3*100 + 8*1 + 4*4 - 300 = 24$
 \begin{center}$\downarrow$\end{center}
-$\phi = 13$\\
-
+$\phi = 24$\\
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}\\
+\textbf{Напоминание из задачи 4.1}\\
+$x_1 = 4$\\
+$x_2 = 8$\\
+$f = 24$\\
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}\\
+То есть $\phi(\Lambda^*) = f(X^*)$ и критерий оптимальности Канторовича выполняется.\\
+\textbf{Ответ:} $\lambda_1 = 0, \lambda_2 = 100, \lambda_3 = 1, \lambda_4 = 4, \phi = 24$
 \end{document}
