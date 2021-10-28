@@ -32,7 +32,8 @@
 │   │   ├── task-2
 │   │   └── example-1.docx
 │   ├── analytical-marketing
-│   │   └── task-1
+│   │   ├── task-1
+│   │   └── task-2
 │   ├── database-management-systems
 │   │   ├── data
 │   │   ├── script1.sql
