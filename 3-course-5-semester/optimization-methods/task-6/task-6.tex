@@ -1,0 +1,283 @@
+\documentclass[14pt,a4paper,fleqn]{extarticle}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{boldline}
+\usepackage{makecell}
+\usepackage{arydshln}
+
+\graphicspath{ {./images/} }
+\setlength{\mathindent}{0pt}
+\setlength\parindent{0pt}
+
+
+\begin{document}
+	\begin{titlepage}
+		\includegraphics[scale=0.12]{logo}
+		\begin{center}
+			\textbf{МИНОБРНАУКИ РОССИИ}\\
+			\vspace{0.2cm}
+			\textbf{Федеральное государственное бюджетное образовательное учреждение высшего образования}\\
+			\textbf{«САНКТ-ПЕТЕРБУРГСКИЙ ГОСУДАРСТВЕННЫЙ ЭКОНОМИЧЕСКИЙ УНИВЕРСИТЕТ»}\\
+			\vspace{0.6cm}
+			Факультет информатики и прикладной математики\\
+			Кафедра прикладной математики и экономико-математических методов\\
+			\vspace{1cm}
+			\textbf{ОТЧЁТ}\\
+			по дисциплине:\\
+			\textbf{«Методы оптимизации»}\\
+			на тему:\\
+			\textbf{«Решение задачи линейного программирования двойственным симплекс-методом. Задание 6»}\\
+		\end{center}
+		\vspace{1cm}
+		Направление: 01.03.02\\
+		Обучающийся: Бронников Егор Игоревич\\
+		Группа: ПМ-1901\\
+		\vfill
+		\begin{center}
+			Санкт-Петербург\\
+			2021\\
+		\end{center}
+	\end{titlepage}
+Рассмотрим и решим двойственную задачу для прямой задачи 4.1.
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}\\
+\textbf{Напоминание из задания 5}\\
+Целевая функция:\\
+$f = 4x_1+x_2 \longrightarrow max$\\\\
+Ограничения:
+\begin{align*}
+	\begin{cases}
+		3x_1 - 2x_2 \geq -8\\
+		3x_1 + x_2 \geq 3\\
+		x_2 \leq 8\\
+		x_1 \leq 4\\
+	\end{cases}
+\end{align*}
+$x_1 \geq 0, x_2 \geq 0$
+
+\subsection*{Задание}
+\subsubsection*{Каноническая форма прямой задачи}
+1. Вводим слабые переменные $y_1 \geq 0, y_2 \geq 0, y_3 \geq 0, y_4 \geq 0$:\\
+$3x_1 - 2x_2 - y_1 = -8$\\
+$3x_1 + x_2 - y_2 = 3$\\
+$x_2 + y_3 = 8$\\
+$x_1 + y_4 = 4$\\
+
+2. Делаем правые части равенств положительными:\\
+$-3x_1 + 2x_2 + y_1 = 8$\\
+$3x_1 + x_2 - y_2 = 3$\\
+$x_2 + y_3 = 8$\\
+$x_1 + y_4 = 4$\\
+
+Таким образом, прямая задача сведена к канонической форме.
+\newpage
+\subsubsection*{Метод штрафов}
+Введём искусственную переменную --- $r \geq 0$.\\\\
+Целевая функция:\\
+$f = 4x_1+x_2 \longrightarrow max$\\\\
+Ограничения:\\
+$-3x_1 + 2x_2 + y_1 = 8 \hspace*{1cm} \rightarrow \lambda_1$\\
+$3x_1 + x_2 - y_2 + r = 3 \hspace*{0.8cm} \rightarrow \lambda_2$\\
+$x_2 + y_3 = 8 \hspace*{3cm} \rightarrow \lambda_3$\\
+$x_1 + y_4 = 4 \hspace*{3cm} \rightarrow \lambda_4$\\\\
+$x_i \geq 0 \hspace{0.2cm} \forall i = \overline{1,2}; \hspace{0.5cm} y_j \geq 0 \hspace{0.2cm} \forall j =  \overline{1,4}$\\\\
+Перепишем функцию цели:\\
+$f = 4x_1 + x_2 - Mr = 4x_1 + x_2 - M(3 - 3x_1 - x_2 + y_2)$
+\begin{center}$\downarrow$\end{center}
+$f = -3M + (3M + 4)x_1 + (M + 1)x_2 - My_2$\\\\
+Пусть $M = 100$, тогда функция цели примет следующий вид:\\
+$f = -300 + 304x_1 + 101x_2 - 100y_2$
+\subsubsection*{Формулируем двойственную задачу}
+Функция цели:\\
+$\phi = 8\lambda_1 + 3\lambda_2 + 8\lambda_3 + 4\lambda_4 - 300 \longrightarrow min$\\\\
+Ограничения:\\
+$-3\lambda_1 + 3\lambda_2 + \lambda_4 \geq 304$\\
+$2\lambda_1 + \lambda_2 + \lambda_3 \geq 101$\\
+$-\lambda_2 \geq -100$\\
+$\lambda_1 \geq 0, \lambda_3 \geq 0, \lambda_4 \geq 0$\\
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}\\
+\newpage
+\section*{Дано}
+Функция цели:\\
+$\phi = 8\lambda_1 + 3\lambda_2 + 8\lambda_3 + 4\lambda_4 - 300 \longrightarrow min$\\\\
+Ограничения:\\
+$-3\lambda_1 + 3\lambda_2 + \lambda_4 \geq 304$\\
+$2\lambda_1 + \lambda_2 + \lambda_3 \geq 101$\\
+$-\lambda_2 \geq -100$\\
+$\lambda_1 \geq 0, \lambda_3 \geq 0, \lambda_4 \geq 0$\\
+\section*{Задание}
+\subsection*{Каноническая форма}
+1. Вводим слабые переменные $\xi_1 \geq 0$, $\xi_2 \geq 0$, $\xi_3 \geq 0$:\\
+$-3\lambda_1 + 3\lambda_2 + \lambda_4 - \xi_1 = 304$\\
+$2\lambda_1 + \lambda_2 + \lambda_3 - \xi_2 = 101$\\
+$-\lambda_2 - \xi_3 = -100$\\
+
+2. Делаем правые части равенств положительными:\\
+$-3\lambda_1 + 3\lambda_2 + \lambda_4 - \xi_1 = 304$\\
+$2\lambda_1 + \lambda_2 + \lambda_3 - \xi_2 = 101$\\
+$\lambda_2 + \xi_3 = 100$\\
+
+Таким образом, задача сведена к канонической форме.\\\\
+Отсюда получается:\\
+$\xi_1 = -304 - 3\lambda_1 + 3\lambda_2 + \lambda_4$\\
+$\xi_2 = -101 + 2\lambda_1 + \lambda_2 + \lambda_3$\\
+$\xi_3 = 100 - \lambda_2$\\
+\newpage
+Базисное решение:
+\begin{center}
+$\xi_1 = -304, \xi_2 = -101, \xi_3 = 100, \lambda_i = 0 \hspace*{0.3cm} \forall i = \overline{1,4}$
+\end{center}
+которое не удовлетворяет естественным ограничениям:
+\begin{center}
+	$\xi_i \geq 0 \hspace*{0.3cm} \forall i = \overline{1,3}$
+\end{center}
+и поэтому оно не является допустимым.
+\subsection*{Двойственный симлекс-метод}
+\subsubsection*{1 итерация}
+Базисные переменные: $\xi_1, \xi_2, \xi_3$.\\
+Свободные переменный: $\lambda_1, \lambda_2, \lambda_3, \lambda_4$.\\\\
+\begin{tabularx}{\textwidth}{V{1}p{1.2cm}V{1}p{1.2cm}V{6}p{1.2cm}V{7}p{1.1cm}V{1}p{1.2cm}V{1}p{1.2cm}V{1}p{1.2cm}V{1}p{1.2cm}V{1}p{1.5cm}V{1}}
+	\hline
+	БП & $\lambda_1$ & $\boldsymbol{\lambda_2}$ & $\lambda_3$ & $\lambda_4$ & $\xi_1$ & $\xi_2$ & $\xi_3$ & СЧ\\
+	
+	\hline
+	
+	$\phi$ & \small -8 \scriptsize 3 & \small \underline{-3} \scriptsize -3 & -8 \scriptsize 0 & \small -4  \scriptsize -1 & 0 \scriptsize 1 & 0 \scriptsize 0 & 0 \scriptsize 0 & \small -300 \scriptsize -304\\
+	
+	\Xhline{6\arrayrulewidth}
+	
+	$\boldsymbol{\xi_1}$ & \small 3 \scriptsize \underline{-1} & \small \textbf{-3} \scriptsize 1 & 0 \scriptsize \underline{0} & \small -1  \scriptsize \underline{$\frac{1}{3}$} & 1 \scriptsize \underline{-$\frac{1}{3}$} & 0 \scriptsize \underline{0} & 0 \scriptsize \underline{0} & \small -304 \scriptsize \underline{$\frac{304}{3}$}\\
+	
+	\Xhline{6\arrayrulewidth}
+	
+	$\xi_2$ & \small -2 \scriptsize 1 & \small \underline{-1} \scriptsize -1 & -1 \scriptsize 0 & \small 0  \scriptsize -$\frac{1}{3}$ & 0 \scriptsize $\frac{1}{3}$ & 1 \scriptsize 0 & 0 \scriptsize 0 & \small -101 \scriptsize -$\frac{304}{3}$\\
+	
+	\hline
+	
+	$\xi_3$ & \small 0 \scriptsize -1 & \small \underline{1} \scriptsize 1 & 0 \scriptsize 0 & \small 0  \scriptsize $\frac{1}{3}$ & 0 \scriptsize -$\frac{1}{3}$ & 0 \scriptsize 0 & 1 \scriptsize 0 & \small 100 \scriptsize $\frac{304}{3}$\\
+	
+	\hdashline
+	
+	$c_k/a_{2k}$& \small -$\frac{8}{3}$ & \textit{\textbf{1}} & - & 4 & \small $0^+$ & - & - &\\
+	
+	\hdashline
+\end{tabularx}
+\newline\newline
+Меняем свободную переменную $\lambda_2$ и базисную переменную $\xi_1$ местами.\\
+$\lambda_2 \leftrightarrow \xi_1$
+\newpage
+\subsubsection*{2 итерация}
+Базисные переменные: $\xi_2, \xi_3, \lambda_2$.\\
+Свободные переменный: $\lambda_1, \lambda_3, \lambda_4, \xi_1$.\\\\
+\begin{tabularx}{\textwidth}{V{1}p{1.2cm}V{1}p{1.2cm}V{1}p{1.2cm}V{1}p{1.1cm}V{7}p{1.2cm}V{7}p{1.2cm}V{1}p{1.2cm}V{1}p{1.2cm}V{1}p{1.5cm}V{1}}
+	\hline
+	
+	БП & $\lambda_1$ & $\lambda_2$ & $\lambda_3$ & $\boldsymbol{\lambda_4}$ & $\xi_1$ & $\xi_2$ & $\xi_3$ & СЧ\\
+	
+	\hline
+	
+	$\phi$ & \small -11 \scriptsize 9 & \small 0 \scriptsize 0 & -8 \scriptsize 0 & \small \underline{-3}  \scriptsize -3 & -1 \scriptsize 3 & 0 \scriptsize 0 & 0 \scriptsize 9 & \small 4 \scriptsize -12\\
+	
+	\hline
+	
+	$\lambda_2$ & \small -1 \scriptsize -1 & \small 1 \scriptsize 0 & 0 \scriptsize 0 & \small \underline{$\frac{1}{3}$} \scriptsize $\frac{1}{3}$ & \small -$\frac{1}{3}$ \scriptsize -$\frac{1}{3}$ & 0 \scriptsize 0 & 0 \scriptsize -1 & \small $\frac{304}{3}$ \scriptsize $\frac{4}{3}$\\
+	
+	\hline
+	
+	$\xi_2$ & \small -3 \scriptsize -1 & \small 0 \scriptsize 0 & -1 \scriptsize 0 & \small \underline{$\frac{1}{3}$} \scriptsize $\frac{1}{3}$ & -$\frac{1}{3}$ \scriptsize -$\frac{1}{3}$ & 1 \scriptsize 0 & 0 \scriptsize -1 & \small $\frac{1}{3}$ \scriptsize $\frac{4}{3}$\\
+	
+	\Xhline{7\arrayrulewidth}
+	
+	$\boldsymbol{\xi_3}$ & \small 1 \scriptsize \underline{-3} & \small 0 \scriptsize \underline{0} & 0 \scriptsize \underline{0} & \small \textbf{-$\frac{1}{3}$} \scriptsize 1 & $\frac{1}{3}$ \scriptsize \underline{-1} & 0 \scriptsize \underline{0} & 1 \scriptsize \underline{-3} & \small -$\frac{4}{3}$ \scriptsize \underline{4}\\
+	
+	\Xhline{7\arrayrulewidth}
+	
+	$c_k/a_{2k}$& \small -11 & - & - & \textit{\textbf{9}} & -3 & - & \small $0^+$ &\\
+	
+	\hdashline
+\end{tabularx}
+\newline\newline
+Меняем свободную переменную $\lambda_4$ и базисную переменную $\xi_3$ местами.\\
+$\lambda_4 \leftrightarrow \xi_3$
+\subsubsection*{3 итерация}
+Базисные переменные: $\xi_2, \lambda_2, \lambda_4$.\\
+Свободные переменный: $\lambda_1, \lambda_3, \xi_1, \xi_3$.\\\\
+\begin{tabularx}{\textwidth}{V{1}p{1.2cm}V{1}p{1.2cm}V{1}p{1.2cm}V{7}p{1.1cm}V{7}p{1.2cm}V{1}p{1.2cm}V{1}p{1.2cm}V{1}p{1.2cm}V{1}p{1.5cm}V{1}}
+	\hline
+	
+	БП & $\lambda_1$ & $\lambda_2$ & $\boldsymbol{\lambda_3}$ & $\lambda_4$ & $\xi_1$ & $\xi_2$ & $\xi_3$ & СЧ\\
+	
+	\hline
+	
+	$\phi$ & \small -20 \scriptsize -16 & \small 0 \scriptsize 0 & \underline{-8} \scriptsize -8 & \small 0  \scriptsize 0 & -4 \scriptsize 0 & 0 \scriptsize 8 & -9 \scriptsize 8 & \small 16 \scriptsize -8\\
+	
+	\hline
+	
+	$\lambda_2$ & \small 0 \scriptsize 0 & \small 1 \scriptsize 0 & \underline{0} \scriptsize 0 & \small 0 \scriptsize 0 & \small 0 \scriptsize 0 & 0 \scriptsize 0 & -1 \scriptsize 0 & \small 100 \scriptsize 0\\
+	
+	\Xhline{7\arrayrulewidth}
+	
+	$\boldsymbol{\xi_2}$ & \small -2 \scriptsize \underline{2} & \small 0 \scriptsize \underline{0} & \textbf{-1} \scriptsize 1 & \small 0 \scriptsize \underline{0} & 0 \scriptsize \underline{0} & 1 \scriptsize \underline{-1} & 1 \scriptsize \underline{-1} & \small -1 \scriptsize \underline{1}\\
+	
+	\Xhline{7\arrayrulewidth}
+	
+	$\lambda_4$ & \small -3 \scriptsize 0 & \small 0 \scriptsize 0 & \underline{0} \scriptsize 0 & \small 1 \scriptsize 0 & -1 \scriptsize 0 & 0 \scriptsize 0 & \small -3 \scriptsize 0 & \small 4 \scriptsize 0\\
+	
+	\hdashline
+	
+	$c_k/a_{2k}$& \small 10 & - & \textit{\textbf{8}} & - & - & \small $0^+$ & -9 &\\
+	
+	\hdashline
+\end{tabularx}
+\newline\newline
+Меняем свободную переменную $\lambda_3$ и базисную переменную $\xi_2$ местами.\\
+$\lambda_3 \leftrightarrow \xi_2$
+\newpage
+\subsubsection*{Результаты вычислений}
+Базисные переменные: $\lambda_2, \lambda_3, \lambda_4$.\\
+Свободные переменный: $\lambda_1, \xi_1, \xi_2, \xi_3$.\\\\
+\begin{tabularx}{\textwidth}{V{1}p{1.2cm}V{1}p{1.2cm}V{1}p{1.2cm}V{1}p{1.26cm}V{1}p{1.2cm}V{1}p{1.2cm}V{1}p{1.2cm}V{1}p{1.2cm}V{1}p{1.5cm}V{1}}
+	\hline
+	
+	БП & $\lambda_1$ & $\lambda_2$ & $\lambda_3$ & $\lambda_4$ & $\xi_1$ & $\xi_2$ & $\xi_3$ & СЧ\\
+	
+	\hline
+	
+	$\phi$ & -4 & 0 & 0 & 0 & -4 & -8 & -17 & 24\\
+	
+	\hline
+	
+	$\lambda_2$ & 0 & 1 & 0 & 0 & 0 & 0 & -1 & 100\\
+	
+	\hline
+	
+	$\lambda_3$ & 2 & 0 & 1 & 0 & 0 & -1 & -1 & 1\\
+	
+	\hline
+	
+	$\lambda_4$ & -3 & 0 & 0 & 1 & -1 & 0 & -3 & 4\\
+	
+	\hline
+\end{tabularx}
+\newline\newline
+Таким образом, получается:\\
+$\phi = 24$\\
+$\lambda_2 = 100, \lambda_3 = 1, \lambda_4 = 4$\\
+$\lambda_1 = 0, \xi_1 = 0, \xi_2 = 0, \xi_3 = 0$\\
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}\\
+\textbf{Напоминание из задания 5}
+\begin{center}
+	...
+\end{center}
+Тогда решение двойственной задачи выглядит следующим образом:\\
+$\lambda_1 = 0, \lambda_2 = 100, \lambda_3 = 1, \lambda_4 = 4$\\\\
+Функция цели:\\
+$\phi = 8\lambda_1 + 3\lambda_2 + 8\lambda_3 + 4\lambda_4 - 300 = 8*0 + 3*100 + 8*1 + 4*4 - 300 = 24$
+\begin{center}$\downarrow$\end{center}
+$\phi = 24$\\
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}\\
+\textbf{Ответ:} $\lambda_1 = 0, \lambda_2 = 100, \lambda_3 = 1, \lambda_4 = 4, \phi = 24$
+\end{document}
