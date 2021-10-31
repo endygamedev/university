@@ -68,7 +68,8 @@
 │   │   ├── task-3
 │   │   ├── task-4
 │   │   ├── task-5
-│   │   └── task-6
+│   │   ├── task-6
+│   │   └── task-7
 │   └── statistic
 │       └── task-3.nb
 ├── generate-readme

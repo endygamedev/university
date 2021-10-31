@@ -1,0 +1,212 @@
+\documentclass[14pt,a4paper,fleqn]{extarticle}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{boldline}
+\usepackage{makecell}
+\usepackage{mathtools}
+
+\graphicspath{ {./images/} }
+\setlength{\mathindent}{0pt}
+\setlength\parindent{0pt}
+
+
+\begin{document}
+	\begin{titlepage}
+		\includegraphics[scale=0.12]{logo}
+		\begin{center}
+			\textbf{МИНОБРНАУКИ РОССИИ}\\
+			\vspace{0.2cm}
+			\textbf{Федеральное государственное бюджетное образовательное учреждение высшего образования}\\
+			\textbf{«САНКТ-ПЕТЕРБУРГСКИЙ ГОСУДАРСТВЕННЫЙ ЭКОНОМИЧЕСКИЙ УНИВЕРСИТЕТ»}\\
+			\vspace{0.6cm}
+			Факультет информатики и прикладной математики\\
+			Кафедра прикладной математики и экономико-математических методов\\
+			\vspace{1cm}
+			\textbf{ОТЧЁТ}\\
+			по дисциплине:\\
+			\textbf{«Методы оптимизации»}\\
+			на тему:\\
+			\textbf{«Анализ чувствительности задачи линейной оптимизации. Задание 7»}\\
+		\end{center}
+		\vspace{1cm}
+		Направление: 01.03.02\\
+		Обучающийся: Бронников Егор Игоревич\\
+		Группа: ПМ-1901\\
+		\vfill
+		\begin{center}
+			Санкт-Петербург\\
+			2021\\
+		\end{center}
+	\end{titlepage}
+
+\section*{Дано}
+Целевая функция:\\
+$f = -x_1+x_2 \longrightarrow max$\\\\
+Ограничения:
+\begin{align*}
+	\begin{cases}
+		-x_1 + 2x_2 \geq -1\\
+		-2x_1 + x_2 \leq 2\\
+		3x_1 + x_2 \leq 3\\
+	\end{cases}
+\end{align*}
+$x_1 \geq 0, x_2 \geq 0$
+
+\section*{Задание}
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}\\
+\textbf{Напоминание из задания 5}\\
+Каноническая форма прямой задачи:\\
+1. Вводим слабые переменные $y_1 \geq 0, y_2 \geq 0, y_3 \geq 0$:\\
+$-x_1 + 2x_2 - y_1 = -1$\\
+$-2x_1 + x_2 + y_2 = 2$\\
+$3x_1 + x_2 + y_3 = 3$\\
+
+2. Делаем правые части равенств положительными:\\
+$x_1 - 2x_2 + y_1 = 1$\\
+$-2x_1 + x_2 + y_2 = 2$\\
+$3x_1 + x_2 + y_3 = 3$\\
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}\\
+\newpage
+
+\subsubsection*{Начальное допустимое решение}
+\begin{tabularx}{\textwidth}{V{1}p{3.15cm}V{1}p{1.2cm}V{1}p{1.2cm}V{1}p{1.2cm}V{1}p{1.26cm}V{1}p{1.2cm}V{1}p{1.2cm}V{1}p{1.2cm}V{1}}
+	\hline
+	\small № ограничения & БП & $x_1$ & $x_2$ & $y_1$ & $y_2$ & $y_3$ & СЧ\\
+	\hline
+	- & f & 1 & -1 & 0 & 0 & 0 & 0\\
+	\hline
+	1 & $y_1$ & 1 & -2 & 1 & 0 & 0 & 1\\
+	\hline
+	2 & $y_2$ & -2 & 1 & 0 & 1 & 0 & 2\\
+	\hline
+	3 & $y_3$ & 3 & 1 & 0 & 0 & 1 & 3\\
+	\hline
+\end{tabularx}
+\subsubsection*{Оптимальное допустимое решение}
+\begin{tabularx}{\textwidth}{V{1}p{3.15cm}V{1}p{1.2cm}V{1}p{1.2cm}V{1}p{1.2cm}V{1}p{1.26cm}V{1}p{1.2cm}V{1}p{1.2cm}V{1}p{1.2cm}V{1}}
+	\hline
+	\small № ограничения & БП & $x_1$ & $x_2$ & $y_1$ & $y_2$ & $y_3$ & СЧ\\
+	\hline
+	- & f & 0 & 0 & 0 & 0.8 & 0.2 & 2.2\\
+	\hline
+	1 & $y_1$ & 0 & 0 & 1 & 1.4 & 0.6 & 5.6\\
+	\hline
+	2 & $x_2$ & 0 & 1 & 0 & 0.6 & 0.4 & 2.4\\
+	\hline
+	3 & $x_1$ & 1 & 0 & 0 & -0.2 & 0.2 & 0.2\\
+	\hline
+\end{tabularx}
+\subsection*{Статус ресурса}
+В оптимальном решении ограничения-неравенства, соответствующие переменным $y_2$ и $y_3$, выполняются как равенства, являются активными ограничениями и определяются как дефицитные. Ограничение №1 в оптимальном решение является пассивным и поэтому ресурс 1 является недефицитным.\\\\
+Таким образом:\\
+2, 3 -- дефицитные ресурсы\\
+1 -- недефицитный ресурс, его остаток равен 5.6
+\subsection*{Изменение запаса ресурса}
+Поэтапно проварьируем наши ресурсы в соответсвии с правилом:
+\begin{center}
+	$y_i + \smashoperator[r]{\sum_{i=1}^{P}} a_{ji} x_i = b_j \geq 0 \hspace*{0.5cm} \rightarrow \hspace*{0.5cm} y_i + \smashoperator[r]{\sum_{i=1}^{P}} a_{ji} x_i = b_j + \delta b_j$
+\end{center}
+\newpage
+\subsubsection*{Варьирование ресурсов $\boldsymbol{b_2}$, $\boldsymbol{b_3}$ и $\boldsymbol{b_1}$}
+\begin{tabularx}{\textwidth}{V{1}p{3.15cm}V{1}p{0.75cm}V{1}p{3cm}V{1}p{3cm}V{6}p{2.95cm}V{1}}
+	\hline
+	\small № ограничения & БП & \small Ресурс 2 & \small Ресурс 3 & \small Ресурс 1\\
+	\hline
+	- & f & \small $2.2 + 0.8\delta b_2$ & \small $2.2 + 0.2\delta b_3$ & 2.2\\
+	\hline
+	1 & $y_1$ & \small $5.6 + 1.4 \delta b_2$ & \small $5.6 + 0.6 \delta b_3$ & \small $5.6 + \delta b_1$\\
+	\hline
+	2 & $x_2$ & \small $2.4 + 0.6 \delta b_2$ & \small $2.4 + 0.4 \delta b_3$ & 2.4\\
+	\hline
+	3 & $x_1$ & \small $0.2 - 0.2 \delta b_2$ & \small $0.2 + 0.2 \delta b_3$ & 0.2\\
+	\hline
+\end{tabularx}
+\newline\newline
+Наше оптимальное решение должно сохранять свою оптимальность, следовательно можно составить следующий набор неравенств:\\
+$\delta b_2: 5.6 + 1.4 \delta b_2 \geq 0, \hspace*{0.2cm} 2.4 + 0.6 \delta b_2 \geq 0, \hspace*{0.2cm} 0.2 - 0.2 \delta b_2 \geq 0;$\\
+$\delta b_3: 5.6 + 0.6 \delta b_3 \geq 0, \hspace*{0.2cm} 2.4 + 0.4 \delta b_3 \geq 0, \hspace*{0.2cm} 0.2 + 0.2 \delta b_3 \geq 0.$\\
+$\delta b_1: 5.6 + \delta b_1 \geq 0$\\
+
+Отсюда следует, что вариации ресурсов, находятся в диапазонах:
+\begin{center}
+	$-4 \leq \delta b_2 \leq 1, \hspace*{0.3cm} -1 \leq \delta b_3$
+\end{center}
+При улучшении значения целевой функции:
+\begin{center}
+	$0 \leq \delta b_2 \leq 1, \hspace*{0.3cm} 0 \leq \delta b_3$
+\end{center}
+Если мы будет варьировать 1 ресурс, то получим:
+\begin{center}
+	$\delta b_1 \geq -5.6 \hspace*{0.5cm}$
+\end{center}
+С учётом избыточности: $\delta b_1 = -5.6$.\\\\
+Если мы будем варьировать все ресурсы, то мы получаем итоговое выражение:\\
+$f^* + \delta f = 2.2 + 0.8\delta b_2 + 0.2\delta b_3 \longrightarrow max$\\
+$y_1 + \delta y_1 = 5.6 + 1.4 \delta b_2 + 0.6 \delta b_3$\\
+$x_2 + \delta x_2 = 2.4 + 0.6 \delta b_2 + 0.4 \delta b_3$\\
+$x_1 + \delta x_1 = 0.2 - 0.2 \delta b_2 + 0.2 \delta b_3$\\
+\newpage
+Все $\delta b_i$ ($\forall i = 2,3$) должны удовлетворять системе неравенств:\\
+$5.6 + 1.4 \delta b_2 + 0.6 \delta b_3 \geq 0 $\\
+$2.4 + 0.6 \delta b_2 + 0.4 \delta b_3 \geq 0$\\
+$0.2 - 0.2 \delta b_2 + 0.2 \delta b_3 \geq 0$
+\subsection*{Ценность ресурса}
+Ценность ресурса $j$ показывает скорость изменения оптимальной целевой функции $f^*$ при вариации $\delta b_j$ его запаса $b_j$. Скорость изменения $f^*$ определяется производной $f^*$ по объёму ресурса $b_j$, поэтому получаем следующий результат:
+\begin{center}
+	$f^* + \delta f = 2.2 + 0.8\delta b_2 + 0.2\delta b_3 \longrightarrow max$
+\end{center}
+\begin{center}
+	\large $\frac{df^*}{db_1} = 0, \hspace*{0.2cm} \frac{df^*}{db_2} = 0.8, \hspace*{0.2cm} \frac{df^*}{db_3} = 0.2$
+\end{center}
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}\\
+\textbf{Напоминание из задания 5}
+\begin{center}
+	...
+\end{center}
+Тогда решение двойственной задачи выглядит следующим образом:\\
+$\lambda_1 = 0, \lambda_2 = 0.8, \lambda_3 = 0.2$\\
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}\\\\
+Тогда условие: \large $|\frac{df^*}{db_j}| = |\lambda_j^*|$ \normalsize --- выполняется
+\subsection*{Изменение коэффициентов целевой функции}
+Целевая функция:\\
+$f = -x_1+x_2 \longrightarrow max$\\\\
+Проварьируем каждый из коэффициентов при переменных $x_1$ и $x_2$ в целевой функции:\\
+$f + (1 + \delta c_1)x_1 - x_2 = 0$\\
+$f + x_1 + (-1 + \delta c_2)x_2 = 0$
+\newpage
+\subsubsection*{Коэффициенты оптимальной целевой функции}
+\begin{tabularx}{\textwidth}{V{1}p{1.2cm}V{1}p{1.2cm}V{1}p{1.2cm}V{1}p{1.2cm}V{1}p{2.4cm}V{1}p{2.4cm}V{1}p{2.445cm}V{1}}
+	\hline
+	\small $\delta c$ & $x_1$ & $x_2$ & $y_1$ & $y_2$ & $y_3$ & СЧ\\
+	\hline
+	\small $\delta c_1$ & 0 & 0 & 0 & \small $0.8-0.2\delta c_1$ & \small $0.2+0.2\delta c_1$ & \small $2.2+0.2\delta c_1$\\
+	\hline
+	\small $\delta c_2$ & 0 & 0 & 0 & \small $0.8+0.6\delta c_2$ & \small $0.2+0.4\delta c_2$ & \small $2.2+2.4\delta c_2$\\
+	\hline
+\end{tabularx}
+\newline\newline
+Эта таблица показывает, что произойдёт если мы будет варьировать коэффициенты целевой функции. Мы можем варьировать эти коэффициенты пока целевая функция остаётся оптимальной, то есть пока эти коэффициенты не меняют своего знака. ($\geq 0$ в данном случае)\\\\
+Таким образом, мы получаем:\\
+$\delta c_1: 0.8 - 0.2\delta c_1 \geq 0, \hspace*{0.2cm} 0.2+0.2\delta c_1 \geq 0$\\
+$\delta c_2: 0.8+0.6\delta c_2 \geq 0, \hspace*{0.2cm} 0.2+0.4\delta c_2 \geq 0$\\\\
+Если мы решим эти неравенства, то получим:
+\begin{center}
+	$-1 \leq \delta c_1 \leq 4, \hspace*{0.5cm} -0.5 \leq \delta c_2 $
+\end{center}
+При одновременном варьировании нескольких исходных коэффициентов целевой функции мы получаем следующий результат:\\\\
+$f = (-1 + \delta c_1)x_1 + (1 + \delta c_2)x_2$\\\\
+\small $f + (0.8 - 0.2\delta c_1 + 0.6\delta c_1)y_2 + (0.2 + 0.2\delta c_2 + 0.4\delta c_2)y_3 = 2.2 + 0.2\delta c_1 + 2.4\delta c_2$
+\begin{center}
+	$\downarrow$
+\end{center}
+\normalsize$f = 2.2 + 0.2\delta c_1 + 2.4\delta c_2$\\\\
+Тогда ограничения на размах всех вариаций записывается как:\\
+$0.8 - 0.2\delta c_1 + 0.6\delta c_1 \geq 0$\\
+$0.2 + 0.2\delta c_2 + 0.4\delta c_2 \geq 0$
+\section*{Выводы}
+Таким образом, мы можем посмотреть что будет происходить с целевой функции при изменении коэффициентов целевой функции и при изменении запаса ресурса.
+\end{document}
