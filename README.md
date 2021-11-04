@@ -9,7 +9,6 @@
 │   │   ├── tasks-7
 │   │   └── tasks-8
 │   ├── numerical-methods
-│   │   ├── laboratory
 │   │   ├── task-1
 │   │   ├── task-2
 │   │   ├── task-3
@@ -18,7 +17,6 @@
 │   │   ├── task-6
 │   │   └── task-7
 │   └── programming-languages
-│       ├── homeworks
 │       ├── tasks-1
 │       ├── tasks-2
 │       ├── tasks-3
@@ -36,7 +34,8 @@
 │   ├── analytical-marketing
 │   │   ├── task-1
 │   │   ├── task-2
-│   │   └── task-3
+│   │   ├── task-3
+│   │   └── task-4
 │   ├── database-management-systems
 │   │   ├── data
 │   │   ├── script1.sql
@@ -44,14 +43,16 @@
 │   │   ├── script3.sql
 │   │   ├── script4.sql
 │   │   ├── script5.sql
-│   │   └── script6.sql
+│   │   ├── script6.sql
+│   │   └── script7.sql
 │   ├── math-modeling
 │   │   ├── task-1
 │   │   ├── task-2
 │   │   ├── task-3
 │   │   ├── task-4
 │   │   ├── task-5
-│   │   └── task-6
+│   │   ├── task-6
+│   │   └── task-7
 │   ├── network
 │   │   ├── task-1
 │   │   ├── task-2
@@ -70,7 +71,9 @@
 │   │   ├── task-2
 │   │   ├── task-3
 │   │   ├── task-4
-│   │   └── task-5
+│   │   ├── task-5
+│   │   ├── task-6
+│   │   └── task-7
 │   └── statistic
 │       └── task-3.nb
 ├── generate-readme
