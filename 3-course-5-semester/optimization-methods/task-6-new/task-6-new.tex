@@ -1,0 +1,186 @@
+\documentclass[14pt,a4paper,fleqn]{extarticle}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{boldline}
+\usepackage{makecell}
+\usepackage{arydshln}
+
+\graphicspath{ {./images/} }
+\setlength{\mathindent}{0pt}
+\setlength\parindent{0pt}
+
+
+\begin{document}
+	\begin{titlepage}
+		\includegraphics[scale=0.12]{logo}
+		\begin{center}
+			\textbf{МИНОБРНАУКИ РОССИИ}\\
+			\vspace{0.2cm}
+			\textbf{Федеральное государственное бюджетное образовательное учреждение высшего образования}\\
+			\textbf{«САНКТ-ПЕТЕРБУРГСКИЙ ГОСУДАРСТВЕННЫЙ ЭКОНОМИЧЕСКИЙ УНИВЕРСИТЕТ»}\\
+			\vspace{0.6cm}
+			Факультет информатики и прикладной математики\\
+			Кафедра прикладной математики и экономико-математических методов\\
+			\vspace{1cm}
+			\textbf{ОТЧЁТ}\\
+			по дисциплине:\\
+			\textbf{«Методы оптимизации»}\\
+			на тему:\\
+			\textbf{«Решение задачи линейного программирования двойственным симплекс-методом. Задание 6»}\\
+		\end{center}
+		\vspace{1cm}
+		Направление: 01.03.02\\
+		Обучающийся: Бронников Егор Игоревич\\
+		Группа: ПМ-1901\\
+		\vfill
+		\begin{center}
+			Санкт-Петербург\\
+			2021\\
+		\end{center}
+	\end{titlepage}
+	Рассмотрим и решим двойственную задачу для прямой задачи 2.1.
+	\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}\\
+	\textbf{Напоминание из задания 5}\\\\
+	Целевая функция:\\
+	$f = -x_1+x_2 \longrightarrow max$\\\\
+	Ограничения:
+	\begin{align*}
+		\begin{cases}
+			-x_1 + 2x_2 \geq -1\\
+			-2x_1 + x_2 \leq 2\\
+			3x_1 + x_2 \leq 3\\
+		\end{cases}
+	\end{align*}
+	$x_1 \geq 0, x_2 \geq 0$
+	\subsection*{Задание}
+	\subsubsection*{Каноническая форма прямой задачи}
+	1. Вводим слабые переменные $y_1 \geq 0, y_2 \geq 0, y_3 \geq 0$:\\
+	$-x_1 + 2x_2 - y_1 = -1$\\
+	$-2x_1 + x_2 + y_2 = 2$\\
+	$3x_1 + x_2 + y_3 = 3$\\
+	
+	2. Делаем правые части равенств положительными:\\
+	$x_1 - 2x_2 + y_1 = 1$\\
+	$-2x_1 + x_2 + y_2 = 2$\\
+	$3x_1 + x_2 + y_3 = 3$\\
+	
+	Таким образом, прямая задача сведена к канонической форме.
+	\newpage
+	\subsubsection*{Формулируем двойственную задачу}
+	Функция цели:\\
+	$\phi = -\lambda_1 + 2\lambda_2 + 3\lambda_3 \longrightarrow min$\\\\
+	Ограничения:\\
+	$\lambda_1 - 2\lambda_2 + 3\lambda_3 \geq -1$\\
+	$-2\lambda_1 + \lambda_2 + \lambda_3 \geq 1$\\
+	$\lambda_1 \geq 0, \lambda_2 \geq 0, \lambda_3 \geq 0$\\
+	\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+	\section*{Дано}
+	Функция цели:\\
+	$\phi = -\lambda_1 + 2\lambda_2 + 3\lambda_3 \longrightarrow min$\\\\
+	$\lambda_1 - 2\lambda_2 + 3\lambda_3 \geq -1$\\
+	$-2\lambda_1 + \lambda_2 + \lambda_3 \geq 1$\\
+	$\lambda_1 \geq 0, \lambda_2 \geq 0, \lambda_3 \geq 0$
+	\section*{Задание}
+	\subsection*{Каноническая форма}
+	Функция цели:\\
+	$\phi = -\lambda_1 + 2\lambda_2 + 3\lambda_3 \longrightarrow min$\\\\
+	1. Вводим слабые переменные $\xi_1 \geq 0, \xi_2 \geq 0$:\\
+	$\lambda_1 - 2\lambda_2 + 3\lambda_3 - \xi_1 = -1$\\
+	$-2\lambda_1 + \lambda_2 + \lambda_3 - \xi_2 = 1$\\
+	$\lambda_1 \geq 0, \lambda_2 \geq 0, \lambda_3 \geq 0$
+	\newpage
+	2. Делаем правые части равенств положительными:\\
+	$-\lambda_1 + 2\lambda_2 - 3\lambda_3 + \xi_1 = 1$\\
+	$-2\lambda_1 + \lambda_2 + \lambda_3 - \xi_2 = 1$\\
+	$\lambda_1 \geq 0, \lambda_2 \geq 0, \lambda_3 \geq 0$\\
+	
+	Таким образом, задача сведена к канонической форме.\\\\
+	Отсюда получается:\\
+	$\xi_1 = 1 + \lambda_1 - 2\lambda_2 + 3\lambda_3$\\
+	$\xi_2 = -1 - 2\lambda_1 + \lambda_2 + \lambda_3$\\\\
+	Базисное решение:
+	\begin{center}
+		$\xi_1 = 1, \xi_2 = -1, \lambda_i = 0 \hspace*{0.3cm} \forall i = \overline{1,3}$
+	\end{center}
+	которое не удовлетворяет естественным ограничениям:
+	\begin{center}
+		$\xi_i \geq 0 \hspace*{0.3cm} \forall i = \overline{1,2}$
+	\end{center}
+	и поэтому оно не является допустимым.
+	\subsection*{Двойственный симлекс-метод}
+	\subsubsection*{1 итерация}
+	Базисные переменные: $\xi_1, \xi_2$.\\
+	Свободные переменный: $\lambda_1, \lambda_2, \lambda_3$.\\\\
+	\begin{tabularx}{\textwidth}{V{1}p{1.7cm}V{1}p{1.7cm}V{5}p{1.7cm}V{4}p{1.7cm}V{1}p{1.7cm}V{1}p{1.7cm}V{1}p{1.74cm}V{1}}
+		\hline
+		БП & $\lambda_1$ & $\boldsymbol{\lambda_2}$ & $\lambda_3$ & $\xi_1$ & $\xi_2$ & СЧ\\
+		\hline
+		$\phi$ & 1 \footnotesize 4 & \underline{-2} \scriptsize -2 & -3 \footnotesize -2 & 0 \footnotesize 0 & 0 \footnotesize 2 & 0 \footnotesize -2\\
+		\hline
+		$\xi_1$ & -1 \footnotesize -4 & \underline{2} \scriptsize 2 & -3 \footnotesize 2 & 1 \footnotesize 0 & 0 \footnotesize -2 & 1 \footnotesize 2\\
+		\Xhline{5\arrayrulewidth}
+		$\boldsymbol{\xi_2}$ & 2 \footnotesize \underline{-2} & \textbf{-1} \scriptsize 1 & -1 \footnotesize \underline{1} & 0 \footnotesize \underline{0} & 1 \footnotesize \underline{-1} & -1 \footnotesize \underline{1}\\
+		\Xhline{5\arrayrulewidth}
+		& & \textbf{\textit{2}} & 3 & & &\\
+		\hdashline
+	\end{tabularx}
+	\newline\newline
+	Меняем свободную переменную $\lambda_2$ и базисную переменную $\xi_2$ местами.\\
+	$\lambda_2 \leftrightarrow \xi_2$
+	\newpage
+	\subsubsection*{2 итерация}
+	Базисные переменные: $\xi_1, \lambda_2$.\\
+	Свободные переменный: $\lambda_1, \lambda_3, \xi_2$.\\\\
+	\begin{tabularx}{\textwidth}{V{1}p{1.7cm}V{1}p{1.7cm}V{1}p{1.7cm}V{5}p{1.7cm}V{5}p{1.7cm}V{1}p{1.7cm}V{1}p{1.74cm}V{1}}
+		\hline
+		БП & $\lambda_1$ & $\lambda_2$ & $\boldsymbol{\lambda_3}$ & $\xi_1$ & $\xi_2$ & СЧ\\
+		\hline
+		$\phi$ & -3 \footnotesize $\frac{3}{5}$ & 0 \scriptsize 0 & \underline{-1} \footnotesize -1 & 0 \footnotesize $\frac{1}{5}$ & -2 \footnotesize $\frac{2}{5}$ & 2 \footnotesize -$\frac{1}{5}$\\
+		\Xhline{5\arrayrulewidth}
+		$\boldsymbol{\xi_1}$ & 3 \footnotesize \underline{-$\frac{3}{5}$} & 0 \scriptsize \underline{0} & \textbf{-5} \footnotesize 1 & 1 \footnotesize \underline{-$\frac{1}{5}$} & 2 \footnotesize \underline{-$\frac{2}{5}$} & -1 \footnotesize \underline{$\frac{1}{5}$}\\
+		\Xhline{5\arrayrulewidth}
+		$\lambda_2$ & -2 \footnotesize -$\frac{3}{5}$ & 1 \scriptsize 0 & \underline{1} \footnotesize 1 & 0 \footnotesize -$\frac{1}{5}$ & -1 \footnotesize -$\frac{2}{5}$ & 1 \footnotesize $\frac{1}{5}$\\
+		\hdashline
+		& & & \small $\boldsymbol{\frac{1}{5}}$ & & &\\
+		\hdashline
+	\end{tabularx}
+	\newline\newline
+	Меняем свободную переменную $\lambda_3$ и базисную переменную $\xi_1$ местами.\\
+	$\lambda_3 \leftrightarrow \xi_1$
+	\subsubsection*{Результаты вычислений}
+	Базисные переменные: $\lambda_2, \lambda_3$.\\
+	Свободные переменный: $\lambda_1, \xi_1, \xi_2$.\\\\
+	\begin{tabularx}{\textwidth}{V{1}p{1.7cm}V{1}p{1.7cm}V{1}p{1.7cm}V{1}p{1.7cm}V{1}p{1.7cm}V{1}p{1.7cm}V{1}p{1.85cm}V{1}}
+		\hline
+		БП & $\lambda_1$ & $\lambda_2$ & $\lambda_3$ & $\xi_1$ & $\xi_2$ & СЧ\\
+		\hline
+		$\phi$ & \small -$\frac{18}{5}$ & 0 & 0 & \small -$\frac{1}{5}$ & \small -$\frac{12}{5}$ & \small $\frac{11}{5}$\\
+		\hline
+		$\lambda_3$ & \small -$\frac{3}{5}$ & 0 & 1 & \small -$\frac{1}{5}$ & \small -$\frac{2}{5}$ & \small $\frac{1}{5}$\\
+		\hline
+		$\lambda_2$ & \small -$\frac{7}{5}$ & 1 & 1 & \small $\frac{1}{5}$ & \small -$\frac{3}{5}$ & \small $\frac{4}{5}$\\
+		\hline
+	\end{tabularx}
+	\newline\newline
+	Таким образом, получается:\\
+	$\phi = \frac{11}{5}$\\
+	$\lambda_2 = \frac{4}{5}, \lambda_3 = \frac{1}{5}$\\
+	$\lambda_1 = 0, \xi_1 = 0, \xi_2 = 0$\\
+	\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}\\
+	\textbf{Напоминание из задания 5}
+	\begin{center}
+		...
+	\end{center}
+	Тогда решение двойственной задачи выглядит следующим образом:\\
+	$\lambda_1 = 0, \lambda_2 = \frac{4}{5}, \lambda_3 = \frac{1}{5}$\\\\
+	Функция цели:\\
+	$\phi = -\lambda_1 + 2\lambda_2 + 3\lambda_3 = \frac{8}{5} + \frac{3}{5} = \frac{11}{5}$
+	\begin{center}$\downarrow$\end{center}
+	$\phi = \frac{11}{5} = 2.2$\\
+	\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}\\\\
+	\textbf{Ответ:} $\lambda_1 = 0, \lambda_2 = \frac{4}{5}, \lambda_3 = \frac{1}{5}, \phi = \frac{11}{5}$
+\end{document}
