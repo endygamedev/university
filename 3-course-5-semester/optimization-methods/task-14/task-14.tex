@@ -1,0 +1,209 @@
+\documentclass[14pt,a4paper,fleqn]{extarticle}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{boldline}
+\usepackage{makecell}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\graphicspath{ {./images/} }
+\setlength{\mathindent}{0pt}
+\setlength\parindent{0pt}
+
+
+\begin{document}
+	\begin{titlepage}
+		\includegraphics[scale=0.12]{logo}
+		\begin{center}
+			\textbf{МИНОБРНАУКИ РОССИИ}\\
+			\vspace{0.2cm}
+			\textbf{Федеральное государственное бюджетное образовательное учреждение высшего образования}\\
+			\textbf{«САНКТ-ПЕТЕРБУРГСКИЙ ГОСУДАРСТВЕННЫЙ ЭКОНОМИЧЕСКИЙ УНИВЕРСИТЕТ»}\\
+			\vspace{0.6cm}
+			Факультет информатики и прикладной математики\\
+			Кафедра прикладной математики и экономико-математических методов\\
+			\vspace{1cm}
+			\textbf{ОТЧЁТ}\\
+			по дисциплине:\\
+			\textbf{«Методы оптимизации»}\\
+			на тему:\\
+			\textbf{«Задание 14. Условный экстремум»}\\
+		\end{center}
+		\vspace{1cm}
+		Направление: 01.03.02\\
+		Обучающийся: Бронников Егор Игоревич\\
+		Группа: ПМ-1901\\
+		\vfill
+		\begin{center}
+			Санкт-Петербург\\
+			2021\\
+		\end{center}
+	\end{titlepage}
+	\section*{Дано}
+	Функция:\\
+	$f = 2x_1^2 + 3x_2^2 + 4x_3^2 + 2x_1x_2 + 2x_1x_3 - x_2x_3 - 3x_1 - 5x_2 - 55x_3$\\
+	
+	Ограничения:\\
+	$2x_1 - x_2 + x_3 = -2$\\
+	$x_1 - 2x_2 + 3x_3 = -7$
+	
+	\section*{Задание 1}
+	\textbf{Условие:}\\
+	Составить функцию Лагранжа.\\
+	
+	\textbf{Решение:}\\
+	Составим функцию Лагранжа $L(\Lambda, X)$:\\
+	
+	$L(\Lambda, X) = 2x_1^2 + 3x_2^2 + 4x_3^2 + 2x_1x_2 + 2x_1x_3 - x_2x_3 - 3x_1 - 5x_2 - 55x_3 + \lambda_1(2x_1 - x_2 + x_3 + 2) + \lambda_2(x_1 - 2x_2 + 3x_3 + 7)$
+	
+	\newpage
+	\section*{Задание 2}
+	\textbf{Условие:}\\
+	Определить стационарную точку и проверить её на экстремум.\\
+	
+	\textbf{Решение:}\\
+	\textit{Способ 1:}\\
+	Составим и решим систему:\\
+	
+	\scalebox{1}{
+		$\begin{cases}
+			\vspace{0.3cm}
+			\dfrac{dL(\Lambda, X)}{dx_1} = 4x_1 + 2x_2 + 2x_3 - 3 + 2\lambda_1 + \lambda_2 = 0\\
+			\vspace{0.3cm}
+			\dfrac{dL(\Lambda, X)}{dx_2} = 6x_2 + 2x_1 - x_3 - 5 - \lambda_1 - 2\lambda_2 = 0\\
+			\vspace{0.3cm}
+			\dfrac{dL(\Lambda, X)}{dx_3} = 8x_3 + 2x_1 - x_2 - 55 + \lambda_1 + 3\lambda_2 = 0\\
+			\vspace{0.3cm}
+			\dfrac{dL(\Lambda, X)}{d\lambda_1} = 2x_1 - x_2 + x_3 + 2 = 0\\
+			\dfrac{dL(\Lambda, X)}{d\lambda_2} = x_1 - 2x_2 + 3x_3 + 7 = 0\\
+		\end{cases}$}\\\\
+	
+	Решая данную систему, получим стационарную точку, вектор параметров Лагранжа и значение функции в стационарной точке:\\
+	
+	$Y = (x_1, x_2, x_3) = (\dfrac{5}{4}, \dfrac{21}{4}, \dfrac{3}{4}) = (1.25, 5.25, 0.75)$\\\\
+	$\Lambda = (\lambda_1, \lambda_2) = (-\dfrac{75}{4}, \dfrac{47}{2}) = (-18.75, 23.5)$\\\\
+	$f(\dfrac{5}{4}, \dfrac{21}{4}, \dfrac{3}{4}) = \dfrac{223}{8}$\\
+	
+	Найдём такие вектора для которых $grad \psi_j (Y) \cdot \delta X = 0$:\\
+	$j = 1: 2\delta x_1 - \delta x_2 + \delta x_3 = 0$\\
+	$j = 2: \delta x_1 - 2\delta x_2 + 3\delta x_3 = 0$
+	
+	\newpage
+	
+	Решим систему приняв $\delta x_3$ за параметр:\\
+	
+	\scalebox{1}{
+	$\begin{cases}
+		\vspace{0.3cm}
+		2\delta x_1 - \delta x_2 = -\delta x_3\\
+		\delta x_1 - 2\delta x_2 = -3\delta x_3
+	\end{cases}$
+	$\Rightarrow$
+	$\begin{cases}
+	\vspace{0.3cm}
+	\delta x_1 = \dfrac{\delta x_3}{3}\\
+	\delta x_2 = \dfrac{5 \delta x_3}{3}
+	\end{cases}$}\\\\
+	
+	Получили следующий вектор: $\delta X = (\dfrac{\delta x_3}{3}, \dfrac{5 \delta x_3}{3}, \delta x_3)$\\
+	Составим матрицу вторых производных $L^{''}_{XX}$:
+	\begin{align*}
+		L^{''}_{XX} = \begin{pmatrix}
+			4 & 2 & 2\\
+			2 & 6 & -1\\
+			2 & -1 & 8\\
+		\end{pmatrix}
+	\end{align*}
+
+	Теперь определим знак квадратичной формы:\\
+	$\delta X \cdot L^{''}_{XX} \cdot \delta X^T = \dfrac{76\delta x^2_3}{3} > 0 \Rightarrow Y = (\dfrac{5}{4}, \dfrac{21}{4}, \dfrac{3}{4})$ -- точка минимума.\\
+	
+	\textit{Способ 2:}\\
+	Проверим точку на экстремум при помощи матрицы Гессе:
+	\begin{align*}
+		H(\Lambda, X) = \begin{pmatrix}
+			0 & 0 & 2 & -1 & 1\\
+			0 & 0 & 1 & -2 & 3\\
+			2 & 1 & 4 & 2 & 2\\
+			-1 & -2 & 2 & 6 & -1\\
+			1 & 3 & 2 & -1 & 8\\
+		\end{pmatrix}
+	\end{align*}
+	В рассматриваемой задаче N = 3 и M = 2, необходимо посчитать миноры порядка 4 и 5, проверить их на знаки.\\
+	
+	$M_4(H) = 9 > 0, \hspace*{0.2cm} M_5(H) = 228 > 0$\\
+	Оба минора положительны, значит точка $(\dfrac{5}{4}, \dfrac{21}{4}, \dfrac{3}{4})$ -- точка минимума.
+	
+	\newpage
+	\section*{Задание 3}
+	\textbf{Условие:}\\
+	Найти стационарную точку методом Якоби, проверить её на экстремум и исследовать решение на чувствительность.\\
+	
+	\textbf{Решение:}\\
+	Выберем в качестве свободной перменной -- $x_3 (Z)$, а $x_1$ и $x_2 (S)$ в качестве базисных. Посчитаем градиенты целевой функции по этим переменным:\\
+	$grad_Z f(X) = (\dfrac{df}{dx_3}) = (8x_3 + 2x_1 - x_2 - 55)$\\\\
+	$grad_S f(X) = (\dfrac{df}{dx_1}, \dfrac{df}{dx_2}) = (4x_1 + 2x_2 + 2x_3 - 3, 6x_2 + 2x_1 - x_3 - 5)$\\
+	
+	Теперь посчитаем матрицу управления и матрицу Якоби:\\\\
+	$J(X) = \begin{pmatrix}
+			\dfrac{d\psi_1}{dx_1} & \dfrac{d\psi_1}{dx_2}\\
+			\dfrac{d\psi_2}{dx_1} & \dfrac{d\psi_2}{dx_2}\\
+		\end{pmatrix} =
+		\begin{pmatrix}
+			2 & -1\\
+			1 & -2\\
+		\end{pmatrix}\\
+	$\\\\
+	$C(X) = \begin{pmatrix}
+			\dfrac{d\psi_1}{dx_3}\\
+			\dfrac{d\psi_2}{dx_3}\\
+		\end{pmatrix} =
+		\begin{pmatrix}
+			1\\
+			3\\
+		\end{pmatrix}$\\\\
+	Составим условный градиент -- $grad_* f(x)$:\\\\
+	$grad_* f(X) = grad_Z f(X) - grad_S f(X) J^{-1} C =$\\\\
+	$= (8x_3 + 2x_1 - x_2 - 55) - (4x_1 + 2x_2 + 2x_3 - 3, 6x_2 + 2x_1 - x_3 - 5) J^{-1} C =$\\\\
+	$(-\dfrac{193}{3} + \dfrac{20x_1}{3} + \dfrac{29x_2}{3} + 7x_3)$
+	\newpage
+	Решаем систему, чтобы найти стационарную точку:\\\\
+		\scalebox{1}{
+		$\begin{cases}
+			\vspace{0.3cm}
+			grad_*f(x) = 0\\
+			\vspace{0.3cm}
+			2x_1 - x_2 + x_3 + 2 = 0\\
+			x_1 - 2x_2 + 3x_3 + 7 = 0
+		\end{cases}$
+		$\Rightarrow$
+		$\begin{cases}
+			\vspace{0.3cm}
+			x_1 = \dfrac{5}{4} = 1.25\\
+			\vspace{0.3cm}
+			x_2 = \dfrac{21}{4} = 5.25\\
+			x_3 = \dfrac{3}{4} = 0.75\\
+		\end{cases}$}\\\\
+	
+	$\delta x_3 = -J^{-1} C \begin{pmatrix}
+		\delta x_1\\
+		\delta x_2\\
+	\end{pmatrix}$\\\\
+	Проверим на экстремум, составив матрицу Гессе:\\
+	$H(Y) = \begin{pmatrix}
+		\dfrac{grad_*f(Y)}{dx_3}\\
+	\end{pmatrix} = 
+	\begin{pmatrix}
+		\dfrac{29}{3}\\
+	\end{pmatrix}$\\\\
+	Матрица Гессе положительна определена и по достаточному условию экстремума точка $Y = (1.25, 5.25, 0.75)$ является точкой минимума.\\\\
+	\textbf{Анализ чувствительности}\\\\
+	$grad_S f(Y) = (14, \dfrac{113}{4})$\\\\
+	Расчитаем коэффициенты чувствительности:\\
+	$\dfrac{\delta f(Y)}{\delta B} = grad_S f(Y)J^{-1}(Y) = (\dfrac{75}{4}, -\dfrac{47}{2}) = (18.75, -23.5)$\\\\
+	При увеличении $b_1$ на единицу, функция цели увеличится на 18.75, а при увеличении $b_2$ на единицу, функция цели уменьшится на $-23.5$. Целевая функция будет быстрее возрастать по первой переменной.
+\end{document}

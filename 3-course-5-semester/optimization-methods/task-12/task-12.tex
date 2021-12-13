@@ -1,0 +1,94 @@
+\documentclass[14pt,a4paper,fleqn]{extarticle}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{boldline}
+\usepackage{makecell}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\graphicspath{ {./images/} }
+\setlength{\mathindent}{0pt}
+\setlength\parindent{0pt}
+
+
+\begin{document}
+	\begin{titlepage}
+		\includegraphics[scale=0.12]{logo}
+		\begin{center}
+			\textbf{МИНОБРНАУКИ РОССИИ}\\
+			\vspace{0.2cm}
+			\textbf{Федеральное государственное бюджетное образовательное учреждение высшего образования}\\
+			\textbf{«САНКТ-ПЕТЕРБУРГСКИЙ ГОСУДАРСТВЕННЫЙ ЭКОНОМИЧЕСКИЙ УНИВЕРСИТЕТ»}\\
+			\vspace{0.6cm}
+			Факультет информатики и прикладной математики\\
+			Кафедра прикладной математики и экономико-математических методов\\
+			\vspace{1cm}
+			\textbf{ОТЧЁТ}\\
+			по дисциплине:\\
+			\textbf{«Методы оптимизации»}\\
+			на тему:\\
+			\textbf{«Задание 12. Нелинейная оптимизация»}\\
+		\end{center}
+		\vspace{1cm}
+		Направление: 01.03.02\\
+		Обучающийся: Бронников Егор Игоревич\\
+		Группа: ПМ-1901\\
+		\vfill
+		\begin{center}
+			Санкт-Петербург\\
+			2021\\
+		\end{center}
+	\end{titlepage}
+	\section*{Дано}
+	$f(x_1,x_2) = 3x_1^2 - 2x_1x_2 + 4x_2^2 - 3x_1 + 2x_2 + 5$
+	\section*{Задание 1}
+	\textbf{Условие:}\\
+	Найти стационарную точку и вычислить в ней значение функции.\\
+	
+	\textbf{Решение:}\\
+	
+	\scalebox{1}{
+	$\begin{cases}
+		\vspace{0.3cm}
+		\dfrac{df}{dx_1} = 6x_1 - 2x_2 - 3 = 0\\
+		\dfrac{df}{dx_2} = -2x_1 + 8x_2 + 2 = 0
+	\end{cases}$}\\\\
+
+	Стационарная точка: $(\dfrac{5}{11}$, $-\dfrac{3}{22})$\\
+	Значение функции в стационарной точке: $f(\dfrac{5}{11}$, $-\dfrac{3}{22}) = \dfrac{46}{11}$
+	
+	\section*{Задание 2}
+	\textbf{Условие:}\\
+	Определить экстремум, если он есть.\\
+
+	\textbf{Решение:}\\
+	
+	$\dfrac{d^2f}{dx_1^2} = 6$\\\\
+	$\dfrac{d^2f}{dx_2^2} = 8$\\\\
+	$\dfrac{d^2f}{dx_1x_2} = -2$\\
+	
+	Построим матрицу Гессе:
+	\begin{align*}
+		H(X) = \begin{pmatrix}
+			6 & -2\\
+			-2 & 8
+		\end{pmatrix}
+	\end{align*}
+	
+	Вычисляем главные миноры:\\
+	$M_1(H) = 6 > 0, \hspace*{0.2cm} M_2(H) = 44 > 0$\\
+	
+	В точке $(\dfrac{5}{11}$, $-\dfrac{3}{22})$ матрица Гессе положительна определена, значит точка $(\dfrac{5}{11}$, $-\dfrac{3}{22})$ -- экстремум и является точкой минимума.
+	
+	\section*{Задание 3}
+	\textbf{Условие:}\\
+	Проверить функцию на выпуклость/вогнутость.\\
+	
+	\textbf{Решение:}\\
+	
+	В точке $(\dfrac{5}{11}$, $-\dfrac{3}{22})$ матрица Гессе положительно определена, а значит функция является выпуклой.
+\end{document}

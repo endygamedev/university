@@ -1,0 +1,100 @@
+\documentclass[14pt,a4paper,fleqn]{extarticle}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{boldline}
+\usepackage{makecell}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\graphicspath{ {./images/} }
+\setlength{\mathindent}{0pt}
+\setlength\parindent{0pt}
+
+
+\begin{document}
+	\begin{titlepage}
+		\includegraphics[scale=0.12]{logo}
+		\begin{center}
+			\textbf{МИНОБРНАУКИ РОССИИ}\\
+			\vspace{0.2cm}
+			\textbf{Федеральное государственное бюджетное образовательное учреждение высшего образования}\\
+			\textbf{«САНКТ-ПЕТЕРБУРГСКИЙ ГОСУДАРСТВЕННЫЙ ЭКОНОМИЧЕСКИЙ УНИВЕРСИТЕТ»}\\
+			\vspace{0.6cm}
+			Факультет информатики и прикладной математики\\
+			Кафедра прикладной математики и экономико-математических методов\\
+			\vspace{1cm}
+			\textbf{ОТЧЁТ}\\
+			по дисциплине:\\
+			\textbf{«Методы оптимизации»}\\
+			на тему:\\
+			\textbf{«Задание 13. Нелинейная оптимизация»}\\
+		\end{center}
+		\vspace{1cm}
+		Направление: 01.03.02\\
+		Обучающийся: Бронников Егор Игоревич\\
+		Группа: ПМ-1901\\
+		\vfill
+		\begin{center}
+			Санкт-Петербург\\
+			2021\\
+		\end{center}
+	\end{titlepage}
+	\section*{Дано}
+	$f(x_1,x_2,x_3) = (3x_1-3x_2-5)^2 + (6x_1-x_2-x_3-2)^2+(2x_1+5x_2+x_3-1)^2$
+	\section*{Задание 1}
+	\textbf{Условие:}\\
+	Найти стационарную точку и вычислить в ней значение функции.\\
+	
+	\textbf{Решение:}\\
+	
+	\scalebox{0.9}{
+		$\begin{cases}
+			\vspace{0.3cm}
+			\dfrac{df}{dx_1} = 6*(3x_1+3x_2-5) + 12*(6x_1-x_2-x_3-2) + 4*(2x_1+5x_2+x_3-1) = 0\\
+			\vspace{0.3cm}
+			\dfrac{df}{dx_2} = -6*(3x_1+3x_2-5) - 2*(6x_1-x_2-x_3-2) + 10*(2x_1+5x_2+x_3-1) = 0\\
+			\dfrac{df}{dx_3} = -2*(6x_1-x_2-x_3-2) + 2*(2x_1+5x_2+x_3-1) = 0
+		\end{cases}$}\\\\
+	
+	Стационарная точка: $(\dfrac{29}{36}$, $-\dfrac{31}{36}, \dfrac{133}{36})$\\
+	Значение функции в стационарной точке: $f(\dfrac{29}{36}$, $-\dfrac{31}{36}, \dfrac{133}{36}) = 0$
+	
+	\section*{Задание 2}
+	\textbf{Условие:}\\
+	Определить экстремум, если он есть.\\
+	
+	\textbf{Решение:}\\
+	
+	$\dfrac{d^2f}{dx_1^2} = 98$\\\\
+	$\dfrac{d^2f}{dx_1x_2} = -10$\\\\
+	$\dfrac{d^2f}{dx_1x_3} = -8$\\\\
+	$\dfrac{d^2f}{dx_2^2} = 70$\\\\
+	$\dfrac{d^2f}{dx_2x_3} = 12$\\\\
+	$\dfrac{d^2f}{dx_3^2} = 4$\\
+	
+	Построим матрицу Гессе:
+	\begin{align*}
+		H(X) = \begin{pmatrix}
+			98 & -10 & -8\\
+			-10 & 70 & 12\\
+			-8 & 12 & 4\\
+		\end{pmatrix}
+	\end{align*}
+	
+	Вычисляем главные миноры:\\
+	$M_1(H) = 98 > 0, \hspace*{0.2cm} M_2(H) = 6760 > 0, \hspace*{0.2cm} M_3(H) = 10368 > 0$\\
+	
+	В точке $(\dfrac{29}{36}$, $-\dfrac{31}{36}, \dfrac{133}{36})$ матрица Гессе положительна определена, значит точка $(\dfrac{29}{36}$, $-\dfrac{31}{36}, \dfrac{133}{36})$ -- экстремум и является точкой минимума.
+	
+	\section*{Задание 3}
+	\textbf{Условие:}\\
+	Проверить функцию на выпуклость/вогнутость.\\
+	
+	\textbf{Решение:}\\
+	
+	В точке $(\dfrac{29}{36}$, $-\dfrac{31}{36}, \dfrac{133}{36})$ матрица Гессе положительно определена, а значит функция является выпуклой.
+\end{document}

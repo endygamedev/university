@@ -1,0 +1,315 @@
+\documentclass[14pt,a4paper,fleqn]{extarticle}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{boldline}
+\usepackage{makecell}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\graphicspath{ {./images/} }
+\setlength{\mathindent}{0pt}
+\setlength\parindent{0pt}
+
+
+\begin{document}
+	\begin{titlepage}
+		\includegraphics[scale=0.12]{logo}
+		\begin{center}
+			\textbf{МИНОБРНАУКИ РОССИИ}\\
+			\vspace{0.2cm}
+			\textbf{Федеральное государственное бюджетное образовательное учреждение высшего образования}\\
+			\textbf{«САНКТ-ПЕТЕРБУРГСКИЙ ГОСУДАРСТВЕННЫЙ ЭКОНОМИЧЕСКИЙ УНИВЕРСИТЕТ»}\\
+			\vspace{0.6cm}
+			Факультет информатики и прикладной математики\\
+			Кафедра прикладной математики и экономико-математических методов\\
+			\vspace{1cm}
+			\textbf{ОТЧЁТ}\\
+			по дисциплине:\\
+			\textbf{«Методы оптимизации»}\\
+			на тему:\\
+			\textbf{«Решение задачи дискретной оптимизации методом Гомори. Задание 11»}\\
+		\end{center}
+		\vspace{1cm}
+		Направление: 01.03.02\\
+		Обучающийся: Бронников Егор Игоревич\\
+		Группа: ПМ-1901\\
+		\vfill
+		\begin{center}
+			Санкт-Петербург\\
+			2021\\
+		\end{center}
+	\end{titlepage}
+
+	\section*{Испорченная задача №4}
+	
+	Целевая функция:\\
+	$f = 4x_1 + x_2 \longrightarrow max$\\\\
+	Ограничения:
+	\begin{align*}
+		\begin{cases}
+			3x_1 - 2x_2 \geq -8\\
+			3x_1 + x_2 \geq 3\\
+			\boldsymbol{5} x_2 \leq 8\\
+			\boldsymbol{3} x_1 \leq 4\\
+		\end{cases}
+	\end{align*}
+	$x_1 \geq 0, x_2 \geq 0$
+	\section*{Каноническая форма}
+	1. Вводим слабые переменные $y_1 \geq 0$, $y_2 \geq 0$, $y_3 \geq 0$, $y_4 \geq 0$:\\
+	$3x_1 - 2x_2 - y_1 = -8$\\
+	$3x_1 + x_2 - y_2 = 3$\\
+	$5x_2 + y_3 = 8$\\
+	$3x_1 + y_4 = 4$\\
+	
+	2. Делаем правые части равенств положительными:\\
+	$-3x_1 + 2x_2 + y_1 = 8$\\
+	$3x_1 + x_2 - y_2 = 3$\\
+	$5x_2 + y_3 = 8$\\
+	$3x_1 + y_4 = 4$\\
+	$x_1 \geq 0$, $x_2 \geq 0$\\
+	
+	Таким образом, задача сведена к канонической форме.
+	\newpage
+	Отсюда получается:\\
+	$y_1 = 8 + 3x_1 - 2x_2$\\
+	$y_2 = -3 + 3x_1 + x_2$\\
+	$y_3 = 8 - 5x_2$\\
+	$y_4 = 4 - 3x_1$\\
+	
+	Базисное решение:
+	\begin{center}
+		$y_1 = 8, y_2 = -3, y_3 = 8, y_4 = 4,$\\
+		$x_1 = 0, x_2 = 0$
+	\end{center}
+	которое не удовлетворяет естественным ограничениям:
+	\begin{center}
+		$y_i \geq 0 \hspace*{0.3cm} \forall i = \overline{1,4}$
+	\end{center}
+	и поэтому оно не является допустимым.
+	
+	\section*{Двойственный симлекс-метод}
+	\subsection*{1 итерация}
+	Базисные переменные: $y_1, y_2, y_3, y_4$.\\
+	Свободные переменный: $x_1, x_2$.\\\\
+	\begin{tabularx}{\textwidth}{V{1}p{1.45cm}V{1}p{1.45cm}V{5}p{1.45cm}V{5}p{1.45cm}V{1}p{1.45cm}V{1}p{1.45cm}V{1}p{1.4cm}V{1}p{1.4cm}V{1}}
+		\hline
+		БП & $x_1$ & $\boldsymbol{x_2}$ & $y_1$ & $y_2$ & $y_3$ & $y_4$ & СЧ\\
+		\hline
+		$f$ & -4 \footnotesize -3 & \underline{-1} \footnotesize -1 & 0 \footnotesize 0 & 0 \footnotesize 1 & 0 \footnotesize 0 & 0 \footnotesize 0 & 0 \footnotesize -3\\
+		\hline
+		$y_1$ & -3 \footnotesize 6 & \underline{2} \footnotesize 2 & 1 \footnotesize 0 & 0 \footnotesize -2 & 0 \footnotesize 0 & 0 \footnotesize 0 & 8 \footnotesize 6\\
+		\Xhline{5\arrayrulewidth}
+		$\boldsymbol{y_2}$ & -3 \footnotesize \underline{3} & \textbf{-1} \footnotesize 1 & 0 \footnotesize \underline{0} & 1 \footnotesize \underline{-1} & 0 \footnotesize \underline{0} & 0 \footnotesize \underline{0} & -3 \footnotesize \underline{3}\\
+		\Xhline{5\arrayrulewidth}
+		$y_3$ & 0 \footnotesize 15 & \underline{5} \footnotesize 5 & 0 \footnotesize 0 & 0 \footnotesize -5 & 1 \footnotesize 0 & 0 \footnotesize 0 & 8 \footnotesize 15\\
+		\hline
+		$y_4$ & 3 \footnotesize 0 & \underline{0} \footnotesize 0 & 0 \footnotesize 0 & 0 \footnotesize 0 & 0 \footnotesize 0 & 1 \footnotesize 0 & 4 \footnotesize 0\\
+		\hline
+		& \small $\frac{4}{3}$ & \textbf{\textit{1}} & & & & & \\
+		\hdashline
+	\end{tabularx}
+	\newline\newline
+	Меняем свободную переменную $x_2$ и базисную переменную $y_2$ местами.\\
+	$x_2 \leftrightarrow y_2$
+	\newpage
+	\subsection*{2 итерация}
+	Базисные переменные: $x_2, y_1, y_3, y_4$.\\
+	Свободные переменный: $x_1, y_2$.\\\\
+	\begin{tabularx}{\textwidth}{V{1}p{1.45cm}V{5}p{1.45cm}V{5}p{1.45cm}V{1}p{1.45cm}V{1}p{1.45cm}V{1}p{1.45cm}V{1}p{1.4cm}V{1}p{1.4cm}V{1}}
+		\hline
+		БП & $\boldsymbol{x_1}$ & $x_2$ & $y_1$ & $y_2$ & $y_3$ & $y_4$ & СЧ\\
+		\hline
+		$f$ & \underline{-1} \footnotesize -1 & 0 \footnotesize 0 & 0 \footnotesize 0 & -1 \footnotesize $\frac{1}{3}$ & 0 \footnotesize $\frac{1}{15}$ & 0 \footnotesize 0 & 3 \footnotesize -$\frac{7}{15}$\\
+		\hline
+		$y_1$ & \underline{-9} \footnotesize -9 & 0 \footnotesize 0 & 1 \footnotesize 0 & 2 \footnotesize 3 & 0 \footnotesize $\frac{3}{5}$ & 0 \footnotesize 0 & 2 \footnotesize -$\frac{21}{5}$\\
+		\hline
+		$x_2$ & \underline{3} \footnotesize 3 & 1 \footnotesize 0 & 0 \footnotesize 0 & -1 \footnotesize -1 & 0 \footnotesize -$\frac{1}{5}$ & 0 \footnotesize 0 & 3 \footnotesize $\frac{7}{5}$\\
+		\Xhline{5\arrayrulewidth}
+		$\boldsymbol{y_3}$ & \textbf{-15} \footnotesize 1 & 0 \footnotesize \underline{0} & 0 \footnotesize \underline{0} & 5 \footnotesize \underline{-$\frac{1}{3}$} & 1 \footnotesize \underline{-$\frac{1}{15}$} & 0 \footnotesize \underline{0} & -7 \footnotesize \underline{$\frac{7}{15}$}\\
+		\Xhline{5\arrayrulewidth}
+		$y_4$ & \underline{3} \footnotesize 3 & 0 \footnotesize 0 & 0 \footnotesize 0 & 0 \footnotesize -1 & 0 \footnotesize -$\frac{1}{5}$ & 1 \footnotesize 0 & 4 \footnotesize $\frac{7}{5}$\\
+		\hline
+		& \small $\boldsymbol{\frac{1}{15}}$ & & & & & & \\
+		\hdashline
+	\end{tabularx}
+	\newline\newline
+	Меняем свободную переменную $x_1$ и базисную переменную $y_3$ местами.\\
+	$x_1 \leftrightarrow y_3$
+	\subsection*{3 итерация}
+	Базисные переменные: $x_1, x_2, y_1, y_4$.\\
+	Свободные переменный: $y_2, y_3$.\\\\
+	\begin{tabularx}{\textwidth}{V{1}p{1.2cm}V{1}p{1.2cm}V{1}p{1.2cm}V{1}p{1.45cm}V{5}p{1.45cm}V{5}p{1.45cm}V{1}p{1.45cm}V{1}p{1.46cm}V{1}p{1.46cm}}
+		\hline
+		БП & $x_1$ & $x_2$ & $y_1$ & $\boldsymbol{y_2}$ & $y_3$ & $y_4$ & СЧ \\
+		\hline
+		$f$ & 0 \footnotesize 0 & 0 \footnotesize 0 & 0 \footnotesize 0 & \small -$\frac{4}{3}$ \footnotesize -$\frac{4}{3}$ & \small -$\frac{1}{15}$ \footnotesize -$\frac{4}{15}$ & 0 \footnotesize -$\frac{4}{3}$ & \small $\frac{52}{15}$ \footnotesize -$\frac{51}{12}$\\
+		\hline
+		$y_1$ & 0 \footnotesize 0 & 0 \footnotesize 0 & 1 \footnotesize 0 & -1 \footnotesize -1 & \small -$\frac{3}{5}$ \footnotesize -$\frac{1}{5}$ & 0 \footnotesize -1 & \small $\frac{31}{5}$ \footnotesize -$\frac{13}{5}$\\
+		\hline
+		$x_2$ & 0 \footnotesize 0 & 1 \footnotesize 0 & 0 \footnotesize 0 & 0 \footnotesize 0& \small $\frac{1}{5}$ \footnotesize 0 & 0 \footnotesize 0 & \small $\frac{8}{5}$ \footnotesize 0\\
+		\hline
+		$x_1$ & 1 \footnotesize 0 & 0 \footnotesize 0 & 0 \footnotesize 0 & \small \underline{-$\frac{1}{3}$} \footnotesize -$\frac{1}{3}$ & \small -$\frac{1}{15}$ \footnotesize -$\frac{1}{15}$ & 0 \footnotesize -$\frac{1}{5}$ & \small $\frac{7}{15}$ \footnotesize -$\frac{13}{15}$\\
+		\Xhline{5\arrayrulewidth}
+		$\boldsymbol{y_4}$ & 0 \footnotesize \underline{0} & 0 \footnotesize \underline{0} & 0 \footnotesize \underline{0} & \textbf{1} \footnotesize 1 & \small $\frac{1}{5}$ \footnotesize \underline{$\frac{1}{5}$} & 1 \footnotesize \underline{1} & \small $\frac{13}{5}$ \footnotesize \underline{$\frac{13}{5}$} & \small $\frac{13}{5}$\\
+		\Xhline{5\arrayrulewidth}
+	\end{tabularx}
+	\newline\newline
+	Меняем свободную переменную $y_2$ и базисную переменную $y_4$ местами.\\
+	$y_2 \leftrightarrow y_4$
+	\newpage
+	\subsection*{Результат вычислений}
+	Базисные переменные: $x_1, x_2, y_1, y_2$.\\
+	Свободные переменный: $y_3, y_4$.\\\\
+	\begin{tabularx}{\textwidth}{V{1}p{1.45cm}V{1}p{1.45cm}V{1}p{1.45cm}V{1}p{1.45cm}V{1}p{1.45cm}V{1}p{1.45cm}V{1}p{1.4cm}V{1}p{1.52cm}V{1}}
+		\hline
+		БП & $x_1$ & $x_2$ & $y_1$ & $y_2$ & $y_3$ & $y_4$ & СЧ\\
+		\hline
+		$f$ & 0 & 0 & 0 & 0 & \small $\frac{1}{5}$ & \small $\frac{4}{3}$ & \small $6\frac{14}{15}$\\
+		\hline
+		$y_1$ & 0 & 0 & 1 & 0 & \small -$\frac{2}{5}$ & 1 & \small $8\frac{4}{5}$\\
+		\hline
+		$x_2$ & 0 & 1 & 0 & 0 & \small $\frac{1}{5}$ & 0 & \small $1\frac{3}{5}$\\
+		\hline
+		$x_1$ & 1 & 0 & 0 & 0 & 0 & \small $\frac{1}{3}$ & \small $1\frac{1}{3}$\\
+		\hline
+		$y_2$ & 0 & 0 & 0 & 0 & \small $\frac{1}{5}$ & \small $\frac{4}{3}$ & \small $2\frac{3}{5}$\\
+		\hline
+	\end{tabularx}
+	\newline\newline
+	Мы получили начальное нецелочисленное решение:\\
+	$f = 6\frac{14}{15}$\\
+	$x_1 = 1\frac{1}{3}, x_2 = 1\frac{3}{5}$\\
+	$y_1 = 8\frac{4}{5}, y_2 = 2\frac{3}{5}, y_3 = 0, y_4 = 0$
+	\section*{Метод Гомори}
+	\subsection*{1 итерация}
+	Наибольшая дробная часть соответствует переменной $\{x_2\} = \frac{3}{5}$, составим соответствующее дополнительное ограничение. Третья строка записывается следующим образом:
+	\begin{center}
+		$x_2 + \frac{1}{5}y_3 = 1\frac{3}{5} \hspace*{1cm} \Rightarrow \hspace*{1cm} x_2 = 1\frac{3}{5} - \frac{1}{5}y_3$
+	\end{center}
+	\begin{center}
+		$\frac{3}{5} - \frac{1}{5}y_3 \leq 0 \hspace*{0.6cm} \Rightarrow \hspace*{1cm} -y_3 \leq -3$
+	\end{center}
+	Введём слабую переменную $y_5$:
+	\begin{center}
+		$-y_3 + y_5 = -3$
+	\end{center}
+	Решим задачу двойственным симлекс-методом с дополнительным ограничением и возьмём переменную $y_5$ в качестве базисной переменной.
+	\newpage
+	\subsubsection*{Двойственный симплекс-метод}
+	Базисные переменные: $x_1, x_2, y_1, y_2, y_5$.\\
+	Свободные переменный: $y_3, y_4$.\\\\
+	\begin{tabularx}{\textwidth}{V{1}p{0.7cm}V{1}p{1.3cm}V{1}p{1.34cm}V{1}p{1.3cm}V{1}p{1.3cm}V{4}p{1.3cm}V{5}p{1.3cm}V{1}p{1.3cm}V{1}p{1.21cm}V{1}}
+		\hline
+		БП & $x_1$ & $x_2$ & $y_1$ & $y_2$ & $\boldsymbol{y_3}$ & $y_4$ & $y_5$ & СЧ\\
+		\hline
+		$f$ & 0 \footnotesize 0 & 0 \footnotesize 0 & 0 \footnotesize 0 & 0 \footnotesize 0 & \small \underline{$\frac{1}{5}$} \footnotesize $\frac{1}{5}$ & \small $\frac{4}{3}$ \footnotesize 0 & 0 \footnotesize -$\frac{1}{5}$& \small $\frac{104}{15}$ \footnotesize $\frac{3}{5}$\\
+		\hline
+		$y_1$ & 0 \footnotesize 0 & 0 \footnotesize 0 & 1 \footnotesize 0 & 0 \footnotesize 0 & \small \underline{-$\frac{2}{5}$} \footnotesize -$\frac{2}{5}$ & 1 \footnotesize 0 & 0 \footnotesize $\frac{2}{5}$ & \small $\frac{44}{5}$ \footnotesize -$\frac{6}{5}$\\
+		\hline
+		$x_2$ & 0 \footnotesize 0 & 1 \footnotesize 0 & 0 \footnotesize 0 & 0 \footnotesize 0 & \small \underline{$\frac{1}{5}$} \footnotesize $\frac{1}{5}$ & 0 \footnotesize 0 & 0 \footnotesize -$\frac{1}{5}$ & \small $\frac{8}{5}$ \footnotesize $\frac{3}{5}$\\
+		\hline
+		$x_1$ & 1 \footnotesize 0 & 0 \footnotesize 0 & 0 \footnotesize 0 & 0 \footnotesize 0 & \underline{0} \footnotesize 0 & \small $\frac{1}{3}$ \footnotesize 0 & 0 \footnotesize 0 & \small $\frac{4}{3}$ \footnotesize 0\\
+		\hline
+		$y_2$ & 0 \footnotesize 0 & 0 \footnotesize 0 & 0 \footnotesize 0 & 0 \footnotesize 0 & \small \underline{$\frac{1}{5}$} \footnotesize $\frac{1}{5}$ & \small $\frac{4}{3}$ \footnotesize 0 & 0 \footnotesize -$\frac{1}{5}$ & \small $\frac{13}{5}$ \footnotesize $\frac{3}{5}$\\
+		\Xhline{5\arrayrulewidth}
+		$\boldsymbol{y_5}$ & 0 \footnotesize \underline{0} & 0 \footnotesize \underline{0} & 0 \footnotesize \underline{0} & 0 \footnotesize \underline{0} & \textbf{-1} \footnotesize 1 & 0 \footnotesize \underline{0} & 1 \footnotesize \underline{-1} & \small -3 \footnotesize \underline{3}\\
+		\Xhline{4\arrayrulewidth}
+		& & & & & \small $\boldsymbol{\frac{1}{5}}$ & & &\\
+	\end{tabularx}
+	\newline\newline
+	Меняем свободную переменную $y_3$ и базисную переменную $y_5$ местами.\\
+	$y_3 \leftrightarrow y_5$
+	\subsubsection*{Результат вычислений}
+	Базисные переменные: $x_1, x_2, y_1, y_2, y_3$.\\
+	Свободные переменный: $y_4, y_5$.\\\\
+	\begin{tabularx}{\textwidth}{V{1}p{0.7cm}V{1}p{1.3cm}V{1}p{1.34cm}V{1}p{1.3cm}V{1}p{1.3cm}V{1}p{1.3cm}V{1}p{1.3cm}V{1}p{1.3cm}V{1}p{1.33cm}V{1}}
+		\hline
+		БП & $x_1$ & $x_2$ & $y_1$ & $y_2$ & $y_3$ & $y_4$ & $y_5$ & СЧ\\
+		\hline
+		$f$ & 0 & 0 & 0 & 0 & 0 & \small $\frac{4}{3}$ & \small $\frac{1}{5}$ & \small $\frac{19}{3}$\\
+		\hline
+		$y_1$ & 0 & 0 & 1 & 0 & 0 & 1 & \small -$\frac{2}{5}$ & 10\\
+		\hline
+		$x_2$ & 0 & 1 & 0 & 0 & 0 & 0 & \small $\frac{1}{5}$ & 1\\
+		\hline
+		$x_1$ & 1 & 0 & 0 & 0 & 0 & \small $\frac{1}{3}$ & 0 & \small $\frac{4}{3}$\\
+		\hline
+		$y_2$ & 0 & 0 & 0 & 0 & 0 & \small $\frac{4}{3}$ & \small $\frac{1}{5}$ & 2\\
+		\hline
+		$y_3$ & 0 & 0 & 0 & 0 & 1 & 0 & -1 & 3\\
+		\hline
+	\end{tabularx}
+	\newpage
+	\subsection*{2 итерация}
+	Наибольшая дробная часть соответствует переменной $\{x_1\} = \frac{1}{3}$, составим соответствующее дополнительное ограничение. Четвёртая строка записывается следующим образом:
+	\begin{center}
+		$x_1 + \frac{1}{3}y_4 = 1\frac{1}{3} \hspace*{1cm} \Rightarrow \hspace*{1cm} x_1 = 1\frac{1}{3} - \frac{1}{3}y_4$
+	\end{center}
+	\begin{center}
+		$\frac{1}{3} - \frac{1}{3}y_4 \leq 0 \hspace*{0.6cm} \Rightarrow \hspace*{1cm} -y_4 \leq -1$
+	\end{center}
+	Введём слабую переменную $y_6$:
+	\begin{center}
+		$-y_4 + y_6 = -1$
+	\end{center}
+	Решим задачу двойственным симлекс-методом с дополнительным ограничением и возьмём переменную $y_6$ в качестве базисной переменной.
+	\subsubsection*{Двойственный симплекс-метод}
+	Базисные переменные: $x_1, x_2, y_1, y_2, y_3, y_6$.\\
+	Свободные переменный: $y_4, y_5$.\\\\
+	\begin{tabularx}{\textwidth}{V{1}p{0.7cm}V{1}p{1.1cm}V{1}p{1.1cm}V{1}p{1.1cm}V{1}p{1.1cm}V{1}p{1.1cm}V{4}p{1.1cm}V{5}p{1.1cm}V{1}p{1.1cm}V{1}p{1.15cm}V{1}}
+		\hline
+		БП & $x_1$ & $x_2$ & $y_1$ & $y_2$ & $y_3$ & $\boldsymbol{y_4}$ & $y_5$ & $y_6$ & СЧ\\
+		\hline
+		$f$ & 0 \footnotesize 0 & 0 \footnotesize 0 & 0 \footnotesize 0 & 0 \footnotesize 0 & 0 \footnotesize 0 & \small \underline{$\frac{4}{3}$} \footnotesize $\frac{4}{3}$ & \small $\frac{1}{5}$ \footnotesize 0 & 0 \footnotesize -$\frac{4}{3}$ & \small $\frac{19}{3}$ \footnotesize $\frac{4}{3}$\\
+		\hline
+		$y_1$ & 0 \footnotesize 0 & 0 \footnotesize 0 & 1 \footnotesize 0 & 0 \footnotesize 0 & 0 \footnotesize 0 & \underline{1} \footnotesize 1 & \small -$\frac{2}{5}$ \footnotesize 0 & 0 \footnotesize -1 & 10 \footnotesize 1\\
+		\hline
+		$x_2$ & 0 \footnotesize 0 & 1 \footnotesize 0 & 0 \footnotesize 0 & 0 \footnotesize 0 & 0 \footnotesize 0 & \underline{0} \footnotesize 0 & \small $\frac{1}{5}$ \footnotesize 0 & 0 \footnotesize 0 & 1 \footnotesize 0\\
+		\hline
+		$x_1$ & 1 \footnotesize 0 & 0 \footnotesize 0 & 0 \footnotesize 0 & 0 \footnotesize 0 & 0 \footnotesize 0 & \small \underline{$\frac{1}{3}$} \footnotesize $\frac{1}{3}$ & 0 \footnotesize 0 & 0 \footnotesize -$\frac{1}{3}$ & \small $\frac{4}{3}$ \footnotesize $\frac{1}{3}$\\
+		\hline
+		$y_2$ & 0 \footnotesize 0 & 0 \footnotesize 0 & 0 \footnotesize 0 & 0 \footnotesize 0 & 0 \footnotesize 0 & \small \underline{$\frac{4}{3}$} \footnotesize $\frac{4}{3}$ & \small $\frac{1}{5}$ \footnotesize 0 & 0 \footnotesize -$\frac{4}{3}$ & 2 \footnotesize $\frac{4}{3}$\\
+		\hline
+		$y_3$ & 0 \footnotesize 0 & 0 \footnotesize 0 & 0 \footnotesize 0 & 0 \footnotesize 0 & 1 \footnotesize 0 & \underline{0} \footnotesize 0 & -1 \footnotesize 0 & 0 \footnotesize 0 & 3 \footnotesize 0\\
+		\Xhline{4\arrayrulewidth}
+		$\boldsymbol{y_6}$ & 0 \footnotesize \underline{0} & 0 \footnotesize \underline{0} & 0 \footnotesize \underline{0} & 0 \footnotesize \underline{0} & 0 \footnotesize \underline{0} & \textbf{-1} \footnotesize 1 & 0 \footnotesize \underline{0} & 1 \footnotesize \underline{-1} & -1 \footnotesize \underline{1}\\
+		\Xhline{4\arrayrulewidth}
+		& & & & & & $\boldsymbol{\frac{4}{3}}$& & & \\
+	\end{tabularx}
+	\newline\newline
+	Меняем свободную переменную $y_4$ и базисную переменную $y_6$ местами.\\
+	$y_4 \leftrightarrow y_6$
+	\newpage
+	\subsubsection*{Результат вычислений}
+	Базисные переменные: $x_1, x_2, y_1, y_2, y_3, y_4$.\\
+	Свободные переменный: $y_5, y_6$.\\\\
+	\begin{tabularx}{\textwidth}{V{1}p{0.7cm}V{1}p{1.1cm}V{1}p{1.1cm}V{1}p{1.1cm}V{1}p{1.1cm}V{1}p{1.1cm}V{1}p{1.1cm}V{1}p{1.1cm}V{1}p{1.1cm}V{1}p{1.23cm}V{1}}
+		\hline
+		БП & $x_1$ & $x_2$ & $y_1$ & $y_2$ & $y_3$ & $y_4$ & $y_5$ & $y_6$ & СЧ\\
+		\hline
+		$f$ & 0 & 0 & 0 & 0 & 0 & 0 & \small $\frac{1}{5}$ & \small $\frac{4}{3}$ & 5\\
+		\hline
+		$y_1$ & 0 & 0 & 1 & 0 & 0 & 0 & \small -$\frac{2}{5}$ & 1 & 9\\
+		\hline
+		$x_2$ & 0 & 1 & 0 & 0 & 0 & 0 & \small $\frac{1}{5}$ & 0 & 1 \\
+		\hline
+		$x_1$ & 1 & 0 & 0 & 0 & 0 & 0 & 0 & \small $\frac{1}{3}$ & 1\\
+		\hline
+		$y_2$ & 0 & 0 & 0 & 0 & 0 & 0 & \small $\frac{1}{5}$ & $\frac{4}{3}$ & \small $\frac{2}{3}$\\
+		\hline
+		$y_3$ & 0 & 0 & 0 & 0 & 1 & 0 & -1 & 0 & 3\\
+		\hline
+		$y_4$ & 0 & 0 & 0 & 0 & 0 & 1 & 0 & -1 & 1\\
+		\hline
+	\end{tabularx}
+	\newline\newline
+	Таким образом, мы получили целочисленное решение:
+	\begin{center}
+		$f = 5, x_1 = 1, x_2 = 1$
+	\end{center}
+	\textbf{Ответ:} $f = 5, x_1 = 1, x_2 = 1$.
+\end{document}
