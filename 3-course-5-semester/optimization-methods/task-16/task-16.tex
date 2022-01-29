@@ -1,0 +1,94 @@
+\documentclass[14pt,a4paper,fleqn]{extarticle}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{boldline}
+\usepackage{makecell}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\graphicspath{ {./images/} }
+\setlength{\mathindent}{0pt}
+\setlength\parindent{0pt}
+
+
+\begin{document}
+	\begin{titlepage}
+		\includegraphics[scale=0.12]{logo}
+		\begin{center}
+			\textbf{МИНОБРНАУКИ РОССИИ}\\
+			\vspace{0.2cm}
+			\textbf{Федеральное государственное бюджетное образовательное учреждение высшего образования}\\
+			\textbf{«САНКТ-ПЕТЕРБУРГСКИЙ ГОСУДАРСТВЕННЫЙ ЭКОНОМИЧЕСКИЙ УНИВЕРСИТЕТ»}\\
+			\vspace{0.6cm}
+			Факультет информатики и прикладной математики\\
+			Кафедра прикладной математики и экономико-математических методов\\
+			\vspace{1cm}
+			\textbf{ОТЧЁТ}\\
+			по дисциплине:\\
+			\textbf{«Методы оптимизации»}\\
+			на тему:\\
+			\textbf{«Задание 16. Метод Ньютона-Рафсона»}\\
+		\end{center}
+		\vspace{1cm}
+		Направление: 01.03.02\\
+		Обучающийся: Бронников Егор Игоревич\\
+		Группа: ПМ-1901\\
+		\vfill
+		\begin{center}
+			Санкт-Петербург\\
+			2021\\
+		\end{center}
+	\end{titlepage}
+	\textbf{Дано:}\\
+	$f(x_1,x_2,x_3) = (3x_1-3x_2-5)^2 + (6x_1-x_2-x_3-2)^2+(2x_1+5x_2+x_3-1)^2$\\\\
+	\textbf{Условие:}\\
+	Найти стационарную точку методом Ньютона-Рафсона.\\
+	
+	\textbf{Решение:}\\
+	Определим первые производные функции:\\
+	
+	$\dfrac{df}{dx_1} = 98x_1 - 10x_2 - 8x_3 - 58$\\\\
+	$\dfrac{df}{dx_2} = -10x_1 + 70x_2 + 12x_3 + 24$\\\\
+	$\dfrac{df}{dx_3} = -8x_1 + 12x_2 + 4x_3 + 2$\\
+	
+	Составим матрицу Гессе $H(X)$ для функции $f(x_1,x_2,x_3)$ и определим знак её угловых миноров:
+	\begin{align*}
+		H(X) = \begin{pmatrix}
+			98 & -10 & -8\\
+			-10 & 70 & 12\\
+			-8 & 12 & 4\\
+		\end{pmatrix}
+	\end{align*}
+	Вычисляем главные миноры:\\
+	$M_1(\boldsymbol{H}) = 98 > 0, \hspace*{0.2cm} M_2(\boldsymbol{H}) = 6760 > 0, \hspace*{0.2cm} M_3(\boldsymbol{H}) = |\boldsymbol{H}| = 10368 > 0$\\
+	
+	Матрица \textbf{H} -- положительно определённая матрица и, следовательно, $f(x_1, x_2, x_3)$ -- выпуклая функция, которая имеет минимум в некоторой точке $X^*$.\\
+	
+	$grad\hspace*{0.05cm}f(X) = (\dfrac{df}{dx_1}, \dfrac{df}{dx_2}, \dfrac{df}{dx_3}) =$\\\\
+	$= (98x_1 - 10x_2 - 8x_3 - 58, -10x_1 + 70x_2 + 12x_3 + 24, -8x_1 + 12x_2 + 4x_3 + 2)$\\
+	\newpage
+	\begin{align*}
+		H^{-1}(X) = \begin{pmatrix}
+			\dfrac{17}{1296} & -\dfrac{7}{1296} & \dfrac{55}{1296}\\\\
+			-\dfrac{7}{1296} & \dfrac{41}{1296} & -\dfrac{137}{1296}\\\\
+			\dfrac{55}{1296} & -\dfrac{137}{1296} & \dfrac{845}{1296}\\
+		\end{pmatrix}
+	\end{align*}
+
+	В качестве начальной точки возьмём $X^0 = (0,0,0)$, $f(X^0) = 30$:\\
+	
+	$X^{1t} = X^{0t} - H^{-1}(X^0)grad^t\hspace*{0.05cm}f(X^0) = X^{0t} - \begin{pmatrix}
+		\dfrac{17}{1296} & -\dfrac{7}{1296} & \dfrac{55}{1296}\\\\
+		-\dfrac{7}{1296} & \dfrac{41}{1296} & -\dfrac{137}{1296}\\\\
+		\dfrac{55}{1296} & -\dfrac{137}{1296} & \dfrac{845}{1296}\\
+	\end{pmatrix}\begin{pmatrix}-58\\ 24\\ 2\\ \end{pmatrix} =$\\\\
+	$= \begin{pmatrix}\dfrac{29}{36}\\\\ -\dfrac{31}{36}\\\\ \dfrac{133}{36}\\ \end{pmatrix}$\\\\
+	
+	В точке $X^1$ имеет $grad\hspace*{0.05cm}f(\dfrac{29}{36}, -\dfrac{31}{36}, \dfrac{133}{36}) = (0,0,0)$, следовательно $X^1$ -- стационарная точка. В этой точке угловые миноры Гессе положительно пределены, а значит точка является точкой минимума.\\
+	Значение функции в $X^1$: $f(\dfrac{29}{36}, -\dfrac{31}{36}, \dfrac{133}{36}) = 0$\\
+	Также мы нашли точное решение рассматриваемой задачи.
+\end{document}

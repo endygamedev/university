@@ -1,0 +1,121 @@
+\documentclass[14pt,a4paper,fleqn]{extarticle}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{boldline}
+\usepackage{makecell}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\graphicspath{ {./images/} }
+\setlength{\mathindent}{0pt}
+\setlength\parindent{0pt}
+
+
+\begin{document}
+	\begin{titlepage}
+		\includegraphics[scale=0.12]{logo}
+		\begin{center}
+			\textbf{МИНОБРНАУКИ РОССИИ}\\
+			\vspace{0.2cm}
+			\textbf{Федеральное государственное бюджетное образовательное учреждение высшего образования}\\
+			\textbf{«САНКТ-ПЕТЕРБУРГСКИЙ ГОСУДАРСТВЕННЫЙ ЭКОНОМИЧЕСКИЙ УНИВЕРСИТЕТ»}\\
+			\vspace{0.6cm}
+			Факультет информатики и прикладной математики\\
+			Кафедра прикладной математики и экономико-математических методов\\
+			\vspace{1cm}
+			\textbf{ОТЧЁТ}\\
+			по дисциплине:\\
+			\textbf{«Методы оптимизации»}\\
+			на тему:\\
+			\textbf{«Задание 17. Метод сопряжённых направлений»}\\
+		\end{center}
+		\vspace{1cm}
+		Направление: 01.03.02\\
+		Обучающийся: Бронников Егор Игоревич\\
+		Группа: ПМ-1901\\
+		\vfill
+		\begin{center}
+			Санкт-Петербург\\
+			2021\\
+		\end{center}
+	\end{titlepage}
+	\textbf{Дано:}\\
+	$f(x_1,x_2,x_3) = (3x_1-3x_2-5)^2 + (6x_1-x_2-x_3-2)^2+(2x_1+5x_2+x_3-1)^2$\\\\
+	\textbf{Условие:}\\
+	Найти стационарную точку методом сопряжённых направлений.\\
+	
+	\textbf{Решение:}\\
+	Проверим выпуклость целевой функции. Определим первые производные функции, матрицу Гессе функции $f(x_1,x_2,x_3)$ и её угловые миноры:\\
+	
+	$\dfrac{df}{dx_1} = 98x_1 - 10x_2 - 8x_3 - 58$\\\\
+	$\dfrac{df}{dx_2} = -10x_1 + 70x_2 + 12x_3 + 24$\\\\
+	$\dfrac{df}{dx_3} = -8x_1 + 12x_2 + 4x_3 + 2$
+	
+	\begin{align*}
+		H(X) = \begin{pmatrix}
+			98 & -10 & -8\\
+			-10 & 70 & 12\\
+			-8 & 12 & 4\\
+		\end{pmatrix}
+	\end{align*}
+	Вычисляем главные миноры:\\
+	$M_1(\boldsymbol{H}) = 98 > 0, \hspace*{0.2cm} M_2(\boldsymbol{H}) = 6760 > 0, \hspace*{0.2cm} M_3(\boldsymbol{H}) = |\boldsymbol{H}| = 10368 > 0$\\
+	
+	Матрица \textbf{H} -- положительно определённая матрица и, следовательно, $f(x_1, x_2, x_3)$ -- выпуклая функция, которая имеет минимум в некоторой точке $X^*$.\\
+	
+	$grad\hspace*{0.05cm}f(X) = (\dfrac{df}{dx_1}, \dfrac{df}{dx_2}, \dfrac{df}{dx_3}) =$\\\\
+	$= (98x_1 - 10x_2 - 8x_3 - 58, -10x_1 + 70x_2 + 12x_3 + 24, -8x_1 + 12x_2 + 4x_3 + 2)$\\
+	
+	Выберем в качестве начальной точки $X^0 = (0,0,0)$. Тогда на первом шаге итерации получаем:
+	\newpage
+	$f(X^0) = 30, \hspace*{0.1cm} grad\hspace*{0.05cm}f(X^0) = (-58,24,2)$\\
+	
+	Рассчитываем сопряжённый вектор:\\
+	$\boldsymbol{S}^0 = -grad\hspace*{0.05cm}f(X^0) = -(-58,24,2)$\\
+	
+	Рассчитываем смещение вдоль направления $\boldsymbol{S}^0$:\\
+	$t_1 = \dfrac{-grad\hspace*{0.05cm}f(X^0) \cdot \boldsymbol{S}^{0t}}{\boldsymbol{S}^0\boldsymbol{H}\boldsymbol{S}^{0t}} = \dfrac{-(-58,24,2)\begin{pmatrix} 58\\ -24\\ -2\\ \end{pmatrix}}{(58,-24,-2)\begin{pmatrix} 98 & -10 & -8\\ -10 & 70 & 12\\ -8 & 12 & 4\\ \end{pmatrix}\begin{pmatrix} 58\\ -24\\ -2\\ \end{pmatrix}} = $\\
+	$= \dfrac{493}{50107} \approx 0.00983894$\\\\
+	
+	\small $X^1 = X^0 + t_1\boldsymbol{S}^{0} = (0,0,0) + 0.00983894(58,-24,-2) = (0.570659, -0.236135, -0.0196779)$\\
+	
+	\normalsize $f(X^1) = 10.5976, grad\hspace*{0.05cm}f(X^1) = (0.443355, 1.52783, -5.4776)$\\
+	
+	Находим коэффициент $\beta_0$ из условия сопряжённости:\\
+	
+	\small $\beta_0 = \dfrac{(\boldsymbol{H}\boldsymbol{S^{0t}})\cdot grad\hspace*{0.05cm}f(X^1)}{\boldsymbol{S^{0}}\boldsymbol{H}\boldsymbol{S^{0t}}} = \dfrac{\begin{pmatrix} 98 & -10 & -8\\ -10 & 70 & 12\\ -8 & 12 & 4\\ \end{pmatrix}\begin{pmatrix} 58\\ -24\\ -2\\ \end{pmatrix}(0.443355, 1.52783, -5.4776)}{(58,-24,-2)\begin{pmatrix} 98 & -10 & -8\\ -10 & 70 & 12\\ -8 & 12 & 4\\ \end{pmatrix}\begin{pmatrix} 58\\ -24\\ -2\\ \end{pmatrix}} = $\\
+	$= 0.0082497$\\
+	
+	\normalsize Второй шаг итерации:\\
+	
+	$\boldsymbol{S^{1}} = -grad\hspace*{0.05cm}f(X^1) + \beta_0\boldsymbol{S^{0}} = (0.0351276, -1.72582, 5.4611)$\\
+	
+	$t_2 = \dfrac{-grad\hspace*{0.05cm}f(X^1) \cdot \boldsymbol{S}^{1t}}{\boldsymbol{S}^1\boldsymbol{H}\boldsymbol{S}^{1t}} = 0.325827$\\
+	
+	\newpage
+	$X^2 = X^1 + t_2\boldsymbol{S}^{1} = (0.582105, -0.798454, 1.7597)$\\
+	
+	$f(X^2) = 5.2972, grad\hspace*{0.05cm}f(X^2) = (-7.04677, -16.5964, -5.19949)$\\
+	
+	$\beta_1 = 10.8232$\\
+	
+	Третий шаг итерации:\\
+	
+	$\boldsymbol{S^{2}} = -grad\hspace*{0.05cm}f(X^2) + \beta_1\boldsymbol{S^{1}} = (7.42694, -2.08269, 64.3065)$\\
+	
+	$t_3 = \dfrac{-grad\hspace*{0.05cm}f(X^2) \cdot \boldsymbol{S}^{2t}}{\boldsymbol{S}^2\boldsymbol{H}\boldsymbol{S}^{2t}} = 0.0300868$\\
+	
+	$X^3 = X^2 + t_3\boldsymbol{S}^{2} = (0.805556, -0.861111, 3.69444)$\\
+	
+	$f(X^3) \approx 0, grad\hspace*{0.05cm}f(X^3) \approx (0, 0, 0)$\\
+	
+	$\beta_2 \approx 0$\\
+	
+	$\boldsymbol{S^{3}} = -grad\hspace*{0.05cm}f(X^3) + \beta_2\boldsymbol{S^{2}} \approx (0,0,0)$\\
+	
+	Останавливаемся на третьем шаге и заканчиваем итерационный процесс по критерию $\dfrac{||grad\hspace*{0.05cm}f(X^{k+1})||}{|f(X^{k+1})|} \leq \delta_3$ и потому что $\beta_2 = 0$ и $\boldsymbol{S^{3}} = (0,0,0)$. Данное решение задачи не зависит от выбора начальной точки $X^0$, а её точное решение равно $X^* = (\dfrac{29}{36}, -\dfrac{31}{36}, \dfrac{133}{36})$, $f(X^*) = 0$.
+\end{document}

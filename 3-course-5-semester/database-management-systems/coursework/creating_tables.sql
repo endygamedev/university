@@ -67,7 +67,7 @@ CREATE TABLE session_ (		IDsession int primary key,
                             constraint fr6 foreign key (IDhall) references hall(IDhall));
 
 
-## Таблица заказаgenre
+## Таблица заказа
 CREATE TABLE order_ (	IDorder int primary key,
 						IDclient int,
                         IDsession int,
