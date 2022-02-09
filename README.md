@@ -120,8 +120,12 @@
 │   └── statistic
 │       └── task-3.nb
 ├── 3-course-6-semester
-│   └── internet-technologies
-│       └── task-1
+│   ├── game-theory
+│   │   └── Бронников ПМ-1901 - Анализ платёжной матрица.xlsx
+│   ├── internet-technologies
+│   │   └── task-1
+│   └── operations-research
+│       └── Бронников ПМ-1901 - Оптимизация производственного плана.xlsx
 ├── generate-readme
 ├── LICENSE
 └── README.md
