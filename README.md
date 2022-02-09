@@ -119,6 +119,9 @@
 │   │   └── task-9
 │   └── statistic
 │       └── task-3.nb
+├── 3-course-6-semester
+│   └── internet-technologies
+│       └── task-1
 ├── generate-readme
 ├── LICENSE
 └── README.md
