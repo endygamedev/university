@@ -120,6 +120,9 @@
 │   └── statistic
 │       └── task-3.nb
 ├── 3-course-6-semester
+│   ├── forecasting-methods
+│   │   ├── 0. Basics
+│   │   └── 1. Naive forecasting methods
 │   ├── game-theory
 │   │   └── Бронников ПМ-1901 - Анализ платёжной матрица.xlsx
 │   ├── internet-technologies
