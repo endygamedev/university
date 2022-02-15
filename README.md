@@ -120,6 +120,8 @@
 │   └── statistic
 │       └── task-3.nb
 ├── 3-course-6-semester
+│   ├── decision-support
+│   │   └── task-1
 │   ├── financial-mathematics
 │   │   ├── ПМ1901 01 Бронников.xls
 │   │   └── ПМ1901 01 Бронников.xls:Zone.Identifier
