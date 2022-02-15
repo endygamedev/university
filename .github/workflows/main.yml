@@ -1,0 +1,31 @@
+name: Update README
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          username: ${{ github.actor }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+        
+      - name: Git Clone
+        run: |
+          git clone https://github.com/endygamedev/university.git
+          git config --global user.email "bronnikov.40@mail.ru"
+          git config --global user.name "Egor"
+
+      - name: Install tree
+        run: sudo apt install -y tree
+        
+      - name: Git Commit
+        run: |
+          sh ./generate-readme
+          git add .
+          git commit -m 'Update `README.md`'
+          git push
