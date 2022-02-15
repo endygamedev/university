@@ -132,29 +132,6 @@
 │   │   └── task-1
 │   └── operations-research
 │       └── Бронников ПМ-1901 - Оптимизация производственного плана.xlsx
-├── university
-│   ├── 2-course-4-semester
-│   │   ├── computational-geometry
-│   │   ├── numerical-methods
-│   │   └── programming-languages
-│   ├── 3-course-5-semester
-│   │   ├── accounting
-│   │   ├── analytical-marketing
-│   │   ├── database-management-systems
-│   │   ├── math-modeling
-│   │   ├── network
-│   │   ├── optimization-methods
-│   │   └── statistic
-│   ├── 3-course-6-semester
-│   │   ├── financial-mathematics
-│   │   ├── forecasting-methods
-│   │   ├── game-theory
-│   │   ├── internet-technologies
-│   │   └── operations-research
-│   ├── university
-│   ├── LICENSE
-│   ├── README.md
-│   └── generate-readme
 ├── LICENSE
 ├── README.md
 └── generate-readme
