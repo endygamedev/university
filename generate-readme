@@ -3,5 +3,5 @@ printf %s '# :student: University repository
 ###### Bachelor program: «Applied Mathematics and Informatics»
 ### :evergreen_tree: Structure:
 ```bash' > README.md
-tree --dirsfirst --noreport -L 3 >> README.md
+tree --dirsfirst --noreport -L 3 -I 'university' >> README.md
 printf %s '```' >> README.md

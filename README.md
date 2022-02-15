@@ -47,11 +47,11 @@
 │   ├── database-management-systems
 │   │   ├── coursework
 │   │   ├── data
+│   │   ├── script1.sql
 │   │   ├── script10.sql
 │   │   ├── script11.sql
 │   │   ├── script12.sql
 │   │   ├── script13.sql
-│   │   ├── script1.sql
 │   │   ├── script2.sql
 │   │   ├── script3.sql
 │   │   ├── script4.sql
@@ -80,11 +80,12 @@
 │   │   ├── task-3
 │   │   ├── task-4
 │   │   ├── task-5
+│   │   ├── PktMon.pcapng
+│   │   ├── diagram1.pkt
 │   │   ├── diagram10.pkt
 │   │   ├── diagram11.pkt
 │   │   ├── diagram12.pkt
 │   │   ├── diagram13.pkt
-│   │   ├── diagram1.pkt
 │   │   ├── diagram2.pkt
 │   │   ├── diagram3.pkt
 │   │   ├── diagram4.pkt
@@ -94,8 +95,7 @@
 │   │   ├── diagram8.pkt
 │   │   ├── diagram9.pkt
 │   │   ├── dump1.pcapng
-│   │   ├── netdump
-│   │   └── PktMon.pcapng
+│   │   └── netdump
 │   ├── optimization-methods
 │   │   ├── task-1
 │   │   ├── task-10
@@ -120,6 +120,9 @@
 │   └── statistic
 │       └── task-3.nb
 ├── 3-course-6-semester
+│   ├── financial-mathematics
+│   │   ├── ПМ1901 01 Бронников.xls
+│   │   └── ПМ1901 01 Бронников.xls:Zone.Identifier
 │   ├── forecasting-methods
 │   │   ├── 0. Basics
 │   │   └── 1. Naive forecasting methods
@@ -129,7 +132,7 @@
 │   │   └── task-1
 │   └── operations-research
 │       └── Бронников ПМ-1901 - Оптимизация производственного плана.xlsx
-├── generate-readme
 ├── LICENSE
-└── README.md
+├── README.md
+└── generate-readme
 ```
