@@ -129,7 +129,8 @@
 │   │   ├── 0. Basics
 │   │   └── 1. Naive forecasting methods
 │   ├── game-theory
-│   │   └── Бронников ПМ-1901 - Анализ платёжной матрица.xlsx
+│   │   ├── Бронников ПМ-1901 - Анализ платёжной матрица.xlsx
+│   │   └── Бронников ПМ-1901 - Антагон 2x2.xlsx
 │   ├── internet-technologies
 │   │   └── task-1
 │   └── operations-research
