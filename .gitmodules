@@ -1,0 +1,3 @@
+[submodule "university"]
+    path = university
+    url = https://github.com/endygamedev/university
