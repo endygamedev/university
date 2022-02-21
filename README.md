@@ -123,8 +123,8 @@
 │   ├── decision-support
 │   │   └── task-1
 │   ├── financial-mathematics
-│   │   ├── ПМ1901 01 Бронников.xls
-│   │   └── ПМ1901 01 Бронников.xls:Zone.Identifier
+│   │   ├── task-1
+│   │   └── task-2
 │   ├── forecasting-methods
 │   │   ├── 0. Basics
 │   │   ├── 1. Naive forecasting methods
