@@ -127,7 +127,8 @@
 │   │   └── ПМ1901 01 Бронников.xls:Zone.Identifier
 │   ├── forecasting-methods
 │   │   ├── 0. Basics
-│   │   └── 1. Naive forecasting methods
+│   │   ├── 1. Naive forecasting methods
+│   │   └── task-2
 │   ├── game-theory
 │   │   ├── Бронников ПМ-1901 - Анализ платёжной матрица.xlsx
 │   │   └── Бронников ПМ-1901 - Антагон 2x2.xlsx
