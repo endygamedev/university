@@ -122,6 +122,8 @@
 ├── 3-course-6-semester
 │   ├── decision-support
 │   │   └── task-1
+│   ├── econometrics
+│   │   └── task-1
 │   ├── financial-mathematics
 │   │   ├── task-1
 │   │   └── task-2
