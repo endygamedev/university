@@ -126,7 +126,8 @@
 │   │   └── task-1
 │   ├── financial-mathematics
 │   │   ├── task-1
-│   │   └── task-2
+│   │   ├── task-2
+│   │   └── task-3
 │   ├── forecasting-methods
 │   │   ├── 0. Basics
 │   │   ├── 1. Naive forecasting methods
