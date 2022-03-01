@@ -123,7 +123,8 @@
 │   ├── decision-support
 │   │   └── task-1
 │   ├── econometrics
-│   │   └── task-1
+│   │   ├── task-1
+│   │   └── task-2
 │   ├── financial-mathematics
 │   │   ├── task-1
 │   │   ├── task-2
