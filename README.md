@@ -121,6 +121,7 @@
 │       └── task-3.nb
 ├── 3-course-6-semester
 │   ├── decision-support
+│   │   ├── assets
 │   │   ├── task-1
 │   │   └── task-2
 │   ├── econometrics
