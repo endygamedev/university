@@ -147,8 +147,10 @@
 │   │   ├── class-3
 │   │   ├── task-1
 │   │   └── task-2
-│   └── operations-research
-│       └── Бронников ПМ-1901 - Оптимизация производственного плана.xlsx
+│   ├── operations-research
+│   │   └── Бронников ПМ-1901 - Оптимизация производственного плана.xlsx
+│   └── tex
+│       └── lesson-1
 ├── LICENSE
 ├── README.md
 └── generate-readme
