@@ -134,7 +134,7 @@
 │   ├── forecasting-methods
 │   │   ├── 0. Basics
 │   │   ├── 1. Naive forecasting methods
-│   │   └── task-2
+│   │   └── 2. Adaptive forecasting methods
 │   ├── game-theory
 │   │   ├── Бронников Егор ПМ-1901 - minmax f(x,y).xlsx
 │   │   ├── Бронников Егор ПМ-1901 - Поиск седловой точки функции.docx
