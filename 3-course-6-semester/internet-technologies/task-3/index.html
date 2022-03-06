@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>Бронников Егор ПМ-1901</title>
+        <style>
+            .first {
+                margin: 20px auto;
+                background-color: rgb(0, 87, 184);
+            }
+
+            .second { background-color: rgb(255, 216, 0); }
+            
+            .third { background-color: red; }
+
+            .circle { border-radius: 100%; }
+
+            #big .first {
+                width: 300px;
+                height: 300px;
+            }
+
+            #big .second {
+                position: relative;
+                float: left;
+                width: 212px;
+                height: 212px;
+            }
+
+            #small .first {
+                width: 200px;
+                height: 200px;
+            }
+
+            #small .second {
+                position: relative;
+                float: right;
+                top: 59px;
+                width: 141px;
+                height: 141px;
+            }
+
+            .circle.first {
+                width: 300px;
+                height: 300px;
+            }
+
+            .circle.second {
+                position: relative;
+                top: 50px;
+                margin: auto;
+                width: 200px;
+                height: 200px;
+            }
+
+            .circle.third {
+                position: relative;
+                top: 50px;
+                margin: auto;
+                width: 100px;
+                height: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>Бронников Егор ПМ-1901</header>
+        <main>
+            <div id="small">
+                <div class="square first">
+                    <div class="square second"></div>
+                </div>
+            </div>
+
+            <div id="big">
+                <div class="square first">
+                    <div class="square second"></div>
+                </div>
+            </div>
+
+            <div class="circle first">
+                <div class="circle second">
+                    <div class="circle third"></div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
