@@ -156,7 +156,8 @@
 │   │   ├── Бронников ПМ-1901 - Управление запасами.xlsx
 │   │   └── Бронников ПМ-1901 - Управление запасами.xlsx:Zone.Identifier
 │   └── tex
-│       └── lesson-1
+│       ├── lesson-1
+│       └── lesson-2
 ├── LICENSE
 ├── README.md
 └── generate-readme
