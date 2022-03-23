@@ -20,55 +20,56 @@
             }
 
             .battery:before {
+                position: relative;
                 content: "";
                 display: block;
-                height: 100px;
+                height: 100%;
                 transition: 1s;
             }
 
             .battery:hover::before {
-                height: 150px;
+                height: 100%;
                 transition: 1s;
             }
 
 
             .battery.low:before {
-                width: 100px;  
+                width: 33%;  
                 background-color: red;
             }
 
             .battery.low:hover:before {
-                width: 300px;
+                width: 66%;
                 background-color: yellow;
             }
 
             .battery.medium:before {
-                width: 200px;
+                width: 66%;
                 background-color: yellow;
             }
 
             .battery.medium:hover:before {
-                width: 450px;
+                width: 100%;
                 background-color: green;
             }
 
             .battery.high:before {
-                width: 300px;
+                width: 100%;
                 background-color: green;
             }
 
             .battery.high:hover:before {
-                width: 150px;
+                width: 33%;
                 background-color: red;
             }
 
             .battery:after {
+                position: relative;
                 content: "";
                 display: block;
-                width: 15px;
-                height: 40px;
+                width: 5%;
+                height: 42%;
                 background-color: black;
-                position: relative;
                 float: right;
                 bottom: 70px;
                 left: 20px;
@@ -76,13 +77,6 @@
             }
 
             .battery:hover:after {
-                content: "";
-                display: block;
-                width: 24px;
-                height: 60px;
-                background-color: black;
-                position: relative;
-                float: right;
                 bottom: 105px;
                 left: 25px;
                 transition: 1s;
