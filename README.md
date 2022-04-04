@@ -144,7 +144,8 @@
 │   │   ├── 0. Basics
 │   │   ├── 1. Naive forecasting methods
 │   │   ├── 2. Adaptive forecasting methods
-│   │   └── task-3
+│   │   ├── 3. Autoregressive model order
+│   │   └── 4. Exogenous factors
 │   ├── game-theory
 │   │   ├── КТ1
 │   │   ├── Бронников 1.zip
