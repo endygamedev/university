@@ -131,7 +131,8 @@
 │   │   ├── task-3
 │   │   ├── task-4
 │   │   ├── task-5
-│   │   └── task-6
+│   │   ├── task-6
+│   │   └── task-7
 │   ├── financial-mathematics
 │   │   ├── task-1
 │   │   ├── task-2
