@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>flex</title>
+        <style>
+            .container {
+                display: flex;
+                width: 500px;
+                height: 100px;
+                border: 1px solid blue;
+                flex-direction: row;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .container div {
+                text-align: center;
+                background: green;
+                border: 1px solid black;
+                margin: 10px;
+            }
+
+            .one {
+                flex-grow: 1;
+            }
+
+            .two {
+                flex-grow: 1;
+            }
+
+            .three {
+                flex-grow: 3;
+            }
+        </style>
+    </head>
+    <body>
+        <header>Бронников Егор ПМ-1901</header>
+        <main>
+            <div class="container">
+                <div class="one">one</div>
+                <div class="two">two</div>
+                <div class="three">three</div>
+            </div>
+        </main>
+    </body>
+</html>

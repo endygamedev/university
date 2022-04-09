@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>Бронников Егор ПМ-1901</title>
+        <style> 
+            .battery {
+                position: relative;
+                font-size: 10px;
+                width: 30em;
+                height: 10em;
+                border: 0.5em solid black;
+                margin: 1.5em auto;
+                transition: 1s;
+            }
+
+            .battery:hover {
+                font-size: 10px;
+                margin: 30em auto;
+                transition: 1s;
+            }
+
+            .battery.low:hover { transform: scale(2) rotate(90deg); }
+            .battery.medium:hover { transform: scale(2.5) rotate(180deg); }
+            .battery.high:hover { transform: scale(4) rotate(360deg); }
+
+            .battery:before {
+                position: relative;
+                content: "";
+                display: block;
+                height: 100%;
+                transition: 1s;
+            }
+
+            .battery.low:before, .battery.high:hover:before {
+                width: 33%;
+                background-color: red;
+            }
+
+            .battery.medium:before, .battery.low:hover:before {
+                width: 66%;
+                background-color: yellow;
+            }
+
+            .battery.high:before, .battery.medium:hover:before {
+                width: 100%;
+                background-color: green;
+            }
+
+            .battery:after {
+                position: absolute;
+                content: "";
+                display: block;
+                width: 5%;
+                height: 42%;
+                background-color: black;
+                right: -5%;
+                top: 30%;
+            }
+        </style>
+    </head>
+    <body>
+        <header>Бронников Егор ПМ-1901</header>
+        <main>
+            <div class="battery low"></div>
+            <div class="battery medium"></div>
+            <div class="battery high"></div>
+        </main>
+    </body>
+</html>
