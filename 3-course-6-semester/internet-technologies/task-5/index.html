@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>Бронников Егор ПМ-1901</title>
+        <style>
+            .feedback {
+                position: absolute;
+                display: block;
+                top: 40%;
+                left: 40%;
+                writing-mode: sideways-lr;
+                text-align: center;
+                text-orientation: mixed;
+            }
+
+            .feedback:after {
+                content: "Обратная связь";
+                display: block;
+                height: 160px;
+                width: 25px;
+                background-color: orange;
+                border-radius: 0 15px 15px 0;
+            }
+
+            .feedback:before {
+                display: block;
+                content: "";
+                height: 160px;
+                width: 0px;
+                writing-mode: horizontal-tb;
+                text-align: left;
+                color: white;
+                background-color: dimgray;
+                transition: 1s;
+            }
+
+            .feedback:hover:before {
+                content: "Если у вас возникли вопросы по этому коду, звоните мне по телефону: 555-3298. Звонок платный.";
+                height: 140px;
+                width: 250px;
+                padding: 10px;
+                transition: 1s;
+            }
+        </style>
+    </head>
+    <body>
+        <header>Бронников Егор ПМ-1901</header>
+        <main>
+            <div class="feedback"></div>
+        </main>
+    </body>
+</html>
