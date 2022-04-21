@@ -51,13 +51,17 @@
 	\end{center}
 
 	\textit{Решение:}\\
-	Перепишем исходное уравнение в виде для $t \geq 4$:
+	Перепишем исходное уравнение в виде для $s \geq 4$:
 	\begin{center}
-		$u_{t} - 7u_{t-1} + 22u_{t-2} - 32u_{t-3} + 16u_{t-4} = 0$
+		$u_{s} - 7u_{s-1} + 22u_{s-2} - 32u_{s-3} + 16u_{s-4} = 0$
 	\end{center}
-	Будем искать решение в виде: $\breve{u_t} = Ch^t$
+	Для получения общего решения однородного разностного уравнения находим фундаментальную систему решений, элементы которой ищем в виде:
 	\begin{center}
-		$h^t - 7h^{t-1} + 22h^{t-2} - 32h^{t-3} + 16h^{t-4} = 0$
+		$\breve{u_s} = Ch^s$
+	\end{center}
+	Тогда
+	\begin{center}
+		$h^s - 7h^{s-1} + 22h^{s-2} - 32h^{s-3} + 16h^{s-4} = 0$
 	\end{center}
 	Находим харатеристическое уравнение:
 	\begin{center}
@@ -66,16 +70,49 @@
 	Решаем уравнение, получим следующие корни: $h_1 = 1, h_2 = 2, h_3 = 2-2i$\\$h_4 = 2+2i$.\\
 	Можно видеть, что у нас нет кратных корней, но есть комлексные корни. Запишем представление комлексного числа в тригонометрической форме:
 	\begin{center}
-		$\hat{y_t} = r^t((C_1+C_2)\cos(t\phi)+i(C_1-C_2)\sin(t\phi))$
+		$\hat{u_s} = r^s((C_1+C_2)\cos(s\phi)+i(C_1-C_2)\sin(s\phi))$
 	\end{center}
 	Отсюда следует, чтобы получить действительное решение, постонные надо взять комлексно-сопряжёнными: $C_{1,2} = U(\cos\theta \pm i\sin\theta)$.\\
 	В итоге, получается:
 	\begin{center}
-		$\hat{y_t} = 2Ur^t\cos(t\phi+\theta)$
+		$\hat{u_s} = 2Ur^s\cos(s\phi+\theta)$
 	\end{center}
 	где $r = 2\sqrt{2}, \phi = \dfrac{\pi}{4}$\\\\
 	Таким образом, общее решение будет выглядеть следующим образом:
 	\begin{center}
-		$\breve{u_t} = C_1 + 2^tC_2 + 2U(2\sqrt{2})^t\cos(\dfrac{\pi}{4}t+\theta)$
+		$\breve{u_s} = C_1 + 2^sC_2 + 2U(2\sqrt{2})^s\cos(\dfrac{\pi}{4}s+\theta)$
 	\end{center}
+
+	\newpage
+	
+	\section*{Задача 10}
+	\textit{Задание:} Найти  общее решение неоднородного линейного разностного уравнения первого порядка методом итераций и методом обратного оператора при помощи z-преобразования:
+	\begin{center}
+		$u_{s+1} = \dfrac{6}{7}u_s + \dfrac{s+6}{s+7}$
+	\end{center}
+	\subsection*{Метод итераций}
+	Пусть дано $u_0$:\\
+	
+	$u_1 = \dfrac{6}{7}u_0 + \dfrac{7}{8}$\\
+	
+	$u_2 = \dfrac{6}{7}u_1 + \dfrac{8}{9} = \dfrac{6}{7}\left(\dfrac{6}{7}u_0 + \dfrac{7}{8}\right) + \dfrac{8}{9} = \left(\dfrac{6}{7}\right)^2u_0 + \dfrac{6 \cdot 7}{7 \cdot 8} + \dfrac{8}{9}$\\\\
+	
+	$u_3 = \dfrac{6}{7}u_2 + \dfrac{9}{10} = \dfrac{6}{7}\left(\left(\dfrac{6}{7}\right)^2u_0 + \dfrac{6 \cdot 7}{7 \cdot 8} + \dfrac{8}{9}\right) + \dfrac{9}{10} =$\\
+	\[
+		\qquad = \left(\dfrac{6}{7}\right)^3u_0 + \left(\dfrac{6}{7}\right)^2\cdot\dfrac{7}{8} + \dfrac{6}{7}\cdot\dfrac{8}{9} + \dfrac{9}{10}
+	\]
+	\newline
+	
+	$u_4 = \dfrac{6}{7}u_3 + \dfrac{10}{11} = \dfrac{6}{7}\left(\left(\dfrac{6}{7}\right)^3u_0 + \left(\dfrac{6}{7}\right)^2\cdot\dfrac{7}{8} + \dfrac{6}{7}\cdot\dfrac{8}{9} + \dfrac{9}{10}\right) + \dfrac{10}{11} =$\\
+	\[
+		\qquad = \left(\dfrac{6}{7}\right)^4u_0 + \left(\dfrac{6}{7}\right)^3\cdot\dfrac{7}{8} + \left(\dfrac{6}{7}\right)^2\cdot\dfrac{8}{9} + \dfrac{6}{7}\cdot\dfrac{9}{10} + \dfrac{10}{11}
+	\]
+	
+	\begin{center}
+		$\ldots$
+	\end{center}
+	Общая формула при $s \geq 1$:\\\\
+	$u_s = \left(\dfrac{6}{7}\right)^su_0 + \smashoperator[r]{\sum_{i=0}^{s-1}} \left(\dfrac{6}{7}\right)^i \dfrac{(s-i) + 6}{(s-i) + 7}$
+	\newpage
+	\subsection*{Z-преобразование}
 \end{document}
