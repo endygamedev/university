@@ -57,7 +57,7 @@
 	\end{center}
 	Для получения общего решения однородного разностного уравнения находим фундаментальную систему решений, элементы которой ищем в виде:
 	\begin{center}
-		$\breve{u_s} = Ch^s$
+		$\breve{u}_s = Ch^s$
 	\end{center}
 	Тогда
 	\begin{center}
@@ -65,22 +65,22 @@
 	\end{center}
 	Находим харатеристическое уравнение:
 	\begin{center}
-		$H(t) = h^4 - 7h^3 + 22h^2 - 32h + 16 = 0$
+		$H(h) = h^4 - 7h^3 + 22h^2 - 32h + 16 = 0$
 	\end{center}
 	Решаем уравнение, получим следующие корни: $h_1 = 1, h_2 = 2, h_3 = 2-2i$\\$h_4 = 2+2i$.\\
 	Можно видеть, что у нас нет кратных корней, но есть комлексные корни. Запишем представление комлексного числа в тригонометрической форме:
 	\begin{center}
-		$\hat{u_s} = r^s((C_1+C_2)\cos(s\phi)+i(C_1-C_2)\sin(s\phi))$
+		$\hat{u}_s = r^s((C_1+C_2)\cos(s\phi)+i(C_1-C_2)\sin(s\phi))$
 	\end{center}
 	Отсюда следует, чтобы получить действительное решение, постонные надо взять комлексно-сопряжёнными: $C_{1,2} = U(\cos\theta \pm i\sin\theta)$.\\
 	В итоге, получается:
 	\begin{center}
-		$\hat{u_s} = 2Ur^s\cos(s\phi+\theta)$
+		$\hat{u}_s = 2Ur^s\cos(s\phi+\theta)$
 	\end{center}
 	где $r = 2\sqrt{2}, \phi = \dfrac{\pi}{4}$\\\\
 	Таким образом, общее решение будет выглядеть следующим образом:
 	\begin{center}
-		$\breve{u_s} = C_1 + 2^sC_2 + 2U(2\sqrt{2})^s\cos(\dfrac{\pi}{4}s+\theta)$
+		$\breve{u}_s = C_1 + 2^sC_2 + 2U(2\sqrt{2})^s\cos(\dfrac{\pi}{4}s+\theta)$
 	\end{center}
 
 	\newpage
@@ -115,4 +115,141 @@
 	$u_s = \left(\dfrac{6}{7}\right)^su_0 + \smashoperator[r]{\sum_{i=0}^{s-1}} \left(\dfrac{6}{7}\right)^i \dfrac{(s-i) + 6}{(s-i) + 7}$
 	\newpage
 	\subsection*{Z-преобразование}
+	1) Применим z-преобразование к рассматриваемому уравнению, заменяя $u_s$ на $\tilde{u}(z)$, $u_{s-1}$ на $z^{-1}(\tilde{y}(z)+y_{-1}z)$.
+	\begin{center}
+		$Z\{u_s\} = \tilde{u}(z) = \dfrac{6}{7}z^{-1}(u_{-1}z + \tilde{u}(z))+\tilde{x}(z)$\\
+	\end{center}
+
+	2) Из полученного выражения выразим $\tilde{u}(z)$.
+	\begin{center}
+		$\tilde{u}(z) = \dfrac{6}{7}z^{-1}u_{-1}z + \dfrac{6}{7}z^{-1}\tilde{u}(z)+\tilde{x}(z)$\\
+		$\tilde{u}(z) - \dfrac{6}{7}z^{-1}\tilde{u}(z) = \dfrac{6}{7}u_{-1} + \tilde{x}(z)$\\
+		$\tilde{u}(z) (1 - \dfrac{6}{7}z^{-1}) = \dfrac{6}{7}u_{-1} + \tilde{x}(z)$\\
+		$\tilde{u}(z) = \dfrac{\dfrac{6}{7}u_{-1} + \tilde{x}(z)}{1 - \dfrac{6}{7}z^{-1}}$\\
+		$\tilde{u}(z) = \dfrac{\dfrac{6}{7}u_{-1} + \tilde{x}(z)}{z^{-1}(z - \dfrac{6}{7})}$\\
+		$\tilde{u}(z) = \dfrac{\dfrac{6}{7}u_{-1}z + z\tilde{x}(z)}{z - \dfrac{6}{7}}$\\
+	\end{center}
+	3) Разложим $\tilde{u}(z)$ на простые дроби.\\
+	Получившееся выражение уже является простой дробью, так что ничего делать не надо.\\
+	
+	4) Выполним обратное z-преобразование.\\
+	Воспользуемся способом в котором коэффициенты берутся из ряда Лорана.
+	\begin{center}
+		$u_s = \smashoperator[r]{\sum_{\zeta_1=\frac{6}{7}}} Res\dfrac{\left(\dfrac{6}{7}u_{-1} + \tilde{x}(z)\right)zz^{s-1}}{z - \dfrac{6}{7}} = \lim_{z\to\frac{6}{7}} \left(z - \dfrac{6}{7}\right)\dfrac{\dfrac{6}{7}u_{-1}z^s + \tilde{x}(z)z^s}{z - \dfrac{6}{7}} = $
+	\end{center}
+		$= \left(\dfrac{6}{7}\right)^{s+1} u_{-1} + \tilde{x}\left(\dfrac{6}{7}\right)\left(\dfrac{6}{7}\right)^s$\\
+	где $\tilde{x}\left(\dfrac{6}{7}\right) = \smashoperator[r]{\sum_{k=0}^{\infty}}x_k\left(\dfrac{6}{7}\right)^{s-k} = \smashoperator[r]{\sum_{k=1}^{s}}x_k\left(\dfrac{6}{7}\right)^{s-k} = \smashoperator[r]{\sum_{i=0}^{s-1}}x_{s-i}\left(\dfrac{6}{7}\right)^{i} = \smashoperator[r]{\sum_{i=0}^{s-1}}\dfrac{(s-i)+6}{(s-i)+7}\left(\dfrac{6}{7}\right)^i$
+	
+	\newpage
+	Таким образом, мы получили следующее решение:\\
+	\begin{center}
+		$u_s =  \left(\dfrac{6}{7}\right)^{s+1} u_{-1} + \smashoperator[r]{\sum_{i=0}^{s-1}}\dfrac{(s-i)+6}{(s-i)+7}\left(\dfrac{6}{7}\right)^i = \left(\dfrac{6}{7}\right)^{s} u_{0} + \smashoperator[r]{\sum_{i=0}^{s-1}}\dfrac{(s-i)+6}{(s-i)+7}\left(\dfrac{6}{7}\right)^i$
+	\end{center}
+
+	\subsection*{Обратный оператор}
+	Применим к исходному уравнению оператор сдвига на шаг назад ($\mathcal{B}$):
+	\begin{center}
+		$u_s = \dfrac{6}{7}\mathcal{B}u_s + \dfrac{s+6}{s+7}$
+	\end{center}
+	Выразим $u_s$:
+	\begin{center}
+		$u_s - \dfrac{6}{7}\mathcal{B}u_s = \dfrac{s+6}{s+7}$
+	\end{center}
+	\begin{center}
+		$\left(1 - \dfrac{6}{7}\mathcal{B}\right)u_s = \dfrac{s+6}{s+7}$
+	\end{center}
+	\begin{center}
+		$u_s =\left(1 - \dfrac{6}{7}\mathcal{B}\right)^{-1}\dfrac{s+6}{s+7}$
+	\end{center}
+	Воспользуемся свойством обратного оператора (разложением в ряд):
+	\begin{center}
+		$u_s = \left(1 + \dfrac{6}{7}\mathcal{B} + \left(\dfrac{6}{7}\right)^2\mathcal{B}^2 + \left(\dfrac{6}{7}\right)^3\mathcal{B}^3 + \ldots\right)\dfrac{s+6}{s+7}$
+	\end{center}
+	Таким образом, мы получили следующее решение:\\
+	\begin{center}
+		$u_s = \dfrac{s+6}{s+7} + \dfrac{6(s-1)+6}{7(s-1)+7} + \left(\dfrac{6}{7}\right)^2\dfrac{(s-2)+6}{(s-2)+7} + \ldots$
+	\end{center}
+	\newpage
+	\section*{Задача 11}
+	\textit{Задание:} Решить неоднородное разностное уравнение (решить задачу $\mbox{Коши}$):
+	\begin{center}
+		$y(s+2) - 9y(s+1) + 20y(s) = \cos(s) - 2^s$\\
+		$y(1) = y(2) = 0$
+	\end{center}
+	\textit{Решение:}\\
+	Составим характеристическое уравнение для однородного уравнения.\\
+	Для получения общего решения однородного разностного уравнения находим фундаментальную систему решений, элементы которой ищем в видел:
+	\begin{center}
+		$\breve{y}(s) = Ch^s$
+	\end{center}
+	Находим харатеристическое уравнение:
+	\begin{center}
+		$y(s+2) - 9y(s+1) + 20y(s) = 0$
+	\end{center}
+	\begin{center}
+		$H(h) = h^2 - 9h + 20 = 0$
+	\end{center}
+	Решаем уравнение, получим следующие корни: $h_1 = 4$, $h_2 = 5$.\\
+	Можно видеть, что у нас нет кратных вещественных корней и нет комплексных корней, значит мы можем записать общее решение однородного уравнения:
+	\begin{center}
+		$\breve{y}(s) = 4^sC_1 + 5^sC_2$
+	\end{center}
+	где $C_1$ и $C_2$ -- произвольные константы.\\
+	
+	Найдём первое частное решение.\\
+	Будем его искать в виде:
+	\begin{center}
+		$\hat{y}_1(s) = C2^s$
+	\end{center}
+	Подставив такое частное решение в исходное разностное уравнение, получаем:
+	\begin{center}
+		$C2^{s+2} - 9C2^{s+1} + 20C2^s = -2^s$
+	\end{center}
+	\begin{center}
+		$4C2^{s} - 18C2^{s} + 20C2^s = -2^s$
+	\end{center}
+	Отсюда получаем, что $C = -\dfrac{1}{6}$
+	\newpage
+	Найдём второе частное решение.\\
+	Будем его искать в виде:
+	\begin{center}
+		$\hat{y}_2(s) = A \sin(s) + B \cos(s)$
+	\end{center}
+	Подставив такое частное решение в исходное разностное уравнение, получаем:
+	\begin{center}
+		\small$A \sin(s+2) + B \cos(s+2) - 9(A \sin(s+1) + B \cos(s+1)) + 20(A \sin(s) + B \cos(s)) = \cos(s)$
+	\end{center}
+	\begin{center}
+		...
+	\end{center}
+	\newpage
+	\section*{Задача 12}
+	\textit{Задание:} Модель делового цикла Самуэльсона-Хикса предполагает прямую
+	пропорциональность объемов инвестирования приросту национального
+	дохода (принцип акселерации), т.е. $I_t = V(X_{t-1} - X_{t-2})$, где коэффициент $\mbox{V > 0}$ -- фактор акселерации, $I_t$ - величина инвестиций в период $t$, $X_{t-1}, X_{t-2}$ величины
+	национального дохода соответственно в $(t-1)$-ом и $(t-2)$-ом периодах.
+	Предполагается также, что спрос на данном этапе $C_t$ зависит от величины
+	национального дохода на предыдущем этапе $X_{t-1}$ линейным образом $Ct = aX_{t-1} + b$. Условие равенства спроса и предложения имеет вид $X_t = I_t + C_t$. Тогда
+	приходим к уравнению Хикса:
+	\begin{center}
+		$X_t = (a+V)X_{t-1} - VX_{t-2} + b$
+	\end{center}
+	Стационарная последовательность $X_t^* = c = const$ является решением
+	уравнения Хикса только при $c = b(1-a)^{-1}$, множитель $(1 - a)^{-1}$ называется
+	мультипликатором Кейнса (одномерный аналог матрицы полных затрат).\\
+	Рассмотреть уравнение Хикса. Какова динамика роста национального
+	дохода?\\
+	При $V = a = \dfrac{1}{2}, b = 1$ уравнение Хикса будет иметь вид:\\
+	\begin{center}
+		$X_t = X_{t-1} - \dfrac{1}{2}X_{t-2} + 1$
+	\end{center}
+	\textit{Решение:}\\
+	Для получения общего решения однородного разностного уравнения находим фундаментальную систему решений, элементы которой ищем в виде:
+	\begin{center}
+		$\breve{X}_t = Ch^t$
+	\end{center}
+	Находим харатеристическое уравнение:
+	\begin{center}
+		$H(h) = h^2 - h +  = 0$
+	\end{center}
 \end{document}
