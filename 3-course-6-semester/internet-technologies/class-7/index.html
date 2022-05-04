@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>JS</title>
+        <script>
+            function hello() {
+                alert("Hello World");
+            }
+
+            function addChar(el, chr) {
+                // console.log(el);
+                el.innerHTML += chr;
+            }
+
+            function clear_() {
+                const els = document.querySelectorAll(".square");
+
+                // `for` cycle
+
+                // for (let i = 0; i < els.length; i++) {
+                //     els[i].innerHTML = '';
+                //     console.log(el[i])
+                // }
+
+
+                // `foreach` cycle
+                els.forEach(el => el.innerHTML = "");
+            }
+
+            function toggleClass(el) {
+                // el.className += " selected";
+                if (el.classList.contains("selected"))
+                    el.classList.remove("selected");
+                else
+                    el.classList.add("selected");
+                // console.log(el)
+            }
+
+            function addSquare() {
+                var el = document.createElement("div");
+                el.classList.add("square");
+                // el.onclick = function() {
+                //     toggleClass(this);
+                // }
+                el.setAttribute("onclick", "toggleClass(this)");
+                document.body.appendChild(el);
+            }
+
+            // hello();
+        </script>
+        <style>
+            .square {
+                display: block;
+                width: 100px;
+                height: 100px;
+                background-color: lightgreen;
+                word-wrap: break-word;
+                margin-top: 10px;
+            }
+
+            .selected {
+                border: 5px solid red;
+                border-radius: 10px;
+                width: 90px;
+                height: 90px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>Бронников Егор ПМ-1901</header>
+        <button onclick="clear_()">Очистить</button>
+        <button onclick="addSquare()">Добавить квадрат</button>
+        <div class="square" onclick="addChar(this, '.')"></div>
+        <div class="square" onclick="addChar(this, '+')"></div>
+        <div class="square" onclick="toggleClass(this)"></div>
+    </body>
+</html>
