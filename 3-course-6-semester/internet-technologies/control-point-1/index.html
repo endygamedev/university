@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>Бронников</title>
+        <style>
+            .wrapper {
+                position: relative;
+                display: block;
+                width: 550px;
+                height: 450px;
+                margin: 0 auto;
+                background-color: yellow;
+                padding: 20px 15px;
+            }
+
+            .square {
+                display: block;
+                width: 90px;
+                height: 90px;
+                background-color: green;
+                border: 2px solid black;
+            }
+
+            .square.rounded {
+                border-radius: 15px;
+            }
+
+            .first {
+                /*position: relative;
+                float: left;
+                top: 80%;*/
+                position: absolute;
+                bottom: 20px;
+                left: 15px;
+                transition: 2s;
+            }
+
+            .second {
+                position: relative;
+                float: right;
+                transition: 2s;
+            }
+
+            .wrapper:hover {
+                cursor: pointer;
+            }
+
+            .wrapper:hover > .first {
+                transform: scale(1.05);
+                transition: 2s;
+            }
+
+            .wrapper:hover > .second {
+                background-color: blue;
+                transition: 2s;
+            }
+
+            .container {
+                display: flex;
+                width: 75%;
+                height: 100px;
+                margin: 0 auto;
+                border: 2px solid lightskyblue;
+                flex-direction: row;
+                justify-content: center;
+                /*align-items: center;*/
+                gap: 10px;
+            }
+
+            .container div {
+                min-width: 75px;
+                background-color: lightskyblue;
+                text-align: center;
+                padding-top: 40px; /* так было в документации */
+                top: 50%;
+            }
+
+            .container > *:last-child, .container > *:first-child {
+                border: 2px solid black;
+            }
+
+            .container > *:nth-child(even) {
+                color: red;
+            }
+
+            .container > *:nth-child(odd):after {
+                content: "!";
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Бронников Егор ПМ-1901</h1>
+        <div class="wrapper">
+            <div class="square first"></div>
+            <div class="square second rounded"></div>
+        </div>
+        <div class="container">
+            <div>One</div>
+            <div>Two</div>
+            <div>Three</div>
+            <div>Four</div>
+            <div>Five</div>
+        </div>
+    </body>
+</html>
