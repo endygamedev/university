@@ -175,6 +175,7 @@
 │   │   ├── class-4
 │   │   ├── class-5
 │   │   ├── class-6
+│   │   ├── class-7
 │   │   ├── control-point-1
 │   │   ├── task-1
 │   │   ├── task-2
