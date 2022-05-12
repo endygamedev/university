@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>js события в документе</title>
+        <script src="sample.js"></script>
+        <style>
+            .container {
+                display: flex;
+                width: 90%;
+                height: 50px;
+                margin: 20px auto;
+                border: 2px dashed blue;
+            }
+
+            .container > div {
+                border: 2px solid red;
+                width: 50px;
+                text-align: center;
+                line-height: 50px;
+            }
+
+            .container.first > div { color: magenta; }
+
+            .container.second > div { color: purple; }
+
+            .square { background-color: yellow; }
+
+            .circle { border-radius: 50%; }
+        </style>
+    </head>
+    <body>
+        <header>Бронников Егор ПМ-1901</header>
+        <h1>js Events</h1>
+        <button id="add">Добавить</button>
+        <div class="container first">
+            <div></div>
+        </div>
+        <button onclick="fromFirstToSecond()">Переместить круги из first в second</button>
+        <button onclick="fromSecondToFirst()">Переместить квадраты из second в first</button>
+        <div class="container second">
+            <div></div>
+        </div>
+    </body>
+</html>
