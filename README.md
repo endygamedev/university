@@ -178,6 +178,7 @@
 │   │   ├── class-5
 │   │   ├── class-6
 │   │   ├── class-7
+│   │   ├── class-8
 │   │   ├── control-point-1
 │   │   ├── task-1
 │   │   ├── task-2
