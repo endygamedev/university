@@ -59,6 +59,7 @@ function fromFirstToSecond() {
     for (const circle of circles) {
         const el = createObject(circle.innerHTML);
         el.classList.add("circle");
+		el.style.color = "magenta";
         secondContainer.appendChild(el);
         circle.remove();
     }
@@ -71,6 +72,7 @@ function fromSecondToFirst() {
     for (const square of squares) {
         const el = createObject(square.innerHTML);
         el.classList.add("square");
+		el.style.color = "purple";
         firstContainer.appendChild(el);
         square.remove();
     }
