@@ -157,7 +157,8 @@
 │   │   ├── 1. Naive forecasting methods
 │   │   ├── 2. Adaptive forecasting methods
 │   │   ├── 3. Autoregressive model order
-│   │   └── 4. Exogenous factors
+│   │   ├── 4. Exogenous factors
+│   │   └── 5. Prophet
 │   ├── game-theory
 │   │   ├── КТ1
 │   │   ├── Бронников 1.zip
