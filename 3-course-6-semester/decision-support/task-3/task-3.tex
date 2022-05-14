@@ -177,10 +177,14 @@
 		$y(1) = y(2) = 0$
 	\end{center}
 	\textit{Решение:}\\
+	Общее решение неоднородного разностного уравнения:
+	\begin{center}
+		$y_s = \hat{y}_s + \breve{y}_s$
+	\end{center}
 	Составим характеристическое уравнение для однородного уравнения.\\
 	Для получения общего решения однородного разностного уравнения находим фундаментальную систему решений, элементы которой ищем в видел:
 	\begin{center}
-		$\breve{y}(s) = Ch^s$
+		$\hat{y}(s) = Ch^s$
 	\end{center}
 	Находим харатеристическое уравнение:
 	\begin{center}
@@ -192,35 +196,82 @@
 	Решаем уравнение, получим следующие корни: $h_1 = 4$, $h_2 = 5$.\\
 	Можно видеть, что у нас нет кратных вещественных корней и нет комплексных корней, значит мы можем записать общее решение однородного уравнения:
 	\begin{center}
-		$\breve{y}(s) = 4^sC_1 + 5^sC_2$
+		$\hat{y}(s) = 4^sC_1 + 5^sC_2$
 	\end{center}
 	где $C_1$ и $C_2$ -- произвольные константы.\\
 	
-	Найдём первое частное решение.\\
-	Будем его искать в виде:
+	Найдём частное решение уравнения. Запишем уравнение в операторной форме:
 	\begin{center}
-		$\hat{y}_1(s) = C2^s$
+		$a(\mathcal{B}) y(s) = \cos(s) - 2^s$
 	\end{center}
-	Подставив такое частное решение в исходное разностное уравнение, получаем:
+	где $a(\mathcal{B})$ -- операторный полином, $\mathcal{B}$ -- оператор сдвига на шаг назад.\\
+	
+	Тогда формальное частное решение будет выглядеть следующим образом:
 	\begin{center}
-		$C2^{s+2} - 9C2^{s+1} + 20C2^s = -2^s$
+		$\breve{y}_s = a^{-1}(\mathcal{B}) (\cos(s) - 2^s)$
 	\end{center}
-	\begin{center}
-		$4C2^{s} - 18C2^{s} + 20C2^s = -2^s$
-	\end{center}
-	Отсюда получаем, что $C = -\dfrac{1}{6}$
 	\newpage
-	Найдём второе частное решение.\\
-	Будем его искать в виде:
 	\begin{center}
-		$\hat{y}_2(s) = A \sin(s) + B \cos(s)$
+		$\breve{y}_s = (1 - 9\mathcal{B} + 20\mathcal{B}^2)^{-1} (\cos(s) - 2^s)$
 	\end{center}
-	Подставив такое частное решение в исходное разностное уравнение, получаем:
+	Так как у нас получается обратный полином второй степени и $h_1$, $h_2$ -- действительны и различны, то корни $\zeta_{1,2} = \dfrac{1}{h_{1,2}}$, обратного характеристического полинома $a(\zeta) = 0$ также будут действительны и различны.
+	Тогда можно сделать замену: $a(\zeta) = -a_2(\zeta-\zeta_1)(\zeta-\zeta_2)$\\
+	Таким образом:
 	\begin{center}
-		\small$A \sin(s+2) + B \cos(s+2) - 9(A \sin(s+1) + B \cos(s+1)) + 20(A \sin(s) + B \cos(s)) = \cos(s)$
+		$\breve{y}_s = -\dfrac{1}{a_2} \dfrac{1}{(\zeta-\zeta_1)(\zeta-\zeta_2)} x_s$
+	\end{center}
+	Разложим $a^{-1}(\zeta) на простые дроби:$\\
+	\begin{center}
+		$a^{-1}(\zeta) = -\dfrac{1}{a_2} \dfrac{1}{(\zeta-\zeta_1)(\zeta-\zeta_2)} = -\dfrac{1}{a_2} \left(\dfrac{g_1}{\zeta-\zeta_1} + \dfrac{g_2}{\zeta-\zeta_2}\right)$
+	\end{center}
+	Постоянные $g_1$ и $g_2$ определяеются из соотношения:
+	\begin{center}
+		$1 = g_1(\zeta-\zeta_2) + g_2(\zeta-\zeta_1)$
+	\end{center}
+	т.е. при $\zeta = \zeta_1$: $g_1 = \dfrac{1}{\zeta_1-\zeta_2}$, а при $\zeta = \zeta_2$: $g_2 = \dfrac{1}{\zeta_2-\zeta_1}$
+	
+	Таким образом,
+	\begin{center}
+		$\breve{y}_s = -\dfrac{1}{a_2} \left(\dfrac{1}{(\zeta_1-\zeta_2)(\zeta-\zeta_1)} + \dfrac{1}{(\zeta_2-\zeta_1)(\zeta-\zeta_2)}\right) x_s$
+	\end{center}
+	и, переобозначая $\zeta = \mathcal{B}, \mathcal{B}_1 = \dfrac{\mathcal{B}}{\zeta_1}, \mathcal{B}_2 = \dfrac{\mathcal{B}}{\zeta_2}$, получаем:
+	\begin{center}
+		$\breve{y}_s = \dfrac{1}{a_2} \left(\dfrac{(1-\mathcal{B}_1)^{-1}}{(\zeta_1-\zeta_2)\zeta_1}+\dfrac{(1-\mathcal{B}_2)^{-1}}{(\zeta_2-\zeta_1)\zeta_2}\right) x_s$
+	\end{center}
+
+	Учитывая, что $(1-\mathcal{B}_i)^{-1} = (1+\mathcal{B}_i+\mathcal{B}_i^2+\dots)$, $i=1,2$, выражение в больших круглых скобках имеет вид:
+	\begin{center}
+		$\left(\dfrac{1/\zeta_1 + \mathcal{B}/\zeta_1^2 + \mathcal{B}^2/\zeta_1^3 + \dots}{\zeta_1 - \zeta_2} + \dfrac{1/\zeta_2 + \mathcal{B}/\zeta_2^2 + \mathcal{B}^2/\zeta_2^3 + \dots}{\zeta_2 - \zeta_1}\right) = \dfrac{1}{\zeta_1-\zeta_2} \smashoperator[r]{\sum_{k=0}^{s-1}}\left(\dfrac{1}{\zeta_1^k} - \dfrac{1}{\zeta_2^k}\right)\mathcal{B}^{k-1}$
+	\end{center}
+	\newpage
+	Окончательно, получаем частное решение уравнения:
+	\begin{center}
+		$\breve{y}_s = \dfrac{1}{a_2} \dfrac{h_1 h_2}{h_2-h_1}\smashoperator[r]{\sum_{k=0}^{s-1}}\left(h_1^k-h_2^k\right)x_{s-(k-1)} = $
 	\end{center}
 	\begin{center}
-		...
+		$ = \dfrac{1}{20} \dfrac{4 \times 5}{5-4}\smashoperator[r]{\sum_{k=0}^{s-1}}\left(4^k-5^k\right)(\cos(s-(k-1))-2^{s-(k-1)}) = $
+	\end{center}
+	\begin{center}
+		$ = \smashoperator[r]{\sum_{k=0}^{s-1}}\left(4^k-5^k\right)(\cos(s-(k-1))-2^{s-(k-1)})$
+	\end{center}
+	Таким образом, общее решение неоднородного разностного уравнения будет выглядеть следующим образом:
+	\begin{center}
+		$y_s = \hat{y}_s + \breve{y}_s = 4^sC_1 + 5^sC_2 + \smashoperator[r]{\sum_{k=0}^{s-1}}\left(4^k-5^k\right)(\cos(s-(k-1))-2^{s-(k-1)})$
+	\end{center}
+	Найдём значения $C_1$ и $C_2$, зная, что $y(1) = y(2) = 0$:
+	\begin{center}
+		$\begin{cases}
+			y(1) = y_1 = 4C_1 + 5C_2 = 0 \\
+			y(2) = y_2 = 16C_1 + 25C_2 + (4-5)(\cos(2) - 4) = 0\\
+		\end{cases}$
+	\end{center}
+	Решение системы:
+	\begin{center}
+		$C_1 = \dfrac{1}{4}(4-\cos(2)), C_2 = \dfrac{1}{5}(-4+\cos(2))$
+	\end{center}
+	Таким образом, общее решение примет вид:
+	\begin{center}
+		$y_s = 4-\cos(2) - 4 + \cos(2) + \smashoperator[r]{\sum_{k=1}^{s-1}}\left(4^k-5^k\right)(\cos(s-(k-1))-2^{s-(k-1)})$
 	\end{center}
 	\newpage
 	\section*{Задача 12}
@@ -243,13 +294,94 @@
 	\begin{center}
 		$X_t = X_{t-1} - \dfrac{1}{2}X_{t-2} + 1$
 	\end{center}
+	\begin{center}
+		$X_t - X_{t-1} + \dfrac{1}{2}X_{t-2} = 1$
+	\end{center}
 	\textit{Решение:}\\
 	Для получения общего решения однородного разностного уравнения находим фундаментальную систему решений, элементы которой ищем в виде:
 	\begin{center}
-		$\breve{X}_t = Ch^t$
+		$\hat{X}_t = Ch^t$
 	\end{center}
 	Находим харатеристическое уравнение:
 	\begin{center}
-		$H(h) = h^2 - h +  = 0$
+		$H(h) = h^2 - h + \dfrac{1}{2} = 0$
 	\end{center}
+	Решаем уравнение, получим следующие корни: $h_1 = \dfrac{1}{2}-\dfrac{i}{2}$, $h_2 = \dfrac{1}{2} + \dfrac{i}{2}$.\\
+	Можно видеть, что у нас нет кратных корней, но есть комлексные корни.
+	\newpage
+	Запишем представление комлексного числа в тригонометрической форме:
+	\begin{center}
+		$\hat{X}_t = r^t((C_1+C_2)\cos(t\phi)+(C_1-C_2)\sin(t\phi))$
+	\end{center}
+	где $r = \dfrac{1}{\sqrt{2}}$\\
+	Таким образом, общее однородное решение уравнения можно представить в виде:
+	\begin{center}
+		$\hat{X}_t = \left(\dfrac{1}{\sqrt{2}}\right)^t((C_1+C_2)\cos(t\phi)+(C_1-C_2)\sin(t\phi))$
+	\end{center}
+	Найдём частное решение уравнения. Запишем уравнение в операторной форме:
+	\begin{center}
+		$\breve{X}_t = a^{-1}(\mathcal{B}) a_0 = (1-a_1\mathcal{B} - a_2\mathcal{B}^2)^{-1}a_0 = (1 - (a_1\mathcal{B} + a_2\mathcal{B}^2))^{-1}a_0 = a_0 \smashoperator[r]{\sum_{k=1}^{\infty}}(a_1+a_2)^k$
+	\end{center}
+	где $a(\mathcal{B})$ -- операторный полином, $\mathcal{B}$ -- оператор сдвига на шаг назад.\\
+	Таким образом, общее частное решение уравнения можно представить в виде:
+	\begin{center}
+		$\breve{X}_t = \smashoperator[r]{\sum_{k=0}^{\infty}}\left(-1 + \dfrac{1}{2}\right)^k = \smashoperator[r]{\sum_{k=0}^{\infty}}\left(-\dfrac{1}{2}\right)^k = \dfrac{2}{3}$
+	\end{center}
+	В итоге, общее решение уравнения примет следующую форму:
+	\begin{center}
+		$X_t = \hat{X}_t + \breve{X}_t = \left(\dfrac{1}{\sqrt{2}}\right)^t((C_1+C_2)\cos(t\phi)+(C_1-C_2)\sin(t\phi)) + \dfrac{2}{3}$
+	\end{center}
+	\subsection*{Выводы}
+	Таким образом, данное решение осциллирует (колеблется), так как у нас присутствует $\cos(t\phi)$ и $\sin(t\phi)$ и при достаточно больших $t$ наше решение будет асимптотически будет сходиться к $\dfrac{2}{3}$.
+	
+	\newpage
+	\section*{Задача 13}
+	\textit{Задание:} Рассмотрим путинную модель рынка. Предположим, что спрос и предложение задаются линейными функциями, но спрос заисит от цены в данный момент времени, а предложение зависит от цены на предыдущем этапе, т.е.
+	\begin{center}
+		$d_t = a - b p_t$ (функция спроса)
+	\end{center}
+	\begin{center}
+		$s_t = m + n p_{t-1}$ (функция предложения)
+	\end{center}
+	где $a, b, m, n$ -- положительные действительные числа.\\
+	Считая, $s_t = d_t$ получаем линейное разностное уравнение первого порядка с постоянными коэффициентами,\\
+	\begin{center}
+		$a - b p_t = m + n p_{t-1}$
+	\end{center}
+	здесь $a = 1, b = \dfrac{3}{2}, m = \dfrac{1}{2}, n = \dfrac{1}{4}$
+	\begin{center}
+		$1 - \dfrac{3}{2} p_t = \dfrac{1}{2} + \dfrac{1}{4} p_{t-1}$
+	\end{center}
+	\begin{center}
+		$\dfrac{3}{2} p_t + \dfrac{1}{4} p_{t-1} = \dfrac{1}{2}$
+	\end{center}
+	\textit{Решение:}\\
+	Для получения общего решения однородного разностного уравнения находим фундаментальную систему решений, элементы которой ищем в виде:
+	\begin{center}
+		$\hat{p}_t = Ch^t$
+	\end{center}
+	Находим харатеристическое уравнение:
+	\begin{center}
+		$H(h) = \dfrac{3}{2}h + \dfrac{1}{4} = 0$
+	\end{center}
+	Решаем уравнение, получим следующее решение: $h = -\dfrac{1}{6}$.\\
+	Можно видеть, что у нас нет кратных вещественных корней и нет комплексных корней, значит мы можем записать общее решение однородного уравнения:
+	\begin{center}
+		$\hat{p}_t = \left(-\dfrac{1}{6}\right)^tC$
+	\end{center}
+	Найдём частное решение уравнения. Запишем уравнение в операторной форме:
+	\begin{center}
+	$\breve{p}_t = a^{-1}(\mathcal{B}) a_0 = (1 + a_1\mathcal{B})^{-1}a_0 = (1 - (-a_1\mathcal{B}))^{-1}a_0 = a_0 \smashoperator[r]{\sum_{k=1}^{\infty}}(-a_1)^k$
+	\end{center}
+	где $a(\mathcal{B})$ -- операторный полином, $\mathcal{B}$ -- оператор сдвига на шаг назад.\\
+	Таким образом, общее частное решение уравнения можно представить в виде:
+	\begin{center}
+		$\breve{p}_t = \smashoperator[r]{\sum_{k=0}^{\infty}}\left(-\dfrac{1}{4}\right)^k = \dfrac{4}{5}$
+	\end{center}
+	В итоге, общее решение уравнения примет следующую форму:
+	\begin{center}
+		$p_t = \hat{p}_t + \breve{p}_t = \left(-\dfrac{1}{6}\right)^tC + \dfrac{4}{5}$
+	\end{center}
+	\subsection*{Выводы}
+	Таким образом, данное решение при достаточно больших $t$ будет асимптотически сходиться к $\dfrac{4}{5}$.
 \end{document}
