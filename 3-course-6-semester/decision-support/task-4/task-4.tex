@@ -1,0 +1,81 @@
+\documentclass[14pt,fleqn]{extarticle}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{boldline}
+\usepackage{makecell}
+\usepackage{arydshln}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage[a4paper, total={6.5in, 9.5in}]{geometry}
+
+\graphicspath{ {./images/} }
+\setlength{\mathindent}{0pt}
+\setlength\parindent{0pt}
+
+\def\at{
+	\left.
+	\vphantom{\int}
+	\right|
+}
+
+\begin{document}
+	\begin{titlepage}
+		\includegraphics[scale=0.12]{logo}
+		\begin{center}
+			\textbf{МИНОБРНАУКИ РОССИИ}\\
+			\vspace{0.2cm}
+			\textbf{Федеральное государственное бюджетное образовательное учреждение высшего образования}\\
+			\textbf{«САНКТ-ПЕТЕРБУРГСКИЙ ГОСУДАРСТВЕННЫЙ ЭКОНОМИЧЕСКИЙ УНИВЕРСИТЕТ»}\\
+			\vspace{0.6cm}
+			Факультет информатики и прикладной математики\\
+			Кафедра прикладной математики и экономико-математических методов\\
+			\vspace{1cm}
+			\textbf{ОТЧЁТ}\\
+			по дисциплине:\\
+			\textbf{«Теория и системы поддержки принятия решений»}\\
+			на тему:\\
+			\textbf{«Представление функций рядом Фурье. Задание 4»}\\
+		\end{center}
+		\vspace{1cm}
+		Направление: 01.03.02\\
+		Обучающийся: Бронников Егор Игоревич\\
+		Группа: ПМ-1901\\
+		\vfill
+		\begin{center}
+			Санкт-Петербург\\
+			2022\\
+		\end{center}
+	\end{titlepage}
+	
+	\section*{Задача 14}
+	\textit{Задание:} Разложить в ряд Фурье периодическую функцию $f(x)$ с периодом $2l$, заданную в интервале $(-l, l)$:
+	\begin{center}
+		$l = \pi, \hspace{0.5cm} f(x) = \pi + x$
+	\end{center}
+
+	\textit{Решение:}\\
+	Разложение в ряд Фурье на интервале $(-\pi, \pi)$ имеет вид:
+	\begin{center}
+		$f(x) = \dfrac{a_0}{2} + \smashoperator[r]{\sum_{n=1}^{\infty}}a_n \cdot \cos\left(\dfrac{\pi n x}{\pi}\right) + b_n \cdot \sin\left(\dfrac{\pi n x}{\pi}\right)$
+	\end{center}
+	\[ a_0 = \dfrac{1}{\pi} \int_{-\pi}^{\pi} f(x) \,dx \]
+	\[ a_n = \dfrac{1}{\pi} \int_{-\pi}^{\pi} f(x) \cos\left(\dfrac{\pi n x}{\pi}\right) \,dx = \dfrac{1}{\pi} \int_{-\pi}^{\pi} f(x) \cos\left(n x\right) \,dx \]
+	\[ b_n = \dfrac{1}{\pi} \int_{-\pi}^{\pi} f(x) \sin\left(\dfrac{\pi n x}{\pi}\right) \,dx = \dfrac{1}{\pi} \int_{-\pi}^{\pi} f(x) \sin\left(n x\right) \,dx \]
+	Таким образом, подставляя исходные данные, получаем:
+	\[ \boldsymbol{a_0} = \dfrac{1}{\pi} \int_{-\pi}^{\pi} (\pi + x) \,dx = \dfrac{1}{\pi} \left(\dfrac{x^2}{2} + \pi x\right) \at_{-\pi}^{\pi} = \dfrac{1}{\pi} \left(\dfrac{3\pi^2}{2} - \left(-\dfrac{\pi^2}{2}\right)\right) = 2\pi \]
+	\vspace{1cm}	
+	\[ \boldsymbol{a_n} = \dfrac{1}{\pi} \int_{-\pi}^{\pi} (\pi + x) \cos\left(n x\right) \,dx = \dfrac{1}{\pi} \left(\dfrac{x \sin(nx)}{n} + \dfrac{\pi \sin(nx)}{n} + \dfrac{\cos(nx)}{n^2}\right) \at_{-\pi}^{\pi} = \]
+	\[	= \dfrac{1}{\pi} \left(2\pi\cdot\dfrac{\sin(\pi n)}{n} + \dfrac{\cos(\pi n)}{n^2} - \dfrac{\cos(\pi n)}{n^2}\right) = \dfrac{2\sin(\pi n)}{n} = 0 \]
+	\vspace{1cm}
+	\[ \boldsymbol{b_n} = \dfrac{1}{\pi} \int_{-\pi}^{\pi} (\pi + x) \sin\left(n x\right) \,dx = \dfrac{1}{\pi} \left(-\dfrac{x \cos(nx)}{n} - \dfrac{\pi \cos(nx)}{n} + \dfrac{\sin(nx)}{n^2}\right) \at_{-\pi}^{\pi} = \]
+	\[	= \dfrac{1}{\pi} \left(-2\pi\cdot\dfrac{\cos(\pi n)}{n} + \dfrac{\sin(\pi n)}{n^2} + \dfrac{\sin(\pi n)}{n^2}\right) = -2\cdot\dfrac{\cos(\pi n)}{n}= -2\dfrac{(-1)^n}{n}\]
+	\newpage
+	Окончательно, получаем искомое разложение:
+	\begin{center}
+		$f(x) = \pi + \smashoperator[r]{\sum_{n=1}^{\infty}}\left(-2\dfrac{(-1)^n}{n}\right)\cdot\sin(nx)$
+	\end{center}
+\end{document}
