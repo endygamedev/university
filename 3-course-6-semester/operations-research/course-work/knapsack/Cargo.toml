@@ -1,0 +1,6 @@
+[package]
+name = "knapsack"
+version = "0.1.0"
+authors = ["Egor Bronnikov <bronnikov.40@mail.ru>"]
+
+[dependencies]
