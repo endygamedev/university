@@ -4,6 +4,7 @@
 
 # Import
 from typing import List, Tuple
+import unittest
 
 
 def replacing_equipment(n: int, year: int, s: int, P: int, r: List[int], u: List[int]) -> Tuple[List[str], int]:
@@ -69,11 +70,28 @@ def replacing_equipment(n: int, year: int, s: int, P: int, r: List[int], u: List
     return plan, value
 
 
+class ReplacingEquipmentTests(unittest.TestCase):
+
+    def test1(self):
+        n = 10
+        y = 3
+        s = 4
+        P = 18
+        r = [31, 30, 28, 28, 27, 26, 26, 25, 24, 24, 23]
+        u = [8, 9, 9, 10, 10, 10, 11, 12, 14, 17, 18]
+        self.assertEqual((["1", "2", "R", "3", "4", "5", "6", "R", "7", "8", "9", "10"], 169),
+                        replacing_equipment(n, y, s, P, r, u))
+
+    def test2(self):
+        n = 8
+        y = 3
+        s = 3
+        P = 13
+        r = [16, 15, 15, 15, 13, 11, 10, 8, 7]
+        u = [4, 6, 6, 6, 7, 8, 8, 10, 12]
+        self.assertEqual((["1", "R", "2", "3", "4", "R", "5", "6", "7", "8"], 58),
+                        replacing_equipment(n, y, s, P, r, u))
+
+
 if __name__ == "__main__":
-    n = 10
-    y = 3
-    s = 4
-    P = 18
-    r = [31, 30, 28, 28, 27, 26, 26, 25, 24, 24, 23]
-    u = [8, 9, 9, 10, 10, 10, 11, 12, 14, 17, 18]
-    print(replacing_equipment(n, y, s, P, r, u))
+    unittest.main()
