@@ -160,7 +160,8 @@
 │   │   ├── 2. Adaptive forecasting methods
 │   │   ├── 3. Autoregressive model order
 │   │   ├── 4. Exogenous factors
-│   │   └── 5. Prophet
+│   │   ├── 5. Prophet
+│   │   └── 6. Overfitting
 │   ├── game-theory
 │   │   ├── КТ1
 │   │   ├── Бронников 1.zip
