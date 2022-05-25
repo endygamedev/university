@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>Бронников</title>
+        <script>
+            function toggleCard(el) {
+                if (el.classList.contains("selected"))
+                    el.classList.remove("selected");
+                else
+                    el.classList.add("selected");
+            }
+
+
+            function onLoaded() {
+                const parent = document.querySelector("#parent");
+                parent.addEventListener("click", function(event) {
+                    const el = event.target;
+                    toggleCard(el);
+                });
+
+                const btnAdd = document.querySelector("#add");
+                btnAdd.addEventListener("click", () => {
+                    const el = document.createElement("div");
+                    el.classList.add("card");
+                    parent.appendChild(el);
+                });
+
+                const btnRemove = document.querySelector("#remove");
+                btnRemove.addEventListener("click", () => {
+                    const cards = document.querySelectorAll(".card");
+                    for (const card of cards)
+                        if (card.classList.contains("selected"))
+                            card.remove();
+                });
+
+                const btnChange = document.querySelector("#change");
+                btnChange.addEventListener("click", () => {
+                    const cards = document.querySelectorAll(".card");
+                    cards.forEach(card => toggleCard(card));
+                });
+            }
+
+
+            document.addEventListener("DOMContentLoaded", onLoaded);
+        </script>
+        <style>
+            #parent {
+                display: flex;
+                border: 3px solid blue;
+                margin: 40px auto;
+                width: 75%;
+                flex-direction: row;
+                gap: 10px;
+                justify-content: center;
+            }
+            
+            .card {
+                position: relative;
+                width: 100px;
+                height: 300px;
+                border: 1px solid black;
+                cursor: pointer;
+            }
+
+            .card.selected { background-color: orange; }
+
+            .card:before {
+                display: block;
+                content: "";
+                width: 1px;
+                height: 1px;
+                border-radius: 20px;
+                background-color: green;
+                transition: 3s;
+            }
+
+            .card:nth-child(even):before { background-color: blue; }
+
+            .card:first-child:after, .card:last-child:after {
+                display: block;
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 1px;
+                height: 1px;
+                border-radius: 30px;
+                background-color: red;
+                transition: 3s;
+            }
+
+            #parent:hover > .card:before {
+                transform: scale(20);
+                background-color: green;
+            }
+
+            #parent:hover > .card:first-child:after, #parent:hover > .card:last-child:after {
+                transform: scale(30);
+            }
+        </style>
+    </head>
+    <body>    
+        <div id="parent">
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+        </div>
+        <button id="add">Добавить</button>
+        <button id="remove">Удалить</button>
+        <button id="change">Изменить</button>
+    </body>
+</html>
