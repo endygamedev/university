@@ -78,4 +78,23 @@
 	\begin{center}
 		$f(x) = \pi + \smashoperator[r]{\sum_{n=1}^{\infty}}\left(-2\dfrac{(-1)^n}{n}\right)\cdot\sin(nx)$
 	\end{center}
+	Построим график полученного ряда и исходной функции:
+	\begin{center}
+		\includegraphics[scale=0.5]{plot}
+	\end{center}
+	Также можно записать равенство Парсеваля. Оно в общем случае принимает следующую форму:
+	\[ \dfrac{1}{\pi} \int_{-\pi}^{\pi} (f(x))^2 \,dx = \dfrac{a_0^2}{2}+\sum_{n=1}^{\infty}(a_n^2+b_n^2) \]
+	где $a_0, a_n, b_n$ -- коэффициенты ряда Фурье\\
+	Если мы подставим полученные значения коэффициентов ряда Фурье, то равенство Парсеваля запишется так:
+	\[ \dfrac{1}{\pi} \int_{-\pi}^{\pi} (\pi+x)^2 \,dx = 2 \pi^2+\sum_{n=1}^{\infty}\left(\dfrac{4}{n^2}\right) \]
+	\newpage
+	\section*{Задача 15}
+	Применим теперь дискретное преобразование Фурье:\\
+	\begin{center}
+		$f_F(y_k) = \smashoperator[r]{\sum_{l=0}^{N-1}} f\left(\dfrac{l}{N}\right) \cdot e^{\dfrac{-2\pi \cdot i \cdot y_k}{N}}$
+	\end{center}
+	Получим следующий результат:
+	\begin{center}
+		\includegraphics[scale=0.5]{fourier}
+	\end{center}
 \end{document}
