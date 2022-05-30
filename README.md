@@ -161,7 +161,8 @@
 │   │   ├── 3. Autoregressive model order
 │   │   ├── 4. Exogenous factors
 │   │   ├── 5. Prophet
-│   │   └── 6. Overfitting
+│   │   ├── 6. Overfitting
+│   │   └── 7. Distribution
 │   ├── game-theory
 │   │   ├── КТ1
 │   │   ├── Бронников 1.zip
