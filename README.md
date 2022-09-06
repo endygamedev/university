@@ -204,7 +204,9 @@
 │       ├── lesson-1
 │       └── lesson-2
 ├── 4-course-7-semester
-│   └── data-analysis-techniques
+│   ├── data-analysis-techniques
+│   │   └── task-1
+│   └── simulation-modeling
 │       └── task-1
 ├── LICENSE
 ├── README.md
