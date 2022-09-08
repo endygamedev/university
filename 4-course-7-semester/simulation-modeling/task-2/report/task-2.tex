@@ -1,0 +1,206 @@
+\documentclass[14pt,fleqn]{extarticle}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{boldline}
+\usepackage{makecell}
+\usepackage{arydshln}
+\usepackage{mathtools}
+\usepackage{centernot}
+\usepackage{enumitem}
+\usepackage{nccmath}
+\usepackage[a4paper, total={6.5in, 9.5in}]{geometry}
+
+\graphicspath{ {./images/} }
+\setlength{\mathindent}{0pt}
+\setlength\parindent{0pt}
+
+\def\at{
+	\left.
+	\vphantom{\int}
+	\right|
+}
+
+
+\begin{document}
+	\begin{titlepage}
+		\includegraphics[scale=0.12]{logo}
+		\begin{center}
+			\textbf{МИНОБРНАУКИ РОССИИ}\\
+			\vspace{0.2cm}
+			\textbf{Федеральное государственное бюджетное образовательное учреждение высшего образования}\\
+			\textbf{<<САНКТ-ПЕТЕРБУРГСКИЙ ГОСУДАРСТВЕННЫЙ ЭКОНОМИЧЕСКИЙ УНИВЕРСИТЕТ>>}\\
+			\vspace{0.6cm}
+			Факультет информатики и прикладной математики\\
+			Кафедра прикладной математики и экономико-математических методов\\
+			\vspace{1cm}
+			\textbf{ОТЧЁТ}\\
+			по дисциплине:\\
+			\textbf{<<Имитационное моделирование>>}\\
+			на тему:\\
+			\textbf{<<Моделирование случайных величин. Статистические испытания. Задание №2>>}\\
+		\end{center}
+		\vspace{1cm}
+		Направление: 01.03.02\\
+		Обучающийся: Бронников Егор Игоревич\\
+		Группа: ПМ-1901\\
+		\vfill
+		\begin{center}
+			Санкт-Петербург\\
+			2022\\
+		\end{center}
+	\end{titlepage}
+    \subsection*{Задание №1}
+    Реализовать генератор случайных чисел, используя метод серединных квадратов (фон Нейман). Проанализировать свойства полученной последовательности.\\
+    \newline
+
+    В методе серединных квадратов изначально задаётся количество разрядов числа ($k$) и начальное значение $R_0$. Далее число $R_0$ возводится в квадрат и из середины квадрата числа берётся $k$-значное число, которое снова возводится в квадрат, и так далее.\\
+    Обязательным условием является то, что количество разрядов ($k$) должно быть чётным числом.\\
+    \newline
+    Данный алгоритм был реализован на языке программирования Python. (Рисунок \ref{fig:mid_square_method_code})
+    \begin{figure}[h]
+        \centering \includegraphics[scale=0.8]{code1}
+        \caption{Реализация метода серединных квадратов на языке программирования Python}
+        \label{fig:mid_square_method_code}
+    \end{figure}
+    \newpage
+    Алгоритм был запущен с параметрами $k = 10$, $R_0 = 25$, $n = 7$, где $n$ -- это количество сгенерированных случайных чисел. Можно проследить, что при достаточно малых разрядах и малом начальном значении быстро получается вырождение, что плохо. (Рисунок \ref{fig:mid_square_method_result})
+    \begin{figure}[h]
+        \centering \includegraphics[scale=0.8]{result1}
+        \caption{Результаты генерации случайных чисел методом серединных квадратов}
+        \label{fig:mid_square_method_result}
+    \end{figure}
+    
+    \subsection*{Задание №2}
+    Реализовать линейный конгруэнтный датчик случайных чисел. Сгенерировать последовательность вещественных чисел, распределённых равномерно: 1) на интервале [0,1); \; 2) на интервале [a,b). Проанализировать полученные последовательности. Определить период, построить гистограмму.\\
+    \newline
+
+    Линейный конгруэнтный метод -- это один из рекуррентных методов генерации случайных чисел. Следующий элемент последовательности может быть найден по следующей формуле:
+    \begin{center}
+        $ r_{i+1} = (k \cdot r_i + b) \; mod \; M$
+    \end{center}
+    
+    \newpage
+    Линейная конгруэнтная последовательность, определённая числами $M$, $k$, $b$, $r_0$ периодична с периодом, не превышающим $M$. При этом длина периода равна $M$ тогда и только тогда, когда:
+    \begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+        \item числа $b$ и $M$ взаимно простые;
+        \item $k-1$ кратно $p$ для каждого простого $p$, являющегося делителем $M$;
+        \item $k-1$ кратно 4, если $M$ кратно 4.
+    \end{enumerate}
+    Сначала был реализован алгоритм для интервала [0;1) на языке программирования Python. (Рисунок \ref{fig:linear_congruent_gauge_0_1_code})
+    \begin{figure}[h]
+        \centering \includegraphics[scale=0.8]{code21}
+        \caption{Реализация линейного конгруэнтного счётчика на интервале [0,1)}
+        \label{fig:linear_congruent_gauge_0_1_code}
+    \end{figure}
+
+    Для того чтобы получить случайные числа в интервале от [0,1) нужно поделить каждый случайный сгенерированный элемент последовательности на $M$. Также данная функция выводит период сгенерированной последовательности.
+    \begin{figure}[h]
+        \centering \includegraphics[scale=0.52]{result21}
+        \caption{Результаты генерации случайных чисел линейным конгруэнтным счётчиком на интервале [0,1)}
+        \label{fig:linear_congruent_gauge_0_1_result}
+    \end{figure}
+    \newpage
+    В качестве аргументов были выбраны следующие значения: $r_0 = 3$, $k = 2$, $b = 1$, $M = 10$, $n = 12$, где $n$ -- это количество сгенерированных случайных чисел. Можно видеть, что при данном наборе аргументов длина периода составила 4. (Рисунок \ref{fig:linear_congruent_gauge_0_1_result})\\
+    \newline
+    Далее был реализован алгоритм для интервала [a;b). (Рисунок \ref{fig:linear_congruent_gauge_a_b_code})
+    \begin{figure}[h]
+        \centering \includegraphics[scale=0.6]{code22}
+        \caption{Реализация линейного конгруэнтного счётчика на интервале [a,b)}
+        \label{fig:linear_congruent_gauge_a_b_code}
+    \end{figure}
+
+	Для того чтобы получить случайные числа в интервале от [a,b) нужно проделать следующее преобразование:
+	\begin{center}
+		$(1 - \dfrac{r_i}{M})/a + \dfrac{r_i}{M} \cdot b$
+	\end{center}
+	То есть сначала мы генерируем числа в интервале от [0,1), а дальше преобразуем их к интервалу от [a,b).
+ 	\begin{figure}[h]
+		\centering \includegraphics[scale=0.52]{result22}
+		\caption{Результаты генерации случайных чисел линейным конгруэнтным счётчиком на интервале [a,b)}
+		\label{fig:linear_congruent_gauge_a_b_result}
+	\end{figure}
+    \newpage
+	В качестве аргументов были выбраны следующие значения: $r_0 = 3$, $k = 2$, $b = 1$, $M = 10$, $n = 10$, $a_{param} = 100$, $b_{param} = 200$, где $n$ -- это количество сгенерированных случайных чисел. Можно видеть, что при данном наборе аргументов длина периода составила 4. (Рисунок \ref{fig:linear_congruent_gauge_a_b_result})\\
+	
+	\subsection*{Задание №3}
+	Используя метод обратной функции, получить последовательность случайных чисел, распределённых экспоненциально с заданным параметром $\lambda$. Проанализировать полученную последовательность. Оценить математическое ожидание  и дисперсию, построить гистограмму.\\
+	\newline
+	
+	Плотность распределения экспоненциального закона:
+	\begin{ceqn}
+	\begin{align*}
+		f(x) =
+		\begin{cases}
+			\lambda e^{-\lambda \cdot x} \quad x \geq 0\\
+			0 \hspace{1.55cm} x < 0
+		\end{cases}
+	\end{align*}
+	\end{ceqn}
+
+	Функция распределения экспоненциального закона:
+	\begin{ceqn}
+	\begin{align*}
+		F(x) =
+		\begin{cases}
+			1 - e^{-\lambda \cdot x} \quad x \geq 0\\
+			0 \hspace{2.15cm} x < 0
+		\end{cases}
+	\end{align*}
+	\end{ceqn}
+
+	Получается, что обратная функция $F^{-1}(x)$ будет выглядеть следующим образом:
+	\begin{center}
+		$x = \dfrac{-ln(1-y)}{\lambda} = -\dfrac{ln(y)}{\lambda}$
+	\end{center}
+	Если подставлять вместо $y$ случайные равномерно распределённые значения, то можно получать требуемые числа.
+	\newpage
+	Таким образом, была реализована функция на языке программирования Python. (Рисунок \ref{fig:exp_inverse_function_method_code})
+	\begin{figure}[h]
+		\centering \includegraphics[scale=0.8]{code3}
+		\caption{Реализация метода обратной функции для экспоненциального закона}
+		\label{fig:exp_inverse_function_method_code}
+	\end{figure}
+
+	При $\lambda = 3$ и $n = 1000$ получается следующий результат. (Рисунок \ref{fig:exp_inverse_function_method_result})
+	\begin{figure}[h]
+		\centering \includegraphics[scale=0.8]{result3}
+		\caption{Реализация метода обратной функции для экспоненциального закона}
+		\label{fig:exp_inverse_function_method_result}
+	\end{figure}
+
+	Математическое ожидание экспоненциального распределения:
+	\begin{ceqn}
+		\begin{align*}
+			E = \dfrac{1}{\lambda}
+		\end{align*}
+	\end{ceqn}
+	\newpage
+	Если рассчитывать математическое ожидание как среднее значение в выборке, то получается следующий результат. (Рисунок \ref{fig:exp_inverse_function_method_math})
+	\begin{figure}[h]
+		\centering \includegraphics[scale=0.8]{result31}
+		\caption{Теоретическое и расчётное значения математического ожидания ($\lambda = 3$)}
+		\label{fig:exp_inverse_function_method_math}
+	\end{figure}
+
+	Можно заметить, что при $n = 1000$ значения получились достаточно близкими.\\
+	Дисперсия экспоненциального распределения:
+	\begin{ceqn}
+		\begin{align*}
+			D = \dfrac{1}{\lambda^2}
+		\end{align*}
+	\end{ceqn}
+	Далее можно рассчитать дисперсию как среднее квадратное отклонение от среднего значения выборки. (Рисунок \ref{fig:exp_inverse_function_method_var})
+	\begin{figure}[h]
+		\centering \includegraphics[scale=0.8]{result32}
+		\caption{Теоретическое и расчётное значения дисперсии ($\lambda = 3$)}
+		\label{fig:exp_inverse_function_method_var}
+	\end{figure}
+
+	Можно заметить, что при $n = 1000$ значения получились достаточно близкими.
+	\newpage
+	\subsection*{Задание №4}
+\end{document}
