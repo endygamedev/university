@@ -204,6 +204,8 @@
 │       ├── lesson-1
 │       └── lesson-2
 ├── 4-course-7-semester
+│   ├── combinatorial-optimization-models
+│   │   └── task-1
 │   ├── data-analysis-techniques
 │   │   └── task-1
 │   └── simulation-modeling
