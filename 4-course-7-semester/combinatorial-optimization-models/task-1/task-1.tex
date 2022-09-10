@@ -259,7 +259,173 @@
     \subsection*{Задача №2}
     Сформулировать точную постановку задачи разбиения мультимножества чисел на $k$ групп (multiway NPP) как задачи целочисленного программирования. Дано множество пар позиций чисел из мультимножества. Если пара чисел на этих позициях оказывается в одной группе, то из суммы чисел в группе вычитается среднее от пары этих чисел. Целевая функция: минимизация разности между наибольшей и наименьшей суммой чисел среди групп, при этом суммы чисел в группах находятся с учетом <<штрафных баллов>>.\\
     
-    \textbf{Решение}
-    
-    ...
+    \textbf{Решение}\\
+	$k$ -- количество групп\\
+	$n$ -- количество векторов\\
+	$S = \{s_1, s_2, \dots, s_n\}$ -- мультимножество\\
+	$D = \{(a_1, b_1), (a_2, b_2), \dots, (a_m, b_m)\}$ - множество пар позиций чисел из мультимножества\\
+	$m$ -- мощность множества пар позиций чисел\\
+	
+	\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}\\
+	
+	\textit{Пример}\\
+	
+	Мультимножество:\\
+	$S = \{10, 20, 30, 40, 50, 60, 70, 80, 90, 100 \}$\\
+	
+	Множество пар позиций чисел из этого мультимножества:\\
+	$D = \{(1,2), (2,3), (4,5), (4,6), (7,8)\}$\\
+	
+	\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}\\
+	
+	Пусть $p_i$ -- это сумма чисел в $i$-ой группе. $\forall i \in \{1, \dots, k\}$\\
+	Тогда пусть $p_{\max}$ -- это максимальная сумма среди всех групп, а $p_{\min}$ -- это минимальная сумма среди всех групп.\\
+	
+	Введём переменные $x_{ij}$.
+	\begin{ceqn}
+		\begin{align*}
+			x_{ij} = 
+			\begin{cases}
+				1, \quad \textup{if} \; j \textup{-ое число попало в } i \textup{-ую группу} \\
+				0, \quad \textup{в противном случае}
+			\end{cases}\\
+			\forall i \in \{1, \dots, k\}, \quad \forall j \in \{1, \dots, n\}
+		\end{align*}
+	\end{ceqn}
+	
+
+	\newpage
+	
+	Введём параметры $y_{ij}$.
+	\begin{ceqn}
+		\begin{align*}
+			y_{lj} = 
+			\begin{cases}
+				1, \quad \textup{if в паре } i \textup{ есть } j \textup{-ое число} \\
+				0, \quad \textup{в противном случае}
+			\end{cases}\\
+			\forall l \in \{1, \dots, m\}, \quad \forall j \in \{1, \dots, n\}
+		\end{align*}
+	\end{ceqn}
+
+	Если $\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot y_{lj} \geq 2$, то значит в группе есть числа, позиции которых находятся в одной паре. В противном случае в группе нет чисел, позиции которых находятся в одной паре.\\
+	
+	Хотелось бы сделать так:
+	
+	\textbf{if} $\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot y_{lj} \geq 2$\\
+	\textbf{then:}\\
+	$\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot s_j - \smashoperator[r]{\sum_{j=1}^{n}} \dfrac{a_{lj} \cdot s_j}{2} \leq p_{\max}$\\
+	$\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot s_j - \smashoperator[r]{\sum_{j=1}^{n}} \dfrac{a_{lj} \cdot s_j}{2} \geq p_{\min}$\\
+	\textbf{else:}\\
+	$\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot s_j \leq p_{\max}$\\
+	$\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot s_j \geq p_{\min}$\\
+	
+	$\forall i \in \{1, \dots, k\}, \quad \forall l \in \{1, \dots, m\}, \quad \forall j \in \{1, \dots, n\}$\\
+	
+	Импликацию можно заменить следующим образом:
+	\begin{center}
+		$A_1 \Rightarrow A_2 \longrightarrow$ NOT $A_1$ OR $A_2$.
+	\end{center}
+	Если рассуждать на языке алгебры логики, то имеются следующие события $A$ и $B$:\\
+	$A$: \hspace{0.1cm} $\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot y_{lj} < 2$ OR
+	($\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot s_j - \smashoperator[r]{\sum_{j=1}^{n}} \dfrac{a_{lj} \cdot s_j}{2} \leq p_{\max}$ AND $\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot s_j - \smashoperator[r]{\sum_{j=1}^{n}} \dfrac{a_{lj} \cdot s_j}{2} \geq p_{\min}$)\\
+	
+	$B$: \hspace{0.1cm} $\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot y_{lj} \geq 2$ OR ($\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot s_j \leq p_{\max}$ AND $\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot s_j \geq p_{\min}$)\\\\
+	
+	Нам бы хотелось в конечном итоге, чтобы выполнялись условия: $A$ OR $B$.\\
+	
+	\textit{Рассмотрим более подробно событие $A$.}\\
+	Пусть $M_A$ -- большое число и введём параметр $z_A \in \{0;1\}$, тогда событие $A$ можно переписать следующим образом:
+	\begin{ceqn}
+		\begin{align*}
+			\begin{cases}
+				\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot y_{lj} < 2 + M_A \cdot z_A\\
+				\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot s_j - \smashoperator[r]{\sum_{j=1}^{n}} \dfrac{a_{lj} \cdot s_j}{2} \leq p_{\max} +  M_A \cdot (1 - z_A)\\
+				\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot s_j - \smashoperator[r]{\sum_{j=1}^{n}} \dfrac{a_{lj} \cdot s_j}{2} \geq p_{\min} +  M_A \cdot (1 - z_A)\\
+			\end{cases}\\
+			\forall i \in \{1, \dots, k\}, \quad \forall l \in \{1, \dots, m\}, \quad \forall j \in \{1, \dots, n\}
+		\end{align*}
+	\end{ceqn}
+	
+	\textit{Рассмотрим более подробно событие $B$.}\\
+	Пусть $M_B$ -- большое число и введём параметр $z_B \in \{0;1\}$, тогда событие $B$ можно переписать следующим образом:
+	\begin{ceqn}
+		\begin{align*}
+			\begin{cases}
+				\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot y_{lj} \geq 2 + M_B \cdot z_B\\
+				\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot s_j \leq p_{\max} +  M_B \cdot (1 - z_B)\\
+				\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot s_j \geq p_{\min} + M_B \cdot (1 - z_B)\\
+			\end{cases}\\
+			\forall i \in \{1, \dots, k\}, \quad \forall l \in \{1, \dots, m\}, \quad \forall j \in \{1, \dots, n\}
+		\end{align*}
+	\end{ceqn}
+
+	\newpage
+	
+	Осталось всё собрать вместе и рассмотреть событие: $A$ OR $B$.\\
+	Пусть $M$ -- большое число и введём параметр $z \in \{0;1\}$, тогда событие $A$ OR $B$ можно переписать следующим образом:
+	
+	\begin{ceqn}
+	\begin{align*}
+		\begin{cases}
+			\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot y_{lj} < 2 + M_A \cdot z_A + M \cdot z\\
+			\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot s_j - \smashoperator[r]{\sum_{j=1}^{n}} \dfrac{a_{lj} \cdot s_j}{2} \leq p_{\max} +  M_A \cdot (1 - z_A) + M \cdot z\\
+			\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot s_j - \smashoperator[r]{\sum_{j=1}^{n}} \dfrac{a_{lj} \cdot s_j}{2} \geq p_{\min} +  M_A \cdot (1 - z_A) + M \cdot z\\
+			\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot y_{lj} \geq 2 + M_B \cdot z_B + M \cdot (1-z)\\
+			\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot s_j \leq p_{\max} +  M_B \cdot (1 - z_B) + M \cdot (1-z)\\
+			\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot s_j \geq p_{\min} + M_B \cdot (1 - z_B) + M \cdot (1-z)\\
+		\end{cases}\\
+		\forall i \in \{1, \dots, k\}, \quad \forall l \in \{1, \dots, m\}, \quad \forall j \in \{1, \dots, n\}
+	\end{align*}
+	\end{ceqn}
+	
+	\newpage
+	
+	\textit{Целевая функция:}
+	\begin{ceqn}
+		\begin{align*}
+			p_{\max} - p_{\min} \longrightarrow \min
+		\end{align*}
+	\end{ceqn}
+
+	\textit{Ограничения:}
+	\begin{ceqn}
+		\begin{align*}
+			\begin{cases}
+				\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot y_{lj} < 2 + M_A \cdot z_A + M \cdot z\\
+				\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot s_j - \smashoperator[r]{\sum_{j=1}^{n}} \dfrac{a_{lj} \cdot s_j}{2} \leq p_{\max} +  M_A \cdot (1 - z_A) + M \cdot z\\
+				\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot s_j - \smashoperator[r]{\sum_{j=1}^{n}} \dfrac{a_{lj} \cdot s_j}{2} \geq p_{\min} +  M_A \cdot (1 - z_A) + M \cdot z\\
+				\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot y_{lj} \geq 2 + M_B \cdot z_B + M \cdot (1-z)\\
+				\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot s_j \leq p_{\max} +  M_B \cdot (1 - z_B) + M \cdot (1-z)\\
+				\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot s_j \geq p_{\min} + M_B \cdot (1 - z_B) + M \cdot (1-z)\\
+				\smashoperator[r]{\sum_{i=1}^{k}} x_{ij} = 1
+			\end{cases}\\
+			\forall i \in \{1, \dots, k\}, \quad \forall l \in \{1, \dots, m\}, \quad \forall j \in \{1, \dots, n\}
+		\end{align*}
+	\end{ceqn}
+
+	\begin{ceqn}
+		\begin{align*}
+			x_{ij} \in \{0;1\} \quad \forall i \in \{1, \dots, k\}, \; \forall j \in \{1, \dots, n\}
+		\end{align*}
+	\end{ceqn}
+
+	\begin{ceqn}
+	\begin{align*}
+		y_{lj} \in \{0;1\} \quad \forall l \in \{1, \dots, m\}, \quad \forall j \in \{1, \dots, n\}
+	\end{align*}
+	\end{ceqn}
+
+	\begin{ceqn}
+	\begin{align*}
+		z_A \in \{0;1\} \quad z_B \in \{0;1\} \quad z \in \{0;1\}
+	\end{align*}
+	\end{ceqn}
+
+	\begin{ceqn}
+	\begin{align*}
+		p_{min} \in \mathbb{R}, \, p_{max} \in \mathbb{R}, \, M_A \in \mathbb{R}, \, M_B \in \mathbb{R}, \, M \in \mathbb{R}
+	\end{align*}
+	\end{ceqn}
+
 \end{document}
