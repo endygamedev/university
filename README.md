@@ -208,6 +208,8 @@
 │   │   └── task-1
 │   ├── data-analysis-techniques
 │   │   └── task-1
+│   ├── economic-dynamics-models
+│   │   └── task-1
 │   └── simulation-modeling
 │       ├── task-1
 │       └── task-2
