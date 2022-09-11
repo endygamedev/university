@@ -363,12 +363,12 @@
 	\newpage
 	
 	Осталось всё собрать вместе и рассмотреть событие: $A$ OR $B$.\\
-	Пусть $M$ -- большое число и введём параметр $z \in \{0;1\}$, тогда событие $A$ OR $B$ можно переписать следующим образом:
+	Пусть $M$ -- большое число, а $\varepsilon$ -- маленькое число и введём параметр $z \in \{0;1\}$, тогда событие $A$ OR $B$ можно переписать следующим образом:
 	
 	\begin{ceqn}
 	\begin{align*}
 		\begin{cases}
-			\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot y_{lj} < 2 + M_A \cdot z_A + M \cdot z\\
+			\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot y_{lj} \leq 2 + M_A \cdot z_A + M \cdot z - \varepsilon\\
 			\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot s_j - \smashoperator[r]{\sum_{j=1}^{n}} \dfrac{a_{lj} \cdot s_j}{2} \leq p_{\max} +  M_A \cdot (1 - z_A) + M \cdot z\\
 			\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot s_j - \smashoperator[r]{\sum_{j=1}^{n}} \dfrac{a_{lj} \cdot s_j}{2} \geq p_{\min} +  M_A \cdot (1 - z_A) + M \cdot z\\
 			\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot y_{lj} \geq 2 + M_B \cdot z_B + M \cdot (1-z)\\
@@ -392,7 +392,7 @@
 	\begin{ceqn}
 		\begin{align*}
 			\begin{cases}
-				\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot y_{lj} < 2 + M_A \cdot z_A + M \cdot z\\
+				\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot y_{lj} \leq 2 + M_A \cdot z_A + M \cdot z - \varepsilon\\
 				\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot s_j - \smashoperator[r]{\sum_{j=1}^{n}} \dfrac{a_{lj} \cdot s_j}{2} \leq p_{\max} +  M_A \cdot (1 - z_A) + M \cdot z\\
 				\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot s_j - \smashoperator[r]{\sum_{j=1}^{n}} \dfrac{a_{lj} \cdot s_j}{2} \geq p_{\min} +  M_A \cdot (1 - z_A) + M \cdot z\\
 				\smashoperator[r]{\sum_{j=1}^{n}} x_{ij} \cdot y_{lj} \geq 2 + M_B \cdot z_B + M \cdot (1-z)\\
@@ -424,7 +424,7 @@
 
 	\begin{ceqn}
 	\begin{align*}
-		p_{min} \in \mathbb{R}, \, p_{max} \in \mathbb{R}, \, M_A \in \mathbb{R}, \, M_B \in \mathbb{R}, \, M \in \mathbb{R}
+		p_{min} \in \mathbb{R}, \, p_{max} \in \mathbb{R}, \, M_A \in \mathbb{R}, \, M_B \in \mathbb{R}, \, M \in \mathbb{R}, \, \varepsilon \in \mathbb{R}
 	\end{align*}
 	\end{ceqn}
 
