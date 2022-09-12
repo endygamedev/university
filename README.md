@@ -207,7 +207,8 @@
 │   ├── combinatorial-optimization-models
 │   │   └── task-1
 │   ├── data-analysis-techniques
-│   │   └── task-1
+│   │   ├── task-1
+│   │   └── task-2
 │   ├── economic-dynamics-models
 │   │   └── task-1
 │   └── simulation-modeling
