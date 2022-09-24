@@ -67,12 +67,23 @@
         \label{fig:mid_square_method_code}
     \end{figure}
     \newpage
-    Алгоритм был запущен с параметрами $k = 10$, $R_0 = 25$, $n = 7$, где $n$ -- это количество сгенерированных случайных чисел. Можно проследить, что при достаточно малых разрядах и малом начальном значении быстро получается вырождение, что плохо. (Рисунок \ref{fig:mid_square_method_result})
+    Алгоритм был запущен с параметрами $k = 10$, $R_0 = 31$, $n = 10$, где $n$ -- это количество сгенерированных случайных чисел. Можно проследить, что при достаточно малых разрядах и малом начальном значении быстро получается вырождение, что плохо. (Рисунок \ref{fig:mid_square_method_result})
     \begin{figure}[h]
         \centering \includegraphics[scale=0.8]{mid_square_method_result}
         \caption{Результаты генерации случайных чисел методом серединных квадратов}
         \label{fig:mid_square_method_result}
     \end{figure}
+
+	Также стоит проверить гипотезу о том, что получившиеся значения распределены равномерно. Для этого воспользуемся критерием Колмогорова-Смирнова. (Рисунок \ref{fig:mid_square_method_test})
+ 	\begin{figure}[h]
+		\centering \includegraphics[scale=0.6]{mid_square_method_test}
+		\caption{Результаты теста Колмогорова-Смирнова}
+		\label{fig:mid_square_method_test}
+	\end{figure}
+	
+	Значение \textit{p-value} > 0.05, значит мы принимаем гипотезу о том, что данная выборка имеет равномерное распределение.
+
+	\newpage
     
     \subsection*{Задание №2}
     Реализовать линейный конгруэнтный датчик случайных чисел. Сгенерировать последовательность вещественных чисел, распределённых равномерно: 1) на интервале [0,1); \; 2) на интервале [a,b). Проанализировать полученные последовательности. Определить период, построить гистограмму.\\
@@ -83,7 +94,6 @@
         $ r_{i+1} = (k \cdot r_i + b) \; mod \; M$
     \end{center}
     
-    \newpage
     Линейная конгруэнтная последовательность, определённая числами $M$, $k$, $b$, $r_0$ периодична с периодом, не превышающим $M$. При этом длина периода равна $M$ тогда и только тогда, когда:
     \begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
         \item числа $b$ и $M$ взаимно простые;
@@ -97,15 +107,26 @@
         \label{fig:linear_congruent_gauge_0_1_code}
     \end{figure}
 
+	\newpage
     Для того чтобы получить случайные числа в интервале от [0,1) нужно поделить каждый случайный сгенерированный элемент последовательности на $M$. Также данная функция выводит период сгенерированной последовательности.
     \begin{figure}[h]
-        \centering \includegraphics[scale=0.52]{linear_congruent_gauge_0_1_result}
+        \centering \includegraphics[scale=0.6]{linear_congruent_gauge_0_1_result}
         \caption{Результаты генерации случайных чисел линейным конгруэнтным счётчиком на интервале [0,1)}
         \label{fig:linear_congruent_gauge_0_1_result}
     \end{figure}
-    \newpage
+
     В качестве аргументов были выбраны следующие значения: $r_0 = 3$, $k = 2$, $b = 1$, $M = 10$, $n = 12$, где $n$ -- это количество сгенерированных случайных чисел. Можно видеть, что при данном наборе аргументов длина периода составила 4. (Рисунок \ref{fig:linear_congruent_gauge_0_1_result})\\
-    \newline
+    
+   	Также стоит проверить гипотезу о том, что получившиеся значения распределены равномерно. Для этого воспользуемся критерием Колмогорова-Смирнова. (Рисунок \ref{fig:linear_congruent_gauge_0_1_test})
+    \begin{figure}[h]
+    	\centering \includegraphics[scale=0.6]{linear_congruent_gauge_0_1_test}
+    	\caption{Результаты теста Колмогорова-Смирнова}
+    	\label{fig:linear_congruent_gauge_0_1_test}
+    \end{figure}
+    
+    Значение \textit{p-value} > 0.05, значит мы принимаем гипотезу о том, что данная выборка имеет равномерное распределение.
+    
+    \newpage
     Далее был реализован алгоритм для интервала [a;b). (Рисунок \ref{fig:linear_congruent_gauge_a_b_code})
     \begin{figure}[h]
         \centering \includegraphics[scale=0.6]{linear_congruent_gauge_a_b_code}
@@ -125,6 +146,15 @@
 	\end{figure}
     \newpage
 	В качестве аргументов были выбраны следующие значения: $r_0 = 3$, $k = 2$, $b = 1$, $M = 10$, $n = 10$, $a_{param} = 100$, $b_{param} = 200$, где $n$ -- это количество сгенерированных случайных чисел. Можно видеть, что при данном наборе аргументов длина периода составила 4. (Рисунок \ref{fig:linear_congruent_gauge_a_b_result})\\
+
+   	Также стоит проверить гипотезу о том, что получившиеся значения распределены равномерно. Для этого воспользуемся критерием Колмогорова-Смирнова. (Рисунок \ref{fig:linear_congruent_gauge_a_b_test})
+	\begin{figure}[h]
+		\centering \includegraphics[scale=0.6]{linear_congruent_gauge_a_b_test}
+		\caption{Результаты теста Колмогорова-Смирнова}
+		\label{fig:linear_congruent_gauge_a_b_test}
+	\end{figure}
+	
+	Значение \textit{p-value} > 0.05, значит мы принимаем гипотезу о том, что данная выборка имеет равномерное распределение.
 	
 	\subsection*{Задание №3}
 	Используя метод обратной функции, получить последовательность случайных чисел, распределённых экспоненциально с заданным параметром $\lambda$. Проанализировать полученную последовательность. Оценить математическое ожидание  и дисперсию, построить гистограмму.\\
@@ -157,7 +187,7 @@
 		$x = \dfrac{-ln(1-y)}{\lambda} = -\dfrac{ln(y)}{\lambda}$
 	\end{center}
 	Если подставлять вместо $y$ случайные равномерно распределённые значения, то можно получать требуемые числа.
-	\newpage
+	
 	Таким образом, была реализована функция на языке программирования Python. (Рисунок \ref{fig:exp_inverse_function_method_code})
 	\begin{figure}[h]
 		\centering \includegraphics[scale=0.8]{exp_inverse_function_method_code}
@@ -165,9 +195,9 @@
 		\label{fig:exp_inverse_function_method_code}
 	\end{figure}
 
-		При $\lambda = 3$ и $n = 1000$ получается следующий результат. (Рисунок \ref{fig:exp_inverse_function_method_result})
+	При $\lambda = 5$ и $n = 1000$ получается следующий результат. (Рисунок \ref{fig:exp_inverse_function_method_result})
 	\begin{figure}[h]
-		\centering \includegraphics[scale=0.8]{exp_inverse_function_method_result}
+		\centering \includegraphics[scale=0.7]{exp_inverse_function_method_result}
 		\caption{Результаты генерации случайных чисел методом обратной функции для экспоненциального закона}
 		\label{fig:exp_inverse_function_method_result}
 	\end{figure}
@@ -201,8 +231,17 @@
 	\end{figure}
 
 	Можно заметить, что при $n = 1000$ значения получились достаточно близкими.
-	
+
 	\newpage
+   	Также стоит проверить гипотезу о том, что получившиеся значения распределены экспоненциально. Для этого воспользуемся критерием Колмогорова-Смирнова. (Рисунок \ref{fig:exp_inverse_function_method_test})
+	\begin{figure}[h]
+		\centering \includegraphics[scale=0.6]{exp_inverse_function_method_test}
+		\caption{Результаты теста Колмогорова-Смирнова}
+		\label{fig:exp_inverse_function_method_test}
+	\end{figure}
+	
+	Значение \textit{p-value} > 0.05, значит мы принимаем гипотезу о том, что данная выборка имеет экспоненциальное распределение.
+	
 	\subsection*{Задание №4}
 	Для треугольного распределения получить функцию распределения. Используя метод обратной функции, получить последовательность случайных чисел с треугольным распределением. Оценить математическое ожидание и дисперсию, построить гистограмму.\\
 	\newline
@@ -245,7 +284,7 @@
     \end{ceqn}
 
 	Если подставить вместо $y$ случайные равномерно распределённые значения, то можно получить требуемые числа.
-	\newpage
+	
 	Таким образом, была реализована функция на языке программирования Python. (Рисунок \ref{fig:triangle_inverse_function_method_code})
 	\begin{figure}[h]
 		\centering \includegraphics[scale=0.7]{triangle_inverse_function_method_code}
@@ -292,6 +331,15 @@
 	
 	\newpage
 	
+   	Также стоит проверить гипотезу о том, что получившиеся значения распределены по треугольному закону. Для этого воспользуемся критерием Колмогорова-Смирнова. (Рисунок \ref{fig:triangle_inverse_function_method_test})
+	\begin{figure}[h]
+		\centering \includegraphics[scale=0.6]{triangle_inverse_function_method_test}
+		\caption{Результаты теста Колмогорова-Смирнова}
+		\label{fig:triangle_inverse_function_method_test}
+	\end{figure}
+	
+	Значение \textit{p-value} > 0.05, значит мы принимаем гипотезу о том, что данная выборка имеет треугольное распределение.
+	
 	\subsection*{Задание №5}
 	Получить нормально распределённую последовательность случайных чисел, используя:
 	\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
@@ -312,7 +360,7 @@
 	\end{ceqn}
 	То есть на каждом шаге создания нового элемента последовательности нужно сначала сгенерировать два равномерно распределённых случайных числа $v_1$ и $v_2$, а дальше случайно выбрать формулу $u_1$ или $u_2$ для расчёта результирующего элемента последовательности.\\
 	
-	
+	\newpage
 	Данный алгоритм был реализован на языке программирования Python. (Рисунок \ref{fig:box_muller_transform_code})
 	\begin{figure}[h]
 		\centering \includegraphics[scale=0.65]{box_muller_transform_code}
@@ -320,7 +368,6 @@
 		\label{fig:box_muller_transform_code}
 	\end{figure}
 	
-	\newpage
 	Была сгенерирована последовательность из 1000 элементов и на основании этого построена гистограмма. (Рисунок \ref{fig:box_muller_transform_result})
 
 	\begin{figure}[h]
@@ -330,6 +377,16 @@
 	\end{figure}
 	
 	Как можно видеть на получившейся гистограмме, распределение действительно получилось нормальное, то есть алгоритм сработал корректно.
+	
+	\newpage
+   	Также стоит проверить гипотезу о том, что получившиеся значения распределены нормально. Для этого воспользуемся критерием Колмогорова-Смирнова. (Рисунок \ref{fig:box_muller_transform_test})
+	\begin{figure}[h]
+		\centering \includegraphics[scale=0.6]{box_muller_transform_test}
+		\caption{Результаты теста Колмогорова-Смирнова}
+		\label{fig:box_muller_transform_test}
+	\end{figure}
+	
+	Значение \textit{p-value} > 0.05, значит мы принимаем гипотезу о том, что данная выборка имеет нормальное распределение.
 	
 	\vspace{1cm}
 	
@@ -341,8 +398,6 @@
 		Z = \sqrt{\dfrac{12}{n}}\left(\smashoperator[r]{\sum_{i=1}^{n}} x_i - \dfrac{n}{2}\right)
 	\end{align*}
 	\end{ceqn}
-
-	\newpage
 	
 	Данный алгоритм был реализован на языке программирования Python. (Рисунок \ref{fig:central_limit_theorem_code})
 	\begin{figure}[h]
@@ -350,7 +405,8 @@
 		\caption{Реализация применения центральной предельной теоремы}
 		\label{fig:central_limit_theorem_code}
 	\end{figure}
-	
+
+	\newpage
 	Была сгенерирована последовательность из 1000 элементов и на основании этого построена гистограмма. (Рисунок \ref{fig:central_limit_theorem_result})
 	
 	\begin{figure}[h]
@@ -359,7 +415,16 @@
 		\label{fig:central_limit_theorem_result}
 	\end{figure}
 	
-	Как можно видеть на получившейся гистограмме, распределение действительно получилось нормальное, то есть алгоритм сработал корректно.
+	Как можно видеть на получившейся гистограмме, распределение действительно получилось нормальное, то есть алгоритм сработал корректно.\\
+	
+   	Также стоит проверить гипотезу о том, что получившиеся значения распределены нормально. Для этого воспользуемся критерием Колмогорова-Смирнова. (Рисунок \ref{fig:central_limit_theorem_test})
+	\begin{figure}[h]
+		\centering \includegraphics[scale=0.6]{central_limit_theorem_test}
+		\caption{Результаты теста Колмогорова-Смирнова}
+		\label{fig:central_limit_theorem_test}
+	\end{figure}
+
+	Значение \textit{p-value} > 0.05, значит мы принимаем гипотезу о том, что данная выборка имеет нормальное распределение.
 	
 	\newpage
 	
