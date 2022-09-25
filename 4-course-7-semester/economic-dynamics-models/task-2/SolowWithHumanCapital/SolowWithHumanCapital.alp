@@ -6,25 +6,25 @@
 -->
 <AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.7.12.202205250343" AlpVersion="8.7.5">
 <Model>
-	<Id>1633257950863</Id>
-	<Name><![CDATA[Solow]]></Name>
+	<Id>1664133088201</Id>
+	<Name><![CDATA[SolowWithHumanCapital]]></Name>
 	<EngineVersion>6</EngineVersion>
-	<JavaPackageName><![CDATA[solow]]></JavaPackageName>
-	<ModelTimeUnit><![CDATA[Year]]></ModelTimeUnit>
+	<JavaPackageName><![CDATA[solowwithhumancapital]]></JavaPackageName>
+	<ModelTimeUnit><![CDATA[Second]]></ModelTimeUnit>
 	<ActiveObjectClasses>
 		<!--   =========   Active Object Class   ========  -->
 		<ActiveObjectClass>
-			<Id>1633257950869</Id>
+			<Id>1664133088207</Id>
 			<Name><![CDATA[Main]]></Name>
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<Generic>false</Generic>
 			<GenericParameter>
-				<Id>1633257950867</Id>
-				<Name><![CDATA[1633257950867]]></Name>
+				<Id>1664133088205</Id>
+				<Name><![CDATA[1664133088205]]></Name>
 				<GenericParameterValue Class="CodeValue">
 					<Code><![CDATA[T extends Agent]]></Code>
 				</GenericParameterValue>
-				<GenericParameterLabel><![CDATA[Параметр настройки:]]></GenericParameterLabel>
+				<GenericParameterLabel><![CDATA[Generic parameter:]]></GenericParameterLabel>
 			</GenericParameter>
 			<FlowChartsUsage>ENTITY</FlowChartsUsage>
 			<SamplesToKeep>100</SamplesToKeep>
@@ -81,18 +81,18 @@
 			<DatasetsCreationProperties>
 				<AutoCreate>true</AutoCreate>
 					<OccurrenceAtTime>true</OccurrenceAtTime>
-					<OccurrenceDate>1633334400000</OccurrenceDate>
+					<OccurrenceDate>1664179200000</OccurrenceDate>
 					<OccurrenceTime Class="CodeUnitValue">
 						<Code><![CDATA[0]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[YEAR]]></Unit>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
 					</OccurrenceTime>
 					<RecurrenceCode Class="CodeUnitValue">
 						<Code><![CDATA[1]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[YEAR]]></Unit>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
 					</RecurrenceCode>
 			</DatasetsCreationProperties>
 			<ScaleRuler>
-				<Id>1633257950865</Id>
+				<Id>1664133088203</Id>
 				<Name><![CDATA[scale]]></Name>
 				<X>0</X><Y>-150</Y>
 				<PublicFlag>false</PublicFlag>
@@ -107,19 +107,19 @@
 				<Scale>10</Scale>
 				<InheritedFromParentAgentType>true</InheritedFromParentAgentType>
 			</ScaleRuler>
-			<CurrentLevel>1633257950868</CurrentLevel>
-			<ConnectionsId>1633257950864</ConnectionsId>
+			<CurrentLevel>1664133088206</CurrentLevel>
+			<ConnectionsId>1664133088202</ConnectionsId>
 			<Variables>
 				<Variable Class="AuxVariable">
-					<Id>1633258226375</Id>
-					<Name><![CDATA[Y]]></Name>
-					<X>110</X><Y>280</Y>
+					<Id>1664133253196</Id>
+					<Name><![CDATA[y]]></Name>
+					<X>120</X><Y>170</Y>
 					<Label><X>0</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties External="false" Constant="false" Array="false">
-						<Formula><![CDATA[pow(K,alfa)*pow(L,1-alfa)
+						<Formula><![CDATA[pow(k, alpha)*pow(h, 1 - alpha)
 ]]></Formula>
 						<Value><![CDATA[0]]></Value>
 						<Color/>
@@ -127,9 +127,9 @@
 
 				</Variable>
 				<Variable Class="StockVariable">
-					<Id>1633257966912</Id>
-					<Name><![CDATA[L]]></Name>
-					<X>200</X><Y>140</Y>
+					<Id>1664133535096</Id>
+					<Name><![CDATA[k]]></Name>
+					<X>140</X><Y>70</Y>
 					<Label><X>-5</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -137,105 +137,37 @@
 					<Properties Array="false">
 					<EquationStyle>custom</EquationStyle>
 					<Width>60</Width>
-					<Height>120</Height>
-						<Expression><![CDATA[la*L]]></Expression>
-						<InitialValue><![CDATA[1000]]></InitialValue>
+					<Height>80</Height>
+						<Expression><![CDATA[sK * y - (n + g + delta) * k
+]]></Expression>
+						<InitialValue><![CDATA[900
+]]></InitialValue>
 						<Color/>
 					</Properties>
 				</Variable>
 				<Variable Class="StockVariable">
-					<Id>1633257985960</Id>
-					<Name><![CDATA[K]]></Name>
-					<X>200</X><Y>400</Y>
-					<Label><X>-5</X><Y>0</Y></Label>
+					<Id>1664133561597</Id>
+					<Name><![CDATA[h]]></Name>
+					<X>150</X><Y>270</Y>
+					<Label><X>-10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties Array="false">
 					<EquationStyle>custom</EquationStyle>
 					<Width>60</Width>
-					<Height>120</Height>
-						<Expression><![CDATA[-mu*K+s*Y]]></Expression>
-						<InitialValue><![CDATA[900]]></InitialValue>
+					<Height>80</Height>
+						<Expression><![CDATA[sH * y - (n + g + delta) * h
+]]></Expression>
+						<InitialValue><![CDATA[500
+]]></InitialValue>
 						<Color/>
 					</Properties>
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1633258011421</Id>
-					<Name><![CDATA[la]]></Name>
-					<X>50</X><Y>80</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0.01]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1633258011419</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1633258099441</Id>
-					<Name><![CDATA[s]]></Name>
-					<X>50</X><Y>420</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0.1]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1633258099439</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1633258128042</Id>
-					<Name><![CDATA[mu]]></Name>
-					<X>50</X><Y>460</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0.1]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1633258128040</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1633258184188</Id>
-					<Name><![CDATA[alfa]]></Name>
-					<X>50</X><Y>300</Y>
+					<Id>1664133418506</Id>
+					<Name><![CDATA[alpha]]></Name>
+					<X>40</X><Y>210</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -249,7 +181,132 @@
 ]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
-							<Id>1633258184186</Id>
+							<Id>1664133418504</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1664133649401</Id>
+					<Name><![CDATA[sK]]></Name>
+					<X>230</X><Y>120</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0.5
+]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1664133649399</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1664133674933</Id>
+					<Name><![CDATA[sH]]></Name>
+					<X>230</X><Y>140</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0.4
+]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1664133674931</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1664133703774</Id>
+					<Name><![CDATA[n]]></Name>
+					<X>230</X><Y>200</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0.1
+]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1664133703772</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1664133721153</Id>
+					<Name><![CDATA[g]]></Name>
+					<X>230</X><Y>230</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0.15
+]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1664133721151</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1664133741329</Id>
+					<Name><![CDATA[delta]]></Name>
+					<X>230</X><Y>160</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0.1
+]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1664133741327</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -259,13 +316,13 @@
 				</Variable>
 			</Variables>
 			<Dependences>
-				<Link SourceId="1633258011421" TargetId="1633257966912" Polarity="null">
+				<Link SourceId="1664133649401" TargetId="1664133535096" Polarity="null">
 					<Height>20.0</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>150</X><Y>60</Y></Direction>
-					<Id>1633258079568</Id>
-					<Name><![CDATA[la - L]]></Name>
-					<X>50</X><Y>80</Y>
+					<Direction><X>-90</X><Y>-50</Y></Direction>
+					<Id>1664133782400</Id>
+					<Name><![CDATA[sK - k]]></Name>
+					<X>230</X><Y>120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -274,13 +331,13 @@
 					<LineWidth>1</LineWidth>
 					<Delay>false</Delay>
 				</Link>
-				<Link SourceId="1633257985960" TargetId="1633258226375" Polarity="null">
+				<Link SourceId="1664133253196" TargetId="1664133535096" Polarity="null">
 					<Height>20.0</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>-90</X><Y>-120</Y></Direction>
-					<Id>1633258257435</Id>
-					<Name><![CDATA[K - Y]]></Name>
-					<X>200</X><Y>400</Y>
+					<Direction><X>20</X><Y>-100</Y></Direction>
+					<Id>1664133792101</Id>
+					<Name><![CDATA[y - k]]></Name>
+					<X>120</X><Y>170</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -289,13 +346,13 @@
 					<LineWidth>1</LineWidth>
 					<Delay>false</Delay>
 				</Link>
-				<Link SourceId="1633258184188" TargetId="1633258226375" Polarity="null">
+				<Link SourceId="1664133741329" TargetId="1664133535096" Polarity="null">
 					<Height>20.0</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>60</X><Y>-20</Y></Direction>
-					<Id>1633258260104</Id>
-					<Name><![CDATA[alfa - Y]]></Name>
-					<X>50</X><Y>300</Y>
+					<Direction><X>-90</X><Y>-90</Y></Direction>
+					<Id>1664133809062</Id>
+					<Name><![CDATA[delta - k]]></Name>
+					<X>230</X><Y>160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -304,13 +361,13 @@
 					<LineWidth>1</LineWidth>
 					<Delay>false</Delay>
 				</Link>
-				<Link SourceId="1633257966912" TargetId="1633258226375" Polarity="null">
+				<Link SourceId="1664133721153" TargetId="1664133535096" Polarity="null">
 					<Height>20.0</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>-90</X><Y>140</Y></Direction>
-					<Id>1633258262311</Id>
-					<Name><![CDATA[L - Y]]></Name>
-					<X>200</X><Y>140</Y>
+					<Direction><X>-90</X><Y>-160</Y></Direction>
+					<Id>1664133810053</Id>
+					<Name><![CDATA[g - k]]></Name>
+					<X>230</X><Y>230</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -319,13 +376,13 @@
 					<LineWidth>1</LineWidth>
 					<Delay>false</Delay>
 				</Link>
-				<Link SourceId="1633258226375" TargetId="1633257985960" Polarity="null">
+				<Link SourceId="1664133721153" TargetId="1664133535096" Polarity="null">
 					<Height>20.0</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>90</X><Y>120</Y></Direction>
-					<Id>1633258301819</Id>
-					<Name><![CDATA[Y - K]]></Name>
-					<X>110</X><Y>280</Y>
+					<Direction><X>-90</X><Y>-160</Y></Direction>
+					<Id>1664133811339</Id>
+					<Name><![CDATA[g - k]]></Name>
+					<X>230</X><Y>230</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -334,13 +391,13 @@
 					<LineWidth>1</LineWidth>
 					<Delay>false</Delay>
 				</Link>
-				<Link SourceId="1633258099441" TargetId="1633257985960" Polarity="null">
-					<Height>0.0</Height>
+				<Link SourceId="1664133703774" TargetId="1664133535096" Polarity="null">
+					<Height>20.0</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>150</X><Y>-20</Y></Direction>
-					<Id>1633258306135</Id>
-					<Name><![CDATA[s - K]]></Name>
-					<X>50</X><Y>420</Y>
+					<Direction><X>-90</X><Y>-130</Y></Direction>
+					<Id>1664133812483</Id>
+					<Name><![CDATA[n - k]]></Name>
+					<X>230</X><Y>200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -349,13 +406,148 @@
 					<LineWidth>1</LineWidth>
 					<Delay>false</Delay>
 				</Link>
-				<Link SourceId="1633258128042" TargetId="1633257985960" Polarity="null">
-					<Height>-8.542</Height>
+				<Link SourceId="1664133253196" TargetId="1664133561597" Polarity="null">
+					<Height>20.0</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>150</X><Y>-60</Y></Direction>
-					<Id>1633258308475</Id>
-					<Name><![CDATA[mu - K]]></Name>
-					<X>50</X><Y>460</Y>
+					<Direction><X>30</X><Y>100</Y></Direction>
+					<Id>1664133836269</Id>
+					<Name><![CDATA[y - h]]></Name>
+					<X>120</X><Y>170</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
+				<Link SourceId="1664133253196" TargetId="1664133561597" Polarity="null">
+					<Height>20.0</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>30</X><Y>100</Y></Direction>
+					<Id>1664133837108</Id>
+					<Name><![CDATA[y - h]]></Name>
+					<X>120</X><Y>170</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
+				<Link SourceId="1664133674933" TargetId="1664133561597" Polarity="null">
+					<Height>20.0</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>-80</X><Y>130</Y></Direction>
+					<Id>1664133837888</Id>
+					<Name><![CDATA[sH - h]]></Name>
+					<X>230</X><Y>140</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
+				<Link SourceId="1664133741329" TargetId="1664133561597" Polarity="null">
+					<Height>20.0</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>-80</X><Y>110</Y></Direction>
+					<Id>1664133839209</Id>
+					<Name><![CDATA[delta - h]]></Name>
+					<X>230</X><Y>160</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
+				<Link SourceId="1664133721153" TargetId="1664133561597" Polarity="null">
+					<Height>20.0</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>-80</X><Y>40</Y></Direction>
+					<Id>1664133840369</Id>
+					<Name><![CDATA[g - h]]></Name>
+					<X>230</X><Y>230</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
+				<Link SourceId="1664133703774" TargetId="1664133561597" Polarity="null">
+					<Height>20.0</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>-80</X><Y>70</Y></Direction>
+					<Id>1664133841619</Id>
+					<Name><![CDATA[n - h]]></Name>
+					<X>230</X><Y>200</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
+				<Link SourceId="1664133418506" TargetId="1664133253196" Polarity="null">
+					<Height>20.0</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>80</X><Y>-40</Y></Direction>
+					<Id>1664133878666</Id>
+					<Name><![CDATA[alpha - y]]></Name>
+					<X>40</X><Y>210</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
+				<Link SourceId="1664133418506" TargetId="1664133253196" Polarity="null">
+					<Height>20.0</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>80</X><Y>-40</Y></Direction>
+					<Id>1664133879584</Id>
+					<Name><![CDATA[alpha - y]]></Name>
+					<X>40</X><Y>210</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
+				<Link SourceId="1664133535096" TargetId="1664133253196" Polarity="null">
+					<Height>20.0</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>-20</X><Y>100</Y></Direction>
+					<Id>1664133880856</Id>
+					<Name><![CDATA[k - y]]></Name>
+					<X>140</X><Y>70</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
+				<Link SourceId="1664133561597" TargetId="1664133253196" Polarity="null">
+					<Height>20.0</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>-30</X><Y>-100</Y></Direction>
+					<Id>1664133881849</Id>
+					<Name><![CDATA[h - y]]></Name>
+					<X>150</X><Y>270</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -367,7 +559,7 @@
 			</Dependences>
 			<AgentLinks>
 				<AgentLink>
-					<Id>1633257950864</Id>
+					<Id>1664133088202</Id>
 					<Name><![CDATA[connections]]></Name>
 					<X>50</X><Y>-50</Y>
 					<Label><X>15</X><Y>0</Y></Label>
@@ -390,7 +582,7 @@
 
 			<Presentation>
 				<Level>
-					<Id>1633257950868</Id>
+					<Id>1664133088206</Id>
 					<Name><![CDATA[level]]></Name>
 					<X>0</X><Y>0</Y>
 					<Label><X>10</X><Y>0</Y></Label>
@@ -403,9 +595,9 @@
 
 			<Presentation>
     			<TimePlot>
-					<Id>1633258335846</Id>
+					<Id>1664134296981</Id>
 					<Name><![CDATA[plot]]></Name>
-					<X>560</X><Y>0</Y>
+					<X>360</X><Y>30</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -413,25 +605,25 @@
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<AutoUpdate>true</AutoUpdate>
 					<OccurrenceAtTime>true</OccurrenceAtTime>
-					<OccurrenceDate>1633334400000</OccurrenceDate>
+					<OccurrenceDate>1664179200000</OccurrenceDate>
 					<OccurrenceTime Class="CodeUnitValue">
 						<Code><![CDATA[0]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[YEAR]]></Unit>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
 					</OccurrenceTime>
 					<RecurrenceCode Class="CodeUnitValue">
 						<Code><![CDATA[1]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[YEAR]]></Unit>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>440</Width>
-					<Height>220</Height>
+					<Width>470</Width>
+					<Height>280</Height>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
 						<XOffset>50</XOffset>
 						<YOffset>30</YOffset>
-						<Width>360</Width>
-						<Height>130</Height>
+						<Width>390</Width>
+						<Height>190</Height>
 						<BackgroundColor>-1</BackgroundColor>
 						<BorderColor>-16777216</BorderColor>
 						<GridColor>-12566464</GridColor>
@@ -455,34 +647,36 @@
 					<DrawLine>true</DrawLine>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
-						<Title><![CDATA[L]]></Title>
+						<Title><![CDATA[k]]></Title>
 					<Id>0</Id>
 					<Expression><![CDATA[my_dataset]]></Expression>
 					<Color>-16776961</Color>
-					<Expression2><![CDATA[L]]></Expression2>
+					<Expression2><![CDATA[k
+]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>
 						<PointStyle>NONE</PointStyle>
-						<LineWidth>2.0</LineWidth>
+						<LineWidth>3.0</LineWidth>
 					</DatasetExpression>
 					<DatasetExpression>  
-						<Title><![CDATA[K]]></Title>
+						<Title><![CDATA[h]]></Title>
 					<Id>0</Id>
 					<Expression><![CDATA[my_dataset1]]></Expression>
-					<Color>-23296</Color>
-					<Expression2><![CDATA[K]]></Expression2>
+					<Color>-65536</Color>
+					<Expression2><![CDATA[h
+]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>
 						<PointStyle>NONE</PointStyle>
-						<LineWidth>2.0</LineWidth>
+						<LineWidth>3.0</LineWidth>
 					</DatasetExpression>
 					<SamplesToKeep>100</SamplesToKeep>
 					<TimeWindowExpression><![CDATA[100]]></TimeWindowExpression>
 					<FillAreaUnderLine>false</FillAreaUnderLine>
 					<LabelFormat>MODEL_TIME_UNITS</LabelFormat>
     			</TimePlot>
-    			<TimePlot>
-					<Id>1633258408323</Id>
+    			<Plot>
+					<Id>1664134387848</Id>
 					<Name><![CDATA[plot1]]></Name>
-					<X>560</X><Y>240</Y>
+					<X>420</X><Y>290</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -490,25 +684,25 @@
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<AutoUpdate>true</AutoUpdate>
 					<OccurrenceAtTime>true</OccurrenceAtTime>
-					<OccurrenceDate>1633334400000</OccurrenceDate>
+					<OccurrenceDate>1664179200000</OccurrenceDate>
 					<OccurrenceTime Class="CodeUnitValue">
 						<Code><![CDATA[0]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[YEAR]]></Unit>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
 					</OccurrenceTime>
 					<RecurrenceCode Class="CodeUnitValue">
 						<Code><![CDATA[1]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[YEAR]]></Unit>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>440</Width>
-					<Height>220</Height>
+					<Width>260</Width>
+					<Height>210</Height>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
 						<XOffset>50</XOffset>
 						<YOffset>30</YOffset>
-						<Width>360</Width>
-						<Height>130</Height>
+						<Width>180</Width>
+						<Height>120</Height>
 						<BackgroundColor>-1</BackgroundColor>
 						<BorderColor>-16777216</BorderColor>
 						<GridColor>-12566464</GridColor>
@@ -524,117 +718,42 @@
 						<TextColor>-12566464</TextColor>
 					</Labels>
 					<ShowLegend>true</ShowLegend>
-					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
-					<TimeWindowUnits>MODEL_TIME_UNIT</TimeWindowUnits>
 					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
 					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
 					<VerScaleType>AUTO</VerScaleType>
 					<DrawLine>true</DrawLine>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
-						<Title><![CDATA[GDP]]></Title>
+						<Title><![CDATA[ky]]></Title>
 					<Id>0</Id>
-					<Expression><![CDATA[my_dataset]]></Expression>
+					<Expression><![CDATA[my_dataset1]]></Expression>
 					<Color>-65536</Color>
-					<Expression2><![CDATA[Y]]></Expression2>
+					<Expression2><![CDATA[y
+]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>2.0</LineWidth>
+						<HorizontalAxisExpression><![CDATA[k
+]]></HorizontalAxisExpression>
+					</DatasetExpression>
+					<DatasetExpression>  
+						<Title><![CDATA[hy]]></Title>
+					<Id>0</Id>
+					<Expression><![CDATA[my_dataset]]></Expression>
+					<Color>-16711936</Color>
+					<Expression2><![CDATA[y
+]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>2.0</LineWidth>
+						<HorizontalAxisExpression><![CDATA[h
+]]></HorizontalAxisExpression>
 					</DatasetExpression>
 					<SamplesToKeep>100</SamplesToKeep>
-					<TimeWindowExpression><![CDATA[100]]></TimeWindowExpression>
-					<FillAreaUnderLine>false</FillAreaUnderLine>
-					<LabelFormat>MODEL_TIME_UNITS</LabelFormat>
-    			</TimePlot>
-				<Control Type="Slider">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1633258527983</Id>
-					<Name><![CDATA[slider]]></Name>
-					<X>40</X><Y>20</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="100" Height="30">
-                        <EmbeddedIcon>false</EmbeddedIcon>	
-						<Enabled>true</Enabled>
-					</BasicProperties>
-					<ExtendedProperties>
-						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
-						<Orientation>HORIZONTAL</Orientation>
-						<MinValue><![CDATA[0]]></MinValue>
-						<MaxValue><![CDATA[1]]></MaxValue>
-						<LinkTo>true</LinkTo>
-						<Link>la</Link>
-					</ExtendedProperties>
-				</Control>
-				<Text>
-					<Id>1633258554749</Id>
-					<Name><![CDATA[text]]></Name>
-					<X>40</X><Y>50</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[min]]></Text>
-					<TextCode><![CDATA[slider.getMin()]]></TextCode>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1633258554755</Id>
-					<Name><![CDATA[text1]]></Name>
-					<X>140</X><Y>50</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[max]]></Text>
-					<TextCode><![CDATA[slider.getMax()]]></TextCode>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>RIGHT</Alignment>
-				</Text>
-				<Text>
-					<Id>1633258554757</Id>
-					<Name><![CDATA[text2]]></Name>
-					<X>90</X><Y>50</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[value]]></Text>
-					<TextCode><![CDATA[slider.getValue()]]></TextCode>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>CENTER</Alignment>
-				</Text>
+					<HorScaleFromExpression><![CDATA[0]]></HorScaleFromExpression>
+					<HorScaleToExpression><![CDATA[1]]></HorScaleToExpression>
+					<HorScaleType>AUTO</HorScaleType>
+    			</Plot>
 			</Presentation>
 
 				</Level>
@@ -663,15 +782,15 @@
 		</ExportSettings>
 	</Database>
 	
-	<RunConfiguration ActiveObjectClassId="1633257950869">
-		<Id>1633257950883</Id>
+	<RunConfiguration ActiveObjectClassId="1664133088207">
+		<Id>1664133088211</Id>
 		<Name><![CDATA[RunConfiguration]]></Name>
 		<MaximumMemory>512</MaximumMemory>
 		<ModelTimeProperties>
 			<StopOption><![CDATA[Stop at specified time]]></StopOption>
-			<InitialDate><![CDATA[1633219200000]]></InitialDate>	
+			<InitialDate><![CDATA[1664064000000]]></InitialDate>	
 			<InitialTime><![CDATA[0.0]]></InitialTime>	
-			<FinalDate><![CDATA[1635897600000]]></FinalDate>	
+			<FinalDate><![CDATA[1666656000000]]></FinalDate>	
 			<FinalTime><![CDATA[100.0]]></FinalTime>	
 		</ModelTimeProperties>
 		<AnimationProperties>
@@ -689,8 +808,8 @@
 	</RunConfiguration>
 	<Experiments>	
 		<!--   =========   Simulation Experiment   ========  -->
-		<SimulationExperiment ActiveObjectClassId="1633257950869">
-			<Id>1633257950881</Id>
+		<SimulationExperiment ActiveObjectClassId="1664133088207">
+			<Id>1664133088209</Id>
 			<Name><![CDATA[Simulation]]></Name>
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<CommandLineArguments><![CDATA[]]></CommandLineArguments>
@@ -704,7 +823,7 @@
 
 			<Presentation>
 				<Text>
-					<Id>1633257950882</Id>
+					<Id>1664133088210</Id>
 					<Name><![CDATA[text]]></Name>
 					<X>50</X><Y>30</Y>
 					<Label><X>10</X><Y>0</Y></Label>
@@ -716,7 +835,7 @@
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-12490271</Color>
-					<Text><![CDATA[Solow]]></Text>
+					<Text><![CDATA[SolowWithHumanCapital]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>24</Size>
@@ -728,31 +847,37 @@
 
 			<Parameters>			
 				<Parameter>
-					<ParameterName><![CDATA[la]]></ParameterName>
+					<ParameterName><![CDATA[alpha]]></ParameterName>
 				</Parameter>
 				<Parameter>
-					<ParameterName><![CDATA[s]]></ParameterName>
+					<ParameterName><![CDATA[sK]]></ParameterName>
 				</Parameter>
 				<Parameter>
-					<ParameterName><![CDATA[mu]]></ParameterName>
+					<ParameterName><![CDATA[sH]]></ParameterName>
 				</Parameter>
 				<Parameter>
-					<ParameterName><![CDATA[alfa]]></ParameterName>
+					<ParameterName><![CDATA[n]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[g]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[delta]]></ParameterName>
 				</Parameter>
 			</Parameters>			
 			<PresentationProperties>
 				<EnableZoomAndPanning>true</EnableZoomAndPanning>
 				<ExecutionMode><![CDATA[realTimeScaled]]></ExecutionMode>
-				<Title><![CDATA[Solow : Simulation]]></Title>	
+				<Title><![CDATA[SolowWithHumanCapital : Simulation]]></Title>	
 				<EnableDeveloperPanel>true</EnableDeveloperPanel>
 				<ShowDeveloperPanelOnStart>false</ShowDeveloperPanelOnStart>
 				<RealTimeScale>1.0</RealTimeScale>
 			</PresentationProperties>
 			<ModelTimeProperties>
 				<StopOption><![CDATA[Never]]></StopOption>
-				<InitialDate><![CDATA[1633219200000]]></InitialDate>	
+				<InitialDate><![CDATA[1664064000000]]></InitialDate>	
 				<InitialTime><![CDATA[0.0]]></InitialTime>	
-				<FinalDate><![CDATA[1635897600000]]></FinalDate>	
+				<FinalDate><![CDATA[1666656000000]]></FinalDate>	
 				<FinalTime><![CDATA[100.0]]></FinalTime>	
 			</ModelTimeProperties>
 			<BypassInitialScreen>true</BypassInitialScreen>
