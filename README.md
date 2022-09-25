@@ -210,7 +210,8 @@
 │   │   ├── task-1
 │   │   └── task-2
 │   ├── economic-dynamics-models
-│   │   └── task-1
+│   │   ├── task-1
+│   │   └── task-2
 │   └── simulation-modeling
 │       ├── task-1
 │       ├── task-2
