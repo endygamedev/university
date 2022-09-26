@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.7.12.202205250343" AlpVersion="8.7.5">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.8.0.202208091057" AlpVersion="8.7.5">
 <Model>
 	<Id>1664133088201</Id>
 	<Name><![CDATA[SolowWithHumanCapital]]></Name>
@@ -119,7 +119,23 @@
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties External="false" Constant="false" Array="false">
-						<Formula><![CDATA[pow(k, alpha)*pow(h, 1 - alpha)
+						<Formula><![CDATA[pow(k, alpha)*pow(h, beta)
+]]></Formula>
+						<Value><![CDATA[0]]></Value>
+						<Color/>
+					</Properties>
+
+				</Variable>
+				<Variable Class="AuxVariable">
+					<Id>1664222443710</Id>
+					<Name><![CDATA[time]]></Name>
+					<X>20</X><Y>40</Y>
+					<Label><X>0</X><Y>-20</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties External="false" Constant="false" Array="false">
+						<Formula><![CDATA[time()
 ]]></Formula>
 						<Value><![CDATA[0]]></Value>
 						<Color/>
@@ -140,7 +156,7 @@
 					<Height>80</Height>
 						<Expression><![CDATA[sK * y - (n + g + delta) * k
 ]]></Expression>
-						<InitialValue><![CDATA[900
+						<InitialValue><![CDATA[9
 ]]></InitialValue>
 						<Color/>
 					</Properties>
@@ -159,7 +175,7 @@
 					<Height>80</Height>
 						<Expression><![CDATA[sH * y - (n + g + delta) * h
 ]]></Expression>
-						<InitialValue><![CDATA[500
+						<InitialValue><![CDATA[14
 ]]></InitialValue>
 						<Color/>
 					</Properties>
@@ -167,8 +183,8 @@
 				<Variable Class="Parameter">
 					<Id>1664133418506</Id>
 					<Name><![CDATA[alpha]]></Name>
-					<X>40</X><Y>210</Y>
-					<Label><X>10</X><Y>0</Y></Label>
+					<X>80</X><Y>130</Y>
+					<Label><X>-40</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -177,7 +193,7 @@
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0.25
+							<Code><![CDATA[0.5
 ]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
@@ -192,7 +208,7 @@
 				<Variable Class="Parameter">
 					<Id>1664133649401</Id>
 					<Name><![CDATA[sK]]></Name>
-					<X>230</X><Y>120</Y>
+					<X>230</X><Y>90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -202,7 +218,7 @@
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0.5
+							<Code><![CDATA[7
 ]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
@@ -217,7 +233,7 @@
 				<Variable Class="Parameter">
 					<Id>1664133674933</Id>
 					<Name><![CDATA[sH]]></Name>
-					<X>230</X><Y>140</Y>
+					<X>230</X><Y>120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -227,7 +243,7 @@
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0.4
+							<Code><![CDATA[10
 ]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
@@ -252,7 +268,7 @@
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0.1
+							<Code><![CDATA[2
 ]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
@@ -277,7 +293,7 @@
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0.15
+							<Code><![CDATA[1
 ]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
@@ -302,11 +318,36 @@
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0.1
+							<Code><![CDATA[2
 ]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1664133741327</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1664208328687</Id>
+					<Name><![CDATA[beta]]></Name>
+					<X>90</X><Y>220</Y>
+					<Label><X>-50</X><Y>-5</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0.2
+]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1664208328685</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -319,10 +360,10 @@
 				<Link SourceId="1664133649401" TargetId="1664133535096" Polarity="null">
 					<Height>20.0</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>-90</X><Y>-50</Y></Direction>
+					<Direction><X>-90</X><Y>-20</Y></Direction>
 					<Id>1664133782400</Id>
 					<Name><![CDATA[sK - k]]></Name>
-					<X>230</X><Y>120</Y>
+					<X>230</X><Y>90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -439,10 +480,10 @@
 				<Link SourceId="1664133674933" TargetId="1664133561597" Polarity="null">
 					<Height>20.0</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>-80</X><Y>130</Y></Direction>
+					<Direction><X>-80</X><Y>150</Y></Direction>
 					<Id>1664133837888</Id>
 					<Name><![CDATA[sH - h]]></Name>
-					<X>230</X><Y>140</Y>
+					<X>230</X><Y>120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -499,10 +540,10 @@
 				<Link SourceId="1664133418506" TargetId="1664133253196" Polarity="null">
 					<Height>20.0</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>80</X><Y>-40</Y></Direction>
+					<Direction><X>40</X><Y>40</Y></Direction>
 					<Id>1664133878666</Id>
 					<Name><![CDATA[alpha - y]]></Name>
-					<X>40</X><Y>210</Y>
+					<X>80</X><Y>130</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -514,10 +555,10 @@
 				<Link SourceId="1664133418506" TargetId="1664133253196" Polarity="null">
 					<Height>20.0</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>80</X><Y>-40</Y></Direction>
+					<Direction><X>40</X><Y>40</Y></Direction>
 					<Id>1664133879584</Id>
 					<Name><![CDATA[alpha - y]]></Name>
-					<X>40</X><Y>210</Y>
+					<X>80</X><Y>130</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -548,6 +589,21 @@
 					<Id>1664133881849</Id>
 					<Name><![CDATA[h - y]]></Name>
 					<X>150</X><Y>270</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
+				<Link SourceId="1664208328687" TargetId="1664133253196" Polarity="null">
+					<Height>20.0</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>30</X><Y>-50</Y></Direction>
+					<Id>1664208359419</Id>
+					<Name><![CDATA[beta - y]]></Name>
+					<X>90</X><Y>220</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -674,9 +730,9 @@
 					<LabelFormat>MODEL_TIME_UNITS</LabelFormat>
     			</TimePlot>
     			<Plot>
-					<Id>1664134387848</Id>
+					<Id>1664220442153</Id>
 					<Name><![CDATA[plot1]]></Name>
-					<X>420</X><Y>290</Y>
+					<X>360</X><Y>290</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -684,25 +740,26 @@
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<AutoUpdate>true</AutoUpdate>
 					<OccurrenceAtTime>true</OccurrenceAtTime>
-					<OccurrenceDate>1664179200000</OccurrenceDate>
+					<OccurrenceDate>1664265600000</OccurrenceDate>
 					<OccurrenceTime Class="CodeUnitValue">
 						<Code><![CDATA[0]]></Code>
 						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
 					</OccurrenceTime>
 					<RecurrenceCode Class="CodeUnitValue">
-						<Code><![CDATA[1]]></Code>
+						<Code><![CDATA[1
+]]></Code>
 						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>260</Width>
-					<Height>210</Height>
+					<Width>380</Width>
+					<Height>280</Height>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
 						<XOffset>50</XOffset>
 						<YOffset>30</YOffset>
-						<Width>180</Width>
-						<Height>120</Height>
+						<Width>300</Width>
+						<Height>190</Height>
 						<BackgroundColor>-1</BackgroundColor>
 						<BorderColor>-16777216</BorderColor>
 						<GridColor>-12566464</GridColor>
@@ -724,29 +781,16 @@
 					<DrawLine>true</DrawLine>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
-						<Title><![CDATA[ky]]></Title>
-					<Id>0</Id>
-					<Expression><![CDATA[my_dataset1]]></Expression>
-					<Color>-65536</Color>
-					<Expression2><![CDATA[y
-]]></Expression2>
-					<Expression2Flag>true</Expression2Flag>
-						<PointStyle>NONE</PointStyle>
-						<LineWidth>2.0</LineWidth>
-						<HorizontalAxisExpression><![CDATA[k
-]]></HorizontalAxisExpression>
-					</DatasetExpression>
-					<DatasetExpression>  
-						<Title><![CDATA[hy]]></Title>
+						<Title><![CDATA[k h]]></Title>
 					<Id>0</Id>
 					<Expression><![CDATA[my_dataset]]></Expression>
 					<Color>-16711936</Color>
-					<Expression2><![CDATA[y
+					<Expression2><![CDATA[h
 ]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>
 						<PointStyle>NONE</PointStyle>
-						<LineWidth>2.0</LineWidth>
-						<HorizontalAxisExpression><![CDATA[h
+						<LineWidth>3.0</LineWidth>
+						<HorizontalAxisExpression><![CDATA[k
 ]]></HorizontalAxisExpression>
 					</DatasetExpression>
 					<SamplesToKeep>100</SamplesToKeep>
@@ -754,6 +798,172 @@
 					<HorScaleToExpression><![CDATA[1]]></HorScaleToExpression>
 					<HorScaleType>AUTO</HorScaleType>
     			</Plot>
+				<Control Type="Slider">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1664224393940</Id>
+					<Name><![CDATA[slider]]></Name>
+					<X>260</X><Y>80</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="100" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
+						<Orientation>HORIZONTAL</Orientation>
+						<MinValue><![CDATA[0
+]]></MinValue>
+						<MaxValue><![CDATA[100]]></MaxValue>
+						<LinkTo>true</LinkTo>
+						<Link>sK</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Slider">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1664224437687</Id>
+					<Name><![CDATA[slider1]]></Name>
+					<X>260</X><Y>110</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="100" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
+						<Orientation>HORIZONTAL</Orientation>
+						<MinValue><![CDATA[0]]></MinValue>
+						<MaxValue><![CDATA[100]]></MaxValue>
+						<LinkTo>true</LinkTo>
+						<Link>sH</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Slider">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1664224460125</Id>
+					<Name><![CDATA[slider2]]></Name>
+					<X>280</X><Y>150</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="100" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
+						<Orientation>HORIZONTAL</Orientation>
+						<MinValue><![CDATA[0]]></MinValue>
+						<MaxValue><![CDATA[100]]></MaxValue>
+						<LinkTo>true</LinkTo>
+						<Link>delta</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Slider">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1664224476598</Id>
+					<Name><![CDATA[slider3]]></Name>
+					<X>270</X><Y>190</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="100" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
+						<Orientation>HORIZONTAL</Orientation>
+						<MinValue><![CDATA[0]]></MinValue>
+						<MaxValue><![CDATA[100]]></MaxValue>
+						<LinkTo>true</LinkTo>
+						<Link>n</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Slider">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1664224490323</Id>
+					<Name><![CDATA[slider4]]></Name>
+					<X>270</X><Y>220</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="100" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
+						<Orientation>HORIZONTAL</Orientation>
+						<MinValue><![CDATA[0]]></MinValue>
+						<MaxValue><![CDATA[100]]></MaxValue>
+						<LinkTo>true</LinkTo>
+						<Link>g</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Slider">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1664224638989</Id>
+					<Name><![CDATA[slider5]]></Name>
+					<X>0</X><Y>140</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="100" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
+						<Orientation>HORIZONTAL</Orientation>
+						<MinValue><![CDATA[0
+]]></MinValue>
+						<MaxValue><![CDATA[1
+]]></MaxValue>
+						<LinkTo>true</LinkTo>
+						<Link>alpha</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Slider">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1664224679855</Id>
+					<Name><![CDATA[slider6]]></Name>
+					<X>0</X><Y>230</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="100" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
+						<Orientation>HORIZONTAL</Orientation>
+						<MinValue><![CDATA[0
+]]></MinValue>
+						<MaxValue><![CDATA[1
+]]></MaxValue>
+						<LinkTo>true</LinkTo>
+						<Link>beta</Link>
+					</ExtendedProperties>
+				</Control>
 			</Presentation>
 
 				</Level>
@@ -863,6 +1073,9 @@
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[delta]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[beta]]></ParameterName>
 				</Parameter>
 			</Parameters>			
 			<PresentationProperties>
