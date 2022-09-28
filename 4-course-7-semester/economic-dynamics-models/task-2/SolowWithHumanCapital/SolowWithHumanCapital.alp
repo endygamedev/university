@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.8.0.202208091057" AlpVersion="8.7.5">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.7.12.202205250343" AlpVersion="8.7.5">
 <Model>
 	<Id>1664133088201</Id>
 	<Name><![CDATA[SolowWithHumanCapital]]></Name>
@@ -129,7 +129,7 @@
 				<Variable Class="AuxVariable">
 					<Id>1664222443710</Id>
 					<Name><![CDATA[time]]></Name>
-					<X>20</X><Y>40</Y>
+					<X>30</X><Y>40</Y>
 					<Label><X>0</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -218,7 +218,7 @@
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[7
+							<Code><![CDATA[0.6
 ]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
@@ -243,7 +243,7 @@
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[10
+							<Code><![CDATA[0.9
 ]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
@@ -268,7 +268,7 @@
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[2
+							<Code><![CDATA[0.3
 ]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
@@ -293,7 +293,7 @@
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[1
+							<Code><![CDATA[0.2
 ]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
@@ -318,7 +318,7 @@
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[2
+							<Code><![CDATA[0.01
 ]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
@@ -817,7 +817,8 @@
 						<Orientation>HORIZONTAL</Orientation>
 						<MinValue><![CDATA[0
 ]]></MinValue>
-						<MaxValue><![CDATA[100]]></MaxValue>
+						<MaxValue><![CDATA[1
+]]></MaxValue>
 						<LinkTo>true</LinkTo>
 						<Link>sK</Link>
 					</ExtendedProperties>
@@ -840,7 +841,8 @@
 						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
 						<Orientation>HORIZONTAL</Orientation>
 						<MinValue><![CDATA[0]]></MinValue>
-						<MaxValue><![CDATA[100]]></MaxValue>
+						<MaxValue><![CDATA[1
+]]></MaxValue>
 						<LinkTo>true</LinkTo>
 						<Link>sH</Link>
 					</ExtendedProperties>
@@ -863,7 +865,8 @@
 						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
 						<Orientation>HORIZONTAL</Orientation>
 						<MinValue><![CDATA[0]]></MinValue>
-						<MaxValue><![CDATA[100]]></MaxValue>
+						<MaxValue><![CDATA[1
+]]></MaxValue>
 						<LinkTo>true</LinkTo>
 						<Link>delta</Link>
 					</ExtendedProperties>
@@ -886,7 +889,8 @@
 						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
 						<Orientation>HORIZONTAL</Orientation>
 						<MinValue><![CDATA[0]]></MinValue>
-						<MaxValue><![CDATA[100]]></MaxValue>
+						<MaxValue><![CDATA[1
+]]></MaxValue>
 						<LinkTo>true</LinkTo>
 						<Link>n</Link>
 					</ExtendedProperties>
@@ -909,7 +913,8 @@
 						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
 						<Orientation>HORIZONTAL</Orientation>
 						<MinValue><![CDATA[0]]></MinValue>
-						<MaxValue><![CDATA[100]]></MaxValue>
+						<MaxValue><![CDATA[1
+]]></MaxValue>
 						<LinkTo>true</LinkTo>
 						<Link>g</Link>
 					</ExtendedProperties>
