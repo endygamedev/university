@@ -6,21 +6,21 @@
 -->
 <AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.7.12.202205250343" AlpVersion="8.7.5">
 <Model>
-	<Id>1664200247638</Id>
-	<Name><![CDATA[Explore]]></Name>
+	<Id>1664401892746</Id>
+	<Name><![CDATA[Spiral]]></Name>
 	<EngineVersion>6</EngineVersion>
-	<JavaPackageName><![CDATA[explore]]></JavaPackageName>
+	<JavaPackageName><![CDATA[spiral]]></JavaPackageName>
 	<ModelTimeUnit><![CDATA[Second]]></ModelTimeUnit>
 	<ActiveObjectClasses>
 		<!--   =========   Active Object Class   ========  -->
 		<ActiveObjectClass>
-			<Id>1664200247644</Id>
+			<Id>1664401892752</Id>
 			<Name><![CDATA[Main]]></Name>
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<Generic>false</Generic>
 			<GenericParameter>
-				<Id>1664200247642</Id>
-				<Name><![CDATA[1664200247642]]></Name>
+				<Id>1664401892750</Id>
+				<Name><![CDATA[1664401892750]]></Name>
 				<GenericParameterValue Class="CodeValue">
 					<Code><![CDATA[T extends Agent]]></Code>
 				</GenericParameterValue>
@@ -81,7 +81,7 @@
 			<DatasetsCreationProperties>
 				<AutoCreate>true</AutoCreate>
 					<OccurrenceAtTime>true</OccurrenceAtTime>
-					<OccurrenceDate>1664265600000</OccurrenceDate>
+					<OccurrenceDate>1664438400000</OccurrenceDate>
 					<OccurrenceTime Class="CodeUnitValue">
 						<Code><![CDATA[0]]></Code>
 						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
@@ -92,7 +92,7 @@
 					</RecurrenceCode>
 			</DatasetsCreationProperties>
 			<ScaleRuler>
-				<Id>1664200247640</Id>
+				<Id>1664401892748</Id>
 				<Name><![CDATA[scale]]></Name>
 				<X>0</X><Y>-150</Y>
 				<PublicFlag>false</PublicFlag>
@@ -107,13 +107,13 @@
 				<Scale>10</Scale>
 				<InheritedFromParentAgentType>true</InheritedFromParentAgentType>
 			</ScaleRuler>
-			<CurrentLevel>1664200247643</CurrentLevel>
-			<ConnectionsId>1664200247639</ConnectionsId>
+			<CurrentLevel>1664401892751</CurrentLevel>
+			<ConnectionsId>1664401892747</ConnectionsId>
 			<Variables>
 				<Variable Class="PlainVariable">
-					<Id>1664200503778</Id>
+					<Id>1664443254290</Id>
 					<Name><![CDATA[x]]></Name>
-					<X>40</X><Y>170</Y>
+					<X>20</X><Y>80</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -121,15 +121,15 @@
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[rectangle.getX();
+							<Code><![CDATA[rectangle.getWidth() / 2;
 ]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
-					<Id>1664201229113</Id>
-					<Name><![CDATA[dx]]></Name>
-					<X>40</X><Y>200</Y>
+					<Id>1664443273844</Id>
+					<Name><![CDATA[y]]></Name>
+					<X>20</X><Y>100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -137,71 +137,23 @@
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[5
+							<Code><![CDATA[rectangle.getHeight() / 2;
 ]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
-					<Id>1664202143063</Id>
-					<Name><![CDATA[x_2D]]></Name>
-					<X>480</X><Y>340</Y>
+					<Id>1664443321147</Id>
+					<Name><![CDATA[i]]></Name>
+					<X>20</X><Y>60</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[double]]></Type>        
+						<Type><![CDATA[int]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[rectangle2.getX();
-]]></Code>
-						</InitialValue>
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1664202213612</Id>
-					<Name><![CDATA[dx_2D]]></Name>
-					<X>480</X><Y>370</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[double]]></Type>        
-						<InitialValue Class="CodeValue">
-							<Code><![CDATA[5
-]]></Code>
-						</InitialValue>
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1664202794997</Id>
-					<Name><![CDATA[y_2D]]></Name>
-					<X>560</X><Y>340</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[double]]></Type>        
-						<InitialValue Class="CodeValue">
-							<Code><![CDATA[rectangle2.getY();
-]]></Code>
-						</InitialValue>
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1664202820806</Id>
-					<Name><![CDATA[dy_2D]]></Name>
-					<X>560</X><Y>370</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[double]]></Type>        
-						<InitialValue Class="CodeValue">
-							<Code><![CDATA[5
+							<Code><![CDATA[0
 ]]></Code>
 						</InitialValue>
 					</Properties>
@@ -209,16 +161,17 @@
 			</Variables>
 			<Events>
 				<Event>
-					<Id>1664200328112</Id>
+					<Id>1664442750037</Id>
 					<Name><![CDATA[event]]></Name>
-					<X>90</X><Y>170</Y>
+					<X>20</X><Y>20</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties TriggerType="timeout" Mode="cyclic">
 						<Timeout Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
+							<Code><![CDATA[200
+]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
 						</Timeout>
 						<Rate Class="CodeUnitValue">
@@ -226,79 +179,32 @@
 							<Unit Class="RateUnits"><![CDATA[PER_SECOND]]></Unit>
 						</Rate>
 						<OccurrenceAtTime>true</OccurrenceAtTime>
-						<OccurrenceDate>1664265600000</OccurrenceDate>
+						<OccurrenceDate>1664524800000</OccurrenceDate>
 						<OccurrenceTime Class="CodeUnitValue">
 							<Code><![CDATA[0]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
 						</OccurrenceTime>
 						<RecurrenceCode Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
+							<Code><![CDATA[1
+]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
 						</RecurrenceCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
-					<Action><![CDATA[if (x + dx + rectangle.getWidth() > line1.getX() || x + dx < line.getX()) {
-	dx *= -1;
-}
+					<Action><![CDATA[i += 1;
+double t = i / 10. * PI;
+double dx = (1 + 3 * t) * cos(t);
+double dy = (1 + 3 * t) * sin(t);
 x += dx;
-rectangle.setX(x);
-]]></Action>
-				</Event>
-				<Event>
-					<Id>1664202201846</Id>
-					<Name><![CDATA[event1]]></Name>
-					<X>660</X><Y>340</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties TriggerType="timeout" Mode="cyclic">
-						<Timeout Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-						</Timeout>
-						<Rate Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="RateUnits"><![CDATA[PER_SECOND]]></Unit>
-						</Rate>
-						<OccurrenceAtTime>true</OccurrenceAtTime>
-						<OccurrenceDate>1664265600000</OccurrenceDate>
-						<OccurrenceTime Class="CodeUnitValue">
-							<Code><![CDATA[0]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-						</OccurrenceTime>
-						<RecurrenceCode Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-						</RecurrenceCode>
-						<Condition><![CDATA[false]]></Condition>
-					</Properties>
-					<Action><![CDATA[if (x_2D + rectangle2.getWidth() < rectangle1.getWidth() + rectangle1.getX() &&
-	y_2D <= rectangle1.getY()) {
-	x_2D += dx_2D;
-	y_2D = rectangle1.getY();
-} else if (x_2D + rectangle2.getWidth() >= rectangle1.getWidth() + rectangle1.getX() &&
-		   y_2D + rectangle2.getHeight() < rectangle1.getHeight() + rectangle1.getY()) {
-	x_2D = rectangle1.getWidth() + rectangle1.getX() - rectangle2.getWidth();
-	y_2D += dy_2D;
-} else if (x_2D > rectangle1.getX() &&
-		   y_2D + rectangle2.getHeight() <= rectangle1.getHeight() + rectangle1.getY()) {
-	x_2D -= dx_2D;
-	y_2D = rectangle1.getHeight() + rectangle1.getY() - rectangle2.getHeight();   
-} else if (x_2D >= rectangle1.getX() &&
-		   y_2D > rectangle1.getY()) {
-	x_2D = rectangle1.getX();
-	y_2D -= dy_2D;
-}
-
-rectangle2.setX(x_2D);
-rectangle2.setY(y_2D);
+y += dy;
+oval.setX(x);
+oval.setY(y);
 ]]></Action>
 				</Event>
 			</Events>
 			<AgentLinks>
 				<AgentLink>
-					<Id>1664200247639</Id>
+					<Id>1664401892747</Id>
 					<Name><![CDATA[connections]]></Name>
 					<X>50</X><Y>-50</Y>
 					<Label><X>15</X><Y>0</Y></Label>
@@ -321,7 +227,7 @@ rectangle2.setY(y_2D);
 
 			<Presentation>
 				<Level>
-					<Id>1664200247643</Id>
+					<Id>1664401892751</Id>
 					<Name><![CDATA[level]]></Name>
 					<X>0</X><Y>0</Y>
 					<Label><X>10</X><Y>0</Y></Label>
@@ -334,16 +240,14 @@ rectangle2.setY(y_2D);
 
 			<Presentation>
 				<Rectangle>
-					<Id>1664200250624</Id>
+					<Id>1664442929808</Id>
 					<Name><![CDATA[rectangle]]></Name>
-					<X>30</X><Y>50</Y>
+					<X>0</X><Y>0</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<XCode><![CDATA[x
-]]></XCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
@@ -351,17 +255,17 @@ rectangle2.setY(y_2D);
 					<LineColor>-16777216</LineColor>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>40</Width>
-					<Height>40</Height>
+					<Width>1000</Width>
+					<Height>600</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-1</FillColor>
 					<FillMaterial>null</FillMaterial>
 				</Rectangle>
-				<Line>
-					<Id>1664200368948</Id>
-					<Name><![CDATA[line]]></Name>
-					<X>30</X><Y>120</Y>
-					<Label><X>10</X><Y>0</Y></Label>
+				<Oval>
+					<Id>1664442937753</Id>
+					<Name><![CDATA[oval]]></Name>
+					<X>190</X><Y>50</Y>
+					<Label><X>0</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
@@ -373,82 +277,12 @@ rectangle2.setY(y_2D);
 					<LineColor>-16777216</LineColor>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<BeginArrowSize>1</BeginArrowSize>
-					<BeginArrowStyle>0</BeginArrowStyle>
-					<EndArrowSize>1</EndArrowSize>
-					<EndArrowStyle>0</EndArrowStyle>
-					<Dx>0</Dx>
-					<Dy>-100</Dy>
-					<Dz>0</Dz>
-				</Line>
-				<Line>
-					<Id>1664200384035</Id>
-					<Name><![CDATA[line1]]></Name>
-					<X>250</X><Y>120</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<ZHeight>10</ZHeight>
-					<LineWidth>1</LineWidth>
-					<LineColor>-16777216</LineColor>
-					<LineMaterial>null</LineMaterial>
-					<LineStyle>SOLID</LineStyle>
-					<BeginArrowSize>1</BeginArrowSize>
-					<BeginArrowStyle>0</BeginArrowStyle>
-					<EndArrowSize>1</EndArrowSize>
-					<EndArrowStyle>0</EndArrowStyle>
-					<Dx>0</Dx>
-					<Dy>-100</Dy>
-					<Dz>0</Dz>
-				</Line>
-				<Rectangle>
-					<Id>1664202090978</Id>
-					<Name><![CDATA[rectangle1]]></Name>
-					<X>470</X><Y>20</Y>
-					<Label><X>10</X><Y>10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<ZHeight>10</ZHeight>
-					<LineWidth>1</LineWidth>
-					<LineColor>-16777216</LineColor>
-					<LineMaterial>null</LineMaterial>
-					<LineStyle>SOLID</LineStyle>
-					<Width>390</Width>
-					<Height>290</Height>
-					<Rotation>0.0</Rotation>
-					<FillColor>-1</FillColor>
-					<FillMaterial>null</FillMaterial>
-				</Rectangle>
-				<Rectangle>
-					<Id>1664202105191</Id>
-					<Name><![CDATA[rectangle2]]></Name>
-					<X>470</X><Y>20</Y>
-					<Label><X>10</X><Y>10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<ZHeight>10</ZHeight>
-					<LineWidth>1</LineWidth>
-					<LineColor>-16777216</LineColor>
-					<LineMaterial>null</LineMaterial>
-					<LineStyle>SOLID</LineStyle>
-					<Width>40</Width>
-					<Height>40</Height>
+					<RadiusX>5</RadiusX>
+					<RadiusY>40</RadiusY>
 					<Rotation>0.0</Rotation>
 					<FillColor>-65536</FillColor>
 					<FillMaterial>null</FillMaterial>
-				</Rectangle>
+				</Oval>
 			</Presentation>
 
 				</Level>
@@ -477,15 +311,15 @@ rectangle2.setY(y_2D);
 		</ExportSettings>
 	</Database>
 	
-	<RunConfiguration ActiveObjectClassId="1664200247644">
-		<Id>1664200247648</Id>
+	<RunConfiguration ActiveObjectClassId="1664401892752">
+		<Id>1664401892766</Id>
 		<Name><![CDATA[RunConfiguration]]></Name>
 		<MaximumMemory>512</MaximumMemory>
 		<ModelTimeProperties>
 			<StopOption><![CDATA[Stop at specified time]]></StopOption>
-			<InitialDate><![CDATA[1664150400000]]></InitialDate>	
+			<InitialDate><![CDATA[1664323200000]]></InitialDate>	
 			<InitialTime><![CDATA[0.0]]></InitialTime>	
-			<FinalDate><![CDATA[1666742400000]]></FinalDate>	
+			<FinalDate><![CDATA[1666915200000]]></FinalDate>	
 			<FinalTime><![CDATA[100.0]]></FinalTime>	
 		</ModelTimeProperties>
 		<AnimationProperties>
@@ -503,8 +337,8 @@ rectangle2.setY(y_2D);
 	</RunConfiguration>
 	<Experiments>	
 		<!--   =========   Simulation Experiment   ========  -->
-		<SimulationExperiment ActiveObjectClassId="1664200247644">
-			<Id>1664200247646</Id>
+		<SimulationExperiment ActiveObjectClassId="1664401892752">
+			<Id>1664401892764</Id>
 			<Name><![CDATA[Simulation]]></Name>
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<CommandLineArguments><![CDATA[]]></CommandLineArguments>
@@ -518,7 +352,7 @@ rectangle2.setY(y_2D);
 
 			<Presentation>
 				<Text>
-					<Id>1664200247647</Id>
+					<Id>1664401892765</Id>
 					<Name><![CDATA[text]]></Name>
 					<X>50</X><Y>30</Y>
 					<Label><X>10</X><Y>0</Y></Label>
@@ -530,7 +364,7 @@ rectangle2.setY(y_2D);
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-12490271</Color>
-					<Text><![CDATA[Explore]]></Text>
+					<Text><![CDATA[Spiral]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>24</Size>
@@ -545,16 +379,16 @@ rectangle2.setY(y_2D);
 			<PresentationProperties>
 				<EnableZoomAndPanning>true</EnableZoomAndPanning>
 				<ExecutionMode><![CDATA[realTimeScaled]]></ExecutionMode>
-				<Title><![CDATA[Explore : Simulation]]></Title>	
+				<Title><![CDATA[Spiral : Simulation]]></Title>	
 				<EnableDeveloperPanel>true</EnableDeveloperPanel>
 				<ShowDeveloperPanelOnStart>false</ShowDeveloperPanelOnStart>
 				<RealTimeScale>1.0</RealTimeScale>
 			</PresentationProperties>
 			<ModelTimeProperties>
 				<StopOption><![CDATA[Never]]></StopOption>
-				<InitialDate><![CDATA[1664150400000]]></InitialDate>	
+				<InitialDate><![CDATA[1664323200000]]></InitialDate>	
 				<InitialTime><![CDATA[0.0]]></InitialTime>	
-				<FinalDate><![CDATA[1666742400000]]></FinalDate>	
+				<FinalDate><![CDATA[1666915200000]]></FinalDate>	
 				<FinalTime><![CDATA[100.0]]></FinalTime>	
 			</ModelTimeProperties>
 			<BypassInitialScreen>true</BypassInitialScreen>
