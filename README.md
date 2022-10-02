@@ -205,7 +205,8 @@
 │       └── lesson-2
 ├── 4-course-7-semester
 │   ├── combinatorial-optimization-models
-│   │   └── task-1
+│   │   ├── task-1
+│   │   └── task-2
 │   ├── data-analysis-techniques
 │   │   ├── task-1
 │   │   ├── task-2
@@ -219,7 +220,8 @@
 │       ├── task-2
 │       ├── task-3
 │       ├── task-4
-│       └── task-5
+│       ├── task-5
+│       └── task-6
 ├── LICENSE
 ├── README.md
 └── generate-readme
