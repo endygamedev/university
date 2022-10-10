@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.7.12.202205250343" AlpVersion="8.7.5">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.8.0.202208091057" AlpVersion="8.7.5">
 <Model>
 	<Id>1665231160007</Id>
 	<Name><![CDATA[Replication]]></Name>
@@ -109,83 +109,6 @@
 			</ScaleRuler>
 			<CurrentLevel>1665231160012</CurrentLevel>
 			<ConnectionsId>1665231160008</ConnectionsId>
-			<Variables>
-				<Variable Class="Parameter">
-					<Id>1665231634393</Id>
-					<Name><![CDATA[r]]></Name>
-					<X>-790</X><Y>110</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0
-]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1665231634391</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1665231634396</Id>
-					<Name><![CDATA[g]]></Name>
-					<X>-790</X><Y>160</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0
-]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1665231634394</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1665231634399</Id>
-					<Name><![CDATA[b]]></Name>
-					<X>-790</X><Y>210</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0
-]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1665231634397</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-			</Variables>
 			<AgentLinks>
 				<AgentLink>
 					<Id>1665231160008</Id>
@@ -481,17 +404,18 @@
 					<BasicProperties Width="100" Height="30">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[rect.setFillColor(new Color(r, g, b));
-]]></ActionCode>
+						<ActionCode><![CDATA[rect.setFillColor(new Color((int)sliderR.getValue(), (int)sliderG.getValue(), (int)sliderB.getValue()));]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
-						<DefaultValueCode><![CDATA[180]]></DefaultValueCode>
+						<DefaultValueCode><![CDATA[0
+]]></DefaultValueCode>
 						<Orientation>HORIZONTAL</Orientation>
 						<MinValue><![CDATA[0]]></MinValue>
 						<MaxValue><![CDATA[255]]></MaxValue>
 						<Step><![CDATA[1]]></Step>
-						<LinkTo>true</LinkTo>
-						<Link>r</Link>
+						<LinkTo>false</LinkTo>
+						<Link>r
+</Link>
 					</ExtendedProperties>
 				</Control>
 				<Text>
@@ -528,8 +452,7 @@
 					<BasicProperties Width="100" Height="30">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[rect.setFillColor(new Color(r, g, b));
-]]></ActionCode>
+						<ActionCode><![CDATA[rect.setFillColor(new Color((int)sliderR.getValue(), (int)sliderG.getValue(), (int)sliderB.getValue()));]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
@@ -537,7 +460,7 @@
 						<MinValue><![CDATA[0]]></MinValue>
 						<MaxValue><![CDATA[255]]></MaxValue>
 						<Step><![CDATA[1]]></Step>
-						<LinkTo>true</LinkTo>
+						<LinkTo>false</LinkTo>
 						<Link>g</Link>
 					</ExtendedProperties>
 				</Control>
@@ -692,7 +615,7 @@
 					<BasicProperties Width="100" Height="30">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[rect.setFillColor(new Color(r, g, b));
+						<ActionCode><![CDATA[rect.setFillColor(new Color((int)sliderR.getValue(), (int)sliderG.getValue(), (int)sliderB.getValue()));
 ]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
@@ -701,7 +624,7 @@
 						<MinValue><![CDATA[0]]></MinValue>
 						<MaxValue><![CDATA[255]]></MaxValue>
 						<Step><![CDATA[1]]></Step>
-						<LinkTo>true</LinkTo>
+						<LinkTo>false</LinkTo>
 						<Link>b</Link>
 					</ExtendedProperties>
 				</Control>
@@ -869,15 +792,6 @@
 			</Presentation>
 
 			<Parameters>			
-				<Parameter>
-					<ParameterName><![CDATA[r]]></ParameterName>
-				</Parameter>
-				<Parameter>
-					<ParameterName><![CDATA[g]]></ParameterName>
-				</Parameter>
-				<Parameter>
-					<ParameterName><![CDATA[b]]></ParameterName>
-				</Parameter>
 			</Parameters>			
 			<PresentationProperties>
 				<EnableZoomAndPanning>true</EnableZoomAndPanning>
