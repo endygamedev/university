@@ -6648,7 +6648,7 @@
 					<Z>0</Z>
 					<Width>10</Width>
 					<Height>120</Height>
-					<Transparency>0.25</Transparency>
+					<Transparency>0.5</Transparency>
 					<CriticalDensity>1.5</CriticalDensity>
 					<Type>PEDESTRIAN</Type>
 					<TimePeriod>COMPLETE</TimePeriod>
