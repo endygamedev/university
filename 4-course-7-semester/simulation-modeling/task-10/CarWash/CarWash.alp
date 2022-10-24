@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.8.0.202208091057" AlpVersion="8.7.5">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.7.12.202205250343" AlpVersion="8.7.5">
 <Model>
 	<Id>1666470955129</Id>
 	<Name><![CDATA[CarWash]]></Name>
@@ -113,7 +113,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1666523634220</Id>
 					<Name><![CDATA[varWashingStationIn]]></Name>
-					<X>1340</X><Y>340</Y>
+					<X>1340</X><Y>280</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -129,7 +129,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1666523962216</Id>
 					<Name><![CDATA[varWashingStationOut]]></Name>
-					<X>1340</X><Y>360</Y>
+					<X>1340</X><Y>300</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -145,7 +145,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1666537979637</Id>
 					<Name><![CDATA[varRepairingStationIn]]></Name>
-					<X>1720</X><Y>340</Y>
+					<X>1720</X><Y>280</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -161,7 +161,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1666537993948</Id>
 					<Name><![CDATA[varRepairingStationOut]]></Name>
-					<X>1720</X><Y>360</Y>
+					<X>1720</X><Y>300</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6282,7 +6282,7 @@ varRepairingStationOut = carRepairStation1.out.count() + carRepairStation2.out.c
     			<PieChart>
 					<Id>1666523541008</Id>
 					<Name><![CDATA[chart]]></Name>
-					<X>1280</X><Y>40</Y>
+					<X>1320</X><Y>40</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6300,15 +6300,15 @@ varRepairingStationOut = carRepairStation1.out.count() + carRepairStation2.out.c
 						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>320</Width>
-					<Height>260</Height>
+					<Width>260</Width>
+					<Height>200</Height>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
 						<XOffset>60</XOffset>
 						<YOffset>10</YOffset>
-						<Width>200</Width>
-						<Height>190</Height>
+						<Width>140</Width>
+						<Height>130</Height>
 						<BorderColor/>
 						<GridColor>-12566464</GridColor>
 					</ChartArea>
@@ -6351,7 +6351,7 @@ varRepairingStationOut = carRepairStation1.out.count() + carRepairStation2.out.c
 				<Text>
 					<Id>1666537727878</Id>
 					<Name><![CDATA[text5]]></Name>
-					<X>1340</X><Y>20</Y>
+					<X>1320</X><Y>20</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6361,7 +6361,7 @@ varRepairingStationOut = carRepairStation1.out.count() + carRepairStation2.out.c
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
-					<Text><![CDATA[Статистика по мойкам]]></Text>
+					<Text><![CDATA[Статистика по клиентам (мойка)]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>18</Size>
@@ -6390,15 +6390,15 @@ varRepairingStationOut = carRepairStation1.out.count() + carRepairStation2.out.c
 						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>320</Width>
-					<Height>260</Height>
+					<Width>260</Width>
+					<Height>200</Height>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
 						<XOffset>60</XOffset>
 						<YOffset>10</YOffset>
-						<Width>200</Width>
-						<Height>190</Height>
+						<Width>140</Width>
+						<Height>130</Height>
 						<BorderColor/>
 						<GridColor>-12566464</GridColor>
 					</ChartArea>
@@ -6441,7 +6441,7 @@ varRepairingStationOut = carRepairStation1.out.count() + carRepairStation2.out.c
 				<Text>
 					<Id>1666537946278</Id>
 					<Name><![CDATA[text6]]></Name>
-					<X>1640</X><Y>20</Y>
+					<X>1660</X><Y>20</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6451,7 +6451,7 @@ varRepairingStationOut = carRepairStation1.out.count() + carRepairStation2.out.c
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
-					<Text><![CDATA[Статистика по ремонтным станциям]]></Text>
+					<Text><![CDATA[Статистика по клиентам (ремонт)]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>18</Size>
@@ -6462,7 +6462,7 @@ varRepairingStationOut = carRepairStation1.out.count() + carRepairStation2.out.c
     			<TimePlot>
 					<Id>1666542896211</Id>
 					<Name><![CDATA[plot]]></Name>
-					<X>1880</X><Y>340</Y>
+					<X>1940</X><Y>100</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6481,15 +6481,15 @@ varRepairingStationOut = carRepairStation1.out.count() + carRepairStation2.out.c
 						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>400</Width>
-					<Height>250</Height>
+					<Width>360</Width>
+					<Height>210</Height>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
 						<XOffset>50</XOffset>
 						<YOffset>30</YOffset>
-						<Width>320</Width>
-						<Height>160</Height>
+						<Width>280</Width>
+						<Height>120</Height>
 						<BackgroundColor>-1</BackgroundColor>
 						<BorderColor>-16777216</BorderColor>
 						<GridColor>-12566464</GridColor>
@@ -6813,6 +6813,170 @@ varRepairingStationOut = carRepairStation1.out.count() + carRepairStation2.out.c
 			</Presentation>
 
 				</Group>
+    			<PieChart>
+					<Id>1666643931813</Id>
+					<Name><![CDATA[chart2]]></Name>
+					<X>1500</X><Y>380</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1666598400000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>260</Width>
+					<Height>200</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>60</XOffset>
+						<YOffset>10</YOffset>
+						<Width>140</Width>
+						<Height>130</Height>
+						<BorderColor/>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>40</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>true</ShowLegend>
+					<DataItem>
+					<Id>1666643931808</Id>
+					<Expression><![CDATA[(float)washersPool.busy()
+]]></Expression>
+					<Color>-14774017</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[Работают]]></Title>
+					</DataItem>
+					<DataItem>
+					<Id>1666643931809</Id>
+					<Expression><![CDATA[washersPool.size() - (float)washersPool.busy()
+]]></Expression>
+					<Color>-3137392</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[Прохлаждаются]]></Title>
+					</DataItem>
+    			</PieChart>
+				<Text>
+					<Id>1666643931836</Id>
+					<Name><![CDATA[text7]]></Name>
+					<X>1480</X><Y>360</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Загруженность сотрудников (мойка)]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>18</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+    			<PieChart>
+					<Id>1666645092559</Id>
+					<Name><![CDATA[chart3]]></Name>
+					<X>1920</X><Y>380</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1666598400000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>260</Width>
+					<Height>200</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>60</XOffset>
+						<YOffset>10</YOffset>
+						<Width>140</Width>
+						<Height>130</Height>
+						<BorderColor/>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>40</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>true</ShowLegend>
+					<DataItem>
+					<Id>1666645092555</Id>
+					<Expression><![CDATA[(float)repairsPool.busy()
+]]></Expression>
+					<Color>-16744448</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[Работают]]></Title>
+					</DataItem>
+					<DataItem>
+					<Id>1666645092556</Id>
+					<Expression><![CDATA[repairsPool.size() - (float)repairsPool.busy()
+]]></Expression>
+					<Color>-10496</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[Прохлаждаются]]></Title>
+					</DataItem>
+    			</PieChart>
+				<Text>
+					<Id>1666645092569</Id>
+					<Name><![CDATA[text8]]></Name>
+					<X>1900</X><Y>360</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Загруженность сотрудников (ремонт)]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>18</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
 			</Presentation>
 
 				</Level>
@@ -6922,7 +7086,7 @@ varRepairingStationOut = carRepairStation1.out.count() + carRepairStation2.out.c
 				<Text>
 					<Id>1666470955144</Id>
 					<Name><![CDATA[text]]></Name>
-					<X>50</X><Y>30</Y>
+					<X>200</X><Y>300</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6932,7 +7096,7 @@ varRepairingStationOut = carRepairStation1.out.count() + carRepairStation2.out.c
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-12490271</Color>
-					<Text><![CDATA[CarWash]]></Text>
+					<Text><![CDATA[Станция технического обсуживания автомобилей]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>24</Size>

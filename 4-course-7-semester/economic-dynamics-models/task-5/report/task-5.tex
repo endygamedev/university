@@ -67,12 +67,145 @@
 	
 	\subsubsection*{Решение}
 	
-	Данные были взяты с сайта Всемирного банка.
-	
-	Также если изменять параметры модели, то она всё равно будет приходить в устойчивое состояние. (Рисунок \ref{fig:M-R-W_anylogic_variance})
+	Данные были взяты с сайта Всемирного банка.\\
+	Первый этап заключался в выделении объединений стран и исключении их из исходного набора данных. Был создан файл с наименованиями этих объединений. (Рисунок \ref{fig:cluster_county_alliances})
 	\begin{figure}[h]
-		\centering \includegraphics[scale=0.25]{M-R-W_anylogic_variance}
-		\caption{Изменение параметров модели}
-		\label{fig:M-R-W_anylogic_variance}
+		\centering \includegraphics[scale=0.6]{cluster_county_alliances}
+		\caption{Заполнения списка объединений стран}
+		\label{fig:cluster_county_alliances}
 	\end{figure}
+
+	Далее были загружены датасеты с темпами роста ВВП (\%), подушевого ВВП (текущий US\$), темпами инфляции (\%). (Рисунок \ref{fig:cluster_dataset_example})
+	\begin{figure}[h]
+		\centering \includegraphics[scale=0.45]{cluster_dataset_example}
+		\caption{Пример подгруженных данных}
+		\label{fig:cluster_dataset_example}
+	\end{figure}
+	
+	\newpage
+	
+	На следующем этапе было решено начать с \textit{кластеризации стран на основании темпов роста ВВП за 2019 год}.\\
+	
+	Были отобраны соответствующие данные. Также были удалены страны, которые не содержат данных. (Рисунок \ref{fig:cluster_select_correct_data})
+	
+	\begin{figure}[h]
+		\centering \includegraphics[scale=0.5]{cluster_select_correct_data}
+		\caption{Пример отбора необходимых данных}
+		\label{fig:cluster_select_correct_data}
+	\end{figure}
+
+	Далее была построена дендрограмма и на основании получившегося результата было решено взять для рассмотрения 5 кластеров, для более качественной интерпретации. (Рисунок \ref{fig:cluster_dendrogram})
+	
+	\begin{figure}[h]
+		\centering \includegraphics[scale=0.5]{cluster_dendrogram}
+		\caption{Построение дерева дендрограммы}
+		\label{fig:cluster_dendrogram}
+	\end{figure}
+
+	\newpage
+	
+	Далее происходил процесс кластеризации методом \textit{AgglomerativeClustering}. (Рисунок \ref{fig:cluster_clustering})
+	
+	\begin{figure}[h]
+		\centering \includegraphics[scale=0.5]{cluster_clustering}
+		\caption{Кластеризация данных}
+		\label{fig:cluster_clustering}
+	\end{figure}
+
+	После чего можно вывести название стран, которые попали в конкретный кластер. (Рисунок \ref{fig:cluster_country_names})
+	
+	\begin{figure}[h]
+		\centering \includegraphics[scale=0.5]{cluster_country_names}
+		\caption{Распределение стран по кластерам (названия)}
+		\label{fig:cluster_country_names}
+	\end{figure}
+
+	Также можно вывести значение темпов роста ВВП стран в кластерах. (Рисунок \ref{fig:cluster_country_values})
+	
+	\begin{figure}[h]
+		\centering \includegraphics[scale=0.5]{cluster_country_values}
+		\caption{Распределение стран по кластерам (значения)}
+		\label{fig:cluster_country_values}
+	\end{figure}
+	
+	\newpage
+	
+	Можно выделить численные характеристики каждого получившегося кластера: количество стран в кластере, минимальное значение, максимальное значение и среднее значение. (Рисунок \ref{fig:cluster_cluster_features})
+
+	\begin{figure}[h]
+		\centering \includegraphics[scale=0.6]{cluster_cluster_features}
+		\caption{Численные характеристики кластеров}
+		\label{fig:cluster_cluster_features}
+	\end{figure}
+
+	В данном случае можно выделить, что в 4 кластер попали страны, которые имеют очень высокие темпы роста ВВП, в 1 кластер попали страны с высоким темпом роста ВВП, в 3 кластер попали страны со средними темпами роста ВВП, в 0 кластер попали страны с низким темпом роста ВВП, а во 2 кластер попали страны с очень низким темпом роста ВВП.\\
+	
+	Также получившиеся данные сохраняются в \textit{Excel}-файл. На 1 листе будут отображены наименования стран распределённые по кластерам, а на 2 листе будут отражены соответствующие им показатели. (Рисунок \ref{fig:cluster_save_data})
+	
+	\begin{figure}[h]
+		\centering \includegraphics[scale=0.6]{cluster_save_data}
+		\caption{Сохранение получившихся результатов в Excel-файле}
+		\label{fig:cluster_save_data}
+	\end{figure}
+
+	Далее данные шаги повторяются для каждого из годов и соответствующих объединений показателей как указано в условии задачи.\\
+	
+	Единственное что стоит отметить, что при рассмотрении факторов, которые имеют разные единицы измерения (\% и текущие US\$), перед кластеризацией стоит провести процесс стандартизации. Также стоит отметить, что когда мы рассматриваем средние показатели с 2013 года по 2019 год стоит рассматривать среднее геометрическое показателей если соответствующая величина выражена в \% соотношении.
+	
+	\newpage
+	
+	На основании получившихся данных, была рассмотрена миграция стран по кластерам.\\
+	
+	В качестве примера рассмотрим миграцию стран по темпам роста ВВП среди стран, которые показали средний темпы роста в 2013 году.\\
+	
+	Страны, оставшиеся в кластере средних темпов роста ВВП. (Рисунок \ref{fig:cluster_mean_mean})
+	
+	\begin{figure}[h]
+		\centering \includegraphics[scale=0.5]{cluster_mean_mean}
+		\caption{Оставшиеся в своём кластере}
+		\label{fig:cluster_mean_mean}
+	\end{figure}
+
+	\newpage
+
+	Страны, мигрировавшие в кластер с высокими темпами роста ВВП. (Рисунок \ref{fig:cluster_mean_high})
+
+	\begin{figure}[h]
+		\centering \includegraphics[scale=0.45]{cluster_mean_high}
+		\caption{Мигрировавшие в кластер с высокими темпами роста}
+		\label{fig:cluster_mean_high}
+	\end{figure}
+
+	Страны, мигрировавшие в кластер с очень высокими темпами роста ВВП. (Рисунок \ref{fig:cluster_mean_very_high})
+
+	\begin{figure}[h]
+		\centering \includegraphics[scale=0.5]{cluster_mean_very_high}
+		\caption{Мигрировавшие в кластер с очень высокими темпами роста}
+		\label{fig:cluster_mean_very_high}
+	\end{figure}
+
+	Страны, мигрировавшие в кластер с очень низкими темпами роста ВВП. (Рисунок \ref{fig:cluster_mean_very_low})
+
+	\begin{figure}[h]
+		\centering \includegraphics[scale=0.5]{cluster_mean_very_low}
+		\caption{Мигрировавшие в кластер с очень низкими темпами роста}
+		\label{fig:cluster_mean_very_low}
+	\end{figure}
+
+	\newpage
+	
+	Страны, мигрировавшие в кластер с низкими темпами роста ВВП. (Рисунок \ref{fig:cluster_mean_low})
+	
+	\begin{figure}[h]
+		\centering \includegraphics[scale=0.45]{cluster_mean_low}
+		\caption{Мигрировавшие в кластер с низкими темпами роста}
+		\label{fig:cluster_mean_low}
+	\end{figure}
+
+	Аналогичным образом были получены результаты для всех остальных миграций по показателям и по их принадлежности к конкретному кластеру.
+	
+	\newpage
+	
+	\subsubsection*{Задание}
+	
 \end{document}
