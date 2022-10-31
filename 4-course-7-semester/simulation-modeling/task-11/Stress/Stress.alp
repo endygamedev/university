@@ -245,10 +245,12 @@
 						<Formula><![CDATA[q * N3
 ]]></Formula>
 						<Color/>
-						<ValveIndex>1</ValveIndex>
+						<ValveIndex>2</ValveIndex>
 						<Points>
 							<Point><X>0</X><Y>0</Y></Point>
-							<Point><X>-200</X><Y>150</Y></Point>
+							<Point><X>0</X><Y>130</Y></Point>
+							<Point><X>-180</X><Y>130</Y></Point>
+							<Point><X>-370</X><Y>130</Y></Point>
 							<Point><X>-370</X><Y>0</Y></Point>
 						</Points>
 					</Properties>
@@ -416,7 +418,7 @@
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0.00246
+							<Code><![CDATA[0.0017
 ]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
