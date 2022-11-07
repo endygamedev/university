@@ -1,0 +1,157 @@
+\documentclass[14pt,fleqn]{extarticle}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{boldline}
+\usepackage{makecell}
+\usepackage{arydshln}
+\usepackage{mathtools}
+\usepackage{centernot}
+\usepackage{enumitem}
+\usepackage{nccmath}
+\usepackage{amssymb}
+\usepackage[a4paper, total={6.5in, 9.5in}]{geometry}
+
+\graphicspath{ {./images/} }
+\setlength{\mathindent}{0pt}
+\setlength\parindent{0pt}
+
+\def\at{
+	\left.
+	\vphantom{\int}
+	\right|
+}
+
+
+\begin{document}
+	\begin{titlepage}
+		\includegraphics[scale=0.12]{logo}
+		\begin{center}
+			\textbf{МИНОБРНАУКИ РОССИИ}\\
+			\vspace{0.2cm}
+			\textbf{Федеральное государственное бюджетное образовательное учреждение высшего образования}\\
+			\textbf{<<САНКТ-ПЕТЕРБУРГСКИЙ ГОСУДАРСТВЕННЫЙ ЭКОНОМИЧЕСКИЙ УНИВЕРСИТЕТ>>}\\
+			\vspace{0.6cm}
+			Факультет информатики и прикладной математики\\
+			Кафедра прикладной математики и экономико-математических методов\\
+			\vspace{1cm}
+			\textbf{ОТЧЁТ}\\
+			по дисциплине:\\
+			\textbf{<<Модели комбинаторной оптимизации>>}\\
+			на тему:\\
+			\textbf{<<Задание №7. Составление расписания кинотеатра>>}\\
+		\end{center}
+		\vspace{1cm}
+		Направление: 01.03.02\\
+		Обучающийся: Бронников Егор Игоревич\\
+		Группа: ПМ-1901\\
+		\vfill
+		\begin{center}
+			Санкт-Петербург\\
+			2022\\
+		\end{center}
+	\end{titlepage}
+
+	\subsection*{Дано}
+	\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+    \begin{itemize}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+		\item $M$ -- множество фильмов
+		\item $S$ -- множество залов
+		\item $q$ -- квант времени
+		\item $T$ -- множество временных периодов, который описывают горизонт планирования
+		\item $\pi_s$ -- упорядоченное мультимножество фильмов для показа, \, $\forall s \in S$
+		\item $cap_s$ -- вместимость зала $s$, \, $\forall s \in S$
+		\item $T_s \subset T$ -- множество допустимых <<времён>> начала сеанса, \, $\forall s \in S$
+		\item $td_m$ -- продолжительность фильма $m$, \, $\forall m \in M$
+		\item $tech_s$ -- норматив (время) на уборку зала $s$, \, $\forall s \in S$
+		\item $p_{m, t}$ -- ожидаемое количество зрителей фильма $m$, который начали показывать во время $t \in  \bigcup_{s \in S} T_s$, \, $\forall m \in M$
+		\item $price_s$ -- цена билета в зал $s$, \, $\forall s \in S$
+		\item $\Delta T_1$ -- множество подмножеств квантов времени, в рамках которых может начинаться не более одного фильма во всех залах\\
+		$\Delta T_1 = \{\delta_1, \dots, \delta_{NS_1}\}$, \, где $NS_1$ -- число таких подмножеств\\
+		$\delta_p \subset T$, \, $p = 1, \dots, NS_1$
+		\item $q_{last}$ -- последний временной квант из $T$
+	\end{itemize}
+
+	\subsection*{Переменные}
+	\begin{align*}
+	x_{sit} = 
+		\begin{cases}
+			1, \quad \textup{if в зале } s \textup{ показывают фильм с номером } i \textup{ во время } t\\
+			0, \quad \textup{в противном случае}
+		\end{cases}\\
+	\forall s \in S, \quad \forall i = \{1, \dots, |\pi_s|\}, \quad t \in T_s
+	\end{align*}
+	\begin{align*}
+	y_{si} = 
+	\begin{cases}
+		1, \quad \textup{if фильм с номером } i \textup{ исключён из зала } s\\
+		0, \quad \textup{в противном случае}
+	\end{cases}\\
+	\forall s \in S, \quad \forall i = \{1, \dots, |\pi_s|\}
+	\end{align*}
+
+	\subsection*{Целевая функция}
+	\[ \sum_{s \in S} \sum_{i = 1}^{|\pi_s|} \sum_{t \in T_s} p_{\pi_{s_i}} \cdot prices_s \cdot x_{sit} \longrightarrow \max \]
+	
+	\newpage
+	
+	\subsection*{Ограничения}
+	
+	1) Менять последовательность показа фильмов в зале запрещено, однако, можно не показывать фильмы из последовательности и переходить к последующим (выкалывать).
+	
+	\begin{ceqn}
+		\begin{align*}
+			\smashoperator[r]{\sum_{t \in T_s}} x_{sit} + y_{si} = 1, \quad \forall s \in S, \; \forall i = \{1, \dots, |\pi_s|\}
+		\end{align*}
+	\end{ceqn}
+
+	2) Количество зрителей не может быть больше вместимости зала.
+
+	\begin{ceqn}
+		\begin{align*}
+			p_{\pi_{s_i}, t} \cdot x_{sit} \leq cap_s, \quad \forall s \in S, \; \forall i = \{1, \dots, |\pi_s|\}, \; \forall t \in T_s
+		\end{align*}
+	\end{ceqn}
+
+	3) Отсутствие наложения фильмов в зале (фильм должен быть показан полностью, после него должна быть выполнена уборка, в том числе после последнего сеанса).
+	
+	\begin{ceqn}
+		\begin{align*}
+			(t + td_{\pi_{s_i}} + tech_s) \cdot x_{sit} \leq \smashoperator[r]{\sum_{t \in T_s}} t \cdot x_{sjt}, \quad \forall s \in S, \; \forall i = \{1, \dots, |\pi_s|\}, \; \forall j = \{1, \dots, |\pi_s|\}
+		\end{align*}
+	\end{ceqn}
+
+	4) Учесть ограничение на $\Delta T_1$.
+	
+	\begin{ceqn}
+		\begin{align*}
+			\dots
+		\end{align*}
+	\end{ceqn}
+
+	4) Все сеансы заканчиваются не позже последнего кванта из $T$.
+
+	\begin{ceqn}
+		\begin{align*}
+			\smashoperator[r]{\sum_{t \in T_s}} (t + td_{\pi_{s_i}}) \cdot x_{sit} \leq q_{last}, \quad \forall s \in S, \; \forall i = \{1, \dots, |\pi_s|\}
+		\end{align*}
+	\end{ceqn}
+
+	5) Естественные ограничения
+
+	\begin{ceqn}
+		\begin{align*}
+			x_{sit} \in \{0; 1\}, \quad \forall s \in S, \; \forall i = \{1, \dots, |\pi_s|\}, \; \forall t \in T_s
+		\end{align*}
+	\end{ceqn}
+
+	\begin{ceqn}
+		\begin{align*}
+			y_{si} \in \{0; 1\}, \quad \forall s \in S, \; \forall i = \{1, \dots, |\pi_s|\}
+		\end{align*}
+	\end{ceqn}
+	
+\end{document}
