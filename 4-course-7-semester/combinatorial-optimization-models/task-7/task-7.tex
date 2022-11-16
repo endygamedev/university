@@ -1,0 +1,179 @@
+\documentclass[14pt,fleqn]{extarticle}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{boldline}
+\usepackage{makecell}
+\usepackage{arydshln}
+\usepackage{mathtools}
+\usepackage{centernot}
+\usepackage{enumitem}
+\usepackage{nccmath}
+\usepackage{amssymb}
+\usepackage[a4paper, total={6.5in, 9.5in}]{geometry}
+
+\graphicspath{ {./images/} }
+\setlength{\mathindent}{0pt}
+\setlength\parindent{0pt}
+
+\def\at{
+	\left.
+	\vphantom{\int}
+	\right|
+}
+
+
+\begin{document}
+	\begin{titlepage}
+		\includegraphics[scale=0.12]{logo}
+		\begin{center}
+			\textbf{МИНОБРНАУКИ РОССИИ}\\
+			\vspace{0.2cm}
+			\textbf{Федеральное государственное бюджетное образовательное учреждение высшего образования}\\
+			\textbf{<<САНКТ-ПЕТЕРБУРГСКИЙ ГОСУДАРСТВЕННЫЙ ЭКОНОМИЧЕСКИЙ УНИВЕРСИТЕТ>>}\\
+			\vspace{0.6cm}
+			Факультет информатики и прикладной математики\\
+			Кафедра прикладной математики и экономико-математических методов\\
+			\vspace{1cm}
+			\textbf{ОТЧЁТ}\\
+			по дисциплине:\\
+			\textbf{<<Модели комбинаторной оптимизации>>}\\
+			на тему:\\
+			\textbf{<<Задание №8. Оптимальный план производства>>}\\
+		\end{center}
+		\vspace{1cm}
+		Направление: 01.03.02\\
+		Обучающийся: Бронников Егор Игоревич\\
+		Группа: ПМ-1901\\
+		\vfill
+		\begin{center}
+			Санкт-Петербург\\
+			2022\\
+		\end{center}
+	\end{titlepage}
+	
+	\subsection*{Дано}
+	\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+	\begin{itemize}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+		\item $P = \{1, \dots, n\}$ -- множество номенклатуры
+		\item $M = \{1, \dots, m\}$ -- множество машин
+		\item $q$ -- квант времени
+		\item $T = \{q_0, \dots, q_{last}\}$ -- множество временных периодов, которые описывают горизонт планирования
+		\item $MP = \{mp_{t,i}: mp_{t,i} \geq 0, \quad t \in T, i \in M\}$ -- матрица мощностей машины в квант времени (ед. продукции/ед. времени)
+		\item $TC = \{tc_{p,i}: tc_{p,i} \geq 0, \quad p \in P, i \in M\}$ -- технологическая карта
+		\item $TTC = \{ttc_{p,i}: ttc_{p,i} \geq 0, \quad p \in P, i \in M\}$ -- время производства номенклатуры на машине в соответствии с технологической картой
+		\item $price_p$ -- цена номенклатуры $p$ за ед. $\forall p \in P$
+		\item $invoice_p$ -- спрос на номенклатуру $p$ $\forall p \in P$
+		\item $deadline_p$ -- квант времени, к какому должна быть произведена номенклатура $p$
+	\end{itemize}
+
+	\subsection*{Параметры}
+	\begin{align*}
+		b_{p,i,t,t'} = 
+		\begin{cases}
+			1, \quad \textup{if машина } i \textup{ занята в квант времени } t' \textup{производством}\\
+			\hspace{1cm} \textup{номенклатуры } p \textup{ , которое началось в квант времени } t\\
+			0, \quad \textup{в противном случае}
+		\end{cases}
+	\end{align*}
+
+	\begin{center}
+		$\forall p \in P, \quad \forall i \in M, \quad \forall t \in T, \quad \forall t' \in T: t' \geq t$
+	\end{center}
+
+	\subsection*{Переменные}
+	\begin{center}
+		$x_{p,i,t} \geq 0$ -- количество произведённой номенклатуры $p$ на машине $i$ в квант времени $t$
+	\end{center}
+	\begin{center}
+		$\forall p \in P, \quad \forall i \in M, \quad \forall t \in T$
+	\end{center}		
+	\begin{align*}
+		y_{p,i,t} = 
+		\begin{cases}
+			1, \quad \textup{if номенклатура } p \textup{ начинает производиться в квант времени } t\\
+			\hspace{1cm} \textup{на машине } i\\
+			0, \quad \textup{в противном случае}
+		\end{cases}
+	\end{align*}
+	\begin{center}
+		$\forall p \in P, \quad \forall i \in M, \quad \forall t \in T$
+	\end{center}
+
+	\newpage
+	
+	\subsection*{Целевая функция}
+	
+	1) Прибыль:
+	\[ \sum_{p = 1}^{n} price_p \sum_{i = 1}^{m} \sum_{t = q_0}^{q_{last}} x_{p,i,t} \longrightarrow \max \]
+	
+	2) Как можно раньше хотим закончить работы:	
+	\[ \sum_{p = 1}^{n} \sum_{i = 1}^{m} \sum_{t = q_0}^{q_{last}} ttc_{p,i} \cdot y_{p,i,t} \longrightarrow \min \]
+	
+	\textit{Целевая функция}\\
+		\[ \sum_{p = 1}^{n} price_p \sum_{i = 1}^{m} \sum_{t = q_0}^{q_{last}} x_{p,i,t} - \sum_{p = 1}^{n} \sum_{i = 1}^{m} \sum_{t = q_0}^{q_{last}} ttc_{p,i} \cdot y_{p,i,t} \longrightarrow \max \]
+	
+	\subsection*{Ограничения}
+	
+	1) Не должно быть незавершённого производства (вся номенклатура, которая занимает машинное время, должна быть выпущена к времени выпуска, иначе её не планировать):
+	
+	\begin{ceqn}
+		\begin{align*}
+			\smashoperator[r]{\sum_{p = 1}^{n}} \smashoperator[r]{\sum_{i = 1}^{m}} \smashoperator[r]{\sum_{t = q_0}^{q_{last}}} b_{p,i,t,t'} \cdot y_{p,i,t} = 1 \quad \forall t' \in T: t' \geq t
+		\end{align*}
+	\end{ceqn}
+	
+	2) Сумма всех работ не машине, проводимых в квант времени, должна быть меньше или равна производительности машины:
+	
+	\begin{ceqn}
+		\begin{align*}
+			\smashoperator[r]{\sum_{p = 1}^{n}} \smashoperator[r]{\sum_{i = 1}^{m}} \smashoperator[r]{\sum_{t = q_0}^{q_{last}}} b_{p,i,t,t'} \cdot x_{p,i,t} \leq m_{t,i} \quad \forall t \in T, \; \forall t' \in T: t' \geq t, \; \forall i \in M
+		\end{align*}
+	\end{ceqn}
+	
+	3) Время использования машины, должно быть равно времени производства пула номенклатуры на машине:
+	
+	\begin{ceqn}
+		\begin{align*}
+			\smashoperator[r]{\sum_{p = 1}^{n}} \smashoperator[r]{\sum_{t = q_0}^{q_{last}}} \smashoperator[r]{\sum_{t' \in T: t' \geq t}} \dfrac{b_{p,i,t,t'} \cdot x_{p,i,t}}{mp_{t,i}} = \smashoperator[r]{\sum_{p = 1}^{n}} \smashoperator[r]{\sum_{t = q_0}^{q_{last}}} y_{p,i,t} \cdot ttc_{p,i} \quad \forall i \in M
+		\end{align*}
+	\end{ceqn}
+	
+	\newpage
+	
+	4) Произвести номенклатуру необходимо до времени завершения производства этой номенклатуры:
+	
+	\begin{ceqn}
+		\begin{align*}
+			\smashoperator[r]{\sum_{i = 1}^{m}} \smashoperator[r]{\sum_{t = q_0}^{q_{last}}} ttc_{p,i} \cdot y_{p,i,t} \leq deadline_p \quad \forall p \in P
+		\end{align*}
+	\end{ceqn}
+
+	5) На каждой машине, в один квант времени может производиться только одна номенклатура:
+	
+	\begin{ceqn}
+		\begin{align*}
+			\smashoperator[r]{\sum_{p = 1}^{n}} \smashoperator[r]{\sum_{i = 1}^{m}} y_{p,i,t} \leq 1 \quad \forall t \in T
+		\end{align*}
+	\end{ceqn}
+
+	6) Производство номенклатуры не превышает спрос:
+	
+	\begin{ceqn}
+		\begin{align*}
+			\smashoperator[r]{\sum_{i = 1}^{m}} \smashoperator[r]{\sum_{t = q_0}^{q_{last}}} x_{p,i,t} \leq invoice_p \quad \forall p \in P
+		\end{align*}
+	\end{ceqn}
+
+	7) Естественные ограничения:
+	
+	\begin{ceqn}
+		\begin{align*}
+			x_{p,i,t} \geq 0, \quad \forall p \in P, \quad \forall i \in M, \quad \forall t \in T\\
+			y_{p,i,t} \in \{0; 1\}, \quad \forall p \in P, \quad \forall i \in M, \quad \forall t \in T
+		\end{align*}
+	\end{ceqn}
+\end{document}
