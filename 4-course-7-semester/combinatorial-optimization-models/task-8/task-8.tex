@@ -55,6 +55,7 @@
 		\end{center}
 	\end{titlepage}
 	
+	\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}\\
 	\subsection*{Дано}
 	\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
 	\begin{itemize}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
@@ -80,82 +81,103 @@
 		$x_{p,s,t} \geq 0$ -- объём производства $p$, если он начал обрабатываться в квант времени $t$ на машине $s$
 	\end{center}
 	\begin{center}
-		$\forall p \in P, \quad \forall i \in M, \quad \forall t \in T$
-	\end{center}		
+		$\forall p \in P, \quad \forall s \in machines(tech_p), \quad \forall t \in H$
+	\end{center}
 	\begin{align*}
-		y_{p,i,t} = 
+		y_{p,s,t} = 
 		\begin{cases}
 			1, \quad \textup{if номенклатура } p \textup{ начинает производиться в квант времени } t\\
-			\hspace{1cm} \textup{на машине } i\\
+			\hspace{1cm} \textup{на машине } s\\
 			0, \quad \textup{в противном случае}
 		\end{cases}
 	\end{align*}
 	\begin{center}
-		$\forall p \in P, \quad \forall i \in M, \quad \forall t \in T$
+		$\forall p \in P, \quad \forall s \in machines(tech_p), \quad \forall t \in H$
+	\end{center}
+	\begin{center}
+		$h_{p} \geq 0$ -- суммарный объём производства продукции $p$
+	\end{center}
+	\begin{center}
+		$\forall p \in P$
 	\end{center}
 
 	\newpage
 	
+	\begin{align*}
+		y'_{p,t} = 
+		\begin{cases}
+			1, \quad \textup{if номенклатура } p \textup{ начинает производиться в квант времени } t\\
+			0, \quad \textup{в противном случае}
+		\end{cases}
+	\end{align*}
+	\begin{center}
+		$\forall p \in P, \quad \forall t \in H$
+	\end{center}
+	
 	\subsection*{Целевая функция}
 	
 	1) Прибыль:
-	\[ \sum_{p = 1}^{n} price_p \sum_{i = 1}^{m} \sum_{t = q_0}^{q_{last}} x_{p,i,t} \longrightarrow \max \]
+	\[ \sum_{p \in P} price_p h_p \longrightarrow \max \]
 	
 	2) Как можно раньше хотим закончить работы:	
-	\[ \sum_{p = 1}^{n} \sum_{i = 1}^{m} \sum_{t = q_0}^{q_{last}} ttc_{p,i} \cdot y_{p,i,t} \longrightarrow \min \]
+	\[ \sum_{p \in P} \; \sum_{t \in T_{p, s}: \; s \in first(p)} w_t \cdot y'_{p,t} \longrightarrow \min \]
+	
+	где $w_t$ -- штраф\\
 	
 	\textit{Целевая функция}\\
-		\[ \sum_{p = 1}^{n} price_p \sum_{i = 1}^{m} \sum_{t = q_0}^{q_{last}} x_{p,i,t} - \sum_{p = 1}^{n} \sum_{i = 1}^{m} \sum_{t = q_0}^{q_{last}} ttc_{p,i} \cdot y_{p,i,t} \longrightarrow \max \]
+	\[ \sum_{p \in P} price_p h_p - \sum_{p \in P} \; \sum_{t \in T_{p, s}: \; s \in first(p)} w_t \cdot y'_{p,t} \longrightarrow \max \]
 	
 	\subsection*{Ограничения}
 	
-	1) Не должно быть незавершённого производства (вся номенклатура, которая занимает машинное время, должна быть выпущена к времени выпуска, иначе её не планировать):
+	1) Связываем переменные $y_{p,s,t}$ и $y'_{p,t}$:
 	
 	\begin{ceqn}
 		\begin{align*}
-			\smashoperator[r]{\sum_{p = 1}^{n}} \smashoperator[r]{\sum_{i = 1}^{m}} \smashoperator[r]{\sum_{t = q_0}^{q_{last}}} b_{p,i,t,t'} \cdot y_{p,i,t} = 1 \quad \forall t' \in T: t' \geq t
+			y'_{p, t} \geq \dfrac{\sum_{s \in first(p)} y_{p,s,t}}{K}, \quad \forall p \in P, \; t \in T_{p,s'}: s' \in first(p)
+		\end{align*}
+	\end{ceqn}
+
+	где $K$ -- большое число\\
+	
+	2) Объём пула, который обрабатывается на машине в квант времени, должен быть меньше или равен производительности машины:
+	
+	\begin{ceqn}
+		\begin{align*}
+			x_{p,s,t} \leq m_{p,s,t} \cdot y_{p,s,t}, \quad \forall p \in P, \; \forall s \in machines(tech_p), \; \forall t \in T_{p,s}
 		\end{align*}
 	\end{ceqn}
 	
-	2) Сумма всех работ не машине, проводимых в квант времени, должна быть меньше или равна производительности машины:
+	3) Связь переменных $x_{p,s,t}$ и $h_p$:
 	
 	\begin{ceqn}
 		\begin{align*}
-			\smashoperator[r]{\sum_{p = 1}^{n}} \smashoperator[r]{\sum_{i = 1}^{m}} \smashoperator[r]{\sum_{t = q_0}^{q_{last}}} b_{p,i,t,t'} \cdot x_{p,i,t} \leq m_{t,i} \quad \forall t \in T, \; \forall t' \in T: t' \geq t, \; \forall i \in M
-		\end{align*}
-	\end{ceqn}
-	
-	3) Время использования машины, должно быть равно времени производства пула номенклатуры на машине:
-	
-	\begin{ceqn}
-		\begin{align*}
-			\smashoperator[r]{\sum_{p = 1}^{n}} \smashoperator[r]{\sum_{t = q_0}^{q_{last}}} \smashoperator[r]{\sum_{t' \in T: t' \geq t}} \dfrac{b_{p,i,t,t'} \cdot x_{p,i,t}}{mp_{t,i}} = \smashoperator[r]{\sum_{p = 1}^{n}} \smashoperator[r]{\sum_{t = q_0}^{q_{last}}} y_{p,i,t} \cdot ttc_{p,i} \quad \forall i \in M
+			\smashoperator[r]{\sum_{s \in first(p)}}, \quad \smashoperator[r]{\sum_{t \in T_{p,s}}} x_{p,s,t} = h_p \quad \forall p \in P
 		\end{align*}
 	\end{ceqn}
 	
 	\newpage
 	
-	4) Произвести номенклатуру необходимо до времени завершения производства этой номенклатуры:
+	4) На каждой машине, в один квант времени может обрабатываться не более одной номенклатуры:
 	
 	\begin{ceqn}
 		\begin{align*}
-			\smashoperator[r]{\sum_{i = 1}^{m}} \smashoperator[r]{\sum_{t = q_0}^{q_{last}}} ttc_{p,i} \cdot y_{p,i,t} \leq deadline_p \quad \forall p \in P
+			\smashoperator[r]{\sum_{(p,s,t') \in U_{s,t}}} y_{p,s,t'} \leq 1, \quad \forall s \in S, \; \forall t \in \{\min_{p \in P} T_{p,s}^{LB}, \dots, \max_{p \in P} T_{p,s}^{UB}\}
 		\end{align*}
 	\end{ceqn}
 
-	5) На каждой машине, в один квант времени может производиться только одна номенклатура:
+	5) Сохранение количества изделий, которые передаются от родителей к детям (баланс):
 	
 	\begin{ceqn}
 		\begin{align*}
-			\smashoperator[r]{\sum_{p = 1}^{n}} \smashoperator[r]{\sum_{i = 1}^{m}} y_{p,i,t} \leq 1 \quad \forall t \in T
+			\smashoperator[r]{\sum_{s \in S^{-}}} x_{p,s',t} = \smashoperator[r]{\sum_{s' \in S^{+}}} x_{p,s',t + tc_{p,s}}, \quad \forall p \in P, \; \forall (S^{-}, S^{+}) \in BAL_p, \; \forall s \in S^{-}, \; \forall t \in T_{p,s}
 		\end{align*}
 	\end{ceqn}
 
-	6) Производство номенклатуры не превышает спрос:
+	6) В ребёнке не более изделий, чем было у родителя:
 	
 	\begin{ceqn}
 		\begin{align*}
-			\smashoperator[r]{\sum_{i = 1}^{m}} \smashoperator[r]{\sum_{t = q_0}^{q_{last}}} x_{p,i,t} \leq invoice_p \quad \forall p \in P
+			x_{p,s,t} \leq \smashoperator[r]{\sum_{s' \in prev(p,s)}} x_{p,s',t-tc_{p,s'}}, \quad \forall p \in P, \; \forall s \in machines(tech_p): prev(p,s) \neq \emptyset, \; \forall t \in T_{p,s}
 		\end{align*}
 	\end{ceqn}
 
@@ -163,8 +185,58 @@
 	
 	\begin{ceqn}
 		\begin{align*}
-			x_{p,i,t} \geq 0, \quad \forall p \in P, \quad \forall i \in M, \quad \forall t \in T\\
-			y_{p,i,t} \in \{0; 1\}, \quad \forall p \in P, \quad \forall i \in M, \quad \forall t \in T
+			x_{p,s,t} \geq 0, x_{p,s,t} \in \mathbb{Z} \quad \forall p \in P, \quad \forall s \in machines(tech_p), \quad \forall t \in H\\
+			y_{p,i,t} \in \{0; 1\}, \quad \forall p \in P, \quad \forall s \in machines(tech_p), \quad \forall t \in H
 		\end{align*}
 	\end{ceqn}
+
+	\begin{ceqn}
+		\begin{align*}
+			y'_{p,t} \in \{0; 1\}, \quad \forall p \in P, \quad \forall t \in T_{p,s}: s \in first(p)
+		\end{align*}
+	\end{ceqn}
+
+	\begin{ceqn}
+		\begin{align*}
+			0 \leq h_p \leq d_p, \quad \forall p \in P
+		\end{align*}
+	\end{ceqn}
+
+	\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}\\
+	
+	\subsection*{Задача}
+	Машина интервального типа -- это машина, которая имеет не фиксированное время производства, но вместо этого время производства может быть выбрано как любое целое из отрезка $t_p=[t_1, t_2]$ для каждой техкарты $p$.\\
+	
+	Такой тип машин может быть представлен в рамках задачи со сложными технологическими картами.\\
+	
+	Обратите внимание, что для такого типа машин нарушается правило о том, что на <<сходящиеся>> узлы технологического процесса продукция должна приходить одновременно.\\
+	
+	В каких случаях и как задачу с интервальными машинами можно свести к задаче со сложными технологическими картами без изменения модели или с малыми изменениями? Приведите примеры.\\
+	
+	\newpage
+	
+	\subsection*{Решение №1}
+	
+	Данную задачу с машинами интервального типа можно свести к уже рассмотренной задаче просто разбив интервальные машины на фиктивные детерминированные машины. (Рисунок \ref{fig:graph})
+	\begin{figure}[h]
+		\centering \includegraphics[scale=0.35]{graph}
+		\caption{Пример введения фиктивных машин в технологическую карту}
+		\label{fig:graph}
+	\end{figure}
+
+	\subsection*{Решение №2}
+	Также данную задачу можно свести в предыдущей точно так же разбив интервальные машины на фиктивные детерминированные машины и решить несколько задач оптимизации для каждого подмножества всем исходных машин.\\
+	
+	В рамках предыдущего примера нам нужно решить несколько задач оптимизации со следующими наборами машин:
+
+	\begin{center}
+		$\{1, 2', 3, 4, 5', 6\}$\\
+		$\{1, 2'', 3, 4, 5', 6\}$\\
+		$\{1, 2''', 3, 4, 5', 6\}$\\
+		$\{1, 2', 3, 4, 5'', 6\}$\\
+		$\{1, 2'', 3, 4, 5'', 6\}$\\
+		$\{1, 2''', 3, 4, 5'', 6\}$\\
+	\end{center}
+
+	Дальше можно просто выбрать тот набор машин, которые дадут наибольшее значение целевой функции.
 \end{document}
