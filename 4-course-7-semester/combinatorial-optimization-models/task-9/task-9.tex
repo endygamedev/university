@@ -1,0 +1,243 @@
+\documentclass[14pt,fleqn]{extarticle}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{boldline}
+\usepackage{makecell}
+\usepackage{arydshln}
+\usepackage{mathtools}
+\usepackage{centernot}
+\usepackage{enumitem}
+\usepackage{nccmath}
+\usepackage{amssymb}
+\usepackage[a4paper, total={6.5in, 9.5in}]{geometry}
+
+\graphicspath{ {./images/} }
+\setlength{\mathindent}{0pt}
+\setlength\parindent{0pt}
+
+\def\at{
+	\left.
+	\vphantom{\int}
+	\right|
+}
+
+
+\begin{document}
+	\begin{titlepage}
+		\includegraphics[scale=0.12]{logo}
+		\begin{center}
+			\textbf{МИНОБРНАУКИ РОССИИ}\\
+			\vspace{0.2cm}
+			\textbf{Федеральное государственное бюджетное образовательное учреждение высшего образования}\\
+			\textbf{<<САНКТ-ПЕТЕРБУРГСКИЙ ГОСУДАРСТВЕННЫЙ ЭКОНОМИЧЕСКИЙ УНИВЕРСИТЕТ>>}\\
+			\vspace{0.6cm}
+			Факультет информатики и прикладной математики\\
+			Кафедра прикладной математики и экономико-математических методов\\
+			\vspace{1cm}
+			\textbf{ОТЧЁТ}\\
+			по дисциплине:\\
+			\textbf{<<Модели комбинаторной оптимизации>>}\\
+			на тему:\\
+			\textbf{<<Задание №9. Задача коммивояжера с временными окнами (mTSPTW)>>}\\
+		\end{center}
+		\vspace{1cm}
+		Направление: 01.03.02\\
+		Обучающийся: Бронников Егор Игоревич\\
+		Группа: ПМ-1901\\
+		\vfill
+		\begin{center}
+			Санкт-Петербург\\
+			2022\\
+		\end{center}
+	\end{titlepage}
+	
+	\subsection*{Дано}
+	\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+	\begin{itemize}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+		\item $G = (V, A)$ -- полный ориентированный взвешенный граф
+		\item $V = \{0, 1, \dots, n\}$ -- множество вершин, где вершина $0$ - склад
+		\item $A = \{(i,j) : i, j \in V \; i \neq j\}$ -- множество рёбер
+		\item $c_{ij}$ -- использование ребра $\forall \; (i,j) \in A$
+		\item $t_{ij}$ -- время на переезд из вершины $i \in V$ в вершину $j \in V$
+		\item $(a_i, b_i)$ -- временное окно клиента, когда клиент должен быть обслужен $\forall \; i \in V\backslash\{0\}$
+		\item $m$ -- количество коммивояжеров
+	\end{itemize}
+
+	\subsection*{Минимизация затрат за выполнение работ}
+
+	\subsubsection*{Переменные}
+	\begin{align*}
+		x_{ij} = 
+		\begin{cases}
+			1, \quad \textup{if ребро } (i,j) \textup{ используется в маршрутах коммивояжеров }\\
+			0, \quad \textup{в противном случае}
+		\end{cases}
+	\end{align*}
+	\begin{center}
+		$\forall \; (i,j) \in A$
+	\end{center}
+	\begin{center}
+		$u_{i} \geq 0$ -- потенциалы вершин-клиентов $\quad \forall \; i \in V\backslash\{0\}$
+	\end{center}
+	
+	\subsubsection*{Целевая функция}
+	
+	\[ \sum_{(i,j) \in A} c_{ij} \cdot x_{ij} \longrightarrow \min \]
+	
+	\subsection*{Ограничения}
+	
+	1) Полустепень исхода для каждой вершины-клиента должна быть равна единице:
+	
+	\begin{ceqn}
+		\begin{align*}
+			\sum_{(i,j) \in A} x_{ij} = 1, \quad \forall i \in V\backslash\{0\}
+		\end{align*}
+	\end{ceqn}
+
+	2) Полустепень захода для каждой вершины-клиента должна быть равна единице:
+	
+	\begin{ceqn}
+		\begin{align*}
+			\sum_{(i,j) \in A} x_{ij} = 1, \quad \forall j \in V\backslash\{0\}
+		\end{align*}
+	\end{ceqn}
+
+	\newpage
+
+	3) Коммивояжер выполняет один маршрут и возвращается на склад:
+	
+	\begin{ceqn}
+		\begin{align*}
+			\sum_{(0,j) \in A} x_{0j} = m
+		\end{align*}
+	\end{ceqn}
+
+	4) Запрет сабтуров (ограничение на потенциалы):
+
+	\begin{ceqn}
+		\begin{align*}
+			u_i - u_j + (b_i - a_j + t_{ij}) \cdot x_{ij} \leq b_i - a_j, \quad \forall i, j \in V\backslash\{0\} \; i \neq j
+		\end{align*}
+	\end{ceqn}
+	
+	5) Ограничение на временные окна:
+	
+	\begin{ceqn}
+		\begin{align*}
+			a_i \leq u_i \leq b_i, \quad \forall i \in V\backslash\{0\}
+		\end{align*}
+	\end{ceqn}
+
+	6) Естественные ограничения:
+	\begin{ceqn}
+		\begin{align*}
+			x_{ij} \in \{0;1\}, \quad \forall \; (i,j) \in A
+		\end{align*}
+	\end{ceqn}
+
+	\begin{ceqn}
+		\begin{align*}
+			u_i \geq 0, \quad \forall \; i \in V\backslash\{0\}
+		\end{align*}
+	\end{ceqn}
+
+	\newpage
+
+	\subsection*{Минимизация суммарной продолжительности выполнения маршрутов}
+	
+	\subsubsection*{Переменные}
+	\begin{align*}
+		x_{ij} = 
+		\begin{cases}
+			1, \quad \textup{if ребро } (i,j) \textup{ используется в маршрутах коммивояжеров }\\
+			0, \quad \textup{в противном случае}
+		\end{cases}
+	\end{align*}
+	\begin{center}
+		$\forall \; (i,j) \in A$
+	\end{center}
+	\begin{center}
+		$u_{i} \geq 0$ -- потенциалы вершин-клиентов $\quad \forall \; i \in V\backslash\{0\}$
+	\end{center}
+	
+	\subsubsection*{Целевая функция}
+	
+	\[ u_n \longrightarrow \min \]
+	
+	\subsection*{Ограничения}
+	
+	1) Полустепень исхода для каждой вершины-клиента должна быть равна единице:
+	
+	\begin{ceqn}
+		\begin{align*}
+			\sum_{(i,j) \in A} x_{ij} = 1, \quad \forall i \in V\backslash\{0\}
+		\end{align*}
+	\end{ceqn}
+	
+	2) Полустепень захода для каждой вершины-клиента должна быть равна единице:
+	
+	\begin{ceqn}
+		\begin{align*}
+			\sum_{(i,j) \in A} x_{ij} = 1, \quad \forall j \in V\backslash\{0\}
+		\end{align*}
+	\end{ceqn}
+	
+	3) Коммивояжер выполняет один маршрут и возвращается на склад:
+	
+	\begin{ceqn}
+		\begin{align*}
+			\sum_{(0,j) \in A} x_{0j} = m
+		\end{align*}
+	\end{ceqn}
+	
+	4) Запрет сабтуров (ограничение на потенциалы):
+	
+	\begin{ceqn}
+		\begin{align*}
+			u_i - u_j + (b_i - a_j + t_{ij}) \cdot x_{ij} \leq b_i - a_j, \quad \forall i, j \in V\backslash\{0\} \; i \neq j
+		\end{align*}
+	\end{ceqn}
+	
+	\newpage
+	
+	5) Ограничение на временные окна:
+	
+	\begin{ceqn}
+		\begin{align*}
+			a_i \leq u_i \leq b_i, \quad \forall i \in V\backslash\{0\}
+		\end{align*}
+	\end{ceqn}
+
+	6) Инициализация времени прибытия к первому клиенту тура и время необходимое для перехода от склада до этого клиента:
+
+	\begin{ceqn}
+		\begin{align*}
+			u_i - t_{0i} \cdot x_{0i} \geq 0, \quad \forall i \in V\backslash\{0\}
+		\end{align*}
+	\end{ceqn}
+
+	7) Продолжительность маршрута должна быть меньше или равна времени посещения + время, которое необходимо для возвращения на склад:
+	
+	\begin{ceqn}
+		\begin{align*}
+			u_i + t_{i0} \leq _n, \quad \forall i \in V\backslash\{0\}
+		\end{align*}
+	\end{ceqn}
+	
+	8) Естественные ограничения:
+	\begin{ceqn}
+		\begin{align*}
+			x_{ij} \in \{0;1\}, \quad \forall \; (i,j) \in A
+		\end{align*}
+	\end{ceqn}
+	
+	\begin{ceqn}
+		\begin{align*}
+			u_i \geq 0, \quad \forall \; i \in V\backslash\{0\}
+		\end{align*}
+	\end{ceqn}
+\end{document}
