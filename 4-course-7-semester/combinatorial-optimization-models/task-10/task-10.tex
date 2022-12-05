@@ -1,0 +1,162 @@
+\documentclass[14pt,fleqn]{extarticle}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{boldline}
+\usepackage{makecell}
+\usepackage{arydshln}
+\usepackage{mathtools}
+\usepackage{centernot}
+\usepackage{enumitem}
+\usepackage{nccmath}
+\usepackage{amssymb}
+\usepackage[a4paper, total={6.5in, 9.5in}]{geometry}
+
+\graphicspath{ {./images/} }
+\setlength{\mathindent}{0pt}
+\setlength\parindent{0pt}
+
+\def\at{
+	\left.
+	\vphantom{\int}
+	\right|
+}
+
+
+\begin{document}
+	\begin{titlepage}
+		\includegraphics[scale=0.12]{logo}
+		\begin{center}
+			\textbf{МИНОБРНАУКИ РОССИИ}\\
+			\vspace{0.2cm}
+			\textbf{Федеральное государственное бюджетное образовательное учреждение высшего образования}\\
+			\textbf{<<САНКТ-ПЕТЕРБУРГСКИЙ ГОСУДАРСТВЕННЫЙ ЭКОНОМИЧЕСКИЙ УНИВЕРСИТЕТ>>}\\
+			\vspace{0.6cm}
+			Факультет информатики и прикладной математики\\
+			Кафедра прикладной математики и экономико-математических методов\\
+			\vspace{1cm}
+			\textbf{ОТЧЁТ}\\
+			по дисциплине:\\
+			\textbf{<<Модели комбинаторной оптимизации>>}\\
+			на тему:\\
+			\textbf{<<Задание №10. Развитие задачи планирования работ IT-компании>>}\\
+		\end{center}
+		\vspace{1cm}
+		Направление: 01.03.02\\
+		Обучающийся: Бронников Егор Игоревич\\
+		Группа: ПМ-1901\\
+		\vfill
+		\begin{center}
+			Санкт-Петербург\\
+			2022\\
+		\end{center}
+	\end{titlepage}
+	
+	\subsection*{Дано}
+	\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+	\begin{itemize}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+		\item $k$ -- количество проектов
+		\item $n$ -- количество работников
+		\item $m$ -- количество задач
+		\item $G = \{g_1, g_2, \dots, g_k\}$ -- множество проектов
+		\item $W = \{w_1, w_2, \dots, w_n\}$ -- множество работников
+		\item $Q = \{q_1, q_2, \dots, q_m\}$ -- множество задач
+		\item $Q_w$ -- множество задач, которые может выполнять работник $w \in W$
+		\item $W_q$ -- множество работников, которые могут выполнять задачу $q \in Q$
+		\item $T_g$ -- дедлайн проекта $g \in G$
+		\item $T = \max_{g \in G} T_g$ -- время выполнения последнего проекта
+		\item $[0; T]$ -- горизонт планирования
+		\item $t_q$ -- время выполнения задачи $q \in Q$
+		\item $\pi_w$ -- список предпочтений, для каждого работника $\forall \, w \in W$, упорядоченное множество элементов $Q_w$, расположенных в порядке убывания приоритета заданий для сотрудника
+		\item $M$ -- матрица смежности графов-проектов (связи задач родитель-ребёнок внутри проектов)
+		\item $R: G \times Q \longrightarrow \{0; 1\}$ -- матрица принадлежности задач проектам
+		\item $\forall w \in W, \; \forall i \in \pi_w: position(i) \in \{1, \dots, |Q_w|\}$ -- позиция задачи $i$ в списке предпочтений работника $w \in W$ (чем меньше данное значение, тем предпочтительнее для данного работника это задание)
+		\item $\forall \, g \in G: sources(g)$ -- множество заданий, которые не имеют предыдущих заданий и которые относятся к проекту $g$
+		\item $\forall \, g \in G: sinks(g)$ -- множество заданий, которые не имеют последующих заданий и которые относятся к проекту $g$
+		\item $K$ -- большое число
+	\end{itemize}
+
+	\subsection*{Переменные}
+	\begin{align*}
+		x_{i,j,w} = 
+		\begin{cases}
+			1, \quad \textup{if задача } i \textup{ выполняется после задачи } j \textup{ работником } w\\
+			0, \quad \textup{в противном случае}
+		\end{cases}
+	\end{align*}
+	\begin{center}
+		$u_{i,w} \geq 0$ -- начало выполнения задачи $i$ работником $w$
+	\end{center}
+	
+	\newpage
+	
+	\subsection*{Целевая функция}
+	
+	1) Минимизация времени окончания работ по проектам:
+	\[ \sum_{w \in W} \sum_{g \in G} \sum_{source \in sources(g)} \sum_{sink \in sinks(g)} u_{sink, w} - u_{source, w} \longrightarrow \min \]
+	
+	2) Удовлетворение предпочтений сотрудников:
+	
+	\[ \sum_{w \in W} \sum_{i \in \pi_w} position(i) \sum_{j \in Q_w} x_{i,j,w} \longrightarrow \min \]
+	
+	3) Минимизация количества переключений работников между проектами:
+	
+	\[ \sum_{w \in W} \sum_{i \in Q_w} \; \sum_{j \in \{q \, | \, q \in Q_w \forall \, g \in G \; \forall \, r_{g,i}, r_{g,q} \in R: \, r_{g,i} \neq r_{g,q}\}} \longrightarrow \min \]\\
+	
+	\textit{Итоговая целевая функция:}
+	
+	\[ \sum_{w \in W} \sum_{g \in G} \sum_{source \in sources(g)} \sum_{sink \in sinks(g)} u_{sink, w} - u_{source, w} + \sum_{w \in W} \sum_{i \in \pi_w} position(i) \sum_{j \in Q_w} x_{i,j,w} + \]\\
+	\[ + \sum_{w \in W} \sum_{i \in Q_w} \; \sum_{j \in \{q \, | \, q \in Q_w \forall \, g \in G \; \forall \, r_{g,i}, r_{g,q} \in R: \, r_{g,i} \neq r_{g,q}\}} K \cdot x_{i,j,k} \longrightarrow \min \]\\
+	
+	\subsection*{Ограничения}
+	
+	1) Каждую задачу выполняет ровно один сотрудник из списка допустимых:
+	
+	\begin{ceqn}
+		\begin{align*}
+			\sum_{w \in W_j} \sum_{i \in Q_w} x_{i,j,k} = 1, \quad \forall \; j \in Q
+		\end{align*}
+	\end{ceqn}
+
+	2) Задача может начать выполняться, если её задачи-предки выполнены:
+	
+	\begin{ceqn}
+		\begin{align*}
+			\sum_{w \in W_j} u_{j,w} - \sum_{w \in W_i} u_{i,w} \geq t_i, \quad \forall \; i, j \in Q: \; m_{i,j} = 1
+		\end{align*}
+	\end{ceqn}
+
+	\newpage
+
+	3) Дедлайн не нарушается:
+	
+	\begin{ceqn}
+		\begin{align*}
+			\sum_{w \in W} \sum_{i \in \{q \; | \; q \in Q: \; r_{g,q} = 1\}} u_{i, w} + t_i \leq T_g, \quad \forall \; g \in G
+		\end{align*}
+	\end{ceqn}
+
+	4) В каждый момент времени сотрудник выполняет не более одной задачи (ограничение на потенциалы):
+
+	\begin{ceqn}
+		\begin{align*}
+			u_{i,w} - u_{j,w} + K \cdot x_{i,j,w} \leq K - t_i, \quad \forall \; w \in W, \, \forall \; i, j \in Q_w: i \neq j
+		\end{align*}
+	\end{ceqn}
+
+	5) Естественные ограничения:
+	\begin{ceqn}
+		\begin{align*}
+			x_{i,j,w} \in \{0;1\}, \quad \forall \; w \in W, \, \forall \; i, j \in Q_w: i \neq j
+		\end{align*}
+	\end{ceqn}
+
+	\begin{ceqn}
+		\begin{align*}
+			u_{i, w} \geq 0, \quad \forall \; w \in W, \, \forall \; i \in Q_w
+		\end{align*}
+	\end{ceqn}
+\end{document}
