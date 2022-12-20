@@ -1,0 +1,12 @@
+\babel@toc {russian}{}\relax 
+\contentsline {section}{Введение. Моделирование случайных величин}{2}{section*.2}%
+\contentsline {subsection}{Треугольное распределение}{2}{section*.3}%
+\contentsline {subsection}{Датчики - равномерное распределение}{5}{section*.4}%
+\contentsline {subsection}{Датчик - экспоненциальное распределение}{11}{section*.5}%
+\contentsline {subsection}{Датчик - нормальный закон}{14}{section*.6}%
+\contentsline {subsection}{Датчик - треугольное распределение}{18}{section*.7}%
+\contentsline {subsection}{Метод Монте-Карло}{21}{section*.8}%
+\contentsline {subsection}{Дискретные СВ и случайные события}{23}{section*.9}%
+\contentsline {subsection}{Проверка качества датчиков}{25}{section*.10}%
+\contentsline {section}{Моделирование СМО}{26}{section*.11}%
+\contentsline {subsection}{Модель СМО в AnyLogic}{26}{section*.12}%

@@ -1,0 +1,78 @@
+\documentclass[14pt,fleqn]{extarticle}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{boldline}
+\usepackage{makecell}
+\usepackage{arydshln}
+\usepackage{mathtools}
+\usepackage{centernot}
+\usepackage{enumitem}
+\usepackage{nccmath}
+\usepackage{amssymb}
+\usepackage{import}
+\usepackage[a4paper, total={6.5in, 9.5in}]{geometry}
+\usepackage{hyperref}
+
+\graphicspath{ {./content/images} }
+\setlength{\mathindent}{0pt}
+\setlength\parindent{0pt}
+\renewcommand{\theHsection}{\thepart.section.\thesection}
+
+\def\at{
+	\left.
+	\vphantom{\int}
+	\right|
+}
+
+
+\begin{document}
+	\begin{titlepage}
+		\includegraphics[scale=0.12]{logo}
+		\begin{center}
+			\textbf{МИНОБРНАУКИ РОССИИ}\\
+			\vspace{0.2cm}
+			\textbf{Федеральное государственное бюджетное образовательное учреждение высшего образования}\\
+			\textbf{<<САНКТ-ПЕТЕРБУРГСКИЙ ГОСУДАРСТВЕННЫЙ ЭКОНОМИЧЕСКИЙ УНИВЕРСИТЕТ>>}\\
+			\vspace{0.6cm}
+			Факультет информатики и прикладной математики\\
+			Кафедра прикладной математики и экономико-математических методов\\
+			\vspace{1cm}
+			\textbf{ОТЧЁТ}\\
+			по дисциплине:\\
+			\textbf{<<Имитационное моделирование>>}\\
+		\end{center}
+		\vspace{3cm}
+		Направление: 01.03.02\\
+		Обучающийся: Бронников Егор Игоревич\\
+		Группа: ПМ-1901\\
+		\vfill
+		\begin{center}
+			Санкт-Петербург\\
+			2022\\
+		\end{center}
+	\end{titlepage}
+	
+	\tableofcontents
+	\newpage
+	\import{content/}{task1.tex}
+	\newpage
+	\import{content/}{task2.tex}
+	\newpage
+	\import{content/}{task3.tex}
+	\newpage
+	\import{content/}{task4.tex}
+	\newpage
+	\import{content/}{task5.tex}
+	\newpage
+	\import{content/}{task6.tex}
+	\newpage
+	\import{content/}{task7.tex}
+	\newpage
+	\import{content/}{task8.tex}
+	\newpage
+	\import{content/}{task9.tex}
+\end{document}
