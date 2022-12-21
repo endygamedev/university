@@ -10,3 +10,5 @@
 \contentsline {subsection}{Проверка качества датчиков}{25}{section*.10}%
 \contentsline {section}{Моделирование СМО}{26}{section*.11}%
 \contentsline {subsection}{Модель СМО в AnyLogic}{26}{section*.12}%
+\contentsline {subsection}{Одноканальная СМО}{30}{section*.13}%
+\contentsline {subsection}{Hold}{34}{section*.15}%
