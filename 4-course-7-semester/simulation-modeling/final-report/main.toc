@@ -1,27 +1,60 @@
 \babel@toc {russian}{}\relax 
-\contentsline {section}{Пешеходная библиотека}{2}{section*.2}%
-\contentsline {subsection}{Пешеходная библиотека. Первая модель}{2}{section*.3}%
-\contentsline {subsection}{Проект <<Станция метро>>}{4}{section*.4}%
-\contentsline {section}{Внешние данные. Табличные функции}{7}{section*.5}%
-\contentsline {subsection}{Чтение из Excel -- фигуры}{7}{section*.6}%
-\contentsline {subsection}{Фигуры из презентации в файл MS Excel}{9}{section*.7}%
-\contentsline {section}{Системная динамика}{11}{section*.8}%
-\contentsline {subsection}{Модель развития социального стресса}{11}{section*.9}%
-\contentsline {section}{Агентные модели. Дискретное пространство}{14}{section*.10}%
-\contentsline {subsection}{<<Жизнь>> Конвея}{14}{section*.11}%
-\contentsline {subsection}{Модель сегрегации Шеллинга в AnyLogic}{16}{section*.12}%
-\contentsline {subsection}{Модель сегрегации Шеллинга в Python}{19}{section*.13}%
-\contentsline {section}{Диаграммы состояний и события}{23}{section*.14}%
-\contentsline {subsection}{Светофор}{23}{section*.15}%
-\contentsline {subsection}{SIR -- агентная модель}{25}{section*.16}%
-\contentsline {subsection}{Ноутбук + зарядка}{28}{section*.17}%
-\contentsline {subsection}{SIERD + вакцинация}{30}{section*.18}%
-\contentsline {section}{Диаграмма действий}{32}{section*.19}%
-\contentsline {subsection}{Сумма ряда -- экспонента}{32}{section*.20}%
-\contentsline {subsection}{Сумма ряда -- синус}{34}{section*.21}%
-\contentsline {section}{Агентные модели}{36}{section*.22}%
-\contentsline {subsection}{Подготовка к зачёту}{36}{section*.23}%
-\contentsline {subsection}{Связи агентов -- добавление, удаление, список, количество}{39}{section*.24}%
-\contentsline {section}{Работа с ГИС-картами}{44}{section*.25}%
-\contentsline {subsection}{Доставка с покупками}{44}{section*.26}%
-\contentsline {subsection}{Проект <<Доставка товаров на примере маркетплейса Ozon>>}{48}{section*.27}%
+\contentsline {section}{Введение. Моделирование случайных величин}{3}{section*.2}%
+\contentsline {subsection}{Треугольное распределение}{3}{section*.3}%
+\contentsline {subsection}{Датчики - равномерное распределение}{6}{section*.4}%
+\contentsline {subsection}{Датчик - экспоненциальное распределение}{12}{section*.5}%
+\contentsline {subsection}{Датчик - нормальный закон}{15}{section*.6}%
+\contentsline {subsection}{Датчик - треугольное распределение}{19}{section*.7}%
+\contentsline {subsection}{Метод Монте-Карло}{22}{section*.8}%
+\contentsline {subsection}{Дискретные СВ и случайные события}{24}{section*.9}%
+\contentsline {subsection}{Проверка качества датчиков}{26}{section*.10}%
+\contentsline {section}{Моделирование СМО}{27}{section*.11}%
+\contentsline {subsection}{Модель СМО в AnyLogic}{27}{section*.12}%
+\contentsline {subsection}{Одноканальная СМО}{31}{section*.13}%
+\contentsline {subsection}{Hold}{35}{section*.15}%
+\contentsline {subsection}{СМО с отказами}{37}{section*.16}%
+\contentsline {subsection}{Проект СМО}{40}{section*.17}%
+\contentsline {section}{Приёмы работы с элементами презентации}{43}{section*.18}%
+\contentsline {subsection}{Движение между двумя ограниченными линиями}{43}{section*.19}%
+\contentsline {subsection}{Движение по окружности и спирали}{44}{section*.20}%
+\contentsline {subsection}{Движение по периметру}{46}{section*.21}%
+\contentsline {subsection}{Реплицированные объекты. Заполнение областей}{48}{section*.22}%
+\contentsline {subsection}{Программный доступ к элементам презентации}{51}{section*.23}%
+\contentsline {section}{Библиотека моделирования потоков}{54}{section*.24}%
+\contentsline {subsection}{Моделирование потоков}{54}{section*.25}%
+\contentsline {section}{Пешеходная библиотека}{58}{section*.26}%
+\contentsline {subsection}{Пешеходная библиотека. Первая модель}{58}{section*.27}%
+\contentsline {subsection}{Проект <<Станция метро>>}{60}{section*.28}%
+\contentsline {section}{Внешние данные. Табличные функции}{63}{section*.29}%
+\contentsline {subsection}{Чтение из Excel -- фигуры}{63}{section*.30}%
+\contentsline {subsection}{Фигуры из презентации в файл MS Excel}{65}{section*.31}%
+\contentsline {section}{Системная динамика}{67}{section*.32}%
+\contentsline {subsection}{Модель развития социального стресса}{67}{section*.33}%
+\contentsline {section}{Агентные модели. Дискретное пространство}{70}{section*.34}%
+\contentsline {subsection}{<<Жизнь>> Конвея}{70}{section*.35}%
+\contentsline {subsection}{Модель сегрегации Шеллинга в AnyLogic}{72}{section*.36}%
+\contentsline {subsection}{Модель сегрегации Шеллинга в Python}{75}{section*.37}%
+\contentsline {section}{Диаграммы состояний и события}{79}{section*.38}%
+\contentsline {subsection}{Светофор}{79}{section*.39}%
+\contentsline {subsection}{SIR -- агентная модель}{81}{section*.40}%
+\contentsline {subsection}{Ноутбук + зарядка}{84}{section*.41}%
+\contentsline {subsection}{SIERD + вакцинация}{86}{section*.42}%
+\contentsline {section}{Диаграмма действий}{88}{section*.43}%
+\contentsline {subsection}{Сумма ряда -- экспонента}{88}{section*.44}%
+\contentsline {subsection}{Сумма ряда -- синус}{90}{section*.45}%
+\contentsline {section}{Агентные модели}{92}{section*.46}%
+\contentsline {subsection}{Подготовка к зачёту}{92}{section*.47}%
+\contentsline {subsection}{Связи агентов -- добавление, удаление, список, количество}{95}{section*.48}%
+\contentsline {section}{Работа с ГИС-картами}{100}{section*.49}%
+\contentsline {subsection}{Доставка с покупками}{100}{section*.50}%
+\contentsline {subsection}{Проект <<Доставка товаров на примере маркетплейса Ozon>>}{103}{section*.51}%
+\contentsline {section}{Дорожная библиотека}{113}{section*.52}%
+\contentsline {subsection}{Перекрёсток}{113}{section*.53}%
+\contentsline {subsection}{Дорожная библиотека -- индивидуальное задание}{116}{section*.54}%
+\contentsline {section}{Имитационные эксперименты}{120}{section*.55}%
+\contentsline {subsection}{Варьирование параметров -- SD-модель}{120}{section*.56}%
+\contentsline {subsection}{Варьирование параметров -- агентная модель}{122}{section*.57}%
+\contentsline {section}{Случайные блуждания}{124}{section*.58}%
+\contentsline {subsection}{Одномерный дискретный случай}{124}{section*.59}%
+\contentsline {subsection}{Двумерная решётка -- одна частица}{127}{section*.60}%
+\contentsline {section}{Заключение}{129}{section*.61}%
